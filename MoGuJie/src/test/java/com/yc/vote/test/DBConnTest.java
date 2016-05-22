@@ -21,7 +21,7 @@ public class DBConnTest {
 	public void testConn() {
 		Connection con = sqlSessionFactory.openSession().getConnection();
 		assertNotNull("数据库连接失败!!!", con);
-		System.out.println("菜菜改的 ");
+		System.out.println("菜菜 ");
 	}
 
 }
