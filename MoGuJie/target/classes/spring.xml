@@ -21,7 +21,7 @@
 	<context:property-placeholder location="classpath:db.properties" />
 
 	<!-- 数据源 -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
 		p:driverClassName="${jdbc.driverClassName}" p:url="${jdbc.url}"
 		p:username="${jdbc.username}" p:password="${jdbc.password}" />
 		
@@ -31,7 +31,7 @@
 
 	<!-- 配制映射接口 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
-		p:sqlSessionFactoryBeanName="sqlSessionFactory" p:basePackage="com.yc.vote.mapper" />
+		p:sqlSessionFactoryBeanName="sqlSessionFactory" p:basePackage="com.yc.mogujie.mapper" />
 
 
 	<!-- 1.配制事务管理器 -->

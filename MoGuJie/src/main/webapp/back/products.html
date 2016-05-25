@@ -1,0 +1,319 @@
+<div id="show_news_info_find" style="width:100%,text-align:left"> 
+	<span>商品详细编号: </span><input type="text" name="deid" id="find_deid"/>
+	<span>商品名称: </span><input type="text" name="proname" id="find_proname"/>
+	<span>商品尺寸: </span><input type="text" name="psize" id="find_psize"/>
+	<span>商品颜色: </span><input type="text" name="color" id="find_color"/>
+	&nbsp;&nbsp;<a href="javascript:findDetail()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">查询</a>
+</div>
+
+<table id="products_info" ></table>
+<script>
+$(function(){
+	var datagrid;
+	var editRow=undefined;
+	var op;
+	var flag;
+	$.post("../productServlet",{op:"getAllProduct"},function(data){
+		var obj=$("#add_proname");
+		var opt;
+		$.each(data.rows,function(index,item){
+			opt="<option value='"+item.proid+"'>"+item.proname+"</option>";
+			obj.append($(opt));
+		});
+	},"json");
+	datagrid=$('#products_info').datagrid({   
+	    url:'../detailServlet',  
+	    queryParams:{op:"getDetailInfo"},
+	    fitColumns:true,
+	    striped:true,
+	    loadMsg:"数据加载中...",
+	    pagination:true,
+	    rownumbers:true,
+	    sortName:'deid',
+	    sortOrder:'asc',
+	    remoteSort:false,
+	    columns:[[   
+	        {field:'deids',title:'选择',width:100,align:'center',checkbox:true}, 
+	        {field:'deid',title:'商品详细编号',width:100,align:'center',sortable:true},   
+	        {field:'proname',title:'商品名称',width:100,align:'center',sortable:true},
+	        {field:'counts',title:'销售量',width:100,align:'center',sortable:true},
+	        {field:'psize',title:'商品尺寸',width:100,align:'center',editor:{type:"text",options:{required:true}}},
+	        {field:'color',title:'商品颜色',width:100,align:'center',editor:{type:"text",options:{required:true}}},
+	        {field:'proNumber',title:'库存',width:100,align:'center',editor:{type:"text",options:{required:true}}},
+	        {field:'_operate',title:'操作',width:100,align:'center',
+				formatter:function(value,rowData,index){
+					return '<a class="icon-search1 icon-padding" href="javascript:showDetail(\''+rowData.deid+'\')">详细</a>';
+				}
+			}
+	    ]], 
+	    toolbar:[
+	    {
+	    	text:"添加",
+			iconCls:'icon-add',
+			handler:function(){
+				$("#add_detail").dialog("open");
+			}
+		},{
+	    	text:"修改",
+				iconCls:'icon-edit',
+				handler:function(){
+					rows=datagrid.datagrid("getChecked");
+     				if(rows.length<=0){
+     					$.messager.show({
+     						title:'温馨提示',
+     						msg:'请选择您要修改的商品...',
+     						timeout:2000,
+     						showType:'slide'
+     					});
+     				}else{
+						$("#update_detail").dialog("open");
+						var deids="";
+     					for(var i=0;i<rows.length-1;i++){
+     						deids+=rows[i].deid+",";
+     					}
+     					deids=rows[i].deid;
+						$.post("../detailServlet",{op:"findDetailByDeid",deid:deids},function(data){
+							 var detail=data.rows[0];
+								$("#update_psize").val(detail.PSIZE);
+								$("#update_color").val(detail.COLOR);
+								$("#update_proNumber").val(detail.PRONUMBER);
+								var str="";
+								if(detail.PCOLOR==null){
+									str+="<img src='../images/zanwu.jpg' width='100px' height='100px'>&nbsp;";
+								}else{
+									var pics=detail.PCOLOR.split(",");
+									for(var i=0;i<pics.length;i++){
+										str+="<img src='../"+pics[i]+"' width='100px' height='100px'>&nbsp;";
+									}
+								}
+								$("#detail_pic_update").html($(str));
+						},"json"); 
+     				}
+				}
+		},{
+	    	text:"删除",
+				iconCls:'icon-remove',
+				handler:function(){
+					//获取所有被选中的行
+ 					var rows=datagrid.datagrid("getChecked");
+ 					if(rows.length<=0){
+ 						$.messager.show({
+ 							title:'温馨提示',
+ 							msg:'请选择您要删除的数据...',
+ 							timeout:2000,
+ 							showType:'slide'
+ 						});
+ 					}else{
+ 						$.messager.confirm('信息确认', '您确定要删除选中的数据吗?', function(r){
+ 							if (r){
+ 								var deids="";
+ 								for(var i=0;i<rows.length-1;i++){
+ 									deids+=rows[i].deid+",";
+ 								}
+ 								deids+=rows[i].deid;
+ 								//将要删除的tid发送到服务器
+ 								$.post("../detailServlet",{op:"delDetail",deid:deids},function(data){
+ 									if(data==1){//删除成功
+ 										$.messager.show({
+ 											title:'删除提示',
+ 											msg:'所选商品删除成功...',
+ 											timeout:2000,
+ 											showType:'slide'
+ 										});
+ 										datagrid.datagrid("reload");//数据重新加载一次
+ 									}else{//添加失败
+ 										$.messager.alert('失败提示','所选商品删除失败!','error');
+ 									}
+ 								});
+ 							}
+ 						});
+ 					}
+				}
+		
+		}]
+	}); 
+});
+
+</script>
+<style>
+.myinput{
+	width:200px;
+	border:2px solid #F63;
+	height:20px;
+}
+label{
+	padding-right:16px;
+	height:20px;
+}
+</style>
+<!-- 添加商品详细信息 -->
+<div id="add_detail" class="easyui-dialog" title="添加商品详细信息" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<form action="" style="padding:20px;float:left;display:inline-block;">
+			<label>商品名称:</label>
+			<select name="proid" id="add_proname" class="myinput" ></select>
+			<br/><br/>
+			<label>商品尺寸:</label><input type="text" name="psize" id="add_psize" class="myinput"/><br/><br/>
+			<label>商品颜色:</label><input type="text" name="color" id="add_color" class="myinput"/><br/><br/>
+			<label>库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存:</label><input type="text" name="proNumber" id="add_proNumber" class="myinput"/><br/><br/>
+			<label>商品图片:</label><input type="file" name="pcolor" id="add_pcolor" multiple="multiple" onchange="previewMultipleImage(this,'detail_pic_add')"/><br/><br/>
+			<a href="javascript:adddetailInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>
+	</form>
+	<div style="float:right;width:380px;margin-right:20px;">
+		<a>商品图片预览</a>
+		<fieldset id="detail_pic_add">
+			<legend>商品图片预览</legend>
+		</fieldset>
+	</div>
+
+</div>
+<!-- 商品信息详细 -->
+<div id="show_detail" class="easyui-dialog" title="商品详细信息" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<form action="" style="padding:20px;float:left;display:inline-block;">
+			<label>商品名称:</label><input type="text" name="proname" id="show_proname" class="myinput" /><br/><br/>
+			<label>销售量:</label><input type="text" name="counts" id="show_counts" class="myinput" /><br/><br/>
+			<label>商品尺寸:</label><input type="text" name="psize" id="show_psize" class="myinput"/><br/><br/>
+			<label>商品颜色:</label><input type="text" name="color" id="show_color" class="myinput"/><br/><br/>
+			<label>库存:</label><input type="text" name="proNumber" id="show_proNumber" class="myinput"/><br/><br/>
+	</form>
+	<div style="float:right;width:380px;margin-right:20px;">
+		<a>商品图片预览</a>
+		<fieldset id="detail_pic_show">
+			<legend>商品图片预览</legend>
+		</fieldset>
+	</div>
+
+</div>
+<!-- 修改商品详细信息 -->
+<div id="update_detail" class="easyui-dialog" title="修改商品详细信息" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<form action="" style="padding:20px;float:left;display:inline-block;">
+			<label>商品尺寸:</label><input type="text" name="psize" id="update_psize" class="myinput"/><br/><br/>
+			<label>商品颜色:</label><input type="text" name="color" id="update_color" class="myinput"/><br/><br/>
+			<label>库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存:</label><input type="text" name="proNumber" id="update_proNumber" class="myinput"/><br/><br/>
+			<label>商品图片:</label><input type="file" name="pcolor" id="update_pcolor" multiple="multiple" onchange="previewMultipleImage(this,'detail_pic_update')"/><br/><br/>
+			<a href="javascript:updatedetailInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改</a>
+	</form>
+	<div style="float:right;width:380px;margin-right:20px;">
+		<a>商品图片预览</a>
+		<fieldset id="detail_pic_update">
+			<legend>商品图片预览</legend>
+		</fieldset>
+	</div>
+
+</div>
+<script>
+function showDetail(deid){
+	$("#show_detail").dialog("open");
+	$.post("../detailServlet",{op:"finddetailBydeid",deid:deid},function(data){
+		 var detail=data.rows[0];
+		$("#show_proname").val(detail.PRONAME);
+		$("#show_counts").val(detail.COUNTS);
+		$("#show_psize").val(detail.PSIZE);
+		$("#show_color").val(detail.COLOR);
+		$("#show_proNumber").val(detail.PRONUMBER);
+		var str="";
+		if(detail.PCOLOR==null){
+			str+="<img src='../images/zanwu.jpg' width='100px' height='100px'>&nbsp;";
+		}else{
+			var pics=detail.PCOLOR.split(",");
+			for(var i=0;i<pics.length;i++){
+				str+="<img src='../"+pics[i]+"' width='100px' height='100px'>&nbsp;";
+			}
+		}
+		$("#detail_pic_show").html($(str));
+	},"json"); 
+}
+
+function adddetailInfo(){
+	var proid=$("#add_proname").val();
+	var psize=$("#add_psize").val();
+	var pcolor=$("#add_pcolor").val();
+	var color=$("#add_color").val();
+	var proNumber=$("#add_proNumber").val();
+	
+	$.ajaxFileUpload({
+		url:"../detailServlet?op=addDetailInfo",
+		secureuri:false,
+		fileElementId:"add_pcolor",
+		dataType:"json",
+		data:{proid:proid,psize:psize,color:color,proNumber:proNumber},
+		success:function(data,status){
+			if(parseInt($.trim(data))==1){//说明是成功的
+				$.messager.show({title:'成功提示',msg:'商品信息添加成功...',timeout:2000,showType:'slide'});
+				$("#add_psize").val("");
+				$("#add_pcolor").val("");
+				$("#add_color").val("");
+				$("#add_proNumber").val("");
+				$("#detail_pic_add").html("");
+				
+				$("#add_detail").dialog("close");
+				$("#products_info").datagrid("reload");
+				
+			}else{
+				$.messager.alert("失败提示","信息添加失败...","error");
+			}
+		},
+		error:function(data,status,e){
+			$.messager.alert("错误提示","信息添加有误...\n"+e,"error");
+		}
+	});
+}
+
+function updatedetailInfo(){
+	var psize=$("#update_psize").val();
+	var color=$("#update_color").val();
+	var proNumber=$("#update_proNumber").val();
+	var deid=rows[0].deid;
+	$.ajaxFileUpload({
+		url:"../detailServlet?op=updateDetail",
+		secureuri:false,
+		fileElementId:"update_pcolor",
+		dataType:"json",
+		data:{psize:psize,color:color,proNumber:proNumber,deid:deid},
+		success:function(data,status){
+			if(parseInt($.trim(data))==1){//说明是成功的
+				$.messager.show({title:'成功提示',msg:'商品详情修改成功...',timeout:2000,showType:'slide'});
+				$("#update_detail").dialog("close");
+				$("#products_info").datagrid("reload");
+				
+			}else{
+				$.messager.alert('失败提示','商品详情修改失败!','error');
+			}
+		},
+		error:function(data,status,e){
+			$.messager.alert('错误提示','商品详情修改有误...','error');
+		}
+	});
+}
+
+function findDetail(){
+	var deid=$.trim( $("#find_deid").val() );
+	var proname=$.trim($("#find_proname").val());
+	var psize=$.trim($("#find_psize").val());
+	var color=$.trim($("#find_color").val());
+	
+	$('#products_info').datagrid({   
+	    url:'../detailServlet',  
+		queryParams:{op:"findDetail",deid:deid,proname:proname,psize:psize,color:color}
+	});
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

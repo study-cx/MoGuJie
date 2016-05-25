@@ -1,0 +1,296 @@
+<table id="usreInfo_info" data-options="fit:true"></table>
+<script>
+var update_usid;
+$(function(){
+	var datagrid;
+	var op;
+	var editRow=undefined;
+	var flag;
+	
+	datagrid=$('#usreInfo_info').datagrid({   
+	    url:'../userServlet',
+	    queryParams:{op:"getAllUserInfo"},
+	    fitColumns:true,
+	    striped:true,
+	    loadMsg:"数据加载中...",   
+	    pagination:true,
+	    rownumbers:true,
+	    columns:[[   
+	    	{field:'usids',title:'复选框',width:100,align:'center',checkbox:true},
+	        {field:'usid',title:'顾客编号',width:100,align:'center',sortable:true},   
+	        {field:'uname',title:'顾客昵称',width:100,align:'center',editor:{type:"text",options:{required:true}}}, 
+	        {field:'uspwd',title:'密码',width:100,align:'center',editor:{type:"text",options:{required:true}}},
+	        {field:'usemail',title:'邮箱',width:100,align:'center',editor:{type:"text",options:{required:true}}},
+	        {field:'_operate',title:'操作',width:100,align:'center',
+	        	formatter:function(value,rowData,index){
+	        		//console.info(JSON.parse(a));//将字符串转换为对象
+	        		//console.info(JSON.stringify(rowData));
+	        		return '<a class="icon-search1 icon-padding" href="javascript:showUserInfoDetail(\''+rowData.usid+'\')">详细</a>';
+	        	}
+	        }
+	    ]],
+	    toolbar:[{
+	    	text:"添加",
+	    	iconCls:'icon-add',
+	    	handler:function(){
+	    		$("#news_add_userInfo").dialog("open");
+	    	}
+	    },{
+	    	text:"修改",
+	    	iconCls:'icon-edit',
+	    	handler:function(){
+	    		//获取所有被选中的行
+	    		var rows=datagrid.datagrid("getChecked")[0];
+	    		if(rows==undefined){
+	    			$.messager.show({
+						title:'温馨提示',
+						msg:'请选择你要修改的数据...',
+						timeout:2000,
+						showType:'slide'
+					});
+	    		}else{
+	    			update_usid=rows.usid;
+	    			$("#update_users_userInfo").dialog("open");
+	    			var obj=$("#update_users_userInfo");
+	   				$.post("../userServlet",{op:"findUserInfo",usid:update_usid},function(data){
+	   					var users=data.rows;
+	   					$("#update_users_name").val(users.uname);
+	   					$("#update_users_pwd").val(users.uspwd);
+	   					$("#update_users_ucode").val(users.ucode);
+	   					$("#update_users_email").val(users.usemail);
+	   					$("#update_users_phone").val(users.usphone);
+	   					$("#update_users_account").val(users.usaccount);
+	   					$("#update_users_birth").datebox('setValue',users.ubirthdays);
+	   					
+	   					var pics=users.uphoto;
+	   					if(pics==0){
+	   						var str="<img src='../images/zanwu.jpg' width='100px' height='100px'>&nbsp;";
+	   						$("#update_user_pic").html($(str));
+	   					}else{
+	   						var str="<img src='../"+pics+"' width='100px' height='100px'>&nbsp;";
+	   						$("#update_user_pic").html($(str));
+	   					}
+	   				},"json");
+	    		}
+	    	}
+	    },{
+	    	text:"删除",
+	    	iconCls:'icon-remove',
+	    	handler:function(){
+	    		//获取所有被选中的行
+	    		var rows=datagrid.datagrid("getChecked");
+	    		if(rows.length<=0){//没有选择任何一行
+	    			$.messager.show({
+						title:'温馨提示',
+						msg:'请选择你要删除的数据...',
+						timeout:2000,
+						showType:'slide'
+					});
+	    		}else{
+					$.messager.confirm('确认信息', '你确定要删除选中的数据吗？', function(r){
+						if (r){
+							var usids="";
+							for(var i=0;i<rows.length-1;i++){
+								usids+=rows[i].usid+",";
+							}
+							usids+=rows[i].usid;
+							
+							//将要删除的tid发送到服务器
+							$.post("../userServlet",{op:"delUserInfo",usids:usids},function(data){
+			    				if(data==1){//删除成功
+			    					$.messager.show({
+										title:'删除提示',
+										msg:'新闻信息删除成功...',
+										timeout:2000,
+										showType:'slide'
+									});
+			    					datagrid.datagrid("reload");//重新加载数据一次
+			    				}else{
+			    					$.messager.alert('失败提示','新闻信息删除失败...','error');
+			    				}
+							});
+						}
+					});
+				}
+	    	}
+	    }]   
+	});  
+});
+</script>
+
+<style>
+	#user_pic_show{
+		float:right;
+		margin-top:-20px;
+		margin-right:600px;
+	}
+	#show_users_pic{
+		float:right;
+		margin-top:-20px;
+		margin-right:600px;
+	}
+	#update_user_pic{
+		float:right;
+		margin-top:-20px;
+		margin-right:600px;
+	}
+	.a{
+	margin-left:200px;
+	}
+</style>
+
+<div id="news_add_userInfo" class="easyui-dialog" title="添加顾客" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<from action="" style="padding:20px;float:left;display:inline-block">
+		<br/><br/>
+		<label>用户头像：</label>
+		<filedset id="user_pic_show">头像预览</filedset>
+		<input type="file" name="pic" id="users_pic" onchange="previewMultipleImage(this,'user_pic_show')"/>
+		<br/><br/><br/><br/><br/><br/>
+		<label>用户昵称：</label><input type="text" name="title" id="users_name" class="myinput" required/>
+		<label class="a">用户密码：</label><input type="password" name="pwd" id="users_pwd" required/><br/><br/>
+		<label>用户生日：</label><input name="birth" id="users_birth" class="easyui-datebox myinput" required/>
+		<label class="a">邮箱地址：</label><input type="text" name="email" id="users_email" class="easyui-validatebox" data-options="required:true,validType:'email'"/><br/><br/>
+		<label>用户邮编：</label><input type="text" name="ucode" id="users_ucode"/>
+		<label class="a">联系方式：</label><input type="text" name="phone" id="users_phone"/><br/><br/>
+		<label>用户余额：</label><input type="text" name="account" id="users_account"/><br/><br/>
+		<a href="javascript:addUserInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">增加</a>
+	</from>
+<div/>
+
+<div id="show_userInfo" class="easyui-dialog" title="用户详情" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<from action="" style="padding:20px;float:left;display:inline-block">
+		<br/><br/><br/>
+		<label>用户头像：</label><div id="show_users_pic"></div>
+		<br/><br/><br/><br/><br/><br/>
+		<label>用户昵称：</label><input type="text" name="title" id="show_users_name" class="myinput" readonly="readonly" />
+		<label class="a">用户生日：</label><input type="text" name="birth" id="show_users_birth" class="myinput" readonly="readonly"/><br/><br/>
+		<label>邮箱地址：</label><input type="text" name="email" id="show_users_email" class="myinput" readonly="readonly"/>
+		<label class="a">用户邮编：</label><input type="text" name="ucode" id="show_users_ucode" class="myinput" readonly="readonly"/><br/><br/>
+		<label>联系方式：</label><input type="text" name="phone" id="show_users_phone" class="myinput" readonly="readonly"/>
+		<label class="a">用户余额：</label><input type="text" name="account" id="show_users_account" class="myinput" readonly="readonly"/>
+	</from>
+<div/>
+
+<div id="update_users_userInfo" class="easyui-dialog" title="修改顾客信息" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<from action="" style="padding:20px;float:left;display:inline-block">
+		<br/><br/>
+		<label>用户头像：</label>
+		<filedset id="update_user_pic">头像预览</filedset>
+		<input type="file" name="pic" id="users_pic_update" onchange="previewMultipleImage(this,'update_user_pic')"/>
+		<br/><br/><br/><br/><br/><br/>
+		<label>用户昵称：</label><input type="text" name="title" id="update_users_name" class="myinput" required/>
+		<label class="a">用户生日：</label><input name="birth" id="update_users_birth" class="easyui-datebox myinput" required/><br/><br/>
+		<label>邮箱地址：</label><input type="text" name="email" id="update_users_email" class="easyui-validatebox" data-options="required:true,validType:'email'"/>
+		<label class="a">用户邮编：</label><input type="text" name="ucode" id="update_users_ucode"/><br/><br/>
+		<label>联系方式：</label><input type="text" name="phone" id="update_users_phone"/>
+		<label class="a">用户余额：</label><input type="text" name="account" id="update_users_account"/><br/><br/>
+		<a href="javascript:updateUserInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改</a>
+	</from>
+<div/>
+<script>
+	//添加用户
+	function addUserInfo(){
+		var name=$("#users_name").val();
+		var pwd=$("#users_pwd").val();
+		var email=$("#users_email").val();
+		var ucode=$("#users_ucode").val();
+		var phone=$("#users_phone").val();
+		var account=$("#users_account").val();
+		var birth=$("#users_birth").datebox('getValue');
+		
+		$.ajaxFileUpload({
+			url:"../userServlet?op=addUsers",
+			secureuri:false,
+			fileElementId:"users_pic",
+			dataType:"json",
+			data:{name:name,pwd:pwd,email:email,ucode:ucode,phone:phone,account:account,birth:birth},
+			success:function(data,status){
+				if(parseInt($.trim(data))==1){//说明该是成功的
+					$.messager.show({title:'成功提示',msg:'顾客信息添加成功...',timeout:2000,showType:'slide'});
+					$("#news_add_userInfo").dialog("close");
+					$("#usreInfo_info").datagrid("reload");
+					
+					$("#users_name").val("");
+					$("#users_pic").val("");
+					$("#users_pwd").val("");
+					$("#users_ucode").val("");
+					$("#users_email").val("");
+					$("#users_phone").val("");
+					$("#users_account").val("");
+					$("#users_birth").datebox('setValue','');
+					
+				}else{
+					$.messager.alert("失败提示","顾客信息添加失败....","error");
+				}
+			},
+			error:function(data,status,e){
+				$.messager.alert("错误提示","顾客信息添加有误..."+e,"error");
+			}
+		});
+	}
+	
+	//用户详情
+	function showUserInfoDetail(usid){
+		$("#show_userInfo").dialog("open");
+		$.post("../userServlet",{op:"findUserInfo",usid:usid},function(data){
+			var users=data.rows;
+			$("#show_users_name").val(users.uname);
+			//$("#show_users_pwd").val(users.uspwd);
+			$("#show_users_ucode").val(users.ucode);
+			$("#show_users_email").val(users.usemail);
+			$("#show_users_phone").val(users.usphone);
+			$("#show_users_account").val(users.usaccount);
+			$("#show_users_birth").val(users.ubirthdays);
+			
+			var pics=users.uphoto;
+			if(pics==0){
+				var str="<img src='../images/zanwu.jpg' width='100px' height='100px'>&nbsp;";
+				$("#show_users_pic").html($(str));
+			}else{
+				var str="<img src='../"+pics+"' width='100px' height='100px'>&nbsp;";
+				$("#show_users_pic").html($(str));
+			}
+		},"json");
+	}
+	
+	//修改顾客信息
+	function updateUserInfo(){
+		var name=$("#update_users_name").val();
+		//var pwd=$("#update_users_pwd").val();
+		var email=$("#update_users_email").val();
+		var ucode=$("#update_users_ucode").val();
+		var phone=$("#update_users_phone").val();
+		var account=$("#update_users_account").val();
+		var birth=$("#update_users_birth").datebox('getValue');
+		$.ajaxFileUpload({
+			url:"../userServlet?op=updateUserInfo",
+			secureuri:false,
+			fileElementId:"users_pic_update",
+			dataType:"json",
+			data:{usid:update_usid,name:name,email:email,ucode:ucode,phone:phone,account:account,birth:birth},
+			success:function(data,status){
+				//alert(data);
+				if(parseInt($.trim(data))==1){//说明该是成功的
+					$.messager.show({title:'成功提示',msg:'顾客信息修改成功...',timeout:2000,showType:'slide'});
+					$("#update_users_userInfo").dialog("close");
+					$("#usreInfo_info").datagrid("reload");
+					
+					$("#update_users_name").val("");
+					$("#update_users_pic").val("");
+					$("#update_users_pwd").val("");
+					$("#update_users_ucode").val("");
+					$("#update_users_email").val("");
+					$("#update_users_phone").val("");
+					$("#update_users_account").val("");
+					$("#update_users_birth").datebox('setValue','');
+					
+				}else{
+					$.messager.alert("失败提示","顾客信息修改失败....","error");
+				}
+			},
+			error:function(data,status,e){
+				$.messager.alert("错误提示","顾客信息修改有误..."+e,"error");
+			}
+		});
+	}
+</script>

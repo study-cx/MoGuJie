@@ -1,0 +1,55 @@
+#copyright p{
+	color:#B0810B;
+	font-size:14px;
+	font-weight:bold;
+	text-align:center;
+	padding:10px 0px;
+	margin:0px;
+}
+#copyright a{
+	display:inline-block;
+	height:32px;
+	line-height:32px;
+	text-decoration:none;
+	color:#B0810B;
+	font-size:14px;
+	font-weight:bold;
+	padding-left:30px;
+	background:url("../images/logo_s.png") no-repeat left center;
+}
+#newslogo{
+	background:#F9F9F9 url("../images/mogujie1.jpg") no-repeat 10px center;
+	background-size:contain;
+	padding:0px;
+	margin:0px;
+	height:100px;
+}
+
+.centent{
+}
+
+#centent_z{
+	margin-left: 520px;
+}
+
+#centent_z label{
+	font-size:18px; 
+}
+
+#login{
+	margin-left:20px;
+	margin-top:20px;
+	width:80px;
+	height:30px;
+	
+}
+#regiest{
+	margin-left:40px;
+	margin-top:20px;
+	width:80px;
+	height:30px;
+}
+#top_login_right {
+	margin-left:1200px;
+	margin-top:50px;
+}

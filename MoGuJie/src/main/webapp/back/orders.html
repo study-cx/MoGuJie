@@ -1,0 +1,342 @@
+<div id="show_news_info_find" style="width:100%,text-align:left"> 
+	<span>订单编号: </span><input type="text" name="orderid" id="orderid"/>
+	<span>商品名: </span><input type="text" name="proname" id="proname"/>
+	&nbsp;&nbsp;<a href="javascript:findOrder()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">查询</a>
+</div>
+<table id="userorderDetail_manager" ></table>
+<script>
+var datagrid;
+var rows;
+
+datagrid=$('#userorderDetail_manager').datagrid({   
+    url:'../orderDetailServlet',  
+    queryParams:{op:"getPageOrderDetail"},
+    fitColumns:true,
+    striped:true,
+    loadMsg:"数据加载中...",
+    pagination:true,
+    rownumbers:true,
+    columns:[[   
+        {field:'orids',title:'选择',width:100,align:'center',checkbox:true}, 
+        {field:'orid',title:'订单详细编号',width:100,align:'center',sortable:true},  
+        {field:'orderid',title:'订单编号',width:100,align:'center',sortable:true},
+        {field:'deid',title:'商品详细编号',width:100,align:'center',sortable:true},
+        {field:'proname',title:'商品名',width:100,align:'center'},
+        {field:'proprice',title:'商品价格',width:100,align:'center'},
+        {field:'psize',title:'商品尺寸',width:100,align:'center'},
+        {field:'color',title:'商品颜色',width:100,align:'center'},
+        {field:'i',title:'操作',width:100,align:'center',
+        	formatter:function(value,rowData,index){
+        		//console.info(rowData);//object对象
+        		//console.info(JSON.Stringify(rowData));//将其转换为String
+        		//console.info(JSON.parse(rowData));//将其转换为对象
+        		return '<a class="icon-search1 icon-padding" href="javascript:showorderDetail(\''+rowData.orid+'\')">详细</a>';
+        	}
+        }
+    ]],
+    toolbar:[{
+    	text:"修改",
+		iconCls:'icon-edit',
+		handler:function(){
+			//获取所有被选中的行
+			rows=datagrid.datagrid("getChecked")[0];
+			if(rows.length<=0){
+				$.messager.show({
+					title:'温馨提示',
+					msg:'请选择您要修改的订单...',
+					timeout:2000,
+					showType:'slide'
+				});
+			}else{
+				orid=rows.orid;
+				$("#update_orderDetail").dialog("open");
+				
+				$.post("../orderDetailServlet",{op:"getAllOrderDetail",orid:orid},function(data){
+					var orderDetail=data.rows;
+					var proid=orderDetail[0].proid;
+						$.post("../productServlet",{op:"getAllColorAndSize",proid:proid},function(data){
+							var obj=$("#update_color");
+							var opt;
+							var obj2=$("#update_psize");
+							var opt2;
+								$.each(data.row1,function(index,item){
+									opt="<option value='"+item.color+"'>"+item.color+"</option>";
+									obj.append($(opt));
+								});
+								$.each(data.row2,function(index,item){
+									opt2="<option value='"+item.psize+"'>"+item.psize+"</option>";
+									obj2.append($(opt2));
+								});
+								obj.val(rows.color);
+								obj2.val(rows.psize);
+						},"json");
+					$("#update_orderid").val(rows.orderid);
+					$("#update_orid").val(rows.orid);
+					$("#update_proname").val(rows.proname);
+					$("#update_proprice").val(rows.proprice);
+					
+					$("#update_uname").val(orderDetail[0].uname);
+					$("#update_prophoto").val(orderDetail[0].prophoto);
+					$("#update_usphone").val(orderDetail[0].usphone);
+					$("#update_datetime").val(orderDetail[0].datetime);
+					$("#update_buyprice").val(orderDetail[0].buyprice);
+					$("#update_onumber").val(orderDetail[0].onumber);
+					$("#update_proNumber").val(orderDetail[0].proNumber);
+					$("#update_address").val(orderDetail[0].province+orderDetail[0].city+orderDetail[0].street+orderDetail[0].usaddress);
+				
+					var str="";
+					var pics=orderDetail[0].prophoto.split(",");
+					for(var i=0;i<pics.length;i++){
+						if(pics==""){
+							str+="<img src='../images/zanwu.jpg' width='100px' height='100px'>&nbsp;";
+						}else{
+							str+="<img src='../"+pics[i]+"' width='100px' height='100px'>&nbsp;";
+						}
+					}
+					$("#orderDetail_pic_update").html($(str));
+					 $("#address_l").ProvinceCity(orderDetail[0].province,orderDetail[0].city,orderDetail[0].street);
+					
+				},"json");
+			}
+		}
+	},{
+    	text:"删除",
+			iconCls:'icon-remove',
+			handler:function(){
+				//获取所有被选中的行
+				var rows=datagrid.datagrid("getChecked");
+				if(rows.length<=0){
+					$.messager.show({
+						title:'温馨提示',
+						msg:'请选择您要删除的数据...',
+						timeout:2000,
+						showType:'slide'
+					});
+				}else{
+					$.messager.confirm('信息确认', '您确定要删除选中的数据吗?', function(r){
+						if (r){
+							var orids="";
+							for(var i=0;i<rows.length-1;i++){
+								orids+=rows[i].orid+",";
+							}
+							orids+=rows[i].orid;
+							//将要删除的tid发送到服务器
+							$.post("../orderDetailServlet",{op:"delOrderDetail",orid:orids},function(data){
+								if(data==1){//删除成功
+									$.messager.show({
+										title:'删除提示',
+										msg:'所选订单删除成功...',
+										timeout:2000,
+										showType:'slide'
+									});
+									datagrid.datagrid("reload");//数据重新加载一次
+								}else{//添加失败
+									$.messager.alert('失败提示','所选订单删除失败!','error');
+								}
+							});
+						}
+					});
+				}
+			}
+	}]
+});
+</script>
+<style>
+#order_s{
+	float: left;
+	width: 450px;
+	margin-top: 20px;
+	height: 250px;
+}
+#product_s{
+	float: left;
+	width: 455px;
+	height: 250px;
+	margin-top: 20px;
+}
+#address_s{
+width:800px;
+}
+#address_u{
+width:800px;
+float: left;
+}
+.lable{
+	padding-right:16px;
+	height:20px;
+}
+.myinput{
+	width:200px;
+	border:1px solid #F63;
+	height:20px;	
+}
+.myinput1{
+	width:600px;
+	border:1px solid #F63;
+	height:20px;	
+}
+
+
+</style>
+<div id="show_orderDetail" class="easyui-dialog" title="订单编辑>>订单详情" data-options="fit:true,iconCls:'icon-update',resizable:true,modal:true,closed:true" >
+	<div id="order_s">
+		<label class="lable">订单号：</label><input type="text" name="orderid" id="show_orderid"  class="myinput"  disabled></br></br>
+		<label class="lable">详细订单号：</label><input type="text" name="orid" id="show_orid"  class="myinput" disabled></br></br>
+		<label class="lable">用户名：</label><input type="text" name="uname" id="show_uname"  class="myinput" disabled></br></br>
+		<label class="lable">联系方式：</label><input type="text" name="usphone" id="show_usphone"  class="myinput" disabled></br></br>
+		<label class="lable">订单日期：</label><input type="text" name="datetime" id="show_datetime"  class="myinput" disabled></br></br>
+		<label class="lable">购买价：</label><input type="text" name="buyprice" id="show_buyprice"  class="myinput" disabled></br></br>
+	</div>
+	<div id="product_s">
+		<label class="lable">商品名：</label><input type="text" name="proname" id="show_proname"  class="myinput" disabled></br></br>
+		<label class="lable">商品单价：</label><input type="text" name="proprice" id="show_proprice"  class="myinput" disabled></br></br>
+		<label class="lable">商品数量：</label><input type="text" name="onumber" id="show_onumber"  class="myinput" disabled></br></br>
+		<label class="lable">商品颜色：</label><input type="text" name="color" id="show_color"  class="myinput" disabled></br></br>
+		<label class="lable">商品尺寸：</label><input type="text" name="psize" id="show_psize"  class="myinput" disabled></br></br>
+		<label class="lable">当前库存：</label><input type="text" name="proNumber" id="show_proNumber"  class="myinput" disabled></br></br>
+	</div>	
+	<div style="float:right;width:400px;margin-right:20px;margin-top:20px">
+		<fieldset id="orderDetail_pic_show">
+			<legend>图片预览</legend>
+		</fieldset>
+	</div>
+	<div id="address_s">
+		<label class="lable">地址：</label><input type="text" name="address" id="show_address"  class="myinput1" disabled></br></br>
+	</div>
+	
+</div>
+
+<div id="update_orderDetail" class="easyui-dialog" title="订单编辑>>订单修改" data-options="fit:true,iconCls:'icon-update',resizable:true,modal:true,closed:true" >
+	<div id="order_s">
+		<label class="lable">订单号：</label><input type="text" name="orderid" id="update_orderid"  class="myinput" disabled></br></br>
+		<label class="lable">详细订单号：</label><input type="text" name="orid" id="update_orid"  class="myinput" disabled></br></br>
+		<label class="lable">用户名：</label><input type="text" name="uname" id="update_uname"  class="myinput" disabled></br></br>
+		<label class="lable">联系方式：</label><input type="text" name="usphone" id="update_usphone"  class="myinput" ></br></br>
+		<label class="lable">订单日期：</label><input type="text" name="datetime" id="update_datetime"  class="myinput" disabled></br></br>
+		<label class="lable">购买价：</label><input type="text" name="buyprice" id="update_buyprice"  class="myinput" disabled></br></br>
+	</div>
+	<div id="product_s">
+		<label class="lable">商品名：</label><input type="text" name="proname" id="update_proname"  class="myinput" disabled></br></br>
+		<label class="lable">商品单价：</label><input type="text" name="proprice" id="update_proprice"  class="myinput" disabled></br></br>
+		<label class="lable">商品数量：</label><input type="text" name="onumber" id="update_onumber"  class="myinput"></br></br>
+		<label class="lable">商品颜色：</label><select name="deid" id="update_color"  class="myinput">
+		</select></br></br>
+		<label class="lable">商品尺寸：</label><select name="deid" id="update_psize"  class="myinput">
+		</select></br></br>
+		<label class="lable">当前库存：</label><input type="text" name="proNumber" id="update_proNumber"  class="myinput" disabled></br></br>
+	</div>	
+	<div style="float:right;width:400px;margin-right:20px;margin-top:20px">
+		<fieldset id="orderDetail_pic_update">
+			<legend>图片预览</legend>
+		</fieldset>
+	</div>
+	
+	<div id="address_u">
+		<label class="lable">地址：</label>
+		<span id="address_l" style="display:inline-block">
+			省:<select id="province"><option>省份</option></select>
+	   		 市：<select id="city"><option>地级市</option></select>
+	     	区：<select id="arer"><option>市、县级市、县</option></select>
+     	</span>
+		<input type="text" name="update_address" id="update_address"  class="myinput" >
+	
+	</br><a href="javascript:updateOrderDetail()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改</a>
+</div>
+</div>
+<script>
+function showorderDetail(orid){
+	$("#show_orderDetail").dialog("open");
+	$.post("../orderDetailServlet",{op:"getAllOrderDetail",orid:orid},function(data){
+		var orderDetail=data.rows;
+		rows=datagrid.datagrid("getChecked");
+		$.each(rows,function(index,item){
+			$("#show_orderid").val(item.orderid);
+			$("#show_orid").val(item.orid);
+			$("#show_proname").val(item.proname);
+			$("#show_proprice").val(item.proprice);
+			$("#show_psize").val(item.psize);
+			$("#show_color").val(item.color);
+		});
+			$("#show_uname").val(orderDetail[0].uname);
+			$("#show_usphone").val(orderDetail[0].usphone);
+			$("#show_datetime").val(orderDetail[0].datetime);
+			$("#show_buyprice").val(orderDetail[0].buyprice);
+			$("#show_onumber").val(orderDetail[0].onumber);
+			$("#show_proNumber").val(orderDetail[0].proNumber);
+			$("#show_address").val(orderDetail[0].province+orderDetail[0].city+orderDetail[0].street+orderDetail[0].usaddress);
+		
+		
+		
+			var str="";
+			var pics=orderDetail[0].prophoto.split(",");
+			for(var i=0;i<pics.length;i++){
+				if(pics=="" ){
+					str+="<img src='../images/zanwu.jpg' width='100px' height='100px'>&nbsp;";
+				}else{
+					str+="<img src='../"+pics[i]+"' width='100px' height='100px'>&nbsp;";
+				}
+			}
+			$("#orderDetail_pic_show").html($(str));
+	},"json");
+}
+
+function updateOrderDetail(){
+	var uname=$("#update_uname").val();
+	var usphone=$("#update_usphone").val();
+	var orid=$("#update_orid").val();
+	var proname=$("#update_proname").val();
+	var psize=$("#update_psize").val();
+	var color=$("#update_color").val();
+	var onumber=$("#update_onumber").val();
+	var province=$("#province").val();
+	var city=$("#city").val();
+	var street=$("#arer").val();
+	var usaddress=$("#update_address").val();
+	
+	$.post("../orderDetailServlet",{op:"updateOrderDetail",usphone:usphone,orid:orid,proname:proname,psize:psize,color:color,onumber:onumber,province:province,city:city,street:street,usaddress:usaddress,uname:uname},function(data){
+		if(parseInt($.trim(data))==1){
+			$.messager.show({title:'成功提示',msg:'订单信息修改成功...',timeout:2000,showType:'slide'});
+			$("#update_orderDetail").dialog("close");
+			$("#userorderDetail_manager").datagrid("reload");
+			
+			$("#update_color").val();
+			$("#update_psize").val();
+			$("#update_orderid").val();
+			$("#update_orid").val();
+			$("#update_proname").val();
+			$("#update_proprice").val();
+			
+			$("#update_uname").val();
+			$("#update_prophoto").val();
+			$("#update_usphone").val();
+			$("#update_datetime").val();
+			$("#update_buyprice").val();
+			$("#update_onumber").val();
+			$("#update_proNumber").val();
+			$("#update_address").val();
+		}else{
+			$.messager.alert("失败提示","订单信息修改失败....","error");
+		}
+	});
+	
+}
+
+function findOrder(){
+	var orderid=$.trim( $("#orderid").val() );
+	var proname=$.trim($("#proname").val());
+	
+	$('#userorderDetail_manager').datagrid({   
+	    url:'../orderDetailServlet',   
+		queryParams:{op:"findOrderDetail",orderid:orderid,proname:proname}
+	});
+}
+</script>
+<script type="text/javascript" src="../js/provincesdata.js"></script>
+<script type="text/javascript" src="../js/jquery.provincesCity.js"></script>
+
+
+
+
+
+
+

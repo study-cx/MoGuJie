@@ -1,0 +1,325 @@
+<div id="show_news_info_find" style="width:100%,text-align:left"> 
+	<span>商品编号: </span><input type="text" name="proid" id="proid"/>
+	<span>商品类型: </span><input type="text" name="categoryidthree_find" id="categoryidthree_find"/>
+	<span>商品名称: </span><input type="text" name="proname" id="proname"/>
+	&nbsp;&nbsp;<a href="javascript:findProduct()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">查询</a>
+</div>
+
+<table id="product_info" ></table>
+<script>
+$(function(){
+	var datagrid;
+	var editRow=undefined;
+	var op;
+	var flag;
+	var statusObj=[{sid:0,sname:'不可用'},{sid:1,sname:'可用'}];
+	$.post("../typeThreeServlet",{op:"getAllTypethree"},function(data){
+		var obj=$("#categoryidthree");
+		var obj2=$("#categoryidthree_info");
+		var opt;
+		$.each(data.rows,function(index,item){
+			opt="<option value='"+item.categoryidthree+"'>"+item.categoryTypethree+"</option>";
+			obj.append($(opt));
+			obj2.append($(opt));
+		});
+	},"json");
+	datagrid=$('#product_info').datagrid({   
+	    url:'../productServlet',  
+	    queryParams:{op:"getPageproductInfo"},
+	    fitColumns:true,
+	    striped:true,
+	    loadMsg:"数据加载中...",
+	    pagination:true,
+	    rownumbers:true,
+	    sortName:'proid',
+	    sortOrder:'asc',
+	    remoteSort:false,
+	    columns:[[   
+	        {field:'proids',title:'选择',width:100,align:'center',checkbox:true}, 
+	        {field:'proid',title:'商品编号',width:100,align:'center',sortable:true},   
+	        {field:'categoryTypethree',title:'商品类型',width:100,align:'center',sortable:true},   
+	        {field:'proname',title:'商品名称',width:100,align:'center',editor:{type:"text",options:{required:true}}},
+	        {field:'procontent',title:'商品简介',width:100,align:'center',editor:{type:"text",options:{required:true}}},
+	        {field:'proprice',title:'商品价格',width:100,align:'center',editor:{type:"text",options:{required:true}}},
+	        {field:'_operate',title:'操作',width:100,align:'center',
+				formatter:function(value,rowData,index){
+					return '<a class="icon-search1 icon-padding" href="javascript:showProsDetail(\''+rowData.proid+'\')">详细</a>';
+				}
+			}
+	    ]], 
+	    toolbar:[
+	    {
+	    	text:"添加",
+			iconCls:'icon-add',
+			handler:function(){
+				$("#product_add_productInfo").dialog("open");
+			}
+		},{
+	    	text:"修改",
+				iconCls:'icon-edit',
+				handler:function(){
+					rows=datagrid.datagrid("getChecked");
+     				if(rows.length<=0){
+     					$.messager.show({
+     						title:'温馨提示',
+     						msg:'请选择您要修改的商品...',
+     						timeout:2000,
+     						showType:'slide'
+     					});
+     				}else{
+						$("#product_update_productInfo").dialog("open");
+						var proids="";
+     					for(var i=0;i<rows.length-1;i++){
+     						proids+=rows[i].proid+",";
+     					}
+     					proids+=rows[i].proid;
+						$.post("../productServlet",{op:"findProsByProid",proid:proids},function(data){
+							 var product=data.rows[0];
+							$("#categoryidthree_info").val(rows[0].categoryidthree);
+							$("#pro_proname_info").val(product.PRONAME);
+							$("#pro_procontent_info").val(product.PROCONTENT);
+							$("#pro_proprice_info").val(product.PROPRICE);
+							$("#pro_count_info").val(product.COUNTS);
+							
+							var str="";
+							if(product.PROPHOTO==null){
+								str+="<img src='../images/zanwu.jpg' width='100px' height='100px'>&nbsp;";
+							}else{
+								var pics=product.PROPHOTO.split(",");
+								for(var i=0;i<pics.length;i++){
+									str+="<img src='../"+pics[i]+"' width='100px' height='100px'>&nbsp;";
+								}
+							}
+							$("#pros_pic_show_info").html($(str));
+						},"json"); 
+     				}
+				}
+		},{
+	    	text:"删除",
+				iconCls:'icon-remove',
+				handler:function(){
+					//获取所有被选中的行
+ 					var rows=datagrid.datagrid("getChecked");
+ 					if(rows.length<=0){
+ 						$.messager.show({
+ 							title:'温馨提示',
+ 							msg:'请选择您要删除的数据...',
+ 							timeout:2000,
+ 							showType:'slide'
+ 						});
+ 					}else{
+ 						$.messager.confirm('信息确认', '您确定要删除选中的数据吗?', function(r){
+ 							if (r){
+ 								var proids="";
+ 								for(var i=0;i<rows.length-1;i++){
+ 									proids+=rows[i].proid+",";
+ 								}
+ 								proids+=rows[i].proid;
+ 								//将要删除的tid发送到服务器
+ 								$.post("../productServlet",{op:"delProduct",proid:proids},function(data){
+ 									if(data==1){//删除成功
+ 										$.messager.show({
+ 											title:'删除提示',
+ 											msg:'所选商品删除成功...',
+ 											timeout:2000,
+ 											showType:'slide'
+ 										});
+ 										datagrid.datagrid("reload");//数据重新加载一次
+ 									}else{//添加失败
+ 										$.messager.alert('失败提示','所选商品删除失败!','error');
+ 									}
+ 								});
+ 							}
+ 						});
+ 					}
+				}
+		
+		}]
+	}); 
+});
+</script>
+<style>
+.myinput{
+	width:200px;
+	border:2px solid #F63;
+	height:20px;
+}
+label{
+	padding-right:16px;
+	height:20px;
+}
+</style>
+<!-- 添加商品信息 -->
+<div id="product_add_productInfo" class="easyui-dialog" title="添加商品信息" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<form action="" style="padding:20px;float:left;display:inline-block;">
+			<label>商品类型:</label>
+			<select name="categoryidthree" id="categoryidthree" class="myinput" >
+			
+			</select><br/><br/>
+			<label>商品名称:</label><input type="text" name="proname" id="pro_proname" class="myinput" /><br/><br/>
+			<label>商品简介:</label><input type="text" name="procontent" id="pro_procontent" class="myinput" /><br/><br/>
+			<label>商品价格:</label><input type="text" name="proprice" id="pro_proprice" class="myinput"/><br/><br/>
+			<label>商品图片:</label><input type="file" name="pic" id="pro_pic" multiple="multiple" onchange="previewMultipleImage(this,'pros_pic_show')"/><br/><br/>
+			<a href="javascript:addproInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>
+	</form>
+	<div style="float:right;width:380px;margin-right:20px;">
+		<a>商品图片预览</a>
+		<fieldset id="pros_pic_show">
+			<legend>商品图片预览</legend>
+		</fieldset>
+	</div>
+	
+</div>
+
+<script>
+	function addproInfo(){
+		var categoryidthree=$("#categoryidthree").val();
+		
+		var proname=$("#pro_proname").val();
+		var procontent=$("#pro_procontent").val();
+		var proprice=$("#pro_proprice").val();
+		var prophoto=$("#pro_pic");
+		
+		
+		$.ajaxFileUpload({
+			url:"../productServlet?op=addprosInfo",
+			secureuri:false,
+			fileElementId:"pro_pic",
+			dataType:"json",
+			data:{categoryidthree:categoryidthree,proname:proname,procontent:procontent,proprice:proprice,prophoto:prophoto},
+			success:function(data,status){
+				if(parseInt($.trim(data))==1){//说明是成功的
+					$.messager.show({title:'成功提示',msg:'商品信息添加成功...',timeout:2000,showType:'slide'});
+					$("#pro_proname").val("");
+					$("#pro_procontent").val("");
+					$("#pro_proprice").val("");
+					$("#pro_pic").val("");
+					$("#pros_pic_show").html("");
+					$("#product_add_productInfo").dialog("close");
+					$("#product_info").datagrid("reload");
+					
+				}else{
+					$.messager.alert("失败提示","信息添加失败...","error");
+				}
+			},
+			error:function(data,status,e){
+				$.messager.alert("错误提示","信息添加有误...\n"+e,"error");
+			}
+		});
+	}
+</script>
+
+
+
+
+<!-- 商品详细信息 -->
+<div id="pros_show_proInfo" class="easyui-dialog" title="查看商品详细" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<form action="" style="padding:20px;float:left;display:inline-block;">
+			<label>商品类型:</label><input type="text" name="categoryidthrees" id="categoryidthrees" class="myinput" /><br/><br/>
+			<label>商品名称:</label><input type="text" name="pronames" id="pro_pronames" class="myinput" /><br/><br/>
+			<label>商品简介:</label><input type="text" name="procontents" id="pro_procontents" class="myinput" /><br/><br/>
+			<label>商品价格:</label><input type="text" name="proprices" id="pro_proprices" class="myinput"/><br/><br/>
+	</form>
+	<div style="float:right;width:380px;margin-right:20px;">
+		<a>商品图片预览</a>
+		<fieldset id="pros_pic_shows">
+			<legend>商品图片预览</legend>
+		</fieldset>
+	</div>
+	
+</div>
+
+<script>
+function showProsDetail(proid){
+		$("#pros_show_proInfo").dialog("open");
+		$.post("../productServlet",{op:"findProsByProid",proid:proid},function(data){
+			 var product=data.rows[0];
+			$("#categoryidthrees").val(product.CATEGORYTYPETHREE);
+			$("#pro_pronames").val(product.PRONAME);
+			$("#pro_procontents").val(product.PROCONTENT);
+			$("#pro_proprices").val(product.PROPRICE);
+			$("#pro_counts").val(product.COUNTS);
+			var str="";
+			if(product.PROPHOTO==null){
+				str+="<img src='../images/zanwu.jpg' width='100px' height='100px'>&nbsp;";
+			}else{
+				var pics=product.PROPHOTO.split(",");
+				for(var i=0;i<pics.length;i++){
+					str+="<img src='../"+pics[i]+"' width='100px' height='100px'>&nbsp;";
+				}
+			}
+			$("#pros_pic_shows").html($(str));
+		},"json"); 
+	}
+</script>
+
+
+<!--修改商品信息-->
+<div id="product_update_productInfo" class="easyui-dialog" title="修改商品信息" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<form action="" style="padding:20px;float:left;display:inline-block;">
+			<label>商品类型:</label>
+			<select name="categoryidthree" id="categoryidthree_info" class="myinput" >
+			
+			</select><br/><br/>
+			<label>商品名称:</label><input type="text" name="pronameinfo" id="pro_proname_info" class="myinput" /><br/><br/>
+			<label>商品简介:</label><input type="text" name="procontentinfo" id="pro_procontent_info" class="myinput" /><br/><br/>
+			<label>商品价格:</label><input type="text" name="propriceinfo" id="pro_proprice_info" class="myinput"/><br/><br/>
+			<label>商品图片:</label><input type="file" name="picinfo" id="pro_pic_info" multiple="multiple" onchange="previewMultipleImage(this,'pros_pic_show')"/><br/><br/>
+			<a href="javascript:updateproInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改</a>
+	</form>
+	<div style="float:right;width:380px;margin-right:20px;">
+		<a>商品图片预览</a>
+		<fieldset id="pros_pic_show_info">
+			<legend>商品图片预览</legend>
+		</fieldset>
+	</div>
+	
+</div>
+<script>
+function updateproInfo(){
+	
+	var proname=$("#pro_proname_info").val();
+	var procontent=$("#pro_procontent_info").val();
+	var proprice=$("#pro_proprice_info").val();
+	var categoryidthree=rows[0].categoryidthree;
+	var proid=rows[0].proid;
+	$.ajaxFileUpload({
+		url:"../productServlet?op=updateProduct",
+		secureuri:false,
+		fileElementId:"pro_pic_info",
+		dataType:"json",
+		data:{proid:proid,proname:proname,procontent:procontent,proprice:proprice,categoryidthree:categoryidthree},
+		success:function(data,status){
+			if(parseInt($.trim(data))==1){//说明是成功的
+				$.messager.show({title:'成功提示',msg:'商品信息修改成功...',timeout:2000,showType:'slide'});
+				$("#product_update_productInfo").dialog("close");
+				$("#product_info").datagrid("reload");
+				
+			}else{
+				$.messager.alert('失败提示','商品信息修改失败!','error');
+			}
+		},
+		error:function(data,status,e){
+			$.messager.alert('错误提示','商品信息修改有误...','error');
+		}
+	});
+}
+
+function findProduct(){
+	var proid=$.trim( $("#proid").val() );
+	var categoryidthree=$.trim($("#categoryidthree_find").val());
+	var proname=$.trim($("#proname").val());
+	
+	$('#product_info').datagrid({   
+	    url:'../productServlet',  
+		queryParams:{op:"findProduct",proname:proname,categoryidthree:categoryidthree,proid:proid}
+	});
+}
+
+</script>
+
+
+
+
+
+

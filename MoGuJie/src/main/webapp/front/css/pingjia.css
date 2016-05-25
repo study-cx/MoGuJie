@@ -1,0 +1,53 @@
+@CHARSET "UTF-8";
+/* CSS Document */
+*{
+	margin:0px auto;
+	padding:0px;
+}
+body{
+	width:full;
+	margin:0px auto;
+}
+#background{
+	margin-top:30px;
+	width:990px;
+	height:465px;
+	background:#F7F7F7;	
+	border:1px #E8E8E8 solid;
+}
+#jieshi{
+	margin-left:30px;
+	padding-top:50px;
+	font-size:20px;
+	font-weight:bold;
+}
+#shangping{
+	width:500px;
+	height:120px;
+	margin-left:25px;
+	margin-top:40px;
+	border:1px #E8E8E8 solid;
+}
+#zuo1{
+	background:#EFEFEF;
+	width:60px;
+	height:120px;
+	float:left;
+	font-size:14px;
+	line-height:120px;
+}
+
+#gysp{
+	text-indent:2em;}
+#danxuan{
+	margin-left:50px;
+	font-size:14px;}
+#tjpj{
+	margin-left:270px;
+	width:70px;
+	height:25px;
+	background:#C60202;
+	border:none;
+	color:white;
+	border-radius:2px;
+}
