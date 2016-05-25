@@ -1,0 +1,149 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0px auto;
+	padding:0px;
+}
+body{
+	width:full;
+	height:auto;
+	margin:0px auto;
+}
+#full{
+	width:100%;
+	height:auto;
+	margin-left:15%;
+}
+
+#dzgl{
+	height:70px;
+	width:800px;
+	margin-left:20px;
+	border-bottom:1px solid #DADADA;
+}
+ #dzgl p{
+	line-height:70px;
+	font-size:20px;
+	font-weight:bold;
+	color:red;
+}
+ #add{
+	margin-left:20px;
+	margin-top:20px;
+	width:115px;
+	height:30px;
+	background:#FFB42A;
+	color:white;
+	font-weight:bold;
+	border:2px solid #F6AB1E;
+	border-radius:2px;
+}
+
+#center1,#center2{
+	width:800px;
+	height:420px;
+	float:left;
+	margin-left:20px;
+	margin-top:20px;
+	border:1px solid #DADADA;
+	background:#FAFAFA;
+}
+#dizhi{
+	width:750px;
+	height:350px;
+	margin-top:30px;
+	margin-left:20px;
+}
+#jiedao{
+	position:absolute;
+	margin-top:0px;
+}
+#xing1{
+	position:absolute;
+	margin-left:75px;
+	margin-top:0px;
+	color:red;
+}
+
+#street,#street1{
+	margin-left:85px;
+}
+#shuoming{
+	font-size:12px;
+	color:#999;
+	margin-left:120px;
+}
+#xing{
+	color:red;
+}
+#really{
+	font-size:16px;
+	font-weight:bold;
+	color:white;
+	margin-left:105px;
+}
+#quxiao{
+	font-size:16px;
+	font-weight:bold;
+	color:#4C4C4C;
+	background:white;
+	border:1px solid #cccccc;
+}
+ #dzxq{
+	width:800px;
+	height:50px;
+	background:#FAFAFA;
+	margin-left:20px;
+	margin-top:30px;
+	border:1px solid #DADADA;
+	float:left;
+}
+
+#dzxq p{
+	margin-left:20px;
+	line-height:50px;
+	font-size:14px;
+	color:black;
+}
+#dzxqprovince{
+	margin-left:40px;
+}
+#dzxqstreet{
+	margin-left:0px;
+}
+#dzxqcode{
+	margin-left:85px;
+}
+#dzxqtel{
+	margin-left:30px;
+}
+#lala{
+	margin-left:85px;
+}
+#gan{
+	color:#DADADA;
+}
+#dzxq a{
+	color:#2F63CF;
+}
+#dzxq a:hover:{
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+#foot{
+	text-align:center;
+	
+	width:100%;
+	height:180px;
+	float:left;
+	font-size:12px;
+}
+#foot p{
+	padding-top:60px;
+}
+#foot a{
+	color:#999999;
+	text-decoration:underline;
+	cursor:pointer;
+}

@@ -1,0 +1,95 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0px auto;
+	padding:0px;	
+}
+body{
+	width:1200px;		
+	margin:0px auto;
+	height:auto;
+	margin-top:50px;
+}
+#title1{
+	width:1200px;
+	height:200px;
+	background:url(../images/bg1.png);
+}
+#ul1{
+	list-style:none;
+	float:left;
+}
+#ul1 li{
+	float:left;
+}
+#ul1 .u1{
+	margin-left:30px;
+	margin-top:40px;
+}
+#ul1 .u2{
+	margin-left:30px;
+	margin-top:60px;
+}
+#ul1 .u2 ul{
+	list-style:none;
+}
+#ul1 .u3{
+	margin-left:40px;
+}
+#ul1 .u4{
+	margin-top:30px;
+	margin-left:-65px;
+	font-size:14px;
+	color:#999;
+	line-height:25px;
+}
+#ul1 .u4 a{
+	margin-left:10px;
+}
+#ul1 .u4 a:hover{
+	color:#F39;
+	cursor:pointer;
+}
+#ul1 .u5{
+	margin-top:20px;
+	margin-left:40px;
+	margin-right:40px;
+}
+#ul1 .u6{
+	margin-top:55px;
+	margin-left:-65px;
+	font-size:14px;
+	color:#999;
+	line-height:25px;
+}
+#ul1 .u6 a{
+	margin-left:10px;
+}
+
+#ul1 .u6 a:hover{
+	color:#F39;
+	cursor:pointer;
+}
+#title2{
+	width:1200px;
+	height:50px;
+	background:url(../images/bg1.png);
+	margin-top:40px;
+}
+#title2 p{
+	font-size:20px;
+	line-height:30px;
+	margin-left:40px;
+	padding-top:10px;
+}
+#title3{
+	width:1205px;
+	margin-top:40px;
+}
+#title3 ul{
+	list-style:none;
+	float:left;
+}
+#title3 ul li{
+	float:left;
+}

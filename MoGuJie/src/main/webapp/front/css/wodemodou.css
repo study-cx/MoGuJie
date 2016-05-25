@@ -1,0 +1,95 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0px auto;
+	padding:0px;	
+	}
+body{
+	width:100%;		
+	margin:0px auto;
+	height:auto;
+	margin-top:50px;
+}
+#title1{
+	width:1200px;
+	height:240px;
+	background:url(../images/modouBg.png);
+}
+#ul1{
+	list-style:none;
+	float:left;
+}
+#ul1 li{
+	float:left;
+}
+#ul1 .u1{
+	margin-left:40px;
+	margin-top:40px;
+}
+#ul2{
+	list-style:none;
+	float:left;
+}
+#ul2 .u2{
+	margin-top:50px;
+	margin-left:40px;
+	font-size:18px;
+	line-height:30px;
+}
+#ul2 .u3{
+	margin-top:95px;
+	margin-left:-70px;
+	color:#999;
+	font-size:14px;
+}
+#ul2 .u3 a{
+	font-size:20px;
+	color:#060;
+	margin-left:10px;
+}
+#ul2 .u4{
+	margin-top:130px;
+	margin-left:-100px;
+	color:#999;
+	font-size:14px;
+}
+#ul1 .u5{
+	margin-left:40px;
+	margin-top:10px;
+	margin-right:60px;
+}
+#ul1 .u6{
+	margin-top:20px;
+	margin-right:20px;
+}
+#ul1 .u10{
+	margin-top:210px;
+	margin-left:120px;
+	font-size:15px;
+	color:#999;
+}
+#ul1 .u10 a:hover{
+	cursor:pointer;
+	color:#F69;
+}
+#ul3{
+	list-style:none;
+}
+#ul3 .u7{
+	margin-top:40px;
+	margin-left:20px;
+	font-size:20px;
+}
+#ul3 .u7 span{
+	color:#F39;
+	font-size:24px;
+}
+#ul3 .u8{
+	margin-top:90px;
+	margin-left:-355px;
+	color:#999;
+}
+#ul3 .u9{
+	margin-top:80px;
+	margin-left:-200px;
+}
