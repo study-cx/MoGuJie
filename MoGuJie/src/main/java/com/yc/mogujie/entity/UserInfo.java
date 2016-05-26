@@ -23,105 +23,105 @@ public class UserInfo {
 
     private int statue;
 
-    private int obligateone;
+    private String obligateone;
 
-    private int obligatetwo;
+    private String obligatetwo;
 
-    public int getUsid() {
-        return usid;
-    }
+	public int getUsid() {
+		return usid;
+	}
 
-    public void setUsid(int usid) {
-        this.usid = usid;
-    }
+	public void setUsid(int usid) {
+		this.usid = usid;
+	}
 
-    public String getUspwd() {
-        return uspwd;
-    }
+	public String getUspwd() {
+		return uspwd;
+	}
 
-    public void setUspwd(String uspwd) {
-        this.uspwd = uspwd == null ? null : uspwd.trim();
-    }
+	public void setUspwd(String uspwd) {
+		this.uspwd = uspwd;
+	}
 
-    public String getUname() {
-        return uname;
-    }
+	public String getUname() {
+		return uname;
+	}
 
-    public void setUname(String uname) {
-        this.uname = uname == null ? null : uname.trim();
-    }
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
 
-    public String getUphoto() {
-        return uphoto;
-    }
+	public String getUphoto() {
+		return uphoto;
+	}
 
-    public void setUphoto(String uphoto) {
-        this.uphoto = uphoto == null ? null : uphoto.trim();
-    }
+	public void setUphoto(String uphoto) {
+		this.uphoto = uphoto;
+	}
 
-    public Date getUbirthday() {
-        return ubirthday;
-    }
+	public Date getUbirthday() {
+		return ubirthday;
+	}
 
-    public void setUbirthday(Date ubirthday) {
-        this.ubirthday = ubirthday;
-    }
+	public void setUbirthday(Date ubirthday) {
+		this.ubirthday = ubirthday;
+	}
 
-    public String getUsemail() {
-        return usemail;
-    }
+	public String getUsemail() {
+		return usemail;
+	}
 
-    public void setUsemail(String usemail) {
-        this.usemail = usemail == null ? null : usemail.trim();
-    }
+	public void setUsemail(String usemail) {
+		this.usemail = usemail;
+	}
 
-    public String getUcode() {
-        return ucode;
-    }
+	public String getUcode() {
+		return ucode;
+	}
 
-    public void setUcode(String ucode) {
-        this.ucode = ucode == null ? null : ucode.trim();
-    }
+	public void setUcode(String ucode) {
+		this.ucode = ucode;
+	}
 
-    public String getUsphone() {
-        return usphone;
-    }
+	public String getUsphone() {
+		return usphone;
+	}
 
-    public void setUsphone(String usphone) {
-        this.usphone = usphone == null ? null : usphone.trim();
-    }
+	public void setUsphone(String usphone) {
+		this.usphone = usphone;
+	}
 
-    public int getUsaccount() {
-        return usaccount;
-    }
+	public int getUsaccount() {
+		return usaccount;
+	}
 
-    public void setUsaccount(int usaccount) {
-        this.usaccount = usaccount;
-    }
+	public void setUsaccount(int usaccount) {
+		this.usaccount = usaccount;
+	}
 
-    public int getStatue() {
-        return statue;
-    }
+	public int getStatue() {
+		return statue;
+	}
 
-    public void setStatue(int statue) {
-        this.statue = statue;
-    }
+	public void setStatue(int statue) {
+		this.statue = statue;
+	}
 
-    public int getObligateone() {
-        return obligateone;
-    }
+	public String getObligateone() {
+		return obligateone;
+	}
 
-    public void setObligateone(int obligateone) {
-        this.obligateone = obligateone;
-    }
+	public void setObligateone(String obligateone) {
+		this.obligateone = obligateone;
+	}
 
-    public int getObligatetwo() {
-        return obligatetwo;
-    }
+	public String getObligatetwo() {
+		return obligatetwo;
+	}
 
-    public void setObligatetwo(int obligatetwo) {
-        this.obligatetwo = obligatetwo;
-    }
+	public void setObligatetwo(String obligatetwo) {
+		this.obligatetwo = obligatetwo;
+	}
 
 	@Override
 	public String toString() {
@@ -132,5 +132,7 @@ public class UserInfo {
 				+ ", obligateone=" + obligateone + ", obligatetwo="
 				+ obligatetwo + "]";
 	}
+
+    
     
 }

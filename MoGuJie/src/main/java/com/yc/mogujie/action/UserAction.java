@@ -13,12 +13,13 @@ public class UserAction implements ModelDriven<UserInfo>{
 	private UserInfo userInfo;
 	@Autowired
 	private UserInfoService userInfoService;
+	
 	public String login(){
 		LogManager.getLogger().debug(userInfo);
-		
-		
 		return "login";
 	}
+	
+	
 	public String register(){
 		LogManager.getLogger().debug(userInfo);
 		int result=userInfoService.userRegister(userInfo);

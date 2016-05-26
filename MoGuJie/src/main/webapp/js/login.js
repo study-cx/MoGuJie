@@ -130,7 +130,7 @@ function userzc(){
 	var pwd=$.trim($("#r_pass").val());
 	var email=$.trim($("#r_email").val());
 	var phone=$.trim($("#r_tel").val());
-		$.post("../userServlet?d="+new Date(),{op:"addUsersInfo",uname:uname,pwd:pwd,email,email,phone:phone},function(data){
+		$.post("../userServlet?d="+new Date(),{op:"addUsersInfo",uname:uname,pwd:pwd,email:email,phone:phone},function(data){
 			if(parseInt($.trim(data))){
 				alert("恭喜注册成功...");
 				window.location.href="../front/index.jsp";
