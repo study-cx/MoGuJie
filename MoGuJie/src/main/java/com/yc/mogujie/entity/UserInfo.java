@@ -122,4 +122,15 @@ public class UserInfo {
     public void setObligatetwo(int obligatetwo) {
         this.obligatetwo = obligatetwo;
     }
+
+	@Override
+	public String toString() {
+		return "UserInfo [usid=" + usid + ", uspwd=" + uspwd + ", uname="
+				+ uname + ", uphoto=" + uphoto + ", ubirthday=" + ubirthday
+				+ ", usemail=" + usemail + ", ucode=" + ucode + ", usphone="
+				+ usphone + ", usaccount=" + usaccount + ", statue=" + statue
+				+ ", obligateone=" + obligateone + ", obligatetwo="
+				+ obligatetwo + "]";
+	}
+    
 }
