@@ -1,7 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <script>
-	var uname="${loginUser.uname}";
+	//var uname="${loginUser.uname}";
+	var uname="liqiu";
 	$.post("userServlet",{op:"findBasicInfo",uname:uname},function(data){
 		var user=data.rows;
 		if(user!=undefined){
@@ -90,7 +91,7 @@
 		var phone=$("#phone").val();
 		
 		
-		$.post("userServlet",{op:"updateBasicInfo",name:name,birth:birth,ucode:ucode,sheng:sheng,shi:shi,email:email,phone:phone},function(data){
+		$.post("",{name:name,birth:birth,ucode:ucode,sheng:sheng,shi:shi,email:email,phone:phone},function(data){
 			if(data==1){
 				alert("恭喜您，修改成功！");
 			}else{

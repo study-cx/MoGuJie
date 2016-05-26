@@ -3,29 +3,25 @@ package com.yc.mogujie.entity;
 import java.util.Date;
 
 public class UserInfo {
-    private int usid;
+    private int usid;//编号
 
-    private String uspwd;
+    private String uspwd;//密码
 
-    private String uname;
+    private String uname;//昵称
 
-    private String uphoto;
+    private String uphoto;//头像
 
-    private Date ubirthday;
+    private Date ubirthday;//生日
 
-    private String usemail;
+    private String usemail;//邮箱
 
-    private String ucode;
+    private String ucode;//用户邮编
 
-    private String usphone;
+    private String usphone;//用户联系方式
 
-    private int usaccount;
+    private int usaccount;//用户余额
 
-    private int statue;
-
-    private int obligateone;
-
-    private int obligatetwo;
+    private int statue;//删除时的状态标志
 
     public int getUsid() {
         return usid;
@@ -107,19 +103,4 @@ public class UserInfo {
         this.statue = statue;
     }
 
-    public int getObligateone() {
-        return obligateone;
-    }
-
-    public void setObligateone(int obligateone) {
-        this.obligateone = obligateone;
-    }
-
-    public int getObligatetwo() {
-        return obligatetwo;
-    }
-
-    public void setObligatetwo(int obligatetwo) {
-        this.obligatetwo = obligatetwo;
-    }
 }

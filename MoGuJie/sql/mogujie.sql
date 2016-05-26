@@ -33,6 +33,10 @@ insert into userInfo values(1001,'123','haha','',to_date('2003-03-10','yyyy-mm-d
 '12123333','1000',1,'','');
 insert into userInfo values(1002,'123','lala','',to_date('2008-07-10','yyyy-mm-dd'),'67253278@qq.com','421002',
 '12123333','1000',1,'','');
+insert into userInfo values(1002,'aaa','liqiu','',to_date('2008-07-10','yyyy-mm-dd'),'1573454899@qq.com','422302',
+'13241425','1000',1,'','');
+
+select *from userInfo;
 
 --地址表
 create table address(

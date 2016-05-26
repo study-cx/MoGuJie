@@ -118,7 +118,7 @@ function adminzc(){
 		alert("您还未填写任何内容");
 	}else{
 		if(aname!="" && apwd!="" && aemail!=""){
-			$.post("../adminServlet?d="+new Date(),{op:"addAdminInfo",aname:aname,apwd:apwd,aemail,aemail},function(data){
+			$.post("../adminServlet?d="+new Date(),{op:"addAdminInfo",aname:aname,apwd:apwd,aemail:aemail},function(data){
 				if(parseInt($.trim(data))){
 					alert("恭喜注册成功...");
 					window.location.href="../back_login/login.html";
