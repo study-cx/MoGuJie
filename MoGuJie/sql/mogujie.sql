@@ -1,258 +1,264 @@
---è˜‘è‡è¡—æ•°æ®åº“è®¾è®¡
-delete ADMIN;
-delete ADVERTISE;
-delete USERINFO;
-select *from admin;
---ç®¡ç†å‘˜
-create table admin(
-	aid int primary key,--ç®¡ç†å‘˜id
-	aname varchar2(50) unique not null,--ç®¡ç†å‘˜æ˜µç§°
-	apwd varchar2(20),--å¯†ç 
-	aemail varchar(50),--é‚®ç®±
-	agread int --ç®¡ç†å‘˜ç­‰çº§
-);
-create sequence seq_admin_aid start with 100 increment by 1;
---ç”¨æˆ·ä¿¡æ¯è¡¨
-create table userInfo(
-  usid int primary key,--ç”¨æˆ·id
-  uspwd varchar2(100),--å¯†ç 
-  uname varchar2(20) unique not null,--ç”¨æˆ·æ˜µç§°
-  uphoto varchar2(100),--ç”¨æˆ·å¤´åƒåœ°å€
-  ubirthday date,--ç”¨æˆ·ç”Ÿæ—¥
-  usemail varchar2(100),--é‚®ç®±åœ°å€
-  ucode varchar2(10),--ç”¨æˆ·é‚®ç¼–
-  usphone varchar2(15), --ç”¨æˆ·è”ç³»æ–¹å¼
-  usaccount number(10,2),--ç”¨æˆ·ä½™é¢
-  statue int,--åˆ é™¤æ—¶çš„çŠ¶æ€æ ‡å¿—
-  obligateone int,--é¢„ç•™å­—æ®µ1
-  obligatetwo int--é¢„ç•™å­—æ®µ2
-);
-create sequence seq_UserInfo_usid start with 100 increment by 1;
+  create user MoGuJie identified by a
+  grant dba to MoGuJie
+  --Ä¢¹½½ÖÊı¾İ¿âÉè¼Æ
+  delete ADMIN;
+  delete ADVERTISE;
+  delete USERINFO;
+  select *from admin;
+  --¹ÜÀíÔ±
+  create table admin(
+    aid int primary key,--¹ÜÀíÔ±id
+    aname varchar2(50) unique not null,--¹ÜÀíÔ±êÇ³Æ
+    apwd varchar2(20),--ÃÜÂë
+    aemail varchar(50),--ÓÊÏä
+    agread int --¹ÜÀíÔ±µÈ¼¶
+  );
+  create sequence seq_admin_aid start with 100 increment by 1;
+  --ÓÃ»§ĞÅÏ¢±í
+  create table userInfo(
+    usid int primary key,--ÓÃ»§id
+    uspwd varchar2(100),--ÃÜÂë
+    uname varchar2(20) unique not null,--ÓÃ»§êÇ³Æ
+    uphoto varchar2(100),--ÓÃ»§Í·ÏñµØÖ·
+    ubirthday date,--ÓÃ»§ÉúÈÕ
+    usemail varchar2(100),--ÓÊÏäµØÖ·
+    ucode varchar2(10),--ÓÃ»§ÓÊ±à
+    usphone varchar2(15), --ÓÃ»§ÁªÏµ·½Ê½
+    usaccount number(10,2),--ÓÃ»§Óà¶î
+    statue int,--É¾³ıÊ±µÄ×´Ì¬±êÖ¾
+    obligateone varchar2(40),--Ô¤Áô×Ö¶Î1
+    obligatetwo varchar2(40)--Ô¤Áô×Ö¶Î2
+  );
+  create sequence seq_UserInfo_usid start with 100 increment by 1;
+  select *from userInfo
+  insert into userInfo values(1001,'123','haha','',to_date('2003-03-10','yyyy-mm-dd'),'523525@qq.com','421002',
+  '12123333','1000',1,'','');
+  insert into userInfo values(seq_UserInfo_usid.Nextval,'caicai','cc',null,null,'22@qq.com',null,
+  '18397770461',0,0,null,null);
+  usid=0, uspwd=caicai, uname=cc, uphoto=null, ubirthday=null, usemail=22@qq.com, ucode=null, usphone=18397770461, usaccount=0, statue=0, obligateone=null, obligatetwo=null
+  insert into userInfo values(1002,'123','lala','',to_date('2008-07-10','yyyy-mm-dd'),'67253278@qq.com','421002',
+  '12123333','1000',1,'','');
 
-insert into userInfo values(1001,'123','haha','',to_date('2003-03-10','yyyy-mm-dd'),'523525@qq.com','421002',
-'12123333','1000',1,'','');
-insert into userInfo values(1002,'123','lala','',to_date('2008-07-10','yyyy-mm-dd'),'67253278@qq.com','421002',
-'12123333','1000',1,'','');
+  --µØÖ·±í
+  create table address(
+    addressid int primary key,--id
+    province varchar2(40),--Ê¡·İ
+    city varchar2(40),--ÊĞ
+    street varchar2(80),--Çø
+    usaddress varchar2(100),--ÓÃ»§ÏêÏ¸µØÖ·
+    usid int--ÓÃ»§id
+          constraint FK_address_usid references userInfo(usid),
+    adname varchar2(50),--ÕæÊµĞÕÃû
+    adcode int,    --ÓÊ±à
+    adtel varchar2(15),    --µç»°     
+    statue int,--ÊÇ·ñÎªÄ¬ÈÏµØÖ·
+     obligateone varchar2(40),--Ô¤Áô×Ö¶Î1
+    obligatetwo varchar2(40)--Ô¤Áô×Ö¶Î2
+  );
 
---åœ°å€è¡¨
-create table address(
-  addressid int primary key,--id
-  province varchar2(40),--çœä»½
-  city varchar2(40),--å¸‚
-  street varchar2(80),--åŒº
-  usaddress varchar2(100),--ç”¨æˆ·è¯¦ç»†åœ°å€
-  usid int--ç”¨æˆ·id
-        constraint FK_address_usid references userInfo(usid),
-  adname varchar2(50),--çœŸå®å§“å
-  adcode int,		--é‚®ç¼–
-  adtel varchar2(15),		--ç”µè¯     
-  statue int,--æ˜¯å¦ä¸ºé»˜è®¤åœ°å€
-  obligateone int,--é¢„ç•™å­—æ®µ1
-  obligatetwo int--é¢„ç•™å­—æ®µ2
-);
+  create sequence seq_address_addressid start with 100 increment by 1;
+  insert into address values(seq_address_addressid.nextval,'ºşÄÏÊ¡','ºâÑôÊĞ','ÖéêÍÇø','ºâ»¨Â·18ºÅ',120,'³ÂŸ@',45646,'15674785546',1,1,1);
+  insert into address values(seq_address_addressid.nextval,'ºşÄÏÊ¡','ÔÀÑôÊĞ','ÖéêÍÇø','ºâ»¨Â·18ºÅ',120,'²Ë²Ë',45646,'15674785546',1,'','');
+  --ÉÌÆ··ÖÀà±íÊ×¼¶
+  create table categoryone(
+    categoryidone int primary key,--ÉÌÆ·ÀàĞÍId
+    categoryTypeone varchar2(100),--ÉÌÆ·ÀàĞÍ   
+    obligateone varchar2(40),--Ô¤Áô×Ö¶Î1
+    obligatetwo varchar2(40)--Ô¤Áô×Ö¶Î2
+  );
+  create sequence seq_categorys_categoryidone start with 100 increment by 1;
+  insert into categoryone values(seq_categorys_categoryidone.nextval,'ÉÏÒÂ',1,0);
+  --2¼¶·ÖÀà
+  create table categorytwo(
+    categoryidtwo int primary key,--ÉÌÆ·ÀàĞÍId
+    categoryidone int--ÉÌÆ·ÀàĞÍ£¬ÒıÓÃÍâ¼ü
+          constraint FK_categorytwo_categoryidone references categoryone(categoryidone), 
+    categoryTypetwo varchar2(100),--ÉÌÆ·ÀàĞÍ   
+     obligateone varchar2(40),--Ô¤Áô×Ö¶Î1
+    obligatetwo varchar2(40)--Ô¤Áô×Ö¶Î2
+  );
 
-create sequence seq_address_addressid start with 100 increment by 1;
-insert into address values(seq_address_addressid.nextval,'æ¹–å—çœ','è¡¡é˜³å¸‚','ç æ™–åŒº','è¡¡èŠ±è·¯18å·',120,'é™ˆçƒœ',45646,'15674785546',1,1,1);
-insert into address values(seq_address_addressid.nextval,'æ¹–å—çœ','å²³é˜³å¸‚','ç æ™–åŒº','è¡¡èŠ±è·¯18å·',120,'èœèœ',45646,'15674785546',1,'','');
---å•†å“åˆ†ç±»è¡¨é¦–çº§
-create table categoryone(
-  categoryidone int primary key,--å•†å“ç±»å‹Id
-  categoryTypeone varchar2(100),--å•†å“ç±»å‹   
-  obligateone int,--çŠ¶æ€
-  obligatetwo int--é¢„ç•™å­—æ®µ2
-);
-create sequence seq_categorys_categoryidone start with 100 increment by 1;
-insert into categoryone values(seq_categorys_categoryidone.nextval,'ä¸Šè¡£',1,0);
---2çº§åˆ†ç±»
-create table categorytwo(
-  categoryidtwo int primary key,--å•†å“ç±»å‹Id
-  categoryidone int--å•†å“ç±»å‹ï¼Œå¼•ç”¨å¤–é”®
-	      constraint FK_categorytwo_categoryidone references categoryone(categoryidone), 
-  categoryTypetwo varchar2(100),--å•†å“ç±»å‹   
-  obligateone int,--çŠ¶æ€
-  obligatetwo int--é¢„ç•™å­—æ®µ2
-);
+  create sequence seq_categorys_categoryidtwo start with 100 increment by 1;
+  insert into categorytwo values(seq_categorys_categoryidtwo.nextval,100,'¶ÌĞä',1,0)
+  select *from categorytwo
+  --3¼¶·ÖÀà
+  create table categorythree(
+    categoryidthree int primary key,--ÉÌÆ·ÀàĞÍId
+    categoryidtwo int--ÉÌÆ·ÀàĞÍ£¬ÒıÓÃÍâ¼ü
+          constraint FK_categorythree_categoryidtwo references categorytwo(categoryidtwo), 
+    categoryTypethree varchar2(100),--ÉÌÆ·ÀàĞÍ   
+    obligateone varchar2(40),--Ô¤Áô×Ö¶Î1
+    obligatetwo varchar2(40)--Ô¤Áô×Ö¶Î2
+  );
+  create sequence seq_categorys_categoryidthree start with 100 increment by 1;
+  insert into categorythree values(seq_categorys_categoryidthree.nextval,101,'Ô²Áì',1,0);
 
-create sequence seq_categorys_categoryidtwo start with 100 increment by 1;
-insert into categorytwo values(seq_categorys_categoryidtwo.nextval,100,'çŸ­è¢–',1,0)
-select *from categorytwo
---3çº§åˆ†ç±»
-create table categorythree(
-  categoryidthree int primary key,--å•†å“ç±»å‹Id
-  categoryidtwo int--å•†å“ç±»å‹ï¼Œå¼•ç”¨å¤–é”®
-	      constraint FK_categorythree_categoryidtwo references categorytwo(categoryidtwo), 
-  categoryTypethree varchar2(100),--å•†å“ç±»å‹   
-  obligateone int,--çŠ¶æ€
-  obligatetwo int--é¢„ç•™å­—æ®µ2
-);
-create sequence seq_categorys_categoryidthree start with 100 increment by 1;
-insert into categorythree values(seq_categorys_categoryidthree.nextval,101,'åœ†é¢†',1,0);
+  --ÉÌÆ·±í£¬Ö÷ÒªÓÃÀ´±£´æ¹ÜÀíÔ±ÉÏ´«µÄÉÌÆ·ĞÅÏ¢
+  create table product(
+     proid int primary key,--ÉÌÆ·id
+     proname varchar2(100) not null unique,--ÉÌÆ·Ãû³Æ
+     procontent varchar2(100),--ÉÌÆ·¼ò½é
+     proprice number(8,2),--ÉÌÆ·¼Û¸ñ
+     categoryidthree int--ÉÌÆ·ÀàĞÍ£¬ÒıÓÃÍâ¼ü
+          constraint FK_Product_categoryidthree references categorythree(categoryidthree),
+     prophoto varchar2(100),--Í¼Æ¬µØÖ·
+     pstatue int,--ÉÌÆ·×´Ì¬  ¿ÉÓÃÓë²»¿ÉÓÃ
+     obligateone varchar2(40),--Ô¤Áô×Ö¶Î1
+    obligatetwo varchar2(40)--Ô¤Áô×Ö¶Î2
+  );
+  create sequence seq_product_proid start with 100 increment by 1;
 
---å•†å“è¡¨ï¼Œä¸»è¦ç”¨æ¥ä¿å­˜ç®¡ç†å‘˜ä¸Šä¼ çš„å•†å“ä¿¡æ¯
-create table product(
-	 proid int primary key,--å•†å“id
-	 proname varchar2(100) not null unique,--å•†å“åç§°
-	 procontent varchar2(100),--å•†å“ç®€ä»‹
-	 proprice number(8,2),--å•†å“ä»·æ ¼
-	 categoryidthree int--å•†å“ç±»å‹ï¼Œå¼•ç”¨å¤–é”®
-	      constraint FK_Product_categoryidthree references categorythree(categoryidthree),
-	 prophoto varchar2(100),--å›¾ç‰‡åœ°å€
-	 pstatue int,--å•†å“çŠ¶æ€  å¯ç”¨ä¸ä¸å¯ç”¨
-	 obligateone int,--é¢„ç•™å­—æ®µ1
-	 obligatetwo int--é¢„ç•™å­—æ®µ2
-);
-create sequence seq_product_proid start with 100 increment by 1;
+  insert into product values(seq_product_proid.nextval,'Ã«ÒÂ','ÑòÑòÑòÃ«ÒÂ','99.9',101,'',1,'','');
 
-insert into product values(seq_product_proid.nextval,'æ¯›è¡£','ç¾Šç¾Šç¾Šæ¯›è¡£','99.9',101,'',1,'','');
+  insert into product values(seq_product_proid.nextval,'Ã«ÒÂ','ÑòÑòÑòÃ«ÒÂ','99.9',100,'',1,'','');
 
-insert into product values(seq_product_proid.nextval,'æ¯›è¡£','ç¾Šç¾Šç¾Šæ¯›è¡£','99.9',100,'',1,'','');
+  --ÉÌÆ·ÏêÏ¸±í
+  create table detail(
+      deid int primary key,
+    proid int -- ÉÌÆ·Ãû³Æ
+          constraint FK_detail_product references product(proid),
+    counts int,--ÏúÊÛÁ¿
+    psize varchar2(20),--ÉÌÆ·³ß´ç
+    pcolor varchar2(100),--ÑÕÉ«Í¼Æ¬µØÖ·
+    color varchar2(20),--ÑÕÉ«
+    proNumber int,--¿â´æ
+    obligateone varchar2(40),--Ô¤Áô×Ö¶Î1
+    obligatetwo varchar2(40)--Ô¤Áô×Ö¶Î2
+  );
 
---å•†å“è¯¦ç»†è¡¨
-create table detail(
-  	deid int primary key,
-	proid int -- å•†å“åç§°
-        constraint FK_detail_product references product(proid),
-	counts int,--é”€å”®é‡
-	psize varchar2(20),--å•†å“å°ºå¯¸
-	pcolor varchar2(100),--é¢œè‰²å›¾ç‰‡åœ°å€
-	color varchar2(20),--é¢œè‰²
-	proNumber int,--åº“å­˜
-    obligateone int,--é¢„ç•™å­—æ®µ1s
-    obligatetwo int--é¢„ç•™å­—æ®µ2
-);
+  create sequence seq_detail_deid start with 100 increment by 1;
 
-create sequence seq_detail_deid start with 100 increment by 1;
+  --ÓÃ»§¶©µ¥±í£¬Ö÷ÒªÓÃÀ´±£´æÓÃ»§¶©µ¥ĞÅÏ¢
+  create table userOrder(
+   orderid int primary key,--¶©µ¥ºÅ
+   usid int--ÓÃ»§±íÍâ¼ü£¬ÖªµÀÓÃ»§Ãû
+       constraint FK_cart_usid references userInfo(usid),
+   datetime date,--¶©µ¥ÈÕÆÚ
+   ostatus int,--¶©µ¥×´Ì¬  0²»¿ÉÓÃ£¬1Î´¸¶¿î£¬2ÒÑ¸¶¿î
+   addressid int
+     constraint FK_userOrder_addressid references address(addressid),
+    obligateone varchar2(40),--Ô¤Áô×Ö¶Î1
+    obligatetwo varchar2(40)--Ô¤Áô×Ö¶Î2
+  );
 
---ç”¨æˆ·è®¢å•è¡¨ï¼Œä¸»è¦ç”¨æ¥ä¿å­˜ç”¨æˆ·è®¢å•ä¿¡æ¯
-create table userOrder(
- orderid int primary key,--è®¢å•å·
- usid int--ç”¨æˆ·è¡¨å¤–é”®ï¼ŒçŸ¥é“ç”¨æˆ·å
-     constraint FK_cart_usid references userInfo(usid),
- datetime date,--è®¢å•æ—¥æœŸ
- ostatus int,--è®¢å•çŠ¶æ€  0ä¸å¯ç”¨ï¼Œ1æœªä»˜æ¬¾ï¼Œ2å·²ä»˜æ¬¾
- addressid int
-	 constraint FK_userOrder_addressid references address(addressid),
- obligateone int,--é¢„ç•™å­—æ®µ1
- obligatetwo int--é¢„ç•™å­—æ®µ2
-);
+  create sequence seq_userOrder_orderid start with 100 increment by 1;
+  insert into userOrder values(seq_userOrder_orderid.nextval,260,to_date('2015-03-10','yyyy-mm-dd'),2,181,'','');
+  insert into userOrder values(seq_userOrder_orderid.nextval,240,to_date('2015-03-10','yyyy-mm-dd'),1,141,'','');
+  insert into userOrder values(seq_userOrder_orderid.nextval,240,to_date('2016-01-10','yyyy-mm-dd'),0,141,'','');
 
-create sequence seq_userOrder_orderid start with 100 increment by 1;
-insert into userOrder values(seq_userOrder_orderid.nextval,260,to_date('2015-03-10','yyyy-mm-dd'),2,181,'','');
-insert into userOrder values(seq_userOrder_orderid.nextval,240,to_date('2015-03-10','yyyy-mm-dd'),1,141,'','');
-insert into userOrder values(seq_userOrder_orderid.nextval,240,to_date('2016-01-10','yyyy-mm-dd'),0,141,'','');
+  --ÓÃ»§¶©µ¥ÏêÏ¸±í
+  create table  orderdetail(
+   orid int primary key,
+   orderid int --¶©µ¥ºÅ
+           constraint FK_orderdetail_orderid references userOrder(orderid) on delete cascade, 
+   proid int  --ÉÌÆ·±íid
+         constraint FK_orderdetail_proid references product(proid),
+   deid int --ÉÌÆ·ÏêÏ¸id
+         constraint FK_orderdetail_deid references detail(deid),
+   onumber int,--ÊıÁ¿
+   buyprice number(8,2),--¹ºÂò¼Û
+   ostatus int,--×´Ì¬ ¿ÉÓÃÓë²»¿ÉÓÃ
+   obligateone int,--Ô¤Áô×Ö¶Î1
+   obligatetwo int--Ô¤Áô×Ö¶Î2  
+  ); 
+  select *from orderdetail;
+  create sequence seq_orderdetail_orid start with 100 increment by 1;
+  insert into orderdetail values(seq_orderdetail_orid.nextval,128,102,1,'199.9',1,'','');
+  insert into orderdetail values(seq_orderdetail_orid.nextval,128,102,100,1,'199.9',1,'','');
+  insert into orderdetail values(seq_orderdetail_orid.nextval,123,100,1,'199.9',1,'','');
 
---ç”¨æˆ·è®¢å•è¯¦ç»†è¡¨
-create table  orderdetail(
- orid int primary key,
- orderid int --è®¢å•å·
-         constraint FK_orderdetail_orderid references userOrder(orderid) on delete cascade, 
- proid int  --å•†å“è¡¨id
-       constraint FK_orderdetail_proid references product(proid),
- deid int --å•†å“è¯¦ç»†id
-       constraint FK_orderdetail_deid references detail(deid),
- onumber int,--æ•°é‡
- buyprice number(8,2),--è´­ä¹°ä»·
- ostatus int,--çŠ¶æ€ å¯ç”¨ä¸ä¸å¯ç”¨
- obligateone int,--é¢„ç•™å­—æ®µ1
- obligatetwo int--é¢„ç•™å­—æ®µ2	
-); 
-select *from orderdetail;
-create sequence seq_orderdetail_orid start with 100 increment by 1;
-insert into orderdetail values(seq_orderdetail_orid.nextval,128,102,1,'199.9',1,'','');
-insert into orderdetail values(seq_orderdetail_orid.nextval,128,102,100,1,'199.9',1,'','');
-insert into orderdetail values(seq_orderdetail_orid.nextval,123,100,1,'199.9',1,'','');
+  --¹ã¸æÎ»±í
+  create table advertise(
+    aid int primary key,--¹ã¸æÎ»id
+    asize varchar2(100),--Í¼Æ¬³ß´ç
+     weizhi varchar2(100),--Î»ÖÃ
+     obligateone varchar2(40),--Ô¤Áô×Ö¶Î1
+    obligatetwo varchar2(40)--Ô¤Áô×Ö¶Î2
+  );
+  insert into advertise values(1,'100*100','',1,1)
+  create sequence seq_advertise_aid start with 100 increment by 1;
+  --¹ã¸æ±í
+  create table guanggao(
+    gid int primary key,--¹ã¸æ±àºÅ
+    aid int
+        constraint FK_guanggao_aid references advertise(aid),--¹ã¸æÎ»id
+    ggrade int,
+    gPhoto varchar2(100),--Í¼Æ¬µØÖ·
+    gdates date,--¹ã¸æ¿ªÊ¼Ê±¼ä
+    gdateo date,--¹ã¸æ½áÊøÊ±¼ä
+      weight int,--È¨ÖØ
+    click int,--µã»÷´ÎÊı
+    linkaddress varchar2(100),--Á¬½ÓµØÖ·
+    obligateone varchar2(40),--Ô¤Áô×Ö¶Î1
+    obligatetwo varchar2(40)--Ô¤Áô×Ö¶Î2
+  );
+  create sequence seq_guanggao_gid start with 100 increment by 1;
+  insert into guanggao values(seq_guanggao_gid.nextval,1,1,'','','',1,1,'',1,1)
+  select * from guanggao order by weight desc,gdates desc
+  --Âò¼Ò»ØÀ¡
+  create table feedback(
+    fid int primary key,--»ØÀ¡±àºÅ
+    usid int --ÓÃ»§±íÍâ¼ü
+      constraint FK_fedbook_usid references userInfo(usid),
+    orderid int--¶©µ¥±íÍâ¼ü
+      constraint FK_fedbook_orderid references userOrder(orderid),
+    proid int--ÉÌÆ·±í
+      constraint FK_fedbook_proid references userOrder(orderid),   
+    content clob,
+    fdate date,
+    obligateone varchar2(40),--Ô¤Áô×Ö¶Î1
+    obligatetwo varchar2(40)--Ô¤Áô×Ö¶Î2
+  );
 
---å¹¿å‘Šä½è¡¨
-create table advertise(
-	aid int primary key,--å¹¿å‘Šä½id
-	asize varchar2(100),--å›¾ç‰‡å°ºå¯¸
- 	weizhi varchar2(100),--ä½ç½®
- 	obligateone int,--é¢„ç•™å­—æ®µ1
- 	obligatetwo int--é¢„ç•™å­—æ®µ2
-);
-insert into advertise values(1,'100*100','',1,1)
-create sequence seq_advertise_aid start with 100 increment by 1;
---å¹¿å‘Šè¡¨
-create table guanggao(
-	gid int primary key,--å¹¿å‘Šç¼–å·
-	aid int
-      constraint FK_guanggao_aid references advertise(aid),--å¹¿å‘Šä½id
-	ggrade int,
-	gPhoto varchar2(100),--å›¾ç‰‡åœ°å€
-	gdates date,--å¹¿å‘Šå¼€å§‹æ—¶é—´
-	gdateo date,--å¹¿å‘Šç»“æŸæ—¶é—´
-  	weight int,--æƒé‡
-	click int,--ç‚¹å‡»æ¬¡æ•°
-	linkaddress varchar2(100),--è¿æ¥åœ°å€
- obligateone int,--é¢„ç•™å­—æ®µ1
- obligatetwo int--é¢„ç•™å­—æ®µ2
-);
-create sequence seq_guanggao_gid start with 100 increment by 1;
-insert into guanggao values(seq_guanggao_gid.nextval,1,1,'','','',1,1,'',1,1)
-select * from guanggao order by weight desc,gdates desc
---ä¹°å®¶å›é¦ˆ
-create table feedback(
-	fid int primary key,--å›é¦ˆç¼–å·
-	usid int --ç”¨æˆ·è¡¨å¤–é”®
-		constraint FK_fedbook_usid references userInfo(usid),
-	orderid int--è®¢å•è¡¨å¤–é”®
-		constraint FK_fedbook_orderid references userOrder(orderid),
-	proid int--å•†å“è¡¨
-    constraint FK_fedbook_proid references userOrder(orderid),   
-	content clob,
-	fdate date,
-  obligateone int,--é¢„ç•™å­—æ®µ1
-  obligatetwo int--é¢„ç•™å­—æ®µ2
-);
+  create sequence seq_feedback_fid start with 100 increment by 1;
 
-create sequence seq_feedback_fid start with 100 increment by 1;
+  --ÓÃ»§¹ºÎï³µ±í£¬Ö÷ÒªÓÃÀ´±£´æÓÃ»§¹ºÂòÉÌÆ·Ê±µÄ¹ºÎï³µÉÌÆ·ĞÅÏ¢
+  create table cart(
+   cid int primary key,
+   proid int--ÉÌÆ·±íÍâ¼ü
+       constraint FK_cart_proid references product(proid),
+   usid int--ÓÃ»§±íÍâ¼ü
+       constraint FK_carts_usid references userInfo(usid),
+   --listprice number(8,2),--ÉÌÆ·¼Û¸ñ
+   color varchar2(30),
+   csize varchar2(30),
+   pcolor varchar2(100),
+   snumber int,--ÉÌÆ·ÊıÁ¿
+    obligateone varchar2(40),--Ô¤Áô×Ö¶Î1
+    obligatetwo varchar2(40)--Ô¤Áô×Ö¶Î2
+  );
+  insert into cart values(seq_cart_cid.nextval,138,120,'»ÒÉ«','X','../uploadPic/1452755091682608.jpg',2,1,1);
+  insert into cart values(seq_cart_cid.nextval,138,1001,'»Ò','X','../uploadPic/1452755091682608.jpg',2,1,1);
 
---ç”¨æˆ·è´­ç‰©è½¦è¡¨ï¼Œä¸»è¦ç”¨æ¥ä¿å­˜ç”¨æˆ·è´­ä¹°å•†å“æ—¶çš„è´­ç‰©è½¦å•†å“ä¿¡æ¯
-create table cart(
- cid int primary key,
- proid int--å•†å“è¡¨å¤–é”®
-     constraint FK_cart_proid references product(proid),
- usid int--ç”¨æˆ·è¡¨å¤–é”®
-     constraint FK_carts_usid references userInfo(usid),
- --listprice number(8,2),--å•†å“ä»·æ ¼
- color varchar2(30),
- csize varchar2(30),
- pcolor varchar2(100),
- snumber int,--å•†å“æ•°é‡
- obligateone int,--é¢„ç•™å­—æ®µ1
- obligatetwo int--é¢„ç•™å­—æ®µ2
-);
-insert into cart values(seq_cart_cid.nextval,138,120,'ç°è‰²','X','../uploadPic/1452755091682608.jpg',2,1,1);
-insert into cart values(seq_cart_cid.nextval,138,1001,'ç°','X','../uploadPic/1452755091682608.jpg',2,1,1);
+  create sequence seq_cart_cid start with 100 increment by 1;
+  select *from cart;
+  --»î¶¯
+  create table active(
+    activeId int primary key,--»î¶¯id
+    actives date,--¿ªÊ¼Ê±¼ä
+    activeo date, --½áÊøÊ±¼ä
+    activeType varchar2(100),--»î¶¯ÀàĞÍ
+    obligateone varchar2(40),--Ô¤Áô×Ö¶Î1
+    obligatetwo varchar2(40)--Ô¤Áô×Ö¶Î2
+  );
+  create sequence seq_active_activeId start with 100 increment by 1;
 
-create sequence seq_cart_cid start with 100 increment by 1;
-select *from cart;
---æ´»åŠ¨
-create table active(
-	activeId int primary key,--æ´»åŠ¨id
-	actives date,--å¼€å§‹æ—¶é—´
-	activeo date, --ç»“æŸæ—¶é—´
-	activeType varchar2(100),--æ´»åŠ¨ç±»å‹
-	obligateone int,--é¢„ç•™å­—æ®µ1
-	obligatetwo int--é¢„ç•™å­—æ®µ2
-);
-create sequence seq_active_activeId start with 100 increment by 1;
+  --»î¶¯ĞÅÏ¢
+  create table activeInfo(
+    activeInfo int primary key,--»î¶¯ĞÅÏ¢id
+    activeId int--»î¶¯id
+      constraint FK_activeInfo_activeId references active(activeId),
+    proid int--ÉÌÆ·±íÍâ¼ü
+      constraint FK_activeInfo_proid references product(proid),
+    discount int, --ÕÛ¿Û
+    obligateone varchar2(40),--Ô¤Áô×Ö¶Î1
+    obligatetwo varchar2(40)--Ô¤Áô×Ö¶Î2
+    
+  );
+  create sequence seq_activeInfo_activeInfo start with 100 increment by 1;
 
---æ´»åŠ¨ä¿¡æ¯
-create table activeInfo(
-	activeInfo int primary key,--æ´»åŠ¨ä¿¡æ¯id
-	activeId int--æ´»åŠ¨id
-		constraint FK_activeInfo_activeId references active(activeId),
-	proid int--å•†å“è¡¨å¤–é”®
-		constraint FK_activeInfo_proid references product(proid),
-	discount int, --æŠ˜æ‰£
-	obligateone int,--é¢„ç•™å­—æ®µ1
-	obligatetwo int--é¢„ç•™å­—æ®µ2
-	
-);
-create sequence seq_activeInfo_activeInfo start with 100 increment by 1;
-
- create table getOrderID(
- 	getid int  primary key, 1 ---120  , 2 ----121 
- 	orderid int
- );
+   create table getOrderID(
+     getid int  primary key, 1 ---120  , 2 ----121 
+    orderid int
+   );
+  commit

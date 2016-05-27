@@ -6,5 +6,7 @@ import java.math.BigDecimal;
 public interface UserInfoMapper {
 
 	int userRegister(UserInfo userInfo);
+
+	UserInfo login(UserInfo userInfo);
     
 }

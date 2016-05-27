@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.mogujie.mapper.UserInfoMapper">
+	<insert id="userRegister" parameterType="UserInfo">
+		insert into userInfo values(seq_UserInfo_usid.Nextval,#{uspwd},#{uname},#{uphoto,jdbcType=VARCHAR},#{ubirthday,jdbcType=VARCHAR},#{usemail},#{ucode,jdbcType=VARCHAR},#{usphone},#{usaccount},#{statue},#{obligateone,jdbcType=VARCHAR},#{obligatetwo,jdbcType=VARCHAR})
+	</insert>
+	<select id="login" parameterType="UserInfo" resultType="UserInfo">
+		select *from userInfo where uname=#{uname} and uspwd=#{uspwd}
+	</select>
+</mapper>

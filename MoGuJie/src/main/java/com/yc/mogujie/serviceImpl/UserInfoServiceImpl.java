@@ -15,5 +15,11 @@ public class UserInfoServiceImpl implements UserInfoService{
 		
 		return userInfoMapper.userRegister(userInfo);
 	}
+	@Override
+	public UserInfo login(UserInfo userInfo) {
+		// TODO Auto-generated method stub
+		return userInfoMapper.login(userInfo);
+	}
+	
 
 }
