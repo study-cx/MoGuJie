@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="css/regist.css" />
 <link rel="shortcut icon" type="image/x-icon"
 	href="../images/logo_s.png" />
-<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="../js/login.js" charset="utf-8"></script>
+<!-- <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../js/login.js" charset="utf-8"></script> -->
 </head>
 
 <body>
