@@ -3,7 +3,7 @@
 <script>
 	//var uname="${loginUser.uname}";
 	var uname="liqiu";
-	$.post("userServlet",{op:"findBasicInfo",uname:uname},function(data){
+	$.post("userBean_findBasicInfo",{uname:uname},function(data){
 		var user=data.rows;
 		if(user!=undefined){
 			$.each(user,function(index,item){
@@ -36,7 +36,7 @@
     	<p class="basic"><span>基本资料</span></p>
         <form name="myform1">
         <ul class="basic1" id="basic1" name="basic1">
-        	<li>昵称：<input type="text" value="秋日晨萱" onchange="updateName()" id="name" style="width:150px;height:25px;"/>&nbsp;&nbsp;&nbsp;&nbsp;<span id="changname"></span></li>
+        	<li>昵称：<input name="uname" type="text" value="秋日晨萱" onchange="updateName()" id="name" style="width:150px;height:25px;"/>&nbsp;&nbsp;&nbsp;&nbsp;<span id="changname"></span></li>
             <li>性别：<input name="sex" type="radio" value="女" checked style="border:0;"> 女&nbsp; <input name="sex" type="radio" value="男" style="border:0;"> 男</li>
             <li>生日：<input name="birth" type="text" id="birth" style="width:150px;height:25px;"/></li>
             <li class="uuu">邮政编码：<input name="ucode" id="ucode" style="width:150px;height:25px;"></li>

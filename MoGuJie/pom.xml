@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.yc</groupId>
@@ -9,13 +8,13 @@
 	<name>vote Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-	<dependency>
-		<!-- 单元测试 -->
-		<groupId>junit</groupId>
-		<artifactId>junit</artifactId>
-		<version>4.12</version>
-		<scope>test</scope>
-	</dependency>
+		<dependency>
+			<!-- 单元测试 -->
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
 		<!-- struts框架 -->
 		<dependency>
 			<groupId>org.apache.struts</groupId>
@@ -103,7 +102,6 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-
 	</dependencies>
 	<build>
 		<finalName>ssm_template</finalName>

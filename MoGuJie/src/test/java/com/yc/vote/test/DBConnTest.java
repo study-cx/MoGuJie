@@ -20,7 +20,7 @@ public class DBConnTest {
 	@Test
 	public void testConn() {
 		Connection con = sqlSessionFactory.openSession().getConnection();
-		assertNotNull("数据库连接失败!!", con);
+		assertNotNull("数据库连接失败!", con);
 	}
 
 }

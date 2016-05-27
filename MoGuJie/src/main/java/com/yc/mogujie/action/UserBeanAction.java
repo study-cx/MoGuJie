@@ -9,38 +9,33 @@ import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.mogujie.entity.UserBean;
-import com.yc.mogujie.entity.UserInfo;
 import com.yc.mogujie.service.UserInfoService;
 
-@Controller("userAction")
-public class UserAction implements ModelDriven<UserInfo>,SessionAware{
-	private UserInfo userInfo;
+@Controller("userBeanAction")
+public class UserBeanAction implements ModelDriven<UserBean>,SessionAware{
+	private UserBean userBean;
 	private Map<String, Object> session;
 	
 	@Autowired
 	private UserInfoService userInfoService;
 	
-	public String login(){
-		LogManager.getLogger().debug(userInfo);
-		return "login";
-	}
-	
-	
-	public String register(){
-		LogManager.getLogger().debug(userInfo);
-		int result=userInfoService.userRegister(userInfo);
-		return  "register";
+	//前台查询用户基本信息
+	public String findBasicInfo(){
+		LogManager.getLogger().debug(userBean);
+		UserBean user=userInfoService.findBasicInfo(userBean.getUname());
+		System.out.println("查询到数据为："+user);
+		return "findBasicSuccess";
 	}
 
 	@Override
-	public UserInfo getModel() {
-		userInfo=new UserInfo();
-		return userInfo;
+	public UserBean getModel() {
+		userBean=new UserBean();
+		return userBean;
 	}
-
 
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session=session;
 	}
+
 }

@@ -5,15 +5,18 @@
 
 <struts>
 
-	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<constant name="struts.devMode" value="true" />
-	
-	 <!-- 把struts的action对象交给spring容器管理 -->
+
+	<!-- 把struts的action对象交给spring容器管理 -->
 	<constant name="struts.objectFactory " value="spring" />
+
 	<package name="default" namespace="/" extends="struts-default">
-		<global-allowed-methods></global-allowed-methods>
-		<action name="hello" class="">
-			<result>/index.jsp</result>
+		<global-allowed-methods>login,findBasicInfo</global-allowed-methods>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<result name="login">/front/index.jsp</result>
+			<result name="register">/front/index.jsp</result>
 		</action>
+
 	</package>
 </struts>

@@ -23,84 +23,113 @@ public class UserInfo {
 
     private int statue;//删除时的状态标志
 
-    public int getUsid() {
-        return usid;
-    }
+    private String obligateone;
 
-    public void setUsid(int usid) {
-        this.usid = usid;
-    }
+    private String obligatetwo;
 
-    public String getUspwd() {
-        return uspwd;
-    }
+	public int getUsid() {
+		return usid;
+	}
 
-    public void setUspwd(String uspwd) {
-        this.uspwd = uspwd == null ? null : uspwd.trim();
-    }
+	public void setUsid(int usid) {
+		this.usid = usid;
+	}
 
-    public String getUname() {
-        return uname;
-    }
+	public String getUspwd() {
+		return uspwd;
+	}
 
-    public void setUname(String uname) {
-        this.uname = uname == null ? null : uname.trim();
-    }
+	public void setUspwd(String uspwd) {
+		this.uspwd = uspwd;
+	}
 
-    public String getUphoto() {
-        return uphoto;
-    }
+	public String getUname() {
+		return uname;
+	}
 
-    public void setUphoto(String uphoto) {
-        this.uphoto = uphoto == null ? null : uphoto.trim();
-    }
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
 
-    public Date getUbirthday() {
-        return ubirthday;
-    }
+	public String getUphoto() {
+		return uphoto;
+	}
 
-    public void setUbirthday(Date ubirthday) {
-        this.ubirthday = ubirthday;
-    }
+	public void setUphoto(String uphoto) {
+		this.uphoto = uphoto;
+	}
 
-    public String getUsemail() {
-        return usemail;
-    }
+	public Date getUbirthday() {
+		return ubirthday;
+	}
 
-    public void setUsemail(String usemail) {
-        this.usemail = usemail == null ? null : usemail.trim();
-    }
+	public void setUbirthday(Date ubirthday) {
+		this.ubirthday = ubirthday;
+	}
 
-    public String getUcode() {
-        return ucode;
-    }
+	public String getUsemail() {
+		return usemail;
+	}
 
-    public void setUcode(String ucode) {
-        this.ucode = ucode == null ? null : ucode.trim();
-    }
+	public void setUsemail(String usemail) {
+		this.usemail = usemail;
+	}
 
-    public String getUsphone() {
-        return usphone;
-    }
+	public String getUcode() {
+		return ucode;
+	}
 
-    public void setUsphone(String usphone) {
-        this.usphone = usphone == null ? null : usphone.trim();
-    }
+	public void setUcode(String ucode) {
+		this.ucode = ucode;
+	}
 
-    public int getUsaccount() {
-        return usaccount;
-    }
+	public String getUsphone() {
+		return usphone;
+	}
 
-    public void setUsaccount(int usaccount) {
-        this.usaccount = usaccount;
-    }
+	public void setUsphone(String usphone) {
+		this.usphone = usphone;
+	}
 
-    public int getStatue() {
-        return statue;
-    }
+	public int getUsaccount() {
+		return usaccount;
+	}
 
-    public void setStatue(int statue) {
-        this.statue = statue;
-    }
+	public void setUsaccount(int usaccount) {
+		this.usaccount = usaccount;
+	}
 
+	public int getStatue() {
+		return statue;
+	}
+
+	public void setStatue(int statue) {
+		this.statue = statue;
+	}
+
+	public String getObligateone() {
+		return obligateone;
+	}
+
+	public void setObligateone(String obligateone) {
+		this.obligateone = obligateone;
+	}
+
+	public String getObligatetwo() {
+		return obligatetwo;
+	}
+
+	public void setObligatetwo(String obligatetwo) {
+		this.obligatetwo = obligatetwo;
+	}
+
+	@Override
+	public String toString() {
+		return "UserInfo [usid=" + usid + ", uspwd=" + uspwd + ", uname="
+				+ uname + ", uphoto=" + uphoto + ", ubirthday=" + ubirthday
+				+ ", usemail=" + usemail + ", ucode=" + ucode + ", usphone="
+				+ usphone + ", usaccount=" + usaccount + ", statue=" + statue
+				+ ", obligateone=" + obligateone + ", obligatetwo="
+				+ obligatetwo + "]";
+	}
 }

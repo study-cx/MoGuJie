@@ -10,8 +10,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>蘑菇街</title>
 <base href="<%=basePath%>">
 <%@ include file="header.jsp" %>
-
-
 </head>
 
 <body>
