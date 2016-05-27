@@ -24,14 +24,14 @@ create table userInfo(
   usphone varchar2(15), --用户联系方式
   usaccount number(10,2),--用户余额
   statue int,--删除时的状态标志
-  obligateone int,--预留字段1
-  obligatetwo int--预留字段2
+  obligateone varchar(50),--预留字段1
+  obligatetwo varchar(50)--预留字段2
 );
 create sequence seq_UserInfo_usid start with 100 increment by 1;
-
-insert into userInfo values(1001,'123','haha','',to_date('2003-03-10','yyyy-mm-dd'),'523525@qq.com','421002',
+select * from userInfo
+insert into userInfo values(seq_UserInfo_usid.nextval,'123','lala','',to_date('2003-03-10','yyyy-mm-dd'),'523525@qq.com','421002',
 '12123333','1000',1,'','');
-insert into userInfo values(1002,'123','lala','',to_date('2008-07-10','yyyy-mm-dd'),'67253278@qq.com','421002',
+insert into userInfo values(seq_UserInfo_usid.nextval,'123','haha','',to_date('2008-07-10','yyyy-mm-dd'),'67253278@qq.com','421002',
 '12123333','1000',1,'','');
 
 --地址表
@@ -47,10 +47,10 @@ create table address(
   adcode int,		--邮编
   adtel varchar2(15),		--电话     
   statue int,--是否为默认地址
-  obligateone int,--预留字段1
-  obligatetwo int--预留字段2
+  obligateone varchar(50),--预留字段1
+  obligatetwo varchar(50)--预留字段2
 );
-
+select * from address
 create sequence seq_address_addressid start with 100 increment by 1;
 insert into address values(seq_address_addressid.nextval,'湖南省','衡阳市','珠晖区','衡花路18号',120,'陈烜',45646,'15674785546',1,1,1);
 insert into address values(seq_address_addressid.nextval,'湖南省','岳阳市','珠晖区','衡花路18号',120,'菜菜',45646,'15674785546',1,'','');
@@ -58,9 +58,10 @@ insert into address values(seq_address_addressid.nextval,'湖南省','岳阳市'
 create table categoryone(
   categoryidone int primary key,--商品类型Id
   categoryTypeone varchar2(100),--商品类型   
-  obligateone int,--状态
-  obligatetwo int--预留字段2
-);
+  obligateone varchar(50),--状态
+  obligatetwo varchar(50)--预留字段2
+); 
+select * from categoryone
 create sequence seq_categorys_categoryidone start with 100 increment by 1;
 insert into categoryone values(seq_categorys_categoryidone.nextval,'上衣',1,0);
 --2级分类
@@ -69,8 +70,8 @@ create table categorytwo(
   categoryidone int--商品类型，引用外键
 	      constraint FK_categorytwo_categoryidone references categoryone(categoryidone), 
   categoryTypetwo varchar2(100),--商品类型   
-  obligateone int,--状态
-  obligatetwo int--预留字段2
+  obligateone varchar(50),--状态
+  obligatetwo varchar(50)--预留字段2
 );
 
 create sequence seq_categorys_categoryidtwo start with 100 increment by 1;
@@ -82,8 +83,8 @@ create table categorythree(
   categoryidtwo int--商品类型，引用外键
 	      constraint FK_categorythree_categoryidtwo references categorytwo(categoryidtwo), 
   categoryTypethree varchar2(100),--商品类型   
-  obligateone int,--状态
-  obligatetwo int--预留字段2
+  obligateone varchar(50),--状态
+  obligatetwo varchar(50)--预留字段2
 );
 create sequence seq_categorys_categoryidthree start with 100 increment by 1;
 insert into categorythree values(seq_categorys_categoryidthree.nextval,101,'圆领',1,0);
@@ -98,8 +99,8 @@ create table product(
 	      constraint FK_Product_categoryidthree references categorythree(categoryidthree),
 	 prophoto varchar2(100),--图片地址
 	 pstatue int,--商品状态  可用与不可用
-	 obligateone int,--预留字段1
-	 obligatetwo int--预留字段2
+	 obligateone varchar(50),--预留字段1
+	 obligatetwo varchar(50)--预留字段2
 );
 create sequence seq_product_proid start with 100 increment by 1;
 
@@ -117,8 +118,8 @@ create table detail(
 	pcolor varchar2(100),--颜色图片地址
 	color varchar2(20),--颜色
 	proNumber int,--库存
-    obligateone int,--预留字段1s
-    obligatetwo int--预留字段2
+    obligateone varchar(50),--预留字段1s
+    obligatetwo varchar(50)--预留字段2
 );
 
 create sequence seq_detail_deid start with 100 increment by 1;
@@ -132,8 +133,8 @@ create table userOrder(
  ostatus int,--订单状态  0不可用，1未付款，2已付款
  addressid int
 	 constraint FK_userOrder_addressid references address(addressid),
- obligateone int,--预留字段1
- obligatetwo int--预留字段2
+ obligateone varchar(50),--预留字段1
+ obligatetwo varchar(50)--预留字段2
 );
 
 create sequence seq_userOrder_orderid start with 100 increment by 1;
@@ -153,8 +154,8 @@ create table  orderdetail(
  onumber int,--数量
  buyprice number(8,2),--购买价
  ostatus int,--状态 可用与不可用
- obligateone int,--预留字段1
- obligatetwo int--预留字段2	
+ obligateone varchar(50),--预留字段1
+ obligatetwo varchar(50)--预留字段2	
 ); 
 select *from orderdetail;
 create sequence seq_orderdetail_orid start with 100 increment by 1;
@@ -167,8 +168,8 @@ create table advertise(
 	aid int primary key,--广告位id
 	asize varchar2(100),--图片尺寸
  	weizhi varchar2(100),--位置
- 	obligateone int,--预留字段1
- 	obligatetwo int--预留字段2
+ 	obligateone varchar(50),--预留字段1
+ 	obligatetwo varchar(50)--预留字段2
 );
 insert into advertise values(1,'100*100','',1,1)
 create sequence seq_advertise_aid start with 100 increment by 1;
@@ -184,8 +185,8 @@ create table guanggao(
   	weight int,--权重
 	click int,--点击次数
 	linkaddress varchar2(100),--连接地址
- obligateone int,--预留字段1
- obligatetwo int--预留字段2
+ obligateone varchar(50),--预留字段1
+ obligatetwo varchar(50)--预留字段2
 );
 create sequence seq_guanggao_gid start with 100 increment by 1;
 insert into guanggao values(seq_guanggao_gid.nextval,1,1,'','','',1,1,'',1,1)
@@ -201,8 +202,8 @@ create table feedback(
     constraint FK_fedbook_proid references userOrder(orderid),   
 	content clob,
 	fdate date,
-  obligateone int,--预留字段1
-  obligatetwo int--预留字段2
+  obligateone varchar(50),--预留字段1
+  obligatetwo varchar(50)--预留字段2
 );
 
 create sequence seq_feedback_fid start with 100 increment by 1;
@@ -219,8 +220,8 @@ create table cart(
  csize varchar2(30),
  pcolor varchar2(100),
  snumber int,--商品数量
- obligateone int,--预留字段1
- obligatetwo int--预留字段2
+ obligateone varchar(50),--预留字段1
+ obligatetwo varchar(50)--预留字段2
 );
 insert into cart values(seq_cart_cid.nextval,138,120,'灰色','X','../uploadPic/1452755091682608.jpg',2,1,1);
 insert into cart values(seq_cart_cid.nextval,138,1001,'灰','X','../uploadPic/1452755091682608.jpg',2,1,1);
@@ -233,8 +234,8 @@ create table active(
 	actives date,--开始时间
 	activeo date, --结束时间
 	activeType varchar2(100),--活动类型
-	obligateone int,--预留字段1
-	obligatetwo int--预留字段2
+	obligateone varchar(50),--预留字段1
+	obligatetwo varchar(50)--预留字段2
 );
 create sequence seq_active_activeId start with 100 increment by 1;
 
@@ -246,8 +247,8 @@ create table activeInfo(
 	proid int--商品表外键
 		constraint FK_activeInfo_proid references product(proid),
 	discount int, --折扣
-	obligateone int,--预留字段1
-	obligatetwo int--预留字段2
+	obligateone varchar(50),--预留字段1
+	obligatetwo varchar(50)--预留字段2
 	
 );
 create sequence seq_activeInfo_activeInfo start with 100 increment by 1;

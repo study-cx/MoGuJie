@@ -5,8 +5,7 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <property name="java-output-path" value="/vote/target/classes"/>
-        <property name="context-root" value="ssm_template"/>
+        <property name="context-root" value="MoGuJie"/>
     </wb-module>
 </project-modules>

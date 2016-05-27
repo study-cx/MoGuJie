@@ -21,9 +21,9 @@ public class Address {
 
     private int statue;
 
-    private int obligateone;
+    private String obligateone;
 
-    private int obligatetwo;
+    private String obligatetwo;
 
     public int getAddressid() {
         return addressid;
@@ -105,19 +105,30 @@ public class Address {
         this.statue = statue;
     }
 
-    public int getObligateone() {
-        return obligateone;
-    }
+	public String getObligateone() {
+		return obligateone;
+	}
 
-    public void setObligateone(int obligateone) {
-        this.obligateone = obligateone;
-    }
+	public void setObligateone(String obligateone) {
+		this.obligateone = obligateone;
+	}
 
-    public int getObligatetwo() {
-        return obligatetwo;
-    }
+	public String getObligatetwo() {
+		return obligatetwo;
+	}
 
-    public void setObligatetwo(int obligatetwo) {
-        this.obligatetwo = obligatetwo;
-    }
+	public void setObligatetwo(String obligatetwo) {
+		this.obligatetwo = obligatetwo;
+	}
+
+	@Override
+	public String toString() {
+		return "Address [addressid=" + addressid + ", province=" + province
+				+ ", city=" + city + ", street=" + street + ", usaddress="
+				+ usaddress + ", usid=" + usid + ", adname=" + adname
+				+ ", adcode=" + adcode + ", adtel=" + adtel + ", statue="
+				+ statue + ", obligateone=" + obligateone + ", obligatetwo="
+				+ obligatetwo + "]";
+	}
+
 }

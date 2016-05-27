@@ -162,17 +162,7 @@ function edit(aa){
 }
 
 function really1(){
-	$("#center1").css("display","none");
-	var province=$.trim($("#province").val());
-	var city=$.trim($("#city").val());
-	var street=$.trim($("#area").val());
-	var usaddress=$.trim($("#street1").val());
-	var adcode=$.trim($("#youbian1").val());
-	var adname=$.trim($("#uname1").val());
-	var adtel=$.trim($("#tel1").val());
-	
-	
-	$.post("addressServlet?d="+new Date(),{op:"updateAddrInfo",addressid:addressid,province:province,city:city,street:street,adcode:adcode,usaddress:usaddress,adname:adname,adtel:adtel},function(data){
+	$.post("address_addr",function(data){
 		if(parseInt($.trim(data))){
 			alert("修改成功...");
 			

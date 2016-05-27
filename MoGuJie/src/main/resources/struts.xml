@@ -12,8 +12,9 @@
 	<constant name="struts.objectFactory " value="spring" />
 
 	<package name="default" namespace="/" extends="struts-default">
-		<action name="hello">
-			<result>/index.jsp</result>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<result name="addSuccess">front/addSuccess.jsp</result>
+			<result name="addFail">front/addFail.jsp</result>
 		</action>
 	</package>
 </struts>
