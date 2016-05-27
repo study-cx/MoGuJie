@@ -14,6 +14,14 @@ public class UserBean implements Serializable{
 	private String uphoto;//头像
 	private String province;//省份
 	private String city;//市
+	private String usex;//性别
+	
+	public String getUsex() {
+		return usex;
+	}
+	public void setUsex(String usex) {
+		this.usex = usex;
+	}
 	public String getUname() {
 		return uname;
 	}
@@ -67,6 +75,6 @@ public class UserBean implements Serializable{
 		return "UserBean [uname=" + uname + ", ubirthday=" + ubirthday
 				+ ", ucode=" + ucode + ", usemail=" + usemail + ", usphone="
 				+ usphone + ", uphoto=" + uphoto + ", province=" + province
-				+ ", city=" + city + "]";
+				+ ", city=" + city + ", usex=" + usex + "]";
 	}
 }

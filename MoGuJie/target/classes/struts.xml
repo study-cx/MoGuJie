@@ -11,12 +11,15 @@
 	<!-- 把struts的action对象交给spring容器管理 -->
 	<constant name="struts.objectFactory " value="spring" />
 
-	<package name="default" namespace="/" extends="struts-default">
-		<global-allowed-methods>login,findBasicInfo</global-allowed-methods>
+	<package name="default" namespace="/" extends="json-default">
+		<global-allowed-methods>login,register,findBasicInfo</global-allowed-methods>
 		<action name="*_*" class="{1}Action" method="{2}">
 			<result name="login">/front/index.jsp</result>
 			<result name="register">/front/index.jsp</result>
+			<result type="json">
+				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
+				<param name="root">userInfo</param>
+			</result>
 		</action>
-
 	</package>
 </struts>

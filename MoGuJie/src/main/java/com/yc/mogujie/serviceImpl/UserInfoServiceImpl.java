@@ -15,7 +15,6 @@ public class UserInfoServiceImpl implements UserInfoService{
 	UserInfoMapper userInfoMapper;
 	@Override
 	public int userRegister(UserInfo userInfo) {
-		
 		return userInfoMapper.userRegister(userInfo);
 	}
 	
@@ -23,5 +22,9 @@ public class UserInfoServiceImpl implements UserInfoService{
 	public UserBean findBasicInfo(String uname) {
 		return userInfoMapper.findBasicInfo(uname);
 	}
-
+	
+	@Override
+	public UserInfo login(UserInfo userInfo) {
+		return userInfoMapper.login(userInfo);
+	}
 }

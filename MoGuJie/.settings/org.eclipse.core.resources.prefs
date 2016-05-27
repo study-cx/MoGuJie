@@ -1,4 +1,9 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=refs/remotes/origin/master
 eclipse.preferences.version=1
 encoding//src/main/java/com/yc/mogujie/entity/UserInfo.java=UTF-8
+encoding//src/main/webapp/back/admin.html=UTF-8
+encoding//src/main/webapp/back/orders.html=UTF-8
 encoding//src/test/java/com/yc/vote/test/DBConnTest.java=UTF-8
 encoding/<project>=UTF-8

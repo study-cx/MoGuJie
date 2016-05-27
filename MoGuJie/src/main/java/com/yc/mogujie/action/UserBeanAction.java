@@ -1,9 +1,6 @@
 package com.yc.mogujie.action;
 
-import java.util.Map;
-
 import org.apache.logging.log4j.LogManager;
-import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -12,19 +9,23 @@ import com.yc.mogujie.entity.UserBean;
 import com.yc.mogujie.service.UserInfoService;
 
 @Controller("userBeanAction")
-public class UserBeanAction implements ModelDriven<UserBean>,SessionAware{
+public class UserBeanAction implements ModelDriven<UserBean>{
 	private UserBean userBean;
-	private Map<String, Object> session;
+	private UserBean userInfo;
 	
+	public UserBean getUserInfo() {
+		return userInfo;
+	}
+
 	@Autowired
 	private UserInfoService userInfoService;
 	
 	//前台查询用户基本信息
 	public String findBasicInfo(){
 		LogManager.getLogger().debug(userBean);
-		UserBean user=userInfoService.findBasicInfo(userBean.getUname());
-		System.out.println("查询到数据为："+user);
-		return "findBasicSuccess";
+		userInfo=userInfoService.findBasicInfo(userBean.getUname());
+		System.out.println("查询到数据为："+userInfo);
+		return "success";
 	}
 
 	@Override
@@ -32,10 +33,4 @@ public class UserBeanAction implements ModelDriven<UserBean>,SessionAware{
 		userBean=new UserBean();
 		return userBean;
 	}
-
-	@Override
-	public void setSession(Map<String, Object> session) {
-		this.session=session;
-	}
-
 }
