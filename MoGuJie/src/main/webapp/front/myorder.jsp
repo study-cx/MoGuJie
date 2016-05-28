@@ -9,6 +9,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>我的订单</title>
 <base href="<%=basePath%>">
 <%@include file="header.jsp" %>
+
+<script type="text/javascript">
+	var op="${param.op}";
+	console.info(op);
+	if(op=="userInfo"){
+		alert("修改成功");
+	}
+</script>
 </head>
 
 <body >
@@ -26,8 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <li onmousemove="change(this)" onmouseout="show(this)" onclick="switchover(this,1)"><p><a>全部订单</a></p></li>
                 <li onmousemove="change(this)" onmouseout="show(this)" onclick="switchover(this,2)"><p><a>待付款</a></p></li>
                 <li onmousemove="change(this)" onmouseout="show(this)" onclick="switchover(this,3)"><p><a>待评价</a></p></li>
-                <!--<li onmousemove="change(this)" onmouseout="show(this)" onclick="switchover(this,4)"><p><a></a></p></li>-->
-                <li onmousemove="change(this)" onmouseout="show(this)" onclick="switchover(this,5)"><p><a>退货退款</a></p></li><br/>
+                <br/>
                 <li><span class="tit3">..............................................</span></li>
                 <!--
                 <h3>我的钱包</h3>
@@ -96,51 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tr>
         </table>
     </div>
-    <div id="content_4" class="content" style="display:none;">
-    	<table class="title">
-        	<tr>
-        	<td class="shop">商品</td>
-            <td class="tprice">单价(元)</td>
-            <td class="tnum">数量</td>
-            <td class="shouhou">售后</td>
-            <td class="tfu">实付款(元)</td>
-            <td class="statue">交易状态</td>
-            <td class="caozuo">操作</td>
-            </tr>
-        </table>
-        <table class="dingdanInfo">
-        	<tr class="ding1">
-            	<td>订单编号：973529451355</td>
-                <td id="dtime">成交时间：2015-10-31 19:27:18</td>
-                <td id="dhouse"><a>店铺：yoyo吾裳</a></td>
-                <td id="contact"><a>联系我们</a></td>
-            </tr>
-            <tr class="dingdan1" id="dingdan1">
-            	<td><img src="front/images/order.jpg" style="width:100px;height:100px;"/></td>
-                <td>
-                    <p><a>秋冬新款鹿皮绒机车毛呢外套</a><a>[交易快照]</a></p>
-                    <p>颜色：浅蓝</p>
-                    <p>尺码：S</p>
-                </td>
-                <td>
-                	<p id="yprice">187.00</p>
-                    <p id="xprice">130.90</p>
-                </td>
-                <td id="number">1</li>
-                <td id="youf">
-                	<p class="n1">￥105.00</p>
-                    <p class="n2">(包邮)</p>
-                </td>
-                <td id="xiang">
-                	<p class="x1"><a href="front/pingjia.jsp">待评价</a></p>
-                    <p class="x2"><a>订单详情</a></p>
-                </td>
-                <td id="del">
-                	<a href="javascript:deleteInfo('dingdan1')">删除订单</a>
-                </td>
-            </tr>
-        </table>
-    </div>
+    
     <div id="content_5" class="content" style="display:none;">
     	<a name="content_5"></a>
     	<table class="title">
@@ -206,7 +169,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    </ul>
 	</div>
     <%@include file="UpdatePwd.jsp" %>
-
-
 </body>
 </html>
