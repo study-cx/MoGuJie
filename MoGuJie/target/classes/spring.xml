@@ -27,13 +27,14 @@
 		
 	<!-- 配制mybatis的会话工厂对象 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
-		p:dataSource-ref="dataSource"  p:mapperLocations="classpath:mapper/*Mapper.xml"
+		p:dataSource-ref="dataSource"
+		p:mapperLocations="classpath:mapper/*Mapper.xml" 
 		p:typeAliasesPackage="com.yc.mogujie.entity"/>
 
 	<!-- 配制映射接口 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
-		p:sqlSessionFactoryBeanName="sqlSessionFactory" p:basePackage="com.yc.mogujie.mapper" />
-
+		p:sqlSessionFactoryBeanName="sqlSessionFactory" 
+		p:basePackage="com.yc.mogujie.mapper" />
 
 	<!-- 1.配制事务管理器 -->
 	<bean id="transactionManager"
@@ -42,6 +43,7 @@
 		
 	<!-- 2.配制事务关联 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
+
 	
 	<!-- 配置邮件发送bean -->
 	<bean id="JavaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
@@ -58,3 +60,6 @@
 		</property>
 	</bean>
 </beans>
+
+
+

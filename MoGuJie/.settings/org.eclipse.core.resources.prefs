@@ -1,5 +1,17 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=refs/remotes/origin/master
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//sql/mogujie.sql=UTF-8
 encoding//src/main/java/com/yc/mogujie/action/UserAction.java=UTF-8
+=======
+encoding//src/main/java/com/yc/mogujie/entity/UserInfo.java=UTF-8
+encoding//src/main/webapp/back/admin.html=UTF-8
+>>>>>>> refs/remotes/origin/master
 encoding//src/main/webapp/back/orders.html=UTF-8
+<<<<<<< HEAD
+=======
+encoding//src/test/java/com/yc/vote/test/DBConnTest.java=UTF-8
+>>>>>>> refs/remotes/origin/master
 encoding/<project>=UTF-8
