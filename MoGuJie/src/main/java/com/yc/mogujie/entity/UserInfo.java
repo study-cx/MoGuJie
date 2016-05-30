@@ -143,5 +143,4 @@ public class UserInfo {
 				+ obligateone + ", obligatetwo=" + obligatetwo + "]";
 	}
 
-	
 }

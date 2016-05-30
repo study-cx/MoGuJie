@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.yc</groupId>
-	<artifactId>ssm_template</artifactId>
+	<artifactId>MoGuJie</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>vote Maven Webapp</name>
@@ -65,6 +65,8 @@
 			<artifactId>struts2-spring-plugin</artifactId>
 			<version>2.5-BETA3</version>
 		</dependency>
+
+		<!-- 引入oracle数据库驱动坐标 -->
 		<!--oracle 数据库驱动包 -->
 		<dependency>
 			<groupId>com.oracle</groupId>
@@ -73,6 +75,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- 数据库连接池DBCP的包 -->
 		<!-- 数据库连接池的包 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -91,7 +94,7 @@
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.3.1</version>
+			<version>3.3.0</version>
 		</dependency>
 
 		<dependency>
@@ -120,6 +123,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>ssm_template</finalName>
+		<finalName>MoGuJie</finalName>
 	</build>
 </project>

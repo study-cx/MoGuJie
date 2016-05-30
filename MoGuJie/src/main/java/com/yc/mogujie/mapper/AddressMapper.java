@@ -1,18 +1,22 @@
 package com.yc.mogujie.mapper;
 
 import com.yc.mogujie.entity.Address;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 public interface AddressMapper {
-    int deleteByPrimaryKey(BigDecimal addressid);
 
-    int insert(Address record);
+	int insertAddr(Address address);
 
-    int insertSelective(Address record);
+	List<Address> findAddr();
 
-    Address selectByPrimaryKey(BigDecimal addressid);
+	int updateAddr(Address address);
 
-    int updateByPrimaryKeySelective(Address record);
+	Address getAddressById(int addressid);
 
-    int updateByPrimaryKey(Address record);
+	int deleteAddr(int addressid);
+
+	int setMoren(int addressid);
+
 }

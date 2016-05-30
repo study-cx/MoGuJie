@@ -37,7 +37,7 @@ public class AdminAction implements ModelDriven<Admin>, SessionAware {
 	}
 
 	@Override
-	public void setSession(Map<String, Object> arg0) {
+	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
 
