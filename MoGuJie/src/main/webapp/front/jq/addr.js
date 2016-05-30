@@ -92,13 +92,13 @@ function quxiao(){
 	$("#uname").val("");
 	$("#tel").val("");
 }
-
+/*
 function moren(){
 	$("#lala").html("默认地址");
 	$("#lala").css("color","#2F63CF");
 	$("#dzxq").css("background","#FDFBEA");
 }
-
+*/
 function addaddr(){
 	$("#center2").css("display","block");
 	$("#center1").css("display","none");
@@ -116,121 +116,44 @@ function reset2(){
 }
 
 //编辑
-var addressid;
+var addressids;
 function edit(aa){
-/*	$("#center1").css("display","block");
-	$("#province").val($("#dzxqprovince").html());
-	$("#city").val($("#dzxqcity").html());
-	$("#area").val($("#dzxqqu").html());
-	$("#youbian1").val($("#dzxqcode").html());
-	$("#street1").val($("#dzxqstreet").html());
-	$("#uname1").val($("#dzxqname").html());
-	$("#tel1").val($("#dzxqtel").html());
-	
-	addressid=aa;
-	var sheng=$("#dzxqprovince").text();
-	var shi=$("#dzxqcity").text();
-	var qu=$("#dzxqqu").text();
-	
-	var s1=$("#province").find("option");
-	var s2=$("#city").find("option");
-	var s3=$("#area").find("option");
-	
-	$.each(s1,function(i1) {
-		if(sheng == $(s1[i1]).val()) {
-			$(s1[i1]).attr("selected","selected");
-		}
-	});
-	$("#myshi").css("display","block").text(shi).attr("selected","selected");
-	$("#myqu").css("display","block").text(qu).attr("selected","selected");
-	*/
 	$("#center1").css("display","block");
 	$("#center2").css("display","none");
-
-	addressid=aa;
-	$.post("addressServlet?d="+new Date(),{op:"getAddrInfo",addressid:addressid},function(data){
-		var address=data.getInfo;
-		//alert(data.getInfo);
-		$("#sheng").html(address.province);
-		$("#shi").html(address.city);
-		$("#qu").html(address.street);
-		$("#youbian1").val(address.adcode);
-		$("#street1").val(address.usaddress);
-		$("#uname1").val(address.adname);
-		$("#tel1").val(address.adtel);
+	addressids=aa;
+	
+	$.post("address_edit.action",{addressids:addressids},function(data){
+		
+		$("#sheng").html(data.province);
+		$("#shi").html(data.city);
+		$("#qu").html(data.street);
+		$("#youbian1").val(data.adcode);
+		$("#street1").val(data.usaddress);
+		$("#uname1").val(data.adname);
+		$("#tel1").val(data.adtel);
 	},"json");
-}
-
-function really1(){
-	$.post("address_addr",function(data){
-		if(parseInt($.trim(data))){
-			alert("修改成功...");
-			
-			/*$("#dzxqprovince").html(province);
-			$("#dzxqcity").html(city);
-			$("#dzxqqu").html(street);
-			$("#dzxqcode").html(adcode);
-			$("#dzxqstreet").html(usaddress);
-			$("#dzxqname").html(adname);
-			$("#dzxqtel").html(adtel);
-			*/
-		window.location.href="front/addr.jsp";
-			/*$("#youbian1").val("");
-			$("#street1").val("");
-			$("#uname1").val("");
-			$("#tel1").val("");*/
-		}else{
-			alert("修改失败...");
-		}
-	});	
-	
-}
-
-
-function really2(){
-	$("#center2").css("display","none");
-	/*$("#dzxqprovince").val($("#s1").html());
-	$("#dzxqcity").val($("#s2").html());
-	$("#dzxqqu").val($("#s3").html());
-	$("#dzxqcode").val($("#youbian").html());
-	$("#dzxqstreet").val($("#street").html());
-	$("#dzxqname").val($("#uname").html());
-	$("#dzxqtel").val($("#tel").html());*/
-	
-	
-	
-	
-	
-	var province=$.trim($("#s1").val());
-	var city=$.trim($("#s2").val());
-	var street=$.trim($("#s3").val());
-	var usaddress=$.trim($("#street").val());
-	var adcode=$.trim($("#youbian").val());
-	var adname=$.trim($("#uname").val());
-	var adtel=$.trim($("#tel").val());
-	
-	console.info(adtel);
-	$.post("addressServlet?d="+new Date(),{op:"addAddrInfo",province:province,city:city,street:street,usaddress:usaddress,adcode:adcode,adname:adname,adtel:adtel},function(data){
-		if(parseInt($.trim(data))){
-			alert("添加成功...");
-			window.location.href="front/addr.jsp";
 		
-		}else{
-			alert("添加失败...");
-		}
-	});
 }
 
-function detele(addressid){
-	$.post("addressServlet?d="+new Date(),{op:"delAddrInfo",addressid:addressid},function(data){
-		if(data==1){
+
+function deletes(addressid){
+	$.post("address_delete.action",{addressid:addressid},function(item){
+		
 			alert("删除成功...");
-			window.location.href="front/addr.jsp";
+			location.href="front/addr.jsp";
 		
-		}else{
-			alert("删除失败...");
-		}
 	});
+}
+
+
+function moren(addressid){
+	$.post("address_moren.action",{addressid:addressid},function(data){
+		$("#lala").html("默认地址");
+		$("#lala").css("color","#2F63CF");
+		$("#dzxq").css("background","#FDFBEA");
+	});
+	
+	
 }
 
 

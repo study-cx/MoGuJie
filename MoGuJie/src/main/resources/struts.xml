@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC
-	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
-	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
 
@@ -11,10 +11,25 @@
 	 <!-- 把struts的action对象交给spring容器管理 -->
 	<constant name="struts.objectFactory " value="spring" />
 
-	<package name="default" namespace="/" extends="struts-default">
+	<package name="default" namespace="/" extends="json-default">
+		<global-allowed-methods>login,register,addr,list,update,edit,moren</global-allowed-methods>
+		
 		<action name="*_*" class="{1}Action" method="{2}">
-			<result name="addSuccess">front/addSuccess.jsp</result>
+			<result name="addrSuccess">front/addr.jsp</result>
 			<result name="addFail">front/addFail.jsp</result>
+			<result name="list">front/addr.jsp</result>
+			<result name="login">/front/index.jsp</result>
+			<result name="register">/front/index.jsp</result>
+			
+			<result type="json">
+				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
+				<param name="root">addrList</param>
+			</result>
+			<result name="edit" type="json">
+				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
+				<param name="root">edit</param>
+			</result>
+			
 		</action>
 	</package>
 </struts>

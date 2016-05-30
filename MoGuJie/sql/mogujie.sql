@@ -34,6 +34,11 @@ insert into userInfo values(seq_UserInfo_usid.nextval,'123','lala','',to_date('2
 insert into userInfo values(seq_UserInfo_usid.nextval,'123','haha','',to_date('2008-07-10','yyyy-mm-dd'),'67253278@qq.com','421002',
 '12123333','1000',1,'','');
 
+  create user MoGuJie identified by a
+  grant dba to MoGuJie
+
+ 
+
 --地址表
 create table address(
   addressid int primary key,--id
@@ -46,14 +51,15 @@ create table address(
   adname varchar2(50),--真实姓名
   adcode int,		--邮编
   adtel varchar2(15),		--电话     
-  statue int,--是否为默认地址
+  statue int,--是否为默认地址   		一般设为1, 0表示默认地址
   obligateone varchar(50),--预留字段1
   obligatetwo varchar(50)--预留字段2
 );
 select * from address
+delete from address
 create sequence seq_address_addressid start with 100 increment by 1;
-insert into address values(seq_address_addressid.nextval,'湖南省','衡阳市','珠晖区','衡花路18号',120,'陈烜',45646,'15674785546',1,1,1);
-insert into address values(seq_address_addressid.nextval,'湖南省','岳阳市','珠晖区','衡花路18号',120,'菜菜',45646,'15674785546',1,'','');
+insert into address values(seq_address_addressid.nextval,'湖南省','衡阳市','珠晖区','衡花路18号',100,'陈烜',45646,'15674785546',1,'','');
+insert into address values(seq_address_addressid.nextval,'湖南省','岳阳市','珠晖区','衡花路18号',100,'菜菜',45646,'15674785546',1,'','');
 --商品分类表首级
 create table categoryone(
   categoryidone int primary key,--商品类型Id
@@ -74,9 +80,12 @@ create table categorytwo(
   obligatetwo varchar(50)--预留字段2
 );
 
-create sequence seq_categorys_categoryidtwo start with 100 increment by 1;
-insert into categorytwo values(seq_categorys_categoryidtwo.nextval,100,'短袖',1,0)
-select *from categorytwo
+  create sequence seq_categorys_categoryidtwo start with 100 increment by 1;
+  insert into categorytwo values(seq_categorys_categoryidtwo.nextval,100,'����',1,0)
+  select *from categorytwo
+  
+  
+  
 --3级分类
 create table categorythree(
   categoryidthree int primary key,--商品类型Id
@@ -89,6 +98,7 @@ create table categorythree(
 create sequence seq_categorys_categoryidthree start with 100 increment by 1;
 insert into categorythree values(seq_categorys_categoryidthree.nextval,101,'圆领',1,0);
 
+ 
 --商品表，主要用来保存管理员上传的商品信息
 create table product(
 	 proid int primary key,--商品id
@@ -104,9 +114,11 @@ create table product(
 );
 create sequence seq_product_proid start with 100 increment by 1;
 
-insert into product values(seq_product_proid.nextval,'毛衣','羊羊羊毛衣','99.9',101,'',1,'','');
+  insert into product values(seq_product_proid.nextval,'ë��','������ë��','99.9',101,'',1,'','');
 
-insert into product values(seq_product_proid.nextval,'毛衣','羊羊羊毛衣','99.9',100,'',1,'','');
+  insert into product values(seq_product_proid.nextval,'ë��','������ë��','99.9',100,'',1,'','');
+
+ 
 
 --商品详细表
 create table detail(
@@ -122,7 +134,8 @@ create table detail(
     obligatetwo varchar(50)--预留字段2
 );
 
-create sequence seq_detail_deid start with 100 increment by 1;
+  create sequence seq_detail_deid start with 100 increment by 1;
+
 
 --用户订单表，主要用来保存用户订单信息
 create table userOrder(
@@ -137,10 +150,13 @@ create table userOrder(
  obligatetwo varchar(50)--预留字段2
 );
 
-create sequence seq_userOrder_orderid start with 100 increment by 1;
-insert into userOrder values(seq_userOrder_orderid.nextval,260,to_date('2015-03-10','yyyy-mm-dd'),2,181,'','');
-insert into userOrder values(seq_userOrder_orderid.nextval,240,to_date('2015-03-10','yyyy-mm-dd'),1,141,'','');
-insert into userOrder values(seq_userOrder_orderid.nextval,240,to_date('2016-01-10','yyyy-mm-dd'),0,141,'','');
+  create sequence seq_userOrder_orderid start with 100 increment by 1;
+  insert into userOrder values(seq_userOrder_orderid.nextval,260,to_date('2015-03-10','yyyy-mm-dd'),2,181,'','');
+  insert into userOrder values(seq_userOrder_orderid.nextval,240,to_date('2015-03-10','yyyy-mm-dd'),1,141,'','');
+  insert into userOrder values(seq_userOrder_orderid.nextval,240,to_date('2016-01-10','yyyy-mm-dd'),0,141,'','');
+
+
+
 
 --用户订单详细表
 create table  orderdetail(
@@ -162,6 +178,49 @@ create sequence seq_orderdetail_orid start with 100 increment by 1;
 insert into orderdetail values(seq_orderdetail_orid.nextval,128,102,1,'199.9',1,'','');
 insert into orderdetail values(seq_orderdetail_orid.nextval,128,102,100,1,'199.9',1,'','');
 insert into orderdetail values(seq_orderdetail_orid.nextval,123,100,1,'199.9',1,'','');
+
+  --���λ��
+  create table advertise(
+    aid int primary key,--���λid
+    asize varchar2(100),--ͼƬ�ߴ�
+     weizhi varchar2(100),--λ��
+     obligateone varchar2(40),--Ԥ���ֶ�1
+    obligatetwo varchar2(40)--Ԥ���ֶ�2
+  );
+  insert into advertise values(1,'100*100','',1,1)
+  create sequence seq_advertise_aid start with 100 increment by 1;
+  --����
+  create table guanggao(
+    gid int primary key,--�����
+    aid int
+        constraint FK_guanggao_aid references advertise(aid),--���λid
+    ggrade int,
+    gPhoto varchar2(100),--ͼƬ��ַ
+    gdates date,--��濪ʼʱ��
+    gdateo date,--������ʱ��
+      weight int,--Ȩ��
+    click int,--�������
+    linkaddress varchar2(100),--���ӵ�ַ
+    obligateone varchar2(40),--Ԥ���ֶ�1
+    obligatetwo varchar2(40)--Ԥ���ֶ�2
+  );
+  create sequence seq_guanggao_gid start with 100 increment by 1;
+  insert into guanggao values(seq_guanggao_gid.nextval,1,1,'','','',1,1,'',1,1)
+  select * from guanggao order by weight desc,gdates desc
+  --��һ���
+  create table feedback(
+    fid int primary key,--�������
+    usid int --�û������
+      constraint FK_fedbook_usid references userInfo(usid),
+    orderid int--���������
+      constraint FK_fedbook_orderid references userOrder(orderid),
+    proid int--��Ʒ��
+      constraint FK_fedbook_proid references userOrder(orderid),   
+    content clob,
+    fdate date,
+    obligateone varchar2(40),--Ԥ���ֶ�1
+    obligatetwo varchar2(40)--Ԥ���ֶ�2
+  );
 
 --广告位表
 create table advertise(
@@ -206,8 +265,28 @@ create table feedback(
   obligatetwo varchar(50)--预留字段2
 );
 
-create sequence seq_feedback_fid start with 100 increment by 1;
+  create sequence seq_feedback_fid start with 100 increment by 1;
 
+
+  --�û����ﳵ�?��Ҫ���������û�������Ʒʱ�Ĺ��ﳵ��Ʒ��Ϣ
+  create table cart(
+   cid int primary key,
+   proid int--��Ʒ�����
+       constraint FK_cart_proid references product(proid),
+   usid int--�û������
+       constraint FK_carts_usid references userInfo(usid),
+   --listprice number(8,2),--��Ʒ�۸�
+   color varchar2(30),
+   csize varchar2(30),
+   pcolor varchar2(100),
+   snumber int,--��Ʒ����
+    obligateone varchar2(40),--Ԥ���ֶ�1
+    obligatetwo varchar2(40)--Ԥ���ֶ�2
+  );
+  insert into cart values(seq_cart_cid.nextval,138,120,'��ɫ','X','../uploadPic/1452755091682608.jpg',2,1,1);
+  insert into cart values(seq_cart_cid.nextval,138,1001,'��','X','../uploadPic/1452755091682608.jpg',2,1,1);
+
+<<<<<<< HEAD
 --用户购物车表，主要用来保存用户购买商品时的购物车商品信息
 create table cart(
  cid int primary key,

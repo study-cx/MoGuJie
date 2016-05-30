@@ -123,7 +123,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [addressid=" + addressid + ", province=" + province
+		return "Address [\naddressid=" + addressid + ", province=" + province
 				+ ", city=" + city + ", street=" + street + ", usaddress="
 				+ usaddress + ", usid=" + usid + ", adname=" + adname
 				+ ", adcode=" + adcode + ", adtel=" + adtel + ", statue="

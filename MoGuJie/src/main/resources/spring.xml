@@ -34,6 +34,8 @@
 		p:mapperLocations="classpath:mapper/*Mapper.xml"
 		/>
 
+
+
 	<!-- 配制映射接口 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
 		p:sqlSessionFactoryBeanName="sqlSessionFactory" 
@@ -45,6 +47,9 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		p:dataSource-ref="dataSource" />-->
 		
+
 	<!-- 2.配制事务关联
 	<tx:annotation-driven transaction-manager="transactionManager" /> -->
 </beans>
+
+	
