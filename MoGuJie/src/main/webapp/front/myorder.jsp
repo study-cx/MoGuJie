@@ -12,9 +12,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript">
 	var op="${param.op}";
-	console.info(op);
+	//console.info(op);
 	if(op=="userInfo"){
-		alert("修改成功");
+		alert("恭喜您,基本信息修改成功！\n\返回 \r我的订单");
+	}else if(op=="updatePhoto"){
+		alert("恭喜您,头像修改成功！\n\返回 \r我的订单");
 	}
 </script>
 </head>
@@ -31,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="mydiv1"><h3>我的订单</h3><a><span id="bottom1" class="top1" onclick="showJuti1()">&and;</span></a></div>
         <div id="juti1">
             <ul class="order">
-                <li onmousemove="change(this)" onmouseout="show(this)" onclick="switchover(this,1)"><p><a>全部订单</a></p></li>
+                <li onmousemove="change(this)" onmouseout="show(this)" onclick="switchover(this,1)"><p><a></a>全部订单</a></p></li>
                 <li onmousemove="change(this)" onmouseout="show(this)" onclick="switchover(this,2)"><p><a>待付款</a></p></li>
                 <li onmousemove="change(this)" onmouseout="show(this)" onclick="switchover(this,3)"><p><a>待评价</a></p></li>
                 <br/>
@@ -55,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        	
             <span class="tit3">..............................................</span>
 
-            <h3 onclick="switchover(this,6)" id="address"><a href="front/addr.jsp">地址管理</a></h3>
+            <h3 id="address"><a href="front/addr.jsp">地址管理</a></h3>
 
             <span class="tit3">..............................................</span>
             <!--<li><h3>安全设置</h3></li>
@@ -103,7 +105,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tr>
         </table>
     </div>
-    
+    <div id="content_4" class="content" style="display:none;">
+    	<table class="title">
+        	<tr>
+        	<td class="shop">商品</td>
+            <td class="tprice">单价(元)</td>
+            <td class="tnum">数量</td>
+            <td class="tfu">实付款(元)</td>
+            <td class="statue">交易状态</td>
+            <td class="caozuo">操作</td>
+            </tr>
+        </table>
+    </div>
     <div id="content_5" class="content" style="display:none;">
     	<a name="content_5"></a>
     	<table class="title">
@@ -158,15 +171,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="content_9" class="content" style="display:none;"></div>
 
     <%@include file="userInfo.jsp" %>
-    <div id="content_11" class="content" style="display:none;">
-		<a name=""></a>
+    <div id="content_11" class="content" style="display:block;">
 		<p class="touxiang"><span>修改头像</span></p>
-	    <ul>
-	        <li><span class="title1">当前头像：</span><img src="${loginUser.uphoto }" class="tp" id="tp"/><span id="xiugai"></span></li>
-	        <li><span class="title2">上传新头像：</span><input type="text" id="tuname"/><input type="file" id="photo" name="photo" onchange="showTp(this)"/></li>
-	        <li class="con">建议使用正方形的图片，支持JPG、GIF、JPEG格式，100K以内.</li>
-	        <li class="button"><input type="button" value="确定" onclick="UpTp()" style="width:80px; height:30px; background:#F93"/></li>
-	    </ul>
+		<form action="userBean_updateImage.action?usid=${loginUser.usid}&uname=${loginUser.uname}" method="post" enctype="multipart/form-data">
+		    <ul>
+		        <li><span class="title1">当前头像：</span><img src="${loginUser.uphoto }" class="tp" id="tp"/><span id="xiugai"></span></li>
+		        <li><span class="title2">上传新头像：</span>
+		        	<input type="text" id="tuname"/>
+		        	<input type="file" id="photo" name="upload" onchange="showTp(this)" multiple="multiple"/>
+		        </li>
+		        <li class="con">建议使用正方形的图片，支持JPG、GIF、JPEG格式，100K以内.</li>
+		        <li class="button"><input type="submit" value="确定" style="width:80px; height:30px; background:#F93"/></li>
+		    </ul>
+	    </form>
 	</div>
     <%@include file="UpdatePwd.jsp" %>
 </body>

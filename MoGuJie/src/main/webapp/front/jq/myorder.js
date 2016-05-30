@@ -1,6 +1,7 @@
- // JavaScript Document
+//JavaScript Document
 //页面切换
 function switchover(_this,num){
+	var usid="${loginUser.usid}";
 	var div=document.getElementsByClassName('content');
 	for(var i=1;i<=div.length;i++){
 		if(num==i){
@@ -8,93 +9,105 @@ function switchover(_this,num){
 			if(num==2){
 				var str="";
 				$("#content_2").html('');
-				$.post("userOrderServlet?d="+new Date(),{op:"findNoPayOrder"},function(data){
-					$.each(data.orderInfo,function(index,item){
-						var status;
-						if(item.OSTATUS==1){
-							status="未付款";
-						}
-						str+="<table class='dingdanInfo'>";
-						str+="<tr class='ding1'>";
-						str+="<td>订单编号："+item.ORDERID+"</td>";
-						str+="<td id='dtime'>订单时间："+item.DATETIME+"</td>";
-						str+="<td id='dhouse'><a>店铺：yoyo吾裳</a></td>";
-						str+="<td id='contact'><a>联系我们</a></td>";
-						str+="</tr>";
-						str+="<tr class='dingdan1' id='dingdan1'>";
-						str+="<td><img src='"+item.PROPHOTO+"' style='width:100px;height:100px;'/></td>";
-						str+="<td>";
-						str+="<p><a>"+item.PROCONTENT+"</a><a>[交易快照]</a></p>";
-						str+="<p>颜色："+item.COLOR+"</p>";
-						str+="<p>尺码："+item.PSIZE+"</p>";
-						str+="</td>";
-						str+="<td>";
-						str+="<p id='xprice'>"+item.PROPRICE+"</p>";
-						str+="</td>";
-						str+="<td id='number'>"+item.ONUMBER+"</li>";
-						str+="<td id='youf'>";
-						str+="<p class='n1'>￥"+item.BUYPRICE+"</p>";
-						str+="<p class='n2'>(包邮)</p>";
-						str+="</td>";
-						str+="<td id='xiang'>";
-						str+="<p class='x1'>"+status+"</p>";
-						str+="<p class='x2'><a>订单详情</a></p>";
-						str+="</td>";
-						str+="<td id='del'>";
-						str+="<a href='javascript:deleteInfo("+item.ORDERID+")'>删除订单</a>";
-						str+="</td>";
-						str+="</tr>";
-						str+="</table>";
-					});
+				$.post("userOrderBean_findNoPayOrder.action",{usid:usid},function(data){
+					if(data.length==0){
+						str+="<img id='NoImage_1' src='front/images/dingdan_1.png'/>";
+						str+="<h3 id='NoImage_2'>哎呀,此状态下没有对应的订单!</h3>";
+						str+="<p id='NoImage_3'>去&nbsp;<a  href='front/index.jsp'>首页</a>&nbsp;逛逛吧</p>";
+					}else{
+						$.each(data,function(index,item){
+							var status;
+							if(item.ostatus==1){
+								status="未付款";
+							}
+							str+="<table class='dingdanInfo'>";
+							str+="<tr class='ding1'>";
+							str+="<td>订单编号："+item.orderid+"</td>";
+							str+="<td id='dtime'>订单时间："+item.datetime.substring(0,10)+"</td>";
+							str+="<td id='dhouse'><a>店铺：yoyo吾裳</a></td>";
+							str+="<td id='contact'><a>联系我们</a></td>";
+							str+="</tr>";
+							str+="<tr class='dingdan1' id='dingdan1'>";
+							str+="<td><img src='"+item.prophoto+"' style='width:100px;height:100px;'/></td>";
+							str+="<td>";
+							str+="<p><a>"+item.procontent+"</a><a>[交易快照]</a></p>";
+							str+="<p>颜色："+item.color+"</p>";
+							str+="<p>尺码："+item.psize+"</p>";
+							str+="</td>";
+							str+="<td>";
+							str+="<p id='xprice'>"+item.proprice+"</p>";
+							str+="</td>";
+							str+="<td id='number'>"+item.onumber+"</li>";
+							str+="<td id='youf'>";
+							str+="<p class='n1'>￥"+item.buyprice+"</p>";
+							str+="<p class='n2'>(包邮)</p>";
+							str+="</td>";
+							str+="<td id='xiang'>";
+							str+="<p class='x1'>"+status+"</p>";
+							str+="<p class='x2'><a>订单详情</a></p>";
+							str+="</td>";
+							str+="<td id='del'>";
+							str+="<a href='javascript:deleteInfo("+item.orderid+")'>删除订单</a>";
+							str+="</td>";
+							str+="</tr>";
+							str+="</table>";
+						});
+					}
 					$("#content_2").append($(str));
 				},"json");
 			}
 			if(num==3){
 				var str=" ";
 				$("#content_3").html('');
-				$.post("userOrderServlet?d="+new Date(),{op:"findPaiedOrder"},function(data){
-					$.each(data.orderInfo,function(index,item){
-						var status;
-						if(item.OSTATUS==2){
-							status="待评价";
-						}
-						str+="<table class='dingdanInfo'>";
-						str+="<tr class='ding1'>";
-						str+="<td>订单编号："+item.ORDERID+"</td>";
-						str+="<td id='dtime'>订单时间："+item.DATETIME+"</td>";
-						str+="<td id='dhouse'><a>店铺：yoyo吾裳</a></td>";
-						str+="<td id='contact'><a>联系我们</a></td>";
-						str+="</tr>";
-						str+="<tr class='dingdan1' id='dingdan1'>";
-						str+="<td><img src='"+item.PROPHOTO+"' style='width:100px;height:100px;'/></td>";
-						str+="<td>";
-						str+="<p><a id='get_proname_1'>"+item.PROCONTENT+"</a><a>[交易快照]</a></p>";
-						str+="<p>颜色："+item.COLOR+"</p>";
-						str+="<p>尺码："+item.PSIZE+"</p>";
-						str+="</td>";
-						str+="<td>";
-						str+="<p id='xprice'>"+item.PROPRICE+"</p>";
-						str+="</td>";
-						str+="<td id='number'>"+item.ONUMBER+"</li>";
-						str+="<td id='youf'>";
-						str+="<p class='n1'>￥"+item.BUYPRICE+"</p>";
-						str+="<p class='n2'>(包邮)</p>";
-						str+="</td>";
-						str+="<td id='xiang'>";
-						str+="<p class='x1'><a href='javascript:pingjia("+item.ORDERID+")'>"+status+"</a></p>";
-						str+="<p class='x2'><a>订单详情</a></p>";
-						str+="</td>";
-						str+="<td id='del'>";
-						str+="<a href='javascript:deleteInfo("+item.ORDERID+")'>删除订单</a>";
-						str+="</td>";
-						str+="</tr>";
-						str+="</table>";
-					});
+				$.post("userOrderBean_findPaiedOrder",{usid:usid},function(data){
+					if(data.length==0){
+						str+="<img id='NoImage_1' src='front/images/dingdan_1.png'/>";
+						str+="<h3 id='NoImage_2'>哎呀,此状态下没有对应的订单!</h3>";
+						str+="<p id='NoImage_3'>去&nbsp;<a  href='front/index.jsp'>首页</a>&nbsp;逛逛吧</p>";
+					}else{
+						$.each(data,function(index,item){
+							var status;
+							if(item.ostatus==2){
+								status="待评价";
+							}
+							str+="<table class='dingdanInfo'>";
+							str+="<tr class='ding1'>";
+							str+="<td>订单编号："+item.orderid+"</td>";
+							str+="<td id='dtime'>订单时间："+item.datetime.substring(0,10)+"</td>";
+							str+="<td id='dhouse'><a>店铺：yoyo吾裳</a></td>";
+							str+="<td id='contact'><a>联系我们</a></td>";
+							str+="</tr>";
+							str+="<tr class='dingdan1' id='dingdan1'>";
+							str+="<td><img src='"+item.prophoto+"' style='width:100px;height:100px;'/></td>";
+							str+="<td>";
+							str+="<p><a id='get_proname_1'>"+item.procontent+"</a><a>[交易快照]</a></p>";
+							str+="<p>颜色："+item.color+"</p>";
+							str+="<p>尺码："+item.psize+"</p>";
+							str+="</td>";
+							str+="<td>";
+							str+="<p id='xprice'>"+item.proprice+"</p>";
+							str+="</td>";
+							str+="<td id='number'>"+item.onumber+"</li>";
+							str+="<td id='youf'>";
+							str+="<p class='n1'>￥"+item.buyprice+"</p>";
+							str+="<p class='n2'>(包邮)</p>";
+							str+="</td>";
+							str+="<td id='xiang'>";
+							str+="<p class='x1'><a href='javascript:pingjia("+item.orderid+")'>"+status+"</a></p>";
+							str+="<p class='x2'><a>订单详情</a></p>";
+							str+="</td>";
+							str+="<td id='del'>";
+							str+="<a href='javascript:deleteInfo("+item.orderid+")'>删除订单</a>";
+							str+="</td>";
+							str+="</tr>";
+							str+="</table>";
+						});
+					}
 					$("#content_3").append($(str));
 				},"json");
 			}
 		}else{
-			document.getElementById('content_'+i).style.display='none';	
+			document.getElementById('content_'+i).style.display='none';
 		}
 	}
 }
@@ -103,12 +116,12 @@ function pingjia(orderid){
 	var proname=$("#get_proname_1").html();
 	$.post("feedServlet?d="+new Date(),{op:"selectfeedback",orderid:orderid,proname:proname},function(data){
 		location.href="front/pingjia.jsp";
-  	});
+	});
 }
 function change(_this){
-		_this.className='over';  //li标签添加类名
-	}
-	
+	_this.className='over';  //li标签添加类名
+}
+
 function show(_this){
 	_this.className='out';	
 }
@@ -140,7 +153,7 @@ function deleteInfo(orderid){
 //修改用户名的警告
 function updateName(){
 	var name=document.getElementById('name').value;
-	
+
 	if(name!=null || ''.equals(name)){
 		document.getElementById('changname').innerHTML="*昵称只能修改一次哦^_^";
 		document.getElementById('changname').style.color='#F63';	
@@ -148,95 +161,93 @@ function updateName(){
 }
 
 
-/*	//城市级联
-	var prov=new Array();
-	prov['湖南省']=['长沙市','常德市','益阳市','衡阳市','郴州市','岳阳市','怀化市','娄底市','邵阳市','湘潭市','株洲市','永州市','张家界市','湘西土家族苗族自治州'];
-	prov['广东省']=['广州市','佛山市','深圳市','观澜市','珠海市','汕头市','佛山市','韶关市','湛江市','江门市','茂名市','惠州市','梅州市','肇庆市','汕尾市','河源市','阳江市','清远市','揭阳市','中山市','潮州市','云浮市'];
-	prov['湖北省']=['武汉市','黄 石 市 ','襄 樊 市','荆 州 市','宜 昌 市','十 堰 市','孝 感 市','荆 门 市','鄂 州 市','黄 冈 市 ','咸 宁 市'];
-	prov['山东省']=['沈阳市','济南市','泰安市','潍坊市','德州市','滨州市','莱芜市','青岛市','烟台市','日照市','东营市','济宁市','荷泽市','聊城市','临沂市','枣庄市'];
-	prov['北京省']=['东城区','西城区','崇文区','宣武区',' 朝阳区','丰台区','石景山区','海淀区','门头沟区','房山区','通州区','顺义区','昌平区','大兴区','怀柔区','平谷区',' 密云县','延庆县'];
-	
-	function changeCity(){
-		var pro=document.myform1.selProvince;
-		for(var i=0;i<pro.length;i++){
-			//判断是否有选中的选项
-			if(pro[i].selected==true){
-				
-				//通过省份名创建城市选项
-				add(pro[i].value);
-			}
+//城市级联
+var prov=new Array();
+prov['湖南省']=['长沙市','常德市','益阳市','衡阳市','郴州市','岳阳市','怀化市','娄底市','邵阳市','湘潭市','株洲市','永州市','张家界市','湘西土家族苗族自治州'];
+prov['广东省']=['广州市','佛山市','深圳市','观澜市','珠海市','汕头市','佛山市','韶关市','湛江市','江门市','茂名市','惠州市','梅州市','肇庆市','汕尾市','河源市','阳江市','清远市','揭阳市','中山市','潮州市','云浮市'];
+prov['湖北省']=['武汉市','黄 石 市 ','襄 樊 市','荆 州 市','宜 昌 市','十 堰 市','孝 感 市','荆 门 市','鄂 州 市','黄 冈 市 ','咸 宁 市'];
+prov['山东省']=['沈阳市','济南市','泰安市','潍坊市','德州市','滨州市','莱芜市','青岛市','烟台市','日照市','东营市','济宁市','荷泽市','聊城市','临沂市','枣庄市'];
+prov['北京省']=['东城区','西城区','崇文区','宣武区',' 朝阳区','丰台区','石景山区','海淀区','门头沟区','房山区','通州区','顺义区','昌平区','大兴区','怀柔区','平谷区',' 密云县','延庆县'];
+
+function changeCity(){
+	var pro=document.myform1.selProvince;
+	for(var i=0;i<pro.length;i++){
+		//判断是否有选中的选项
+		if(pro[i].selected==true){
+			//通过省份名创建城市选项
+			add(pro[i].value);
 		}
 	}
-	
-	//将城市信息添加到下拉列表中
-	function add(provice){
-		document.myform1.selCity.length=0;
-		
-		for(var i=0;i<prov[provice].length;i++){
-			var op=new Option(prov[provice][i],prov[provice][i]);	
-			document.myform1.selCity.options.add(op);
-		}
+}
+
+//将城市信息添加到下拉列表中
+function add(provice){
+	document.myform1.selCity.length=0;
+	for(var i=0;i<prov[provice].length;i++){
+		var op=new Option(prov[provice][i],prov[provice][i]);	
+		document.myform1.selCity.options.add(op);
 	}
-*/	
-		
-	//核对邮箱
-	var reg;
-	var email;
-	function checkEmail(){
-		reg=/^\w+@\w+.[(com)|(cn)]+$/;	
-		email=document.getElementById('email').value;
-		//console.info(email);
-		
-		if(!reg.test(email)){
-			document.getElementById('checkemail').innerHTML="邮箱格式输入错误!";
-			document.getElementById('checkemail').style.color='red';
-			return false;	
-		}else{
-			document.getElementById('checkemail').innerHTML='邮箱格式输入正确';
-			document.getElementById('checkemail').style.color='green';
-			return true;
-		}
+}
+
+
+//核对邮箱
+var reg;
+var email;
+function checkEmail(){
+	reg=/^\w+@\w+.[(com)|(cn)]+$/;	
+	email=document.getElementById('email').value;
+	//console.info(email);
+
+	if(!reg.test(email)){
+		document.getElementById('checkemail').innerHTML="邮箱格式输入错误!";
+		document.getElementById('checkemail').style.color='red';
+		return false;	
+	}else{
+		document.getElementById('checkemail').innerHTML='邮箱格式输入正确';
+		document.getElementById('checkemail').style.color='green';
 		return true;
 	}
-	
-	//核对手机号
-	var reg1;
-	var phone;
-	function checkPhone(){
-		reg1=/^1[3-8]\d{9}$/;	
-		phone=document.getElementById('phone').value;
-		//console.info(phone);
-		if(!reg1.test(phone)){
-			document.getElementById('checkphone').innerHTML="手机号格式输入错误!";
-			document.getElementById('checkphone').style.color='red';
-			return false;	
-		}else{
-			document.getElementById('checkphone').innerHTML='手机号格式输入正确';
-			document.getElementById('checkphone').style.color='green';
-			return true;
-		}
+	return true;
+}
+
+//核对手机号
+var reg1;
+var phone;
+function checkPhone(){
+	reg1=/^1[3-8]\d{9}$/;	
+	phone=document.getElementById('phone').value;
+	//console.info(phone);
+	if(!reg1.test(phone)){
+		document.getElementById('checkphone').innerHTML="手机号格式输入错误!";
+		document.getElementById('checkphone').style.color='red';
+		return false;	
+	}else{
+		document.getElementById('checkphone').innerHTML='手机号格式输入正确';
+		document.getElementById('checkphone').style.color='green';
 		return true;
 	}
-	
-	/*//确认修改
+	return true;
+}
+
+/*//确认修改
 	function check(){
 		var name=document.getElementById('name').value;
-	
+
 		if(name!='' && reg.test(email) && reg1.test(phone)){
 			//alert("!");
 			document.getElementById('b1').style.background="#F93";	
 		}	
 	}
-	
+
 	window.onload=function(){
 		var mytime=window.setInterval("check()",100);	
 	}*/
-	
+
 //左边功能实现
 function showJuti1(){
 	var but=document.getElementById('bottom1');//获取箭头	
 	var title=document.getElementById('juti1');
-	
+
 	if(title.style.display=='none'){
 		title.style.display='block';	
 		but.className='top1';
@@ -253,7 +264,7 @@ function showJuti1(){
 function showJuti2(){
 	var but=document.getElementById('bottom2');//获取箭头	
 	var title=document.getElementById('juti2');
-	
+
 	if(title.style.display=='none'){
 		title.style.display='block';	
 		but.className='top2';
@@ -267,7 +278,7 @@ function showJuti2(){
 function showJuti3(){
 	var but=document.getElementById('bottom3');//获取箭头	
 	var title=document.getElementById('juti3');
-	
+
 	if(title.style.display=='none'){
 		title.style.display='block';	
 		but.className='top3';
@@ -296,7 +307,7 @@ function showmima(){
 var pwd;
 function NewPwd(){
 	pwd=document.getElementById('npwd').value;
-	
+
 	if(pwd==""){
 		document.getElementById('checkNpwd').innerHTML='请输入新的密码！';
 		document.getElementById('checkNpwd').style.color='#F00';
@@ -330,7 +341,7 @@ function Huan(){
 	document.getElementById('yan1').value=res;
 }*/
 
-function Yanzheng(){
+/*function Yanzheng(){
 	var yan=$("#yan2").val();
 	$.post("userServlet?d="+new Date(),{op:"checkyan",yan:yan},function(data){
 		data=parseInt($.trim(data));
@@ -341,7 +352,7 @@ function Yanzheng(){
 			$("#tyan").val("");
 		}
 	});
-}
+}*/
 /*
 //确认密码修改
 function checkPwd(){
@@ -353,7 +364,7 @@ function checkPwd(){
 	}	
 }	
 
-	
+
 window.onload=function(){
 	var mytime=window.setInterval("checkPwd()",100);	
 }*/
@@ -365,7 +376,7 @@ var fr;
 function showTp(source){
 	file=source.files[0];
 	if(!/image\/\w+/.test(file.type)){
-			
+
 	}else{
 		document.getElementById('tuname').value=file.name;
 		if(window.FileReader){
@@ -381,12 +392,12 @@ function showTp(source){
 function UpTp(){
 	var title=document.getElementById('xiugai');
 	if(window.FileReader){
-			fr=new FileReader();
-			fr.onloadend=function(e){
-				document.getElementById('tp').src=e.target.result;	
-				document.getElementById('img1').src=e.target.result;
-			};
-			fr.readAsDataURL(file);
+		fr=new FileReader();
+		fr.onloadend=function(e){
+			document.getElementById('tp').src=e.target.result;	
+			document.getElementById('img1').src=e.target.result;
+		};
+		fr.readAsDataURL(file);
 	}
 	$.ajaxFileUpload({
 		url:"userServlet?op=UpdatePhoto",
@@ -404,5 +415,5 @@ function UpTp(){
 			$("#tuname").val("");
 		}
 	});
-	
+
 }

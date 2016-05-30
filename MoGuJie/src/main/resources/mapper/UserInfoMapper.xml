@@ -9,10 +9,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	<!-- 前台查询用户基本信息 -->
 	<select id="findBasicInfo" parameterType="String" resultType="UserBean">
-		select u.uname,u.ubirthday,u.ucode,u.usemail,u.usphone,a.province,a.city from userInfo u,address a where u.usid=a.usid and u.uname=#{uname}
+		select u.uname,u.ubirthday,u.ucode,u.usemail,u.usphone,u.usex,a.province,a.city from userInfo u,address a where u.usid=a.usid and u.uname=#{uname}
 	</select>
 	
 	<select id="login" parameterType="UserInfo" resultType="UserInfo">
 		select *from userInfo where uname=#{uname} and uspwd=#{uspwd}
 	</select>
+	
+	<!-- 前台修改用户基本信息 -->
+	<!-- userInfo表 -->
+	<update id="updateUser" parameterType="UserBean">
+		update userInfo set uname=#{uname},usex=#{usex},ubirthday=#{ubirthday,jdbcType=TIMESTAMP},ucode=#{ucode},usemail=#{usemail},usphone=#{usphone} where uname=#{oldUanme}
+	</update>
+	
+	<!-- 前台  修改用户密码 -->
+	<update id="updatePwd" parameterType="map">
+		update userInfo set uspwd=#{newPwd} where usid=#{usid} and uspwd=#{oldPwd}
+	</update>
+	
+	<!-- 前台  修改用户头像 -->
+	<update id="updatePhoto" parameterType="UserBean">
+		update userInfo set uphoto=#{uphoto} where usid=#{usid}
+	</update>
 </mapper>

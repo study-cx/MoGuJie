@@ -1090,7 +1090,9 @@ a{
 	margin-top:420px;
 	margin-left:140px;
 }
-
+#myform1{
+	margin-top:-400px;
+}
 
 /*修改头像*/
 #content_11{
@@ -1303,3 +1305,21 @@ a{
 	margin-left:85px;
 	background:#F93;
 	}
+#NoImage_1{
+	margin-left: 200px;
+	margin-top: 100px;
+}
+#NoImage_2{
+	margin-left: 400px;
+	margin-top: -150px;
+}
+#NoImage_3{
+	font-size:16px;
+	margin-left: 450px;
+	margin-top: 30px;
+}
+#NoImage_3 a{
+	color:red;
+	font-size:18px;
+	border-bottom:1px red solid;
+}

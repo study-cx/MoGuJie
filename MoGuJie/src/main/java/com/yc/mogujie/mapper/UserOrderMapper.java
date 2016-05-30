@@ -1,18 +1,15 @@
 package com.yc.mogujie.mapper;
 
 import com.yc.mogujie.entity.UserOrder;
+import com.yc.mogujie.entity.UserOrderBean;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 public interface UserOrderMapper {
-    int deleteByPrimaryKey(BigDecimal orderid);
+	List<UserOrderBean> findAllOrder(int usid);
 
-    int insert(UserOrder record);
-
-    int insertSelective(UserOrder record);
-
-    UserOrder selectByPrimaryKey(BigDecimal orderid);
-
-    int updateByPrimaryKeySelective(UserOrder record);
-
-    int updateByPrimaryKey(UserOrder record);
+	List<UserOrderBean> findNoPayOrder(int usid);
+	
+	List<UserOrderBean> findPaiedOrder(int usid);
 }

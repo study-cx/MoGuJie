@@ -12,14 +12,22 @@
 	<constant name="struts.objectFactory " value="spring" />
 
 	<package name="default" namespace="/" extends="json-default">
-		<global-allowed-methods>login,register,findBasicInfo</global-allowed-methods>
+		<global-allowed-methods>login,register,findBasicInfo,updateBasicInfo,findAllOrders,
+				findNoPayOrder,findPaiedOrder,updatePwd,updateImage
+		</global-allowed-methods>
 		<action name="*_*" class="{1}Action" method="{2}">
 			<result name="login">/front/index.jsp</result>
 			<result name="register">/front/index.jsp</result>
-			<result type="json">
+			<result name="findBasicsuccess" type="json">
 				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">userInfo</param>
 			</result>
+			<result name="updateSuccess">/front/myorder.jsp?op=userInfo</result>
+			<result name="findSuccess" type="json">
+				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
+				<param name="root">allOrders</param>
+			</result>
+    		<result name="updatePhotoSuccess">/front/myorder.jsp?op=updatePhoto</result>
 		</action>
 	</package>
 </struts>

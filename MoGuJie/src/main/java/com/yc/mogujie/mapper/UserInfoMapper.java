@@ -1,10 +1,9 @@
 package com.yc.mogujie.mapper;
 
+import java.util.Map;
+
 import com.yc.mogujie.entity.UserBean;
 import com.yc.mogujie.entity.UserInfo;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 public interface UserInfoMapper {
 
@@ -14,5 +13,13 @@ public interface UserInfoMapper {
 	UserBean findBasicInfo(String uname);
 
 	UserInfo login(UserInfo userInfo);
+
+	//前台修改用户基本信息 
+	int updateUser(UserBean userBean);
     
+	//前台  修改用户密码
+	int updatePwd(Map<String, Object> params);
+	
+	//前台  修改用户头像
+	int updatePhoto(UserBean userBean);
 }

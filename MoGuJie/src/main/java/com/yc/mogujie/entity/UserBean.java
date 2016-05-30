@@ -1,7 +1,11 @@
 package com.yc.mogujie.entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
+
+import com.opensymphony.xwork2.ActionContext;
 
 public class UserBean implements Serializable{
 	private static final long serialVersionUID = -3314337628944931124L;
@@ -15,7 +19,38 @@ public class UserBean implements Serializable{
 	private String province;//省份
 	private String city;//市
 	private String usex;//性别
+	private String oldUanme;
+	private String newPwd;
+	private String oldPwd;
+	private String usid;
 	
+	public String getNewPwd() {
+		return newPwd;
+	}
+	public void setNewPwd(String newPwd) {
+		this.newPwd = newPwd;
+	}
+	public String getOldPwd() {
+		return oldPwd;
+	}
+	public void setOldPwd(String oldPwd) {
+		this.oldPwd = oldPwd;
+	}
+	public String getUsid() {
+		return usid;
+	}
+	public void setUsid(String usid) {
+		this.usid = usid;
+	}
+	public String getOldUanme() {
+		UserInfo users=(UserInfo)ActionContext.getContext().getSession().get("loginUser");
+		oldUanme=users.getUname();
+		//oldUanme="liqiu123";
+		return oldUanme;
+	}
+	public void setOldUanme(String oldUanme) {
+		this.oldUanme = oldUanme;
+	}
 	public String getUsex() {
 		return usex;
 	}
@@ -29,6 +64,11 @@ public class UserBean implements Serializable{
 		this.uname = uname;
 	}
 	public Date getUbirthday() {
+		return ubirthday;
+	}
+	public Date getUbirthdays() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		//ubirthday=sdf.format(ubirthday);
 		return ubirthday;
 	}
 	public void setUbirthday(Date ubirthday) {

@@ -1,22 +1,40 @@
   create user MoGuJie identified by a
   grant dba to MoGuJie
   --蘑菇街数据库设计
-  delete ADMIN;
-  delete ADVERTISE;
-  delete USERINFO;
-  delete ACTIVE;
-  delete ACTIVEINFO;
-  delete ADDRESS;
-  delete CART;
-  delete CATEGORYONE;
-  delete CATEGORYTHREE;
-  delete CATEGORYTWO;
-  delete DETAIL;
-  delete FEEDBACK;
-  delete GUANGGAO;
-  delete ORDERDETAIL;
-  delete PRODUCT;
-  delete USERORDER;
+  delete admin;
+  delete advertise;
+  delete userInfo;
+  delete active;
+  delete activeinfo;
+  delete address;
+  delete cart;
+  delete categoryone;
+  delete categorythree;
+  delete categorytwo;
+  delete detail;
+  delete feedback;
+  delete guanggao;
+  delete orderdetail;
+  delete product;
+  delete userorder;
+  
+  drop table admin;
+  drop table advertise;
+  drop table userInfo;
+  drop table active;
+  drop table activeinfo;
+  drop table address;
+  drop table cart;
+  drop table categoryone;
+  drop table categorythree;
+  drop table categorytwo;
+  drop table detail;
+  drop table feedback;
+  drop table guanggao;
+  drop table orderdetail;
+  drop table product;
+  drop table userorder;
+  
   select *from admin;
   --管理员
   create table admin(
@@ -32,6 +50,7 @@
     usid int primary key,--用户id
     uspwd varchar2(100),--密码
     uname varchar2(20) unique not null,--用户昵称
+    usex varchar(2),--性别
     uphoto varchar2(100),--用户头像地址
     ubirthday date,--用户生日
     usemail varchar2(100),--邮箱地址
@@ -39,19 +58,19 @@
     usphone varchar2(15), --用户联系方式
     usaccount number(10,2),--用户余额
     statue int,--删除时的状态标志
-    usex varchar2(40),--预留字段1
+    obligateone varchar2(40),--预留字段1
     obligatetwo varchar2(40)--预留字段2
   );
   create sequence seq_UserInfo_usid start with 100 increment by 1;
   select *from userInfo
-  select u.uname,u.ubirthday,u.ucode,u.usemail,u.usphone,a.province,a.city from userInfo u,address a where u.usid=a.usid and u.uname='lala'
+  select u.uname,u.ubirthday,u.ucode,u.usemail,u.usphone,a.province,a.city from userInfo u,address a where u.usid=a.usid and u.uname='liqiu'
 
 insert into userInfo values(1001,'123','haha','',to_date('2003-03-10','yyyy-mm-dd'),'523525@qq.com','421002',
 '12123333','1000',1,'','');
 insert into userInfo values(1002,'123','lala','',to_date('2008-07-10','yyyy-mm-dd'),'67253278@qq.com','421002',
 '12123333','1000',1,'','');
-insert into userInfo values(seq_UserInfo_usid.nextval,'aaa','liqiu','',to_date('2008-07-10','yyyy-mm-dd'),'1573454899@qq.com','422302',
-'13241425','1000',1,'女','');
+insert into userInfo values(seq_UserInfo_usid.nextval,'aaa','liqiu','女','',to_date('2008-07-10','yyyy-mm-dd'),'1573454899@qq.com','422302',
+'13241425','1000',1,'','');
 
 select *from userInfo;
   --地址表
@@ -70,10 +89,10 @@ select *from userInfo;
      obligateone varchar2(40),--预留字段1
     obligatetwo varchar2(40)--预留字段2
   );
-
+ select * from address;
   create sequence seq_address_addressid start with 100 increment by 1;
   insert into address values(seq_address_addressid.nextval,'湖南省','衡阳市','珠晖区','衡花路18号',1002,'陈烜',45646,'15674785546',1,1,1);
-  insert into address values(seq_address_addressid.nextval,'湖南省','岳阳市','珠晖区','衡花路18号',120,'菜菜',45646,'15674785546',1,'','');
+  insert into address values(seq_address_addressid.nextval,'湖南省','岳阳市','珠晖区','衡花路18号',121,'菜菜',45646,'15674785546',1,'','');
   --商品分类表首级
   create table categoryone(
     categoryidone int primary key,--商品类型Id
@@ -82,6 +101,7 @@ select *from userInfo;
     obligatetwo varchar2(40)--预留字段2
   );
   create sequence seq_categorys_categoryidone start with 100 increment by 1;
+  select * from categoryone;
   insert into categoryone values(seq_categorys_categoryidone.nextval,'上衣',1,0);
   --2级分类
   create table categorytwo(
@@ -106,8 +126,17 @@ select *from userInfo;
     obligatetwo varchar2(40)--预留字段2
   );
   create sequence seq_categorys_categoryidthree start with 100 increment by 1;
-  insert into categorythree values(seq_categorys_categoryidthree.nextval,101,'圆领',1,0);
+  insert into categorythree values(seq_categorys_categoryidthree.nextval,100,'圆领','','');
+select * from categorythree;
 
+  select distinct uo.orderid,uo.datetime,uo.ostatus,
+  				p.prophoto,p.procontent,p.proprice,
+  				d.color,d.psize,
+  				od.buyprice,od.onumber 
+  				from product p,detail d,userOrder uo,orderdetail od,userInfo u 
+  				where p.proid=d.proid and od.proid=p.proid and 
+  				od.orderid=uo.orderid and uo.usid=u.usid and u.usid=121 
+  				and uo.ostatus between 1 and 3
   --商品表，主要用来保存管理员上传的商品信息
   create table product(
      proid int primary key,--商品id
@@ -126,10 +155,10 @@ select *from userInfo;
   insert into product values(seq_product_proid.nextval,'毛衣','羊羊羊毛衣','99.9',101,'',1,'','');
 
   insert into product values(seq_product_proid.nextval,'毛衣','羊羊羊毛衣','99.9',100,'',1,'','');
-
+	select * from product;
   --商品详细表
   create table detail(
-      deid int primary key,
+    deid int primary key,
     proid int -- 商品名称
           constraint FK_detail_product references product(proid),
     counts int,--销售量
@@ -142,7 +171,8 @@ select *from userInfo;
   );
 
   create sequence seq_detail_deid start with 100 increment by 1;
-
+  insert into detail values(seq_detail_deid.nextval,100,234,'S','','red',1111,'','');
+  select * from detail;
   --用户订单表，主要用来保存用户订单信息
   create table userOrder(
    orderid int primary key,--订单号
@@ -157,10 +187,10 @@ select *from userInfo;
   );
 
   create sequence seq_userOrder_orderid start with 100 increment by 1;
-  insert into userOrder values(seq_userOrder_orderid.nextval,260,to_date('2015-03-10','yyyy-mm-dd'),2,181,'','');
+  insert into userOrder values(seq_userOrder_orderid.nextval,121,to_date('2015-03-10','yyyy-mm-dd'),2,121,'','');
   insert into userOrder values(seq_userOrder_orderid.nextval,240,to_date('2015-03-10','yyyy-mm-dd'),1,141,'','');
   insert into userOrder values(seq_userOrder_orderid.nextval,240,to_date('2016-01-10','yyyy-mm-dd'),0,141,'','');
-
+  select * from userOrder;
   --用户订单详细表
   create table  orderdetail(
    orid int primary key,
@@ -178,7 +208,7 @@ select *from userInfo;
   ); 
   select *from orderdetail;
   create sequence seq_orderdetail_orid start with 100 increment by 1;
-  insert into orderdetail values(seq_orderdetail_orid.nextval,128,102,1,'199.9',1,'','');
+  insert into orderdetail values(seq_orderdetail_orid.nextval,100,100,100,123,'199.9',1,'','');
   insert into orderdetail values(seq_orderdetail_orid.nextval,128,102,100,1,'199.9',1,'','');
   insert into orderdetail values(seq_orderdetail_orid.nextval,123,100,1,'199.9',1,'','');
 
