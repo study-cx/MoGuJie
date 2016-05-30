@@ -5,39 +5,48 @@ public class Categoryone {
 
     private String categorytypeone;
 
-    private int obligateone;
+    private String obligateone;
 
-    private int obligatetwo;
+    private String obligatetwo;
 
-    public int getCategoryidone() {
-        return categoryidone;
-    }
+	public int getCategoryidone() {
+		return categoryidone;
+	}
 
-    public void setCategoryidone(int categoryidone) {
-        this.categoryidone = categoryidone;
-    }
+	public void setCategoryidone(int categoryidone) {
+		this.categoryidone = categoryidone;
+	}
 
-    public String getCategorytypeone() {
-        return categorytypeone;
-    }
+	public String getCategorytypeone() {
+		return categorytypeone;
+	}
 
-    public void setCategorytypeone(String categorytypeone) {
-        this.categorytypeone = categorytypeone == null ? null : categorytypeone.trim();
-    }
+	public void setCategorytypeone(String categorytypeone) {
+		this.categorytypeone = categorytypeone;
+	}
 
-    public int getObligateone() {
-        return obligateone;
-    }
+	public String getObligateone() {
+		return obligateone;
+	}
 
-    public void setObligateone(int obligateone) {
-        this.obligateone = obligateone;
-    }
+	public void setObligateone(String obligateone) {
+		this.obligateone = obligateone;
+	}
 
-    public int getObligatetwo() {
-        return obligatetwo;
-    }
+	public String getObligatetwo() {
+		return obligatetwo;
+	}
 
-    public void setObligatetwo(int obligatetwo) {
-        this.obligatetwo = obligatetwo;
-    }
+	public void setObligatetwo(String obligatetwo) {
+		this.obligatetwo = obligatetwo;
+	}
+
+	@Override
+	public String toString() {
+		return "Categoryone [categoryidone=" + categoryidone
+				+ ", categorytypeone=" + categorytypeone + ", obligateone="
+				+ obligateone + ", obligatetwo=" + obligatetwo + "]";
+	}
+
+   
 }

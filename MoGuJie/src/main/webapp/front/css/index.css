@@ -167,6 +167,11 @@ body{
 	font-family:"MS Serif", "New York", serif;
 
 }
+.fl6 li a{
+	font-size: 12px;
+	line-height12px;
+
+}
 
 .fl7{
 	list-style:none;
@@ -360,5 +365,49 @@ a:hover,a:active {
 #foot ul li a:hover{
 	text-decoration:underline;
 	cursor:pointer;
+}
+.cc{
+	margin-top: 15px;
+	margin-right:4%;
+	overflow: hidden;
+	position:relative;
+	width:92%;
+	height: 50px;
+	text-align: center;
+	
+}
+.cc div{
+	float: left;
+}
+.cc1{
+	background:url(../images/index1.png);
+	background-position:0 -12px;
+	overflow:hidden;
+	height:12px;
+	width:492px;
+	-moz-user-select:none;
+	margin-top: 10px;
+}
+.cc2{
+	background:url(../images/index2.png) no-repeat;
+	background-position:center 2px;
+	width: 20%;
+	height: 100%;
+}
+.mogugood{
+	width: 92%;
+	height: 400px;
+	
+}
+.mogugood ul{
+	list-style: none;
+}
+.mogugood ul li{
+	float: left;
+	background: blue;
+	display: inline-block;
+	width: 18%;
+	height: 300px;
+	margin-left: 15px;
 }
 
