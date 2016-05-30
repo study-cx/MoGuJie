@@ -24,7 +24,7 @@
 		<!--spring框架核心 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
+			<artifactId>spring-context-support</artifactId>
 			<version>4.1.6.RELEASE</version>
 		</dependency>
 		<!-- spirng持久化支持包 -->
@@ -67,17 +67,21 @@
 		</dependency>
 
 		<!-- 引入oracle数据库驱动坐标 -->
+		<!--oracle 数据库驱动包 -->
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>oracle-driver</artifactId>
 			<version>oracle11g</version>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- 数据库连接池DBCP的包 -->
+		<!-- 数据库连接池的包 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.1.1</version>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!--mybatis和spring整合配包 -->
@@ -104,13 +108,19 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
+		
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.5.5</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-json-plugin</artifactId>
 			<version>2.5</version>
 		</dependency>
-
 	</dependencies>
 	<build>
 		<finalName>MoGuJie</finalName>

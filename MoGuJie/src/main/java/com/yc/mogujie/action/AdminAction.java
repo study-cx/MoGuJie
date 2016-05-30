@@ -20,10 +20,10 @@ public class AdminAction implements ModelDriven<Admin>, SessionAware {
 	private Map<String, Object> session;
 	
 	public String login(){
-		LogManager.getLogger().debug("login��½����...");
+		LogManager.getLogger().debug("login登陆操作...");
 		admin=adminService.login(admin);
 		if(admin==null){
-			session.put("", "�û�����������!!!");
+			session.put("", "用户名或密码错误!!!");
 			return "login";
 		}
 		session.put("", admin);

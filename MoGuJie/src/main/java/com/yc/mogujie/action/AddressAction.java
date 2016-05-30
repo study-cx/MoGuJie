@@ -60,7 +60,7 @@ public class AddressAction implements  SessionAware,ModelDriven<Address>{
 	//查询地址信息
 	public String list(){
 		addrList=addrService.findAddr();
-		return "success";
+		return "addrList";
 	}
 	
 	//编辑，根据地址id查地址信息
