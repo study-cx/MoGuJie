@@ -25,7 +25,7 @@
 
 
 	<package name="default" namespace="/" extends="json-default">
-		<global-allowed-methods>login,register,registers,findBasicInfo</global-allowed-methods>
+		<global-allowed-methods>login,register,registers,findBasicInfo,list</global-allowed-methods>
 
 >>>>>>> refs/remotes/origin/master
 		<action name="*_*" class="{1}Action" method="{2}">
@@ -34,6 +34,7 @@
 			<result name="list">front/addr.jsp</result>
 			<result name="login">/front/index.jsp</result>
 			<result name="register">/front/index.jsp</result>
+<<<<<<< HEAD
 <<<<<<< HEAD
 			
 			<result type="json">
@@ -47,8 +48,10 @@
 			
 =======
 
+=======
+>>>>>>> refs/remotes/origin/master
 			<result name="tiaozhuan">/front/email.jsp</result>
-
+			<result name="index">/front/index.jsp</result>
 			<result type="json">
 				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">userInfo</param>

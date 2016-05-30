@@ -21,19 +21,18 @@
 			<result name="list">front/addr.jsp</result>
 			<result name="login">/front/index.jsp</result>
 			<result name="register">/front/index.jsp</result>
-			<result name="tiaozhuan">/front/email.jsp</result>
-			
+			<result name="tiaozhuan">/front/email.jsp</result>		
 			<result name="addrList" type="json">
 				<param name="root">addrList</param>
 			</result>
 			<result name="edit" type="json">
 				<param name="root">edit</param>
 			</result>
-
-			<result type="json" name="userInfo">
+			<result name="index">/front/index.jsp</result>
+			<result name="userInfo" type="json">
+				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">userInfo</param>
 			</result>
-
 		</action>
 	</package>
 </struts>

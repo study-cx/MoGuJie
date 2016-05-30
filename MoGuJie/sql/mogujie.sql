@@ -40,6 +40,7 @@ insert into userInfo values(seq_UserInfo_usid.nextval,'123','haha','',to_date('2
   insert into userInfo values(1002,'123','lala','',to_date('2008-07-10','yyyy-mm-dd'),'67253278@qq.com','421002',
   '12123333','1000',1,'','');
 
+<<<<<<< HEAD
   select u.uname,u.ubirthday,u.ucode,u.usemail,u.usphone,a.province,a.city from userInfo u,address a where u.usid=a.usid and u.uname='lala'
 
 --地址表
@@ -63,6 +64,16 @@ delete from address
 create sequence seq_address_addressid start with 100 increment by 1;
 insert into address values(seq_address_addressid.nextval,'湖南省','衡阳市','珠晖区','衡花路18号',100,'陈烜',45646,'15674785546',1,'','');
 insert into address values(seq_address_addressid.nextval,'湖南省','岳阳市','珠晖区','衡花路18号',100,'菜菜',45646,'15674785546',1,'','');
+=======
+
+insert into userInfo values(1001,'123','haha','',to_date('2003-03-10','yyyy-mm-dd'),'523525@qq.com','421002',
+'12123333','1000',1,'','');
+insert into userInfo values(1002,'123','lala','',to_date('2008-07-10','yyyy-mm-dd'),'67253278@qq.com','421002',
+'12123333','1000',1,'','');
+insert into userInfo values(seq_UserInfo_usid.nextval,'aaa','liqiu','',to_date('2008-07-10','yyyy-mm-dd'),'1573454899@qq.com','422302',
+'13241425','1000',1,'女','');
+
+>>>>>>> refs/remotes/origin/master
 
   --地址表
   create table address(
@@ -85,6 +96,10 @@ insert into address values(seq_address_addressid.nextval,'湖南省','岳阳市'
 
   insert into address values(seq_address_addressid.nextval,'湖南省','衡阳市','珠晖区','衡花路18号',120,'陈烜',45646,'15674785546',1,1,1);
 
+<<<<<<< HEAD
+=======
+  insert into address values(seq_address_addressid.nextval,'湖南省','衡阳市','珠晖区','衡花路18号',1002,'陈烜',45646,'15674785546',1,1,1);
+>>>>>>> refs/remotes/origin/master
   insert into address values(seq_address_addressid.nextval,'湖南省','岳阳市','珠晖区','衡花路18号',120,'菜菜',45646,'15674785546',1,'','');
   --商品分类表首级
   create table categoryone(
@@ -101,7 +116,7 @@ insert into address values(seq_address_addressid.nextval,'湖南省','岳阳市'
     categoryidone int--商品类型，引用外键
           constraint FK_categorytwo_categoryidone references categoryone(categoryidone), 
     categoryTypetwo varchar2(100),--商品类型   
-     obligateone varchar2(40),--预留字段1
+    obligateone varchar2(40),--预留字段1
     obligatetwo varchar2(40)--预留字段2
   );
 
