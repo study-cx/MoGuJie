@@ -175,11 +175,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div class="mogugood">
 	<ul>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
+		<c:forEach items="${liangping}" var="item">
+			<li><a href="${item.proid}"><img alt="${item.proname }" src="${item.prophoto }"/></a>
+				<a href="${item.proid}">${item.proname}</a>
+			</li>
+			
+		</c:forEach>
 	</ul>
 </div>
 <%@ include file="footer.jsp" %>

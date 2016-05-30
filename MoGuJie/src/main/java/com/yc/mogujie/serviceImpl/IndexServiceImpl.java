@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.yc.mogujie.entity.Categoryone;
 import com.yc.mogujie.entity.Categorytwo;
 import com.yc.mogujie.entity.GuangGaoBean;
+import com.yc.mogujie.entity.Product;
 import com.yc.mogujie.mapper.IndexMapper;
 import com.yc.mogujie.service.IndexService;
 @Service("indexService")
@@ -31,6 +32,11 @@ public class IndexServiceImpl implements IndexService {
 	public List<GuangGaoBean> selectGuanGao() {
 		
 		return indexMapper.selectGuanGao();
+	}
+
+	@Override
+	public List<Product> selectProductByobligateone() {
+		return indexMapper.selectProductByobligateone();
 	}
 
 	
