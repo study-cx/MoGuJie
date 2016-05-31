@@ -1,15 +1,15 @@
 function goToRegiest(){
-	window.location.href="regiest.html"
+	window.location.href="regiest.jsp"
 }
 function goToLogin(){
-	window.location.href="login.html"
+	window.location.href="login.jsp"
 }
 
 
 //登陆用户名验证
 function checkloginuname() {
-  var uname = $("#name").val();
-  if ("" == uname || uname == null) {
+  var aname = $("#aname").val();
+  if ("" == aname || aname == null) {
       $("#g-name-t").html("用户名不能为空...").css("color","#F00");
   } else {
       $("#g-name-t").html("用户名格式正确...").css("color","#000");
@@ -18,8 +18,8 @@ function checkloginuname() {
 
 //登陆密码验证
 function checkloginpwd() {
-  var pwd = $("#pwd").val();
-  if ("" == pwd || pwd == null) {
+  var apwd = $("#apwd").val();
+  if ("" == apwd || apwd == null) {
       $("#g-pwd-t").html("您的密码不能为空...").css("color","#F00");
   } else {
       $("#g-pwd-t").html("密码格式正确...").css("color","#000");
@@ -31,14 +31,13 @@ function checkzcuname() {
   var aname = $("#name_t").val();
   var reg = /^([a-zA-Z0-9\u4E00-\u9FA5_-]{2,12})/;
   if (aname.match(reg)) {
-      $.post("../adminServlet?d="+new Date(),{op:"checkuname",aname: aname},
-      function(data) {
-          if (parseInt(data) > 0) {
-              $("#name-t").html("该名称可以使用...").css("color","#000");
+      $.post("admin_checkName.action",{aname:aname},function(data) {
+          if (data==null) {
+        	  $("#name-t").html("该名称可以使用...").css("color","#000");
           } else {
-              $("#name-t").html("用户名已经存在...").css("color","#F00");
+        	  $("#name-t").html("用户名已经存在...").css("color","#F00");
           }
-      });
+      },"json");
   } else {
       $("#pwd_t").val("");
       $("#name-t").html("用户名格式不正确...").css("color","#F00");
@@ -74,18 +73,15 @@ function checkzcemail() {
   var aemail = $("#email").val();
   var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
   if (aemail.match(reg)) {
-      $.post("../adminServlet?d="+new Date(),{
-          op: "checkemail",
-          aemail: aemail
-      },
+      $.post("admin_checkEmail.action",{aemail: aemail},
       function(data) {
-          if (parseInt(data) > 0) {
+          if (data==null) {
               $("#email-t").html("该邮箱可以使用...").css("color","#000");
           } else {
               $("#email-t").html("该邮箱已被注册...").css("color","#F00");
               $("#email").val("");
           }
-      });
+      },"json");
   } else {
       $("#email-t").html("邮箱格式不正确...").css("color","#F00");
       $("#email").val("");
@@ -94,19 +90,6 @@ function checkzcemail() {
 
 
 
-//会员登录
-function adminlogin(){
-	var aname=$.trim($("#name").val());
-	var apwd=$.trim($("#pwd").val());
-	
-	$.post("../adminServlet?d="+new Date(),{op:"adminLogin",aname:aname,apwd:apwd},function(data){
-		if(parseInt($.trim(data))==0){
-			alert("用户名或密码错误...");
-		}else{
-			window.location.href="../back/index.jsp";
-		}
-	});
-}
 
 
 //会员注册

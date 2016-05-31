@@ -4,7 +4,7 @@ $(function(){
 		title:'蘑菇街',
 		selected:true,
 		closable:false,
-		href:"mogujie.html"
+		href:"../back/mogujie.html"
 	});
 	$("#menu_tree").tree({
 		onClick:function(node){
@@ -43,7 +43,7 @@ $(function(){
 						title:"顾客信息浏览",
 						closable:true,
 						fit:true,
-						href:"userInfo.html"
+						href:"../back/userInfo.jsp"
 					});
 				}
 			}else if(node.id=="advertise_manager"){
@@ -91,7 +91,7 @@ $(function(){
 						title:"管理员信息管理",
 						closable:true,
 						fit:true,
-						href:"admin.html"
+						href:"../back/admin.jsp"
 					});
 				}
 

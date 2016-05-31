@@ -10,8 +10,29 @@ public class Admin {
     private String aemail;
 
     private int agread;
+    
+    
 
-    public int getAid() {
+    public Admin(int aid, String aname, String apwd, String aemail, int agread) {
+		super();
+		this.aid = aid;
+		this.aname = aname;
+		this.apwd = apwd;
+		this.aemail = aemail;
+		this.agread = agread;
+	}
+
+	public Admin() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Admin [aid=" + aid + ", aname=" + aname + ", apwd=" + apwd
+				+ ", aemail=" + aemail + ", agread=" + agread + "]";
+	}
+
+	public int getAid() {
         return aid;
     }
 
