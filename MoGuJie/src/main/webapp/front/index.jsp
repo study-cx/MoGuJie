@@ -183,6 +183,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</c:forEach>
 	</ul>
 </div>
+<div class="cc">
+	<div class="cc1"></div>
+	<div class="cc3"></div>
+	<div class="cc1"></div>
+</div>
 <%@ include file="footer.jsp" %>
 <script type="text/javascript">
 function showProductInfo(proid){

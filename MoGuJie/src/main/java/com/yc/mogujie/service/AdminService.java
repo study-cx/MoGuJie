@@ -7,15 +7,10 @@ import com.yc.mogujie.entity.Admin;
 public interface AdminService {
 	Admin login(Admin admin);
 
-	int addAdminInfo(Admin admin);
-
-	Admin findByName(String aname);
-
-	Admin findByEmail(String aemail);
-
-	List<Admin> find(Integer pageNo, Integer pageSize);
-
+	public List<Admin> find(Integer pageNo,Integer pageSize);
 	int total();
-
+	int addAdminInfo(Admin admin);
+	Admin findByName(String aname);
+	Admin findByEmail(String aemail);
 	int del(String aid);
 }

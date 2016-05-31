@@ -1,7 +1,7 @@
 //JavaScript Document
 //页面切换
+var usid="${loginUser.usid}";
 function switchover(_this,num){
-	var usid="${loginUser.usid}";
 	var div=document.getElementsByClassName('content');
 	for(var i=1;i<=div.length;i++){
 		if(num==i){

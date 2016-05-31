@@ -5,20 +5,17 @@ import java.util.Map;
 
 import com.yc.mogujie.entity.Admin;
 
+
+
 public interface AdminMapper {
-	Admin getAdminByAdmin(Admin admin);
 
 	Admin adminLogin(Admin admin);
-
+	public List<Admin> find(Map<String ,Object> params);
 	int addAdminInfo(Admin admin);
-
 	Admin findByName(String aname);
-
 	Admin findByEmail(String aemail);
-
-	List<Admin> find(Map<String, Object> params);
-
 	int total();
-
-	int del(String s);
+	int del(String aid);
+	int del2(String aid);
 }
+
