@@ -19,112 +19,112 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="fl1">
           <ul class="fl2">
           
-              <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[0].categoryidone })" style="color:#000">${cateone[0].categoryTypeone}</a></li>
+              <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[0].categoryidone })" style="color:#000">${cateone[0].categorytypeone}</a></li>
                             <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                 <c:forEach items="${catetwo }" var="item">
                                 	<c:if test="${item.categoryidone eq cateone[0].categoryidone }">
-                                		<li><a href="#" style="color:#000">${item.categoryTypetwo }</a></li>
+                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
                                 	</c:if>
                                 </c:forEach>
                                     
                                 </ul>
                              </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[1].categoryidone })" style="color:#000">${cateone[1].categoryTypeone}</a></li>
+                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[1].categoryidone })" style="color:#000">${cateone[1].categorytypeone}</a></li>
                     <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[1].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categoryTypetwo }</a></li>
+	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                      </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[2].categoryidone })" style="color:#000">${cateone[2].categoryTypeone}</a></li>
+                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[2].categoryidone })" style="color:#000">${cateone[2].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[2].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categoryTypetwo }</a></li>
+	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[3].categoryidone })" style="color:#000">${cateone[3].categoryTypeone}</a></li>
+                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[3].categoryidone })" style="color:#000">${cateone[3].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                    <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[3].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categoryTypetwo }</a></li>
+	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[4].categoryidone })" style="color:#000">${cateone[4].categoryTypeone}</a></li>
+                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[4].categoryidone })" style="color:#000">${cateone[4].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[4].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categoryTypetwo }</a></li>
+	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[5].categoryidone })" style="color:#000">${cateone[5].categoryTypeone}</a></li>
+                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[5].categoryidone })" style="color:#000">${cateone[5].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[5].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categoryTypetwo }</a></li>
+	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[6].categoryidone })" style="color:#000">${cateone[6].categoryTypeone}</a></li>
+                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[6].categoryidone })" style="color:#000">${cateone[6].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[6].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categoryTypetwo }</a></li>
+	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[7].categoryidone })" style="color:#000">${cateone[7].categoryTypeone}</a></li>
+                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[7].categoryidone })" style="color:#000">${cateone[7].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[7].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categoryTypetwo }</a></li>
+	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[8].categoryidone })" style="color:#000">${cateone[8].categoryTypeone}</a></li>
+                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[8].categoryidone })" style="color:#000">${cateone[8].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[8].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categoryTypetwo }</a></li>
+	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[9].categoryidone })" style="color:#000">${cateone[9].categoryTypeone}</a></li>
+                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[9].categoryidone })" style="color:#000">${cateone[9].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl7" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[9].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categoryTypetwo }</a></li>
+	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>  
@@ -166,6 +166,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    </c:if>
 	  </c:forEach>
 	 </div>
+</div>
+<div class="cc">
+	<div class="cc1"></div>
+	<div class="cc2"></div>
+	<div class="cc1"></div>
+</div>
+
+<div class="mogugood">
+	<ul>
+		<c:forEach items="${liangping}" var="item">
+			<li><a href="${item.proid}"><img alt="${item.proname }" src="${item.prophoto }"/></a>
+				<a href="${item.proid}">${item.proname}</a>
+			</li>
+			
+		</c:forEach>
+	</ul>
 </div>
 <%@ include file="footer.jsp" %>
 <script type="text/javascript">

@@ -15,8 +15,7 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- 扫描bean包 -->
-	<context:component-scan base-package="com.yc" />
-
+	<context:component-scan base-package="com.yc"/>
 	<!-- 引入外部属性文件 -->
 	<context:property-placeholder location="classpath:db.properties,classpath:mail.properties" />
 
@@ -26,6 +25,7 @@
 		p:username="${jdbc.username}" p:password="${jdbc.password}" />
 		
 	<!-- 配制mybatis的会话工厂对象 -->
+
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
 		p:dataSource-ref="dataSource"
 		p:mapperLocations="classpath:mapper/*Mapper.xml" 
@@ -34,17 +34,20 @@
 	<!-- 配制映射接口 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
 		p:sqlSessionFactoryBeanName="sqlSessionFactory" 
-		p:basePackage="com.yc.mogujie.mapper" />
+		 p:basePackage="com.yc.mogujie.mapper"/>
 
-	<!-- 1.配制事务管理器 -->
+
+	<!-- 1.配制事务管理器 
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
-		p:dataSource-ref="dataSource" />
+		p:dataSource-ref="dataSource" />-->
 		
-	<!-- 2.配制事务关联 -->
+
+
+	<!-- 2.配制事务关联 
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	
+	 -->
 	<!-- 配置邮件发送bean -->
 	<bean id="JavaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="${mail.smtp.host}"/>
@@ -60,6 +63,5 @@
 		</property>
 	</bean>
 </beans>
-
 
 

@@ -17,7 +17,7 @@ public class Product {
 
     private int obligateone;
 
-    private int obligatetwo;
+    private String obligatetwo;
 
     public int getProid() {
         return proid;
@@ -83,11 +83,22 @@ public class Product {
         this.obligateone = obligateone;
     }
 
-    public int getObligatetwo() {
-        return obligatetwo;
-    }
+	public String getObligatetwo() {
+		return obligatetwo;
+	}
 
-    public void setObligatetwo(int obligatetwo) {
-        this.obligatetwo = obligatetwo;
-    }
+	public void setObligatetwo(String obligatetwo) {
+		this.obligatetwo = obligatetwo;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [proid=" + proid + ", proname=" + proname
+				+ ", procontent=" + procontent + ", proprice=" + proprice
+				+ ", categoryidthree=" + categoryidthree + ", prophoto="
+				+ prophoto + ", pstatue=" + pstatue + ", obligateone="
+				+ obligateone + ", obligatetwo=" + obligatetwo + "]";
+	}
+
+    
 }

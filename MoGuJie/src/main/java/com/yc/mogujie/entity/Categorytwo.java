@@ -7,47 +7,57 @@ public class Categorytwo {
 
     private String categorytypetwo;
 
-    private int obligateone;
+    private String obligateone;
 
-    private int obligatetwo;
+    private String obligatetwo;
 
-    public int getCategoryidtwo() {
-        return categoryidtwo;
-    }
+	public int getCategoryidtwo() {
+		return categoryidtwo;
+	}
 
-    public void setCategoryidtwo(int categoryidtwo) {
-        this.categoryidtwo = categoryidtwo;
-    }
+	public void setCategoryidtwo(int categoryidtwo) {
+		this.categoryidtwo = categoryidtwo;
+	}
 
-    public int getCategoryidone() {
-        return categoryidone;
-    }
+	public int getCategoryidone() {
+		return categoryidone;
+	}
 
-    public void setCategoryidone(int categoryidone) {
-        this.categoryidone = categoryidone;
-    }
+	public void setCategoryidone(int categoryidone) {
+		this.categoryidone = categoryidone;
+	}
 
-    public String getCategorytypetwo() {
-        return categorytypetwo;
-    }
+	public String getCategorytypetwo() {
+		return categorytypetwo;
+	}
 
-    public void setCategorytypetwo(String categorytypetwo) {
-        this.categorytypetwo = categorytypetwo == null ? null : categorytypetwo.trim();
-    }
+	public void setCategorytypetwo(String categorytypetwo) {
+		this.categorytypetwo = categorytypetwo;
+	}
 
-    public int getObligateone() {
-        return obligateone;
-    }
+	public String getObligateone() {
+		return obligateone;
+	}
 
-    public void setObligateone(int obligateone) {
-        this.obligateone = obligateone;
-    }
+	public void setObligateone(String obligateone) {
+		this.obligateone = obligateone;
+	}
 
-    public int getObligatetwo() {
-        return obligatetwo;
-    }
+	public String getObligatetwo() {
+		return obligatetwo;
+	}
 
-    public void setObligatetwo(int obligatetwo) {
-        this.obligatetwo = obligatetwo;
-    }
+	public void setObligatetwo(String obligatetwo) {
+		this.obligatetwo = obligatetwo;
+	}
+
+	@Override
+	public String toString() {
+		return "Categorytwo [categoryidtwo=" + categoryidtwo
+				+ ", categoryidone=" + categoryidone + ", categorytypetwo="
+				+ categorytypetwo + ", obligateone=" + obligateone
+				+ ", obligatetwo=" + obligatetwo + "]";
+	}
+
+   
 }
