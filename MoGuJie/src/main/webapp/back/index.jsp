@@ -118,6 +118,4 @@ function loginOut(){
 	$.post("adminServlet?d="+new Date(),{op:"loginOut"},function(data){});
 	window.location.href="../back_login/login.html";
 }
-
-
 </script>
