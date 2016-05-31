@@ -1,0 +1,22 @@
+*{
+	margin:0px auto;
+	padding:0px;
+}
+body{
+	width:100%;		
+	margin:0px auto;
+	height:auto;
+	margin-top:50px;
+}
+#pay1_1{
+	float:left;
+	height:100px;
+	width:100%;
+	background-image: url(../images/bg.png);
+}
+#pay_1{
+	margin-left: 400px;
+}
+#pay1_2{
+	border: 1px solid;
+}

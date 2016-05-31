@@ -171,7 +171,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="content_9" class="content" style="display:none;"></div>
 
     <%@include file="userInfo.jsp" %>
-    <div id="content_11" class="content" style="display:block;">
+    <div id="content_11" class="content" style="display:none;">
 		<p class="touxiang"><span>修改头像</span></p>
 		<form action="userBean_updateImage.action?usid=${loginUser.usid}&uname=${loginUser.uname}" method="post" enctype="multipart/form-data">
 		    <ul>

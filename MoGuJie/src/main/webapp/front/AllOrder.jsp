@@ -52,7 +52,7 @@
 		$("#content_1").append($(str));
 	},"json");
 </script>
- <div id="content_1" class="content" style="display:none;">
+ <div id="content_1" class="content" style="display:block;">
     	<table class="title">
         	<tr>
         	<td class="shop">商品</td>

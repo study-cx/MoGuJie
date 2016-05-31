@@ -39,9 +39,9 @@ $(function(){
 			</li>
 			<li>生日：<input name="ubirthday" type="text" id="birth"
 				style="width: 150px; height: 25px;" /></li>
-			<!-- <li class="uuu">邮政编码：<input name="ucode" id="ucode"
+			<li class="uuu">邮政编码：<input name="ucode" id="ucode"
 				style="width: 150px; height: 25px;"></li>
-			<li class="place">所在地址： <select id="selProvince"
+			<!-- <li class="place">所在地址： <select id="selProvince"
 				onChange="changeCity( )">
 					<option value="" id="sheng" name="province">请选择省份</option>
 					<option value="湖南省">湖南省</option>

@@ -59,11 +59,24 @@
     usaccount number(10,2),--用户余额
     statue int,--删除时的状态标志
     obligateone varchar2(40),--预留字段1
+    statue int,--删除时的状态标志
+    obligateone int,--预留字段1
     obligatetwo varchar2(40)--预留字段2
   );
+  drop table userInfo
   create sequence seq_UserInfo_usid start with 100 increment by 1;
   select *from userInfo
   select u.uname,u.ubirthday,u.ucode,u.usemail,u.usphone,a.province,a.city from userInfo u,address a where u.usid=a.usid and u.uname='liqiu'
+
+  delete from USERINFO where uname='cc'
+  insert into userInfo values(1001,'123','haha','',to_date('2003-03-10','yyyy-mm-dd'),'523525@qq.com','421002',
+  '12123333','1000',1,'','');
+  insert into userInfo values(seq_UserInfo_usid.Nextval,'caicai','cc',null,null,'22@qq.com',null,
+  '18397770461',0,0,null,null);
+  usid=0, uspwd=caicai, uname=cc, uphoto=null, ubirthday=null, usemail=22@qq.com, ucode=null, usphone=18397770461, usaccount=0, statue=0, obligateone=null, obligatetwo=null
+  insert into userInfo values(1002,'123','lala','',to_date('2008-07-10','yyyy-mm-dd'),'67253278@qq.com','421002',
+  '12123333','1000',1,'','');
+  select u.uname,u.ubirthday,u.ucode,u.usemail,u.usphone,a.province,a.city from userInfo u,address a where u.usid=a.usid and u.uname='lala'
 
 insert into userInfo values(1001,'123','haha','',to_date('2003-03-10','yyyy-mm-dd'),'523525@qq.com','421002',
 '12123333','1000',1,'','');
@@ -91,8 +104,10 @@ select *from userInfo;
   );
  select * from address;
   create sequence seq_address_addressid start with 100 increment by 1;
+  insert into address values(seq_address_addressid.nextval,'湖南省','衡阳市','珠晖区','衡花路18号',120,'陈烜',45646,'15674785546',1,1,1);
   insert into address values(seq_address_addressid.nextval,'湖南省','衡阳市','珠晖区','衡花路18号',1002,'陈烜',45646,'15674785546',1,1,1);
   insert into address values(seq_address_addressid.nextval,'湖南省','岳阳市','珠晖区','衡花路18号',121,'菜菜',45646,'15674785546',1,'','');
+  insert into address values(seq_address_addressid.nextval,'湖南省','岳阳市','珠晖区','衡花路18号',120,'菜菜',45646,'15674785546',1,'','');
   --商品分类表首级
   create table categoryone(
     categoryidone int primary key,--商品类型Id

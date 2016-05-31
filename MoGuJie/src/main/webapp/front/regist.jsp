@@ -56,7 +56,7 @@
 			</center>
 
 			<div class="zhuce">
-				<input type="submit" id="zhuce" value="注册" />
+				<input type="submit"  id="zhuce" value="注册" />
 			</div>
 			<div class="xieyi">
 				<a href="xieyi.jsp" id="xieyi" target="_blank">《蘑菇街网络服务协议》</a>

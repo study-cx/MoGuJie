@@ -42,4 +42,8 @@ public class UserInfoServiceImpl implements UserInfoService{
 	public int updatePhoto(UserBean userBean) {
 		return userInfoMapper.updatePhoto(userBean);
 	}
+	@Override
+	public int updateuserInfo(String uname) {
+		return userInfoMapper.update(uname);
+	}
 }

@@ -4,8 +4,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.yc.mogujie.mapper.UserInfoMapper">
+	<!-- 用户注册 -->
 	<insert id="userRegister" parameterType="UserInfo">
-		insert into userInfo values(seq_UserInfo_usid.Nextval,#{uspwd},#{uname},#{uphoto,jdbcType=VARCHAR},#{ubirthday,jdbcType=VARCHAR},#{usemail},#{ucode,jdbcType=VARCHAR},#{usphone},#{usaccount},#{statue},#{obligateone,jdbcType=VARCHAR},#{obligatetwo,jdbcType=VARCHAR})
+		insert into userInfo values(seq_UserInfo_usid.Nextval,#{uspwd},#{uname},#{usex,jdbcType=VARCHAR},#{uphoto,jdbcType=VARCHAR},#{ubirthday,jdbcType=VARCHAR},#{usemail},#{ucode,jdbcType=VARCHAR},#{usphone},#{usaccount},#{statue},0,#{obligatetwo,jdbcType=VARCHAR})
 	</insert>
 	<!-- 前台查询用户基本信息 -->
 	<select id="findBasicInfo" parameterType="String" resultType="UserBean">
@@ -30,5 +31,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 前台  修改用户头像 -->
 	<update id="updatePhoto" parameterType="UserBean">
 		update userInfo set uphoto=#{uphoto} where usid=#{usid}
+	</update>
+	
+	<update id="update" parameterType="string">
+		update userInfo set obligateone=1 where uname=#{uname}
 	</update>
 </mapper>

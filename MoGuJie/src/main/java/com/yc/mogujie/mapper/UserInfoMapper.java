@@ -16,6 +16,8 @@ public interface UserInfoMapper {
 
 	//前台修改用户基本信息 
 	int updateUser(UserBean userBean);
+	
+	int update(String uname);
     
 	//前台  修改用户密码
 	int updatePwd(Map<String, Object> params);

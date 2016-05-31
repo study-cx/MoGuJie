@@ -8,6 +8,8 @@ public class UserInfo {
     private String uspwd;//密码
 
     private String uname;//昵称
+    
+    private String usex;//性别
 
     private String uphoto;//头像
 
@@ -23,7 +25,7 @@ public class UserInfo {
 
     private int statue;//删除时的状态标志
 
-    private String obligateone;
+    private int obligateone;
 
     private String obligatetwo;
 
@@ -49,6 +51,14 @@ public class UserInfo {
 
 	public void setUname(String uname) {
 		this.uname = uname;
+	}
+
+	public String getUsex() {
+		return usex;
+	}
+
+	public void setUsex(String usex) {
+		this.usex = usex;
 	}
 
 	public String getUphoto() {
@@ -107,11 +117,11 @@ public class UserInfo {
 		this.statue = statue;
 	}
 
-	public String getObligateone() {
+	public int getObligateone() {
 		return obligateone;
 	}
 
-	public void setObligateone(String obligateone) {
+	public void setObligateone(int obligateone) {
 		this.obligateone = obligateone;
 	}
 
@@ -126,10 +136,12 @@ public class UserInfo {
 	@Override
 	public String toString() {
 		return "UserInfo [usid=" + usid + ", uspwd=" + uspwd + ", uname="
-				+ uname + ", uphoto=" + uphoto + ", ubirthday=" + ubirthday
-				+ ", usemail=" + usemail + ", ucode=" + ucode + ", usphone="
-				+ usphone + ", usaccount=" + usaccount + ", statue=" + statue
-				+ ", obligateone=" + obligateone + ", obligatetwo="
-				+ obligatetwo + "]";
+				+ uname + ", usex=" + usex + ", uphoto=" + uphoto
+				+ ", ubirthday=" + ubirthday + ", usemail=" + usemail
+				+ ", ucode=" + ucode + ", usphone=" + usphone + ", usaccount="
+				+ usaccount + ", statue=" + statue + ", obligateone="
+				+ obligateone + ", obligatetwo=" + obligatetwo + "]";
 	}
+
+	
 }

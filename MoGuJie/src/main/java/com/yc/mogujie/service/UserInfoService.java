@@ -19,4 +19,6 @@ public interface UserInfoService {
 	int updateUserPwd(Map<String, Object> params);
 
 	int updatePhoto(UserBean userBean);
+
+	int updateuserInfo(String uname);
 }
