@@ -1,7 +1,7 @@
 //JavaScript Document
 //页面切换
+var usid="${loginUser.usid}";
 function switchover(_this,num){
-	var usid="${loginUser.usid}";
 	var div=document.getElementsByClassName('content');
 	for(var i=1;i<=div.length;i++){
 		if(num==i){
@@ -60,6 +60,7 @@ function switchover(_this,num){
 				var str=" ";
 				$("#content_3").html('');
 				$.post("userOrderBean_findPaiedOrder",{usid:usid},function(data){
+					alert(data);
 					if(data.length==0){
 						str+="<img id='NoImage_1' src='front/images/dingdan_1.png'/>";
 						str+="<h3 id='NoImage_2'>哎呀,此状态下没有对应的订单!</h3>";
