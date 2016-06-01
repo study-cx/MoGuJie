@@ -190,16 +190,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 <div class="nvxie">
-	<div><img alt="" src="front/images/herd.png"></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
+	<c:forEach items="${renqinvxie}" var="item">
+		<div><a href="${item.proid}"><img style="width: 100%;height: 140px;" alt="${item.proname }" src="${item.prophoto }"></a>
+			 <a href="${item.proid}">${item.proname}</a></div>
+    </c:forEach>
 </div>
 <%@ include file="footer.jsp" %>
 <script type="text/javascript">

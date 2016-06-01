@@ -12,7 +12,10 @@ $(function(){
 			$("#usex2").attr("checked","checked");
 		}
 		$("#usex").html(data.usex);
-		$("#birth").val(data.ubirthday.substring(0,10));
+		if(data.ubirthday !=null){
+			$("#birth").val(data.ubirthday.substring(0,10));
+		}
+		
 		$("#ucode").val(data.ucode);
 		$("#sheng").html(data.province);
 		$("#shi").html(data.city);
