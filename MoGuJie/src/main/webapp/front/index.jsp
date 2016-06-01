@@ -188,6 +188,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="cc3"></div>
 	<div class="cc1"></div>
 </div>
+
+<div class="nvxie">
+	<div><img alt="" src="front/images/herd.png"></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</div>
 <%@ include file="footer.jsp" %>
 <script type="text/javascript">
 function showProductInfo(proid){

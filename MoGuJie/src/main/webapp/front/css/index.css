@@ -420,3 +420,15 @@ a:hover,a:active {
 	width: 20%;
 	height: 100%;
 }
+.nvxie{
+	width: 92%;
+	height:400px;
+}
+.nvxie div{
+	float:left;
+	margin-left:15px;
+	margin-top:10px;
+	width: 18%;
+	height: 180px;
+	background: blue;
+}

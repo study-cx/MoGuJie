@@ -256,7 +256,7 @@ select * from product;
   create sequence seq_detail_deid start with 100 increment by 1;
   insert into detail values(seq_detail_deid.nextval,100,234,'S','','red',1111,'','');
   select * from detail;
-insert into product values(seq_product_proid.nextval,'毛衣','羊羊羊毛衣','99.9',101,'',1,'','');
+  insert into product values(seq_product_proid.nextval,'毛衣','羊羊羊毛衣','99.9',101,'',1,'','');
 
   insert into product values(seq_product_proid.nextval,'毛衣','羊羊羊毛衣','99.9',100,'',1,'','');
 
