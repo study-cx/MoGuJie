@@ -50,15 +50,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
 
 <div id="zhangshi">
-	<img src="${productInfo[0].PROPHOTO}" id="b1" style="display:block;height:600px;width:397px"/>
-	<img src="${productInfo[1].PROPHOTO}" id="b2" style="display:none;height:600px;width:397px"/>
-	<img src="${productInfo[2].PROPHOTO}" id="b3" style="display:none;height:600px;width:397px"/>
-	<img src="${productInfo[3].PROPHOTO}" id="b4" style="display:none;height:600px;width:397px"/>
+
+	<c:forEach items="${pcolor}" var="item" varStatus="vs">
+		<c:choose>
+		<c:when test="${vs.index ==0}">
+			<img src="${item.pcolor}" id="b${vs.index}" style="display:block;height:600px;width:397px"/>
+		</c:when>
+		<c:otherwise>
+			<img src="${item.pcolor}" id="b${vs.index}" style="display:none;height:600px;width:397px"/>
+		</c:otherwise>
+		</c:choose>
+	</c:forEach>
+
 	<ul>
-		<li><img onMouseOver="change1(1)" id='a1' class='one' src='${productInfo[0].PROPHOTO}' style="height:70px;width:70px"/></li>
-		<li><img onMouseOver="change1(2)" id='a2' src='${productInfo[1].PROPHOTO}' style="height:70px;width:70px"/></li>
-		<li><img onMouseOver="change1(3)" id='a3' src='${productInfo[2].PROPHOTO}' style="height:70px;width:70px"/></li>
-		<li><img onMouseOver="change1(4)" id='a4' src='${productInfo[3].PROPHOTO}' style="height:70px;width:70px"/></li>
+		<c:forEach items="${pcolor}" var="item" varStatus="vs">
+		 	<c:choose>
+				<c:when test="${vs.index ==0}">
+					<li><img onMouseOver="change1(${vs.index})" id='a${vs.index}' class='one' src='${item.pcolor}' style="height:70px;width:70px"/></li>
+				</c:when>
+			<c:otherwise>
+				<li><img onMouseOver="change1(${vs.index})" id='a${vs.index}' src='${item.pcolor}' style="height:70px;width:70px"/></li>
+			</c:otherwise>
+		</c:choose>
+			
+		</c:forEach>
+		<%-- <li><img onMouseOver="change1(1)" id='a1' class='one' src='${detail[0].pcolor}' style="height:70px;width:70px"/></li>
+		<li><img onMouseOver="change1(2)" id='a2' src='${detail[1].pcolor}' style="height:70px;width:70px"/></li>
+		<li><img onMouseOver="change1(3)" id='a3' src='${detail[2].pcolor}' style="height:70px;width:70px"/></li>
+		<li><img onMouseOver="change1(4)" id='a4' src='${detail[3].pcolor}' style="height:70px;width:70px"/></li> --%>
 	</ul>
 	<div id='qbsp2' style="display:none">
 		<ul type='square' >
