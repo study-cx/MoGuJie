@@ -183,18 +183,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</c:forEach>
 	</ul>
 </div>
-<div class="cc">
-	<div class="cc1"></div>
-	<div class="cc3"></div>
-	<div class="cc1"></div>
-</div>
-
-<div class="nvxie">
-	<c:forEach items="${renqinvxie}" var="item">
-		<div><a href="${item.proid}"><img style="width: 100%;height: 140px;" alt="${item.proname }" src="${item.prophoto }"></a>
-			 <a href="${item.proid}">${item.proname}</a></div>
-    </c:forEach>
-</div>
 <%@ include file="footer.jsp" %>
 <script type="text/javascript">
 function showProductInfo(proid){

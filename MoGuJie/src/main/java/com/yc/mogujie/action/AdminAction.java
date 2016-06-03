@@ -24,9 +24,6 @@ public class AdminAction implements ModelDriven<Admin>, SessionAware {
 	private Admin admin;
 	private Admin chakeAname;
 	private Admin chakeAemail;
-	private int pageNo = 1;
-	private int pageSize = 10;
-	private String aids;
 	@Autowired
 	private AdminService adminService;
 	private Map<String, Object> session;
@@ -38,10 +35,7 @@ public class AdminAction implements ModelDriven<Admin>, SessionAware {
 	public Admin getChakeAemail() {
 		return chakeAemail;
 	}
-
-	public void setAids(String aids) {
-		this.aids = aids;
-	}
+	
 
 	public String login() {
 		LogManager.getLogger().debug("login登陆操作...");
@@ -73,7 +67,7 @@ public class AdminAction implements ModelDriven<Admin>, SessionAware {
 	}
 
 	public String checkEmail() {
-		LogManager.getLogger().debug("管理员信息注册用户名验证操作...");
+		LogManager.getLogger().debug("管理员信息注册邮箱验证操作...");
 		chakeAemail = adminService.findByEmail(admin.getAemail());
 		System.out.println(chakeAemail);
 		return "ckEmail";
@@ -81,7 +75,9 @@ public class AdminAction implements ModelDriven<Admin>, SessionAware {
 
 	public void getPageAdminInfo() {
 		LogManager.getLogger().debug("管理员信息查询操作...");
-		List<Admin> admins = adminService.find(pageNo, pageSize);
+		String page=ServletActionContext.getRequest().getParameter("page");
+		String rows=ServletActionContext.getRequest().getParameter("rows");
+		List<Admin> admins = adminService.find(Integer.valueOf(page), Integer.valueOf(rows));
 
 		Gson gson = new Gson();// json处理对象
 		String jsonResult = gson.toJson(admins);// 把对象转换成json字符串
@@ -99,7 +95,7 @@ public class AdminAction implements ModelDriven<Admin>, SessionAware {
 	}
 
 	public void addAdminInfo() {
-		LogManager.getLogger().debug("管理员注册操作...");
+		LogManager.getLogger().debug("添加管理员...");
 		int result = adminService.addAdminInfo(admin);
 		Gson gson = new Gson();// json处理对象
 		String jsonResult = gson.toJson(result);// 把对象转换成json字符串
@@ -118,6 +114,7 @@ public class AdminAction implements ModelDriven<Admin>, SessionAware {
 
 	public void del() {
 		LogManager.getLogger().debug("管理员删除操作...");
+		String aids=ServletActionContext.getRequest().getParameter("aids");
 		int result = adminService.del(aids);
 		Gson gson = new Gson();// json处理对象
 		String jsonResult = gson.toJson(result);// 把对象转换成json字符串

@@ -3,13 +3,12 @@
 <script>
 	var usid="${loginUser.usid}";
 	$.post("userOrderBean_findAllOrders.action",{usid:usid},function(data){
-	var str="";
 		if(data.length==0){
 			str+="<img id='NoImage_1' src='front/images/dingdan_1.png'/>";
 	   		str+="<h3 id='NoImage_2'>哎呀,此状态下没有对应的订单!</h3>";
 	   		str+="<p id='NoImage_3'>去&nbsp;<a  href='front/index.jsp'>首页</a>&nbsp;逛逛吧</p>";
 		}else{
-			
+			var str="";
 			$.each(data,function(index,item){
 				var status;
 				if(item.ostatus==2){

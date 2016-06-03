@@ -17,6 +17,4 @@ public interface IndexService {
 
 	List<Product> selectProductByobligateone();
 
-	List<Product> selectRenQiNvXie();
-
 }

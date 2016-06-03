@@ -25,14 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@include file="head.jsp"%>
 <div id="title_left">
         <ul class="title1">
-        <c:choose>
-	        <c:when test="${loginUser.uphoto eq null}">
-	        	 <li><img class="img1" src="front/images/herd.png" style="width:120px;height:100px" id="img1"/></li>
-	        </c:when>
-	        <c:otherwise>
-	             <li><img class="img1" src="${loginUser.uphoto }" style="width:120px;height:100px" id="img1"/></li>
-	        </c:otherwise>
-        </c:choose>
+        	<li><img class="img1" src="${loginUser.uphoto }" style="width:120px;height:100px" id="img1"/></li>
            	<li><p class="tit1">${loginUser.uname }</p></li>
             <li><p class="tit2">4</p></li><br/><br/>
             <li><span class="tit3">..............................................</span></li>

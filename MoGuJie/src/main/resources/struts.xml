@@ -14,7 +14,7 @@
 
 	<package name="default" namespace="/" extends="json-default">
 		<global-allowed-methods>login,adminRegiest,register,registers,checkName,del,addAdminInfo,getPageAdminInfo,checkEmail,findBasicInfo,addr,list,update,edit,moren,
-		updateBasicInfo,findAllOrders,findNoPayOrder,findPaiedOrder,updatePwd,updateImage
+		updateBasicInfo,findAllOrders,findNoPayOrder,getAllUserInfo,findUserInfo,updateUserInfo,findPaiedOrder,updatePwd,updateImage
 		</global-allowed-methods>
 
 		<action name="*_*" class="{1}Action" method="{2}">
