@@ -8,7 +8,6 @@ import com.yc.mogujie.entity.Admin;
 
 
 public interface AdminMapper {
-
 	Admin adminLogin(Admin admin);
 	public List<Admin> find(Map<String ,Object> params);
 	int addAdminInfo(Admin admin);
@@ -18,4 +17,3 @@ public interface AdminMapper {
 	int del(String aid);
 	int del2(String aid);
 }
-

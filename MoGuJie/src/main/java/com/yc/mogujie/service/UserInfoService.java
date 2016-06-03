@@ -1,5 +1,6 @@
 package com.yc.mogujie.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.yc.mogujie.entity.UserBean;
@@ -21,4 +22,10 @@ public interface UserInfoService {
 	int updatePhoto(UserBean userBean);
 
 	int updateuserInfo(String uname);
+	
+	public List<UserInfo> find(Integer pageNo, Integer pageSize);
+	
+	UserInfo find(String usid);
+	
+	int updateUserInfo(UserInfo userInfo);
 }
