@@ -8,36 +8,80 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 用户注册 -->
 
 	<insert id="userRegister" parameterType="UserInfo">
-		insert into userInfo values(seq_UserInfo_usid.Nextval,#{uspwd},#{uname},#{usex,jdbcType=VARCHAR},#{uphoto,jdbcType=VARCHAR},#{ubirthday,jdbcType=VARCHAR},#{usemail},#{ucode,jdbcType=VARCHAR},#{usphone},#{usaccount},#{statue},0,#{obligatetwo,jdbcType=VARCHAR})
+		insert into userInfo
+		values(seq_UserInfo_usid.Nextval,#{uspwd},#{uname},#{usex,jdbcType=VARCHAR},#{uphoto,jdbcType=VARCHAR},#{ubirthday,jdbcType=VARCHAR},#{usemail},#{ucode,jdbcType=VARCHAR},#{usphone},#{usaccount},#{statue},0,#{obligatetwo,jdbcType=VARCHAR})
 	</insert>
 	<!-- 前台查询用户基本信息 -->
 	<select id="findBasicInfo" parameterType="String" resultType="UserBean">
 		select uname,ubirthday,ucode,usemail,usphone,usex from userInfo u where usid=usid and uname=#{uname}
 	</select>
-	
-	<select id="login" parameterType="UserInfo" resultType="UserInfo">
-		select *from userInfo where uname=#{uname} and uspwd=#{uspwd}
 
+	<select id="login" parameterType="UserInfo" resultType="UserInfo">
+		select * from userInfo where uname=#{uname} and uspwd=#{uspwd}
 	</select>
-	
+
 	<!-- 前台修改用户基本信息 -->
 	<!-- userInfo表 -->
 	<update id="updateUser" parameterType="UserBean">
-		update userInfo set uname=#{uname},usex=#{usex},ubirthday=#{ubirthday,jdbcType=TIMESTAMP},ucode=#{ucode},usemail=#{usemail},usphone=#{usphone} where uname=#{oldUanme}
+		update userInfo set
+		uname=#{uname},usex=#{usex},ubirthday=#{ubirthday,jdbcType=TIMESTAMP},ucode=#{ucode},usemail=#{usemail},usphone=#{usphone}
+		where uname=#{oldUanme}
 	</update>
-	
-	<!-- 前台  修改用户密码 -->
+
+	<!-- 前台 修改用户密码 -->
 	<update id="updatePwd" parameterType="map">
-		update userInfo set uspwd=#{newPwd} where usid=#{usid} and uspwd=#{oldPwd}
+		update userInfo set
+		uspwd=#{newPwd} where usid=#{usid} and uspwd=#{oldPwd}
 	</update>
-	
-	<!-- 前台  修改用户头像 -->
+
+	<!-- 前台 修改用户头像 -->
 	<update id="updatePhoto" parameterType="UserBean">
-		update userInfo set uphoto=#{uphoto} where usid=#{usid}
+		update userInfo set
+		uphoto=#{uphoto} where usid=#{usid}
 	</update>
-	
+
 	<update id="update" parameterType="string">
-		update userInfo set obligateone=1 where uname=#{uname}
+		update userInfo set
+		obligateone=1 where uname=#{uname}
+	</update>
+
+	<!-- 后台分页查询 -->
+	<select id="finds" parameterType="map" resultType="UserInfo">
+		select * from
+		(select a.*,rownum rn from(select * from userInfo where
+		statue=1 order
+		by usid) a where ${pageNo}>=rownum) b where rn>${pageSize}
+	</select>
+	<!-- 用户详细信息查询 -->
+	<select id="find" parameterType="String" resultType="UserInfo">
+		select *
+		from userInfo where usid=#{usid}
+	</select>
+
+	<!-- 后台修改用户信息 -->
+	<update id="updateUserInfo" parameterType="UserInfo">
+		update userInfo
+		<set>
+			<if test="uname != null">
+				uname=#{uname}
+			</if>
+			<if test="usemail != null">
+				usemail=#{usemail}
+			</if>
+			<if test="ucode != null">
+				ucode=#{ucode}
+			</if>
+			<if test="usphone != null">
+				usphone=#{usphone}
+			</if>
+			<if test="usaccount != null">
+				usaccount=#{usaccount}
+			</if>
+			<if test="ubirthday != null">
+				ubirthday=#{ubirthday}
+			</if>
+		</set>
+		where usid=#{usid}
 	</update>
 </mapper>
 

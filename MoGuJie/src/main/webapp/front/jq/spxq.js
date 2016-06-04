@@ -16,7 +16,7 @@
 		document.getElementById('smxz').style.display='none';
 	}
 	function change1(num){
-			for(var j=1;j<=4;j++){
+			for(var j=0;j<=3;j++){
 				if(num==j){
 					document.getElementById('b'+j).style.display='block';
 					document.getElementById('a'+j).style.opacity=1;

@@ -2,6 +2,7 @@
   grant dba to MoGuJie
   --蘑菇街数据库设计
   delete admin;
+  delete advertise;
   delete userInfo;
   delete active;
   delete activeinfo;
@@ -13,7 +14,6 @@
   delete detail;
   delete feedback;
   delete guanggao;
-  delete advertise;
   delete orderdetail;
   delete product;
   delete userorder;
@@ -36,7 +36,7 @@
   drop table userorder;
   
   select *from admin;
- --管理员
+  --管理员
   create table admin(
     aid int primary key,--管理员id
     aname varchar2(50) unique not null,--管理员昵称
@@ -101,9 +101,7 @@ insert into userInfo values(seq_UserInfo_usid.nextval,'123','haha','',to_date('2
   usid=0, uspwd=caicai, uname=cc, uphoto=null, ubirthday=null, usemail=22@qq.com, ucode=null, usphone=18397770461, usaccount=0, statue=0, obligateone=null, obligatetwo=null
   insert into userInfo values(1002,'123','lala','',to_date('2008-07-10','yyyy-mm-dd'),'67253278@qq.com','421002',
   '12123333','1000',1,'','');
-  select u.uname,u.ubirthday,u.ucode,u.usemail,u.usphone,a.province,a.city from userInfo u,address a where u.usid=a.usid and u.uname='lala'
 
-=======
 
   select u.uname,u.ubirthday,u.ucode,u.usemail,u.usphone,a.province,a.city from userInfo u,address a where u.usid=a.usid and u.uname='lala'
 
@@ -136,7 +134,12 @@ insert into userInfo values(1002,'123','lala','',to_date('2008-07-10','yyyy-mm-d
 insert into userInfo values(seq_UserInfo_usid.nextval,'aaa','liqiu','女','',to_date('2008-07-10','yyyy-mm-dd'),'1573454899@qq.com','422302',
 '13241425','1000',1,'','');
 
+<<<<<<< HEAD
 select *from userInfo;
+=======
+>>>>>>> refs/remotes/origin/master
+
+>>>>>>> refs/remotes/origin/master
   --地址表
   create table address(
     addressid int primary key,--id
@@ -213,6 +216,8 @@ select * from categorythree;
   select *from categorytwo
 
 
+ 
+>>>>>>> refs/remotes/origin/master
   --商品表，主要用来保存管理员上传的商品信息
   create table product(
      proid int primary key,--商品id
@@ -227,19 +232,14 @@ select * from categorythree;
     obligatetwo varchar2(40)--预留字段2
   );
   create sequence seq_product_proid start with 100 increment by 1;
- alter table product drop column obligateone
- alter table product add column obligateone int;
-select * from product;
+
+<<<<<<< HEAD
   insert into product values(seq_product_proid.nextval,'毛衣','羊羊羊毛衣','99.9',101,'',1,'','');
 
   insert into product values(seq_product_proid.nextval,'毛衣','羊羊羊毛衣','99.9',100,'',1,'','');
-	insert into product values(seq_product_proid.nextval,'jcoolstory','卡通宽松纯棉短袖T恤','99.9',100,'../uploadPic/liangping1.jpg',1,'','');
-  insert into product values(seq_product_proid.nextval,'韩都衣舍','夏装新款女装圆领宽松T恤','99.9',100,'../uploadPic/liangping2.jpg',1,'','');
-  insert into product values(seq_product_proid.nextval,'维拓','卡通宽松纯棉短袖T恤','99.9',100,'../uploadPic/liangping3.jpg',1,'','');
-  insert into product values(seq_product_proid.nextval,'布衣布舍','新款线条T恤','99.9',100,'../uploadPic/liangping4.jpg',1,'','');
-  insert into product values(seq_product_proid.nextval,'Alice','宽松休闲民族风流刺绣','99.9',100,'../uploadPic/liangping5.jpg',1,'','');
-  select * from product;
-  update product set prophoto='../uploadPic/liangping1.jpg' where proid=100
+	select * from product;
+=======
+
   --商品详细表
   create table detail(
     deid int primary key,
@@ -329,45 +329,40 @@ insert into orderdetail values(seq_orderdetail_orid.nextval,128,102,100,1,'199.9
 insert into orderdetail values(seq_orderdetail_orid.nextval,123,100,1,'199.9',1,'','');
 
 
- --广告位表
+  --广告位表
+>>>>>>> refs/remotes/origin/master
   create table advertise(
     aid int primary key,--广告位id
     asize varchar2(100),--图片尺寸
-    weizhi varchar2(100),--位置
+     weizhi varchar2(100),--位置
+     obligateone varchar2(40),--预留字段1
+    obligatetwo varchar2(40)--预留字段2
+
+  );
+  insert into advertise values(1,'100*100','',1,1)
+  create sequence seq_advertise_aid start with 100 increment by 1;
+
+  --广告表
+
+  create table guanggao(
+    gid int primary key,--广告编号
+    aid int
+        constraint FK_guanggao_aid references advertise(aid),--广告位id
+    ggrade int,
+    gPhoto varchar2(100),--图片地址
+    gdates date,--广告开始时间
+    gdateo date,--广告结束时间
+     weight int,--权重
+    click int,--点击次数
+    linkaddress varchar2(100),--连接地址
     obligateone varchar2(40),--预留字段1
     obligatetwo varchar2(40)--预留字段2
+
   );
-  select *from advertise
-  create sequence seq_advertise_aid start with 100 increment by 1;
-  insert into advertise values(seq_advertise_aid.nextval,'100*100','中间',0,0);
-  insert into advertise values(seq_advertise_aid.nextval,'100*100','旁边上',0,0);
-  insert into advertise values(seq_advertise_aid.nextval,'100*100','旁边下',0,0);
-  --广告表
-  create table guanggao(
-	gid int primary key,--广告编号
-	aid int
-      constraint FK_guanggao_aid references advertise(aid),--广告位id
-	ggrade int,
-	gPhoto varchar2(100),--图片地址
-	gdates date,--广告开始时间
-	gdateo date,--广告结束时间
-  	weight int,--权重
-	click int,--点击次数
-	proid int  --商品表id
-       constraint FK_guanggao_proid references product(proid),
-	obligateone varchar2(60),--预留字段1
-	obligatetwo varchar2(60)--预留字段2
-);
-select gid,weizhi,gPhoto,gdates,gdateo,proid from guanggao g,advertise a where g.aid=a.aid and sysdate>gdates and sysdate<gdateo
-select *from guanggao
   create sequence seq_guanggao_gid start with 100 increment by 1;
-  insert into guanggao values(seq_guanggao_gid.nextval,100,1,'../uploadPic/1.jpg',to_date('2016-03-10','yyyy-mm-dd'),to_date('2016-06-01','yyyy-mm-dd'),1,1,100,0,0);
-  insert into guanggao values(seq_guanggao_gid.nextval,100,1,'../uploadPic/2.jpg',to_date('2016-03-10','yyyy-mm-dd'),to_date('2016-06-01','yyyy-mm-dd'),1,1,100,0,0);
-  insert into guanggao values(seq_guanggao_gid.nextval,100,1,'../uploadPic/5.jpg',to_date('2016-03-10','yyyy-mm-dd'),to_date('2016-06-01','yyyy-mm-dd'),1,1,100,0,0);
-  insert into guanggao values(seq_guanggao_gid.nextval,101,1,'../uploadPic/3.jpg',to_date('2016-03-10','yyyy-mm-dd'),to_date('2016-06-01','yyyy-mm-dd'),1,1,100,0,0);
-  insert into guanggao values(seq_guanggao_gid.nextval,102,1,'../uploadPic/4.jpg',to_date('2016-03-10','yyyy-mm-dd'),to_date('2016-06-01','yyyy-mm-dd'),1,1,100,0,0);
+  insert into guanggao values(seq_guanggao_gid.nextval,1,1,'','','',1,1,'',1,1)
   select * from guanggao order by weight desc,gdates desc
-  
+
   --买家回馈
 
   create table feedback(
