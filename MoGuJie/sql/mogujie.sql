@@ -45,6 +45,7 @@
     agread int --管理员等级
   );
   create sequence seq_admin_aid start with 100 increment by 1;
+  select u.uname,u.ubirthday,u.ucode,u.usemail,u.usphone,u.usex,a.province,a.city from userInfo u,address a where u.usid=a.usid and u.uname='liqiu'
   --用户信息表
   create table userInfo(
     usid int primary key,--用户id
