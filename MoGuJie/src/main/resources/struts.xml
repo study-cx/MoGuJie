@@ -13,8 +13,10 @@
 	<constant name="struts.objectFactory " value="spring" />
 
 	<package name="default" namespace="/" extends="json-default">
-		<global-allowed-methods>login,adminRegiest,register,registers,checkName,del,addAdminInfo,getPageAdminInfo,checkEmail,findBasicInfo,addr,list,update,edit,moren,
-		updateBasicInfo,findAllOrders,findNoPayOrder,findPaiedOrder,updatePwd,updateImage
+		<global-allowed-methods>login,adminRegiest,register,registers,checkName,del,addAdminInfo,
+				getPageAdminInfo,checkEmail,findBasicInfo,addr,list,update,edit,moren,
+				updateBasicInfo,findAllOrders,findNoPayOrder,findPaiedOrder,updatePwd,
+				updateImage,pay,back
 		</global-allowed-methods>
 
 		<action name="*_*" class="{1}Action" method="{2}">
@@ -63,6 +65,8 @@
 				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">userInfo</param>
 			</result>
+			<result name="Paysuccess" type="redirect">${IPaddress}</result>
+			<result name="message">/front/msg.jsp</result>
 		</action>
 	</package>
 </struts>

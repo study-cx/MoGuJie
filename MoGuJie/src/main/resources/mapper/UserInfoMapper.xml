@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	<!-- 前台查询用户基本信息 -->
 	<select id="findBasicInfo" parameterType="String" resultType="UserBean">
-		select u.uname,u.ubirthday,u.ucode,u.usemail,u.usphone,u.usex,a.province,a.city from userInfo u,address a where u.usid=a.usid and u.uname=#{uname}
+		select uname,ubirthday,ucode,usemail,usphone,usex from userInfo u where usid=usid and uname=#{uname}
 	</select>
 	
 	<select id="login" parameterType="UserInfo" resultType="UserInfo">

@@ -76,7 +76,7 @@ public class UserBeanAction implements ModelDriven<UserBean>,SessionAware{
 	public String findBasicInfo(){
 		LogManager.getLogger().debug(userBean);
 		userInfo=userInfoService.findBasicInfo(userBean.getUname());
-		//System.out.println("查询到数据为："+userInfo);
+		System.out.println("查询到数据为："+userInfo);
 		return "findBasicsuccess";
 	}
 

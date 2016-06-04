@@ -186,5 +186,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    </form>
 	</div>
     <%@include file="UpdatePwd.jsp" %>
+    <%@ include file="footer.jsp" %>
 </body>
 </html>
