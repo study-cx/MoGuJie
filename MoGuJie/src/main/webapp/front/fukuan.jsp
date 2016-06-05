@@ -225,7 +225,7 @@
 			</c:forEach>
 			</div>
 			<div class="foot4">
-				<a href="javascript:paying()">确认并付款</a>
+				<a href="">确认并付款</a>
 			</div>
 		</div>
 

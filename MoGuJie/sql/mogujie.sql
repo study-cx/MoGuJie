@@ -121,12 +121,12 @@ create table address(
   obligateone varchar(50),--预留字段1
   obligatetwo varchar(50)--预留字段2
 );
-select * from address
-delete from address
+select * from address 
 create sequence seq_address_addressid start with 100 increment by 1;
 insert into address values(seq_address_addressid.nextval,'湖南省','衡阳市','珠晖区','衡花路18号',100,'陈烜',45646,'15674785546',1,'','');
 insert into address values(seq_address_addressid.nextval,'湖南省','岳阳市','珠晖区','衡花路18号',100,'菜菜',45646,'15674785546',1,'','');
-
+update address set statue=0 where addressid=140
+delete from address
 insert into userInfo values(1001,'123','haha','',to_date('2003-03-10','yyyy-mm-dd'),'523525@qq.com','421002',
 '12123333','1000',1,'','');
 insert into userInfo values(1002,'123','lala','',to_date('2008-07-10','yyyy-mm-dd'),'67253278@qq.com','421002',
