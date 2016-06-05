@@ -16,7 +16,7 @@
 		<global-allowed-methods>login,adminRegiest,register,registers,checkName,del,addAdminInfo,
 				getPageAdminInfo,checkEmail,findBasicInfo,addr,list,update,edit,moren,
 				updateBasicInfo,findAllOrders,findNoPayOrder,getAllUserInfo,findPaiedOrder,updatePwd,
-				updateImage,pay,back,findUserInfo,updateUserInfo,show
+				updateImage,pay,back,findUserInfo,updateUserInfo,show,findCatetwoType,findProductByType
 		</global-allowed-methods>
 
 		<action name="*_*" class="{1}Action" method="{2}">
@@ -67,6 +67,7 @@
 			</result>
 			<result name="Paysuccess" type="redirect">${IPaddress}</result>
 			<result name="message">/front/msg.jsp</result>
+			<result name="findCateSuccess">front/fenlei.jsp</result>
 		</action>
 	</package>
 </struts>

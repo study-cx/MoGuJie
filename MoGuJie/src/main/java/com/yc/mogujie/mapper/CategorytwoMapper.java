@@ -1,18 +1,17 @@
 package com.yc.mogujie.mapper;
 
-import com.yc.mogujie.entity.Categorytwo;
-import java.math.BigDecimal;
+import java.util.List;
+
+import com.yc.mogujie.entity.Categorybean;
 
 public interface CategorytwoMapper {
-    int deleteByPrimaryKey(BigDecimal categoryidtwo);
+	//根据1级分类的id获取二级分类的类型
+	List<Categorybean> getCatetwoType(Categorybean categorytwo);
 
-    int insert(Categorytwo record);
+	//根据一级分类查询所有商品
+	List<Categorybean> getAllProductByType(Categorybean category);
 
-    int insertSelective(Categorytwo record);
-
-    Categorytwo selectByPrimaryKey(BigDecimal categoryidtwo);
-
-    int updateByPrimaryKeySelective(Categorytwo record);
-
-    int updateByPrimaryKey(Categorytwo record);
+	//根据二级分类，分类查询
+	List<Categorybean> getProductByType(Categorybean category);
+    
 }

@@ -14,6 +14,8 @@ public interface DetailMapper {
 
 	List<Detail> SelectPsizeByProid(int proid);
 
-	
-   
+	List<Detail> SelectColorByProid(int proid);
+
+	int SelectNumberBySizeAndColor(Detail detail);
+
 }

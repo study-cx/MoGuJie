@@ -134,12 +134,7 @@ insert into userInfo values(1002,'123','lala','',to_date('2008-07-10','yyyy-mm-d
 insert into userInfo values(seq_UserInfo_usid.nextval,'aaa','liqiu','女','',to_date('2008-07-10','yyyy-mm-dd'),'1573454899@qq.com','422302',
 '13241425','1000',1,'','');
 
-<<<<<<< HEAD
 select *from userInfo;
-=======
->>>>>>> refs/remotes/origin/master
-
->>>>>>> refs/remotes/origin/master
   --地址表
   create table address(
     addressid int primary key,--id
@@ -174,6 +169,7 @@ select *from userInfo;
   create sequence seq_categorys_categoryidone start with 100 increment by 1;
   select * from categoryone;
   insert into categoryone values(seq_categorys_categoryidone.nextval,'上衣',1,0);
+  insert into categoryone values(seq_categorys_categoryidone.nextval,'裙子',1,0);
   --2级分类
   create table categorytwo(
     categoryidtwo int primary key,--商品类型Id
@@ -183,7 +179,20 @@ select *from userInfo;
     obligateone varchar2(40),--预留字段1
     obligatetwo varchar2(40)--预留字段2
   );
+insert into categorytwo values(11,100,'短袖','','');
+select * from categorytwo;
+update categorytwo set categoryTypetwo='长袖' where categoryidtwo=11;
 
+select co.categoryTypeone,ct.categoryTypetwo
+from categoryone co,categorytwo ct 
+where co.categoryidone=ct.categoryidone and ct.categoryidone=100;
+
+select distinct p.proid,p.prophoto,p.procontent,p.proprice,
+		d.counts,cone.categoryTypeone,ctwo.categoryTypetwo
+		from product p,detail d,categorythree cthree,categorytwo ctwo,categoryone cone 
+		where p.proid=d.proid and cthree.categoryidthree=p.categoryidthree 
+		and ctwo.categoryidtwo=cthree.categoryidtwo 
+		and cone.categoryidone=ctwo.categoryidone and cone.categoryidone=100 and ctwo.categoryTypetwo='短袖';
  --3级分类
   create table categorythree(
     categoryidthree int primary key,--商品类型Id
@@ -215,9 +224,6 @@ select * from categorythree;
 
   select *from categorytwo
 
-
- 
->>>>>>> refs/remotes/origin/master
   --商品表，主要用来保存管理员上传的商品信息
   create table product(
      proid int primary key,--商品id
@@ -233,13 +239,29 @@ select * from categorythree;
   );
   create sequence seq_product_proid start with 100 increment by 1;
 
-<<<<<<< HEAD
-  insert into product values(seq_product_proid.nextval,'毛衣','羊羊羊毛衣','99.9',101,'',1,'','');
+  insert into product values(seq_product_proid.nextval,'无袖短袖','韩版无袖小立领花边甜美气质蕾丝上衣女','56.9',100,'../uploadPic/上衣1.jpg',1,25,'');
+  
+  insert into product values(seq_product_proid.nextval,'短袖','韩版甜美气质上衣女','46.9',100,'../uploadPic/上衣2.jpg',1,25,'');
+  insert into product values(seq_product_proid.nextval,'短袖','韩版甜美气质蕾丝上衣女','66.9',100,'../uploadPic/上衣3.jpg',1,25,'');
+  insert into product values(seq_product_proid.nextval,'短袖a','韩版上衣女','34',100,'../uploadPic/上衣4.jpg',1,25,'');
+   insert into product values(seq_product_proid.nextval,'短袖b','韩版上衣女','65.9',100,'../uploadPic/上衣5.jpg',1,25,'');
+   insert into product values(seq_product_proid.nextval,'短袖c','韩版蕾丝上衣女','24.9',100,'../uploadPic/上衣6.jpg',1,25,'');
+ 
+   update product set prophoto='../uploadPic/sy1.jpg' where proid=140;
+   update product set prophoto='../uploadPic/sy2.jpg' where proid=141;
+   update product set prophoto='../uploadPic/sy3.jpg' where proid=146;
+   update product set prophoto='../uploadPic/sy4.jpg' where proid=147;
+   update product set prophoto='../uploadPic/sy5.jpg' where proid=149;
+   insert into product values(seq_product_proid.nextval,'毛衣','羊羊羊毛衣','99.9',100,'',1,'','');
+select * from product;
 
-  insert into product values(seq_product_proid.nextval,'毛衣','羊羊羊毛衣','99.9',100,'',1,'','');
-	select * from product;
-=======
-
+select distinct uo.orderid,uo.datetime,uo.ostatus,
+						p.prophoto,p.procontent,p.proprice,
+						d.color,d.psize,
+						od.buyprice,od.onumber 
+						from product p,detail d,userOrder uo,orderdetail od,userInfo u 
+						where p.proid=d.proid and od.proid=p.proid and od.orderid=uo.orderid 
+						and uo.usid=u.usid and u.usid=121 and uo.ostatus=2
   --商品详细表
   create table detail(
     deid int primary key,
@@ -255,7 +277,7 @@ select * from categorythree;
   );
 
   create sequence seq_detail_deid start with 100 increment by 1;
-  insert into detail values(seq_detail_deid.nextval,100,234,'S','','red',1111,'','');
+  insert into detail values(seq_detail_deid.nextval,149,254,'S','','red',1111,'','');
   select * from detail;
 insert into product values(seq_product_proid.nextval,'毛衣','羊羊羊毛衣','99.9',101,'',1,'','');
 
