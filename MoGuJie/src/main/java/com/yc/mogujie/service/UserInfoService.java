@@ -11,7 +11,7 @@ public interface UserInfoService {
 	int userRegister(UserInfo userInfo);
 
 	//前台查询用户基本信息
-	public UserBean findBasicInfo(String uname);
+	UserBean findBasicInfo(String uname);
 	
 	UserInfo login(UserInfo userInfo);
 

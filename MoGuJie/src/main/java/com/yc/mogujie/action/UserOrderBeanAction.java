@@ -42,7 +42,7 @@ public class UserOrderBeanAction implements ModelDriven<UserOrderBean>,SessionAw
 		LogManager.getLogger().debug(userOrderBean);
 		allOrders.clear();
 		allOrders=userOrderService.findNoPayOrder(userOrderBean.getUsid());
-		System.out.println("获取到的未付款订单为："+allOrders);
+		//System.out.println("获取到的未付款订单为："+allOrders);
 		return "findSuccess";
 	}
 	
@@ -51,7 +51,7 @@ public class UserOrderBeanAction implements ModelDriven<UserOrderBean>,SessionAw
 		LogManager.getLogger().debug(userOrderBean);
 		allOrders.clear();
 		allOrders=userOrderService.findPaiedOrder(userOrderBean.getUsid());
-		System.out.println("获取到的已付款订单为："+allOrders);
+		//System.out.println("获取到的已付款订单为："+allOrders);
 		return "findSuccess";
 	}
 	@Override

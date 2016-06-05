@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="nav">
 	<img id="shuang" src="front/images/shuang11.png">
 	<ul>
-    	<li><a href="">首页</a></li>
+    	<li><a href="front/index.jsp">首页</a></li>
         <li id="qbsp1"><a href="">全部商品</a></li>
         <li><a href="">小脚裤/牛仔裤</a></li>
         <li><a href="">大衣/西装</a></li>
@@ -51,7 +51,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div id="zhangshi">
 
+
 	<c:forEach items="${color}" var="item" varStatus="vs">
+
 		<c:choose>
 		<c:when test="${vs.index ==0}">
 			<img src="${item.pcolor}" id="b${vs.index}" style="display:block;height:600px;width:397px"/>

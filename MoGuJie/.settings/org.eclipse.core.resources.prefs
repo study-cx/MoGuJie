@@ -3,8 +3,15 @@
 >>>>>>>=refs/remotes/origin/master
 eclipse.preferences.version=1
 encoding//sql/mogujie.sql=UTF-8
+encoding//src/main/java/com/yc/mogujie/action/AddressAction.java=UTF-8
 encoding//src/main/java/com/yc/mogujie/action/UserAction.java=UTF-8
+encoding//src/main/java/com/yc/mogujie/action/UserBeanAction.java=UTF-8
+encoding//src/main/java/com/yc/mogujie/action/UserOrderBeanAction.java=UTF-8
 encoding//src/main/java/com/yc/mogujie/entity/UserInfo.java=UTF-8
+encoding//src/main/java/com/yc/mogujie/mapper/UserInfoMapper.java=UTF-8
+encoding//src/main/java/com/yc/mogujie/util/UploadUtil.java=UTF-8
 encoding//src/main/webapp/back/orders.html=UTF-8
+encoding//src/main/webapp/back/products.html=UTF-8
+encoding//src/main/webapp/back/userInfo.jsp=UTF-8
 encoding//src/test/java/com/yc/vote/test/DBConnTest.java=UTF-8
 encoding/<project>=UTF-8

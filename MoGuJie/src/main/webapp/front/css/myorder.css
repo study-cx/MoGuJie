@@ -37,6 +37,7 @@ body{
 #title_left .order{
 	list-style:none;
 	float:left;
+	 cursor:pointer;
 }
 #title_left .mydiv1 h3{
 	color:#666;

@@ -13,10 +13,11 @@
 	<constant name="struts.objectFactory " value="spring" />
 
 	<package name="default" namespace="/" extends="json-default">
-		<global-allowed-methods>login,adminRegiest,register,registers,checkName,del,addAdminInfo,getPageAdminInfo,checkEmail,findBasicInfo,addr,list,update,edit,moren,
 
-		updateBasicInfo,findAllOrders,findNoPayOrder,getAllUserInfo,findUserInfo,updateUserInfo,findPaiedOrder,updatePwd,updateImage,show,shownumber,jieesuanInfo,selectAddress
-
+		<global-allowed-methods>login,adminRegiest,register,registers,checkName,del,addAdminInfo,
+				getPageAdminInfo,checkEmail,findBasicInfo,addr,list,update,edit,moren,
+				updateBasicInfo,findAllOrders,findNoPayOrder,getAllUserInfo,findPaiedOrder,updatePwd,
+				updateImage,pay,back,findUserInfo,updateUserInfo,show,findCatetwoType,findProductByType,shownumber,jieesuanInfo,selectAddress
 		</global-allowed-methods>
 
 		<action name="*_*" class="{1}Action" method="{2}">
@@ -75,7 +76,10 @@
 				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">userInfo</param>
 			</result>
-			
+
+			<result name="Paysuccess" type="redirect">${IPaddress}</result>
+			<result name="message">/front/msg.jsp</result>
+			<result name="findCateSuccess">front/fenlei.jsp</result>
 		</action>
 	</package>
 </struts>
