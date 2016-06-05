@@ -10,12 +10,13 @@ public interface DetailMapper {
 
 	List<Product> SelectProductByProid(int proid);
 
-	List<Detail> SelectPcolorByProid(int proid);
-
 	List<Detail> SelectPsizeByProid(int proid);
 
 	List<Detail> SelectColorByProid(int proid);
+	
+	String SelectNumberBySizeAndColor(Detail detail);
 
-	int SelectNumberBySizeAndColor(Detail detail);
+	
+
 
 }
