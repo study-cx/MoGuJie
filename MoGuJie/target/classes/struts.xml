@@ -15,7 +15,7 @@
 	<package name="default" namespace="/" extends="json-default">
 		<global-allowed-methods>login,adminRegiest,register,registers,checkName,del,addAdminInfo,getPageAdminInfo,checkEmail,findBasicInfo,addr,list,update,edit,moren,
 
-		updateBasicInfo,findAllOrders,findNoPayOrder,getAllUserInfo,findUserInfo,updateUserInfo,findPaiedOrder,updatePwd,updateImage,show
+		updateBasicInfo,findAllOrders,findNoPayOrder,getAllUserInfo,findUserInfo,updateUserInfo,findPaiedOrder,updatePwd,updateImage,show,shownumber,jieesuanInfo,selectAddress
 
 		</global-allowed-methods>
 
@@ -47,6 +47,15 @@
 			<result name="addrList" type="json">
 				<param name="root">addrList</param>
 			</result>
+			<result name="shownumber" type="json">
+				<param name="root">shownumber</param>
+			</result>
+			<result name="jieesuanInfo" type="json">
+				<param name="root">flag</param>
+			</result>
+			<result name="selectAddress" type="json">
+				<param name="root">address</param>
+			</result>
 
 			<result name="tiaozhuan">/front/email.jsp</result>
 			
@@ -61,10 +70,12 @@
 				<param name="root">edit</param>
 			</result>
 			<result name="index">/front/index.jsp</result>
+			
 			<result name="userInfo" type="json">
 				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">userInfo</param>
 			</result>
+			
 		</action>
 	</package>
 </struts>
