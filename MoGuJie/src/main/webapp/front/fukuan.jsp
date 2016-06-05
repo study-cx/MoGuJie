@@ -225,7 +225,7 @@
 			</c:forEach>
 			</div>
 			<div class="foot4">
-				<a href="">确认并付款</a>
+				<a href="fuKuanInfo_pay.action?">确认并付款</a>
 			</div>
 		</div>
 

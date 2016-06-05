@@ -17,7 +17,8 @@
 		<global-allowed-methods>login,adminRegiest,register,registers,checkName,del,addAdminInfo,
 				getPageAdminInfo,checkEmail,findBasicInfo,addr,list,update,edit,moren,
 				updateBasicInfo,findAllOrders,findNoPayOrder,getAllUserInfo,findPaiedOrder,updatePwd,
-				updateImage,pay,back,findUserInfo,updateUserInfo,show,findCatetwoType,findProductByType,shownumber,jieesuanInfo,selectAddress
+				updateImage,pay,back,findUserInfo,updateUserInfo,show,findCatetwoType,findProductByType,
+				shownumber,jieesuanInfo,selectAddress
 		</global-allowed-methods>
 
 		<action name="*_*" class="{1}Action" method="{2}">
