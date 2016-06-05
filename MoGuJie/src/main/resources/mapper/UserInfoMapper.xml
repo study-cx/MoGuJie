@@ -60,28 +60,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 后台修改用户信息 -->
 	<update id="updateUserInfo" parameterType="UserInfo">
-		update userInfo
+	<trim prefixOverrides="," suffixOverrides="," prefix="update userInfo" >
 		<set>
-			<if test="uname != null">
-				uname=#{uname}
+			<if test="uname != null and uname != ''">
+				uname='${uname}',
 			</if>
-			<if test="usemail != null">
-				usemail=#{usemail}
+			<if test="usemail != null and usemail != '' ">
+				usemail='${usemail}',
 			</if>
-			<if test="ucode != null">
-				ucode=#{ucode}
+			<if test="ucode != null and ucode != '' ">
+				ucode='${ucode}',
 			</if>
-			<if test="usphone != null">
-				usphone=#{usphone}
+			<if test="usphone != null and usphone != ''" >
+				usphone='${usphone}',
 			</if>
-			<if test="usaccount != null">
-				usaccount=#{usaccount}
+			<if test="usaccount != null and usaccount != ''">
+				usaccount='${usaccount}',
 			</if>
-			<if test="ubirthday != null">
-				ubirthday=#{ubirthday}
+			<if test="ubirthday != null and ubirthday != ''">
+				ubirthday='${ubirthday}',
+			</if>
+			<if test="uphoto != null and uphoto != ''">
+				uphoto='${uphoto}',
 			</if>
 		</set>
-		where usid=#{usid}
+		where usid='${usid}'
+		</trim>
 	</update>
 </mapper>
 

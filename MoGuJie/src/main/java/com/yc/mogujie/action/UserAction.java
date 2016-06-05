@@ -1,8 +1,8 @@
 package com.yc.mogujie.action;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,24 +20,26 @@ import org.springframework.stereotype.Controller;
 import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
-import com.yc.mogujie.entity.Admin;
-import com.yc.mogujie.entity.UserBean;
 import com.yc.mogujie.entity.UserInfo;
 import com.yc.mogujie.service.UserInfoService;
 import com.yc.mogujie.util.MogujieData;
+import com.yc.mogujie.util.UploadUtil;
 import com.yc.mogujie.util.VerifyCode;
 
 @Controller("userAction")
 public class UserAction implements ModelDriven<UserInfo>, SessionAware {
 	private UserInfo userInfo;
+	@Autowired
+	private UploadUtil uploadUtil;
 
 	private VerifyCode vc = new VerifyCode();
 	private String email;
+	
+	private File[] uphotos;
+	private String[] uphotosFileName;
+	private String[] uphotosContentType;
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
+	
 	@Autowired
 	private JavaMailSender javaMailSender;
 
@@ -91,7 +93,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware {
 	}
 
 	public void getAllUserInfo() {
-		LogManager.getLogger().debug("管理员信息查询操作...");
+		LogManager.getLogger().debug("用户信息查询操作...");
 		String page=ServletActionContext.getRequest().getParameter("page");
 		String rows=ServletActionContext.getRequest().getParameter("rows");
 		List<UserInfo> userInfo = userInfoService.find(Integer.valueOf(page), Integer.valueOf(rows));
@@ -103,7 +105,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware {
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.print(jsonResult);// 测试与页面是否跑通
+			out.print(jsonResult);
 			out.flush();
 			out.close();
 		} catch (IOException e) {
@@ -112,11 +114,9 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware {
 	}
 
 	public void findUserInfo(){
-		LogManager.getLogger().debug("管理员信息查询操作...");
+		LogManager.getLogger().debug("用户信息查询操作...");
 		String usid=ServletActionContext.getRequest().getParameter("usid");
-		System.out.println(usid);
 		UserInfo userInfo = userInfoService.find(usid);
-		System.out.println(userInfo);
 		Gson gson = new Gson();// json处理对象
 		String jsonResult = gson.toJson(userInfo);// 把对象转换成json字符串
 		try {
@@ -124,7 +124,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware {
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.print(jsonResult);// 测试与页面是否跑通
+			out.print(jsonResult);
 			out.flush();
 			out.close();
 		} catch (IOException e) {
@@ -133,7 +133,10 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware {
 	}
 	
 	public void updateUserInfo(){
-		LogManager.getLogger().debug("管理员信息修改操作...");
+		LogManager.getLogger().debug("用户信息修改操作...");
+		System.out.println(uphotos+"@@@"+uphotosFileName[0]);
+		String path=uploadUtil.image(uphotos,uphotosFileName);
+		userInfo.setUphoto(path);
 		int result = userInfoService.updateUserInfo(userInfo);
 		Gson gson = new Gson();// json处理对象
 		String jsonResult = gson.toJson(result);// 把对象转换成json字符串
@@ -142,7 +145,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware {
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.print(jsonResult);// 测试与页面是否跑通
+			out.print(jsonResult);
 			out.flush();
 			out.close();
 		} catch (IOException e) {
@@ -160,4 +163,32 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware {
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
+	public File[] getUphotos() {
+		return uphotos;
+	}
+
+	public void setUphotos(File[] uphotos) {
+		this.uphotos = uphotos;
+	}
+
+	public String[] getUphotosFileName() {
+		return uphotosFileName;
+	}
+
+	public void setUphotosFileName(String[] uphotosFileName) {
+		this.uphotosFileName = uphotosFileName;
+	}
+
+	public String[] getUphotosContentType() {
+		return uphotosContentType;
+	}
+
+	public void setUphotosContentType(String[] uphotosContentType) {
+		this.uphotosContentType = uphotosContentType;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 }
