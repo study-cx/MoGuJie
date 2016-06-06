@@ -5,59 +5,53 @@
 
 <struts>
 
-<<<<<<< HEAD
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="true" />
-=======
-	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 
-	<constant name="struts.devMode" value="false" />
->>>>>>> refs/remotes/origin/master
 	
 	 <!-- 把struts的action对象交给spring容器管理 -->
 	<constant name="struts.objectFactory " value="spring" />
-<<<<<<< HEAD
 
 	<package name="default" namespace="/" extends="json-default">
-		<global-allowed-methods>login,register,addr,list,update,edit,moren</global-allowed-methods>
-		
-=======
+		<global-allowed-methods>login,register,registers,findBasicInfo,addr,list,
+		update,edit,deleteAddr,moren,shopping,deleteCart,updateCart</global-allowed-methods>
 
-
-	<package name="default" namespace="/" extends="json-default">
-		<global-allowed-methods>login,register,registers,findBasicInfo,list</global-allowed-methods>
-
->>>>>>> refs/remotes/origin/master
 		<action name="*_*" class="{1}Action" method="{2}">
+			<result name="{2}">front/{2}.jsp</result>
 			<result name="addrSuccess">front/addr.jsp</result>
 			<result name="addFail">front/addFail.jsp</result>
 			<result name="list">front/addr.jsp</result>
+			<result name="shopping">front/shopping.jsp</result>
 			<result name="login">/front/index.jsp</result>
 			<result name="register">/front/index.jsp</result>
-<<<<<<< HEAD
-<<<<<<< HEAD
+			<result name="tiaozhuan">/front/email.jsp</result>		
 			
-			<result type="json">
-				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
+			
+			<result name="addrList" type="json">
 				<param name="root">addrList</param>
 			</result>
+			<result name="cartList" type="json">
+				<param name="root">cartList</param>
+			</result>
 			<result name="edit" type="json">
-				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">edit</param>
 			</result>
-			
-=======
-
-=======
->>>>>>> refs/remotes/origin/master
-			<result name="tiaozhuan">/front/email.jsp</result>
+			<result name="deleteAddr" type="json">
+				<param name="root">deleteAddr</param>
+			</result>
+			<result name="morenAddr" type="json">
+				<param name="root">morenAddr</param>
+			</result>
+			<result name="deleteCart" type="json">
+				<param name="root">deleteCart</param>
+			</result>
+			<result name="update" type="json">
+				<param name="root">update</param>
+			</result>
 			<result name="index">/front/index.jsp</result>
-			<result type="json">
-				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
+			<result name="userInfo" type="json">
 				<param name="root">userInfo</param>
 			</result>
-
->>>>>>> refs/remotes/origin/master
 		</action>
 	</package>
 </struts>

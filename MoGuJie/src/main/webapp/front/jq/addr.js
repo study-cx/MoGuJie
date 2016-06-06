@@ -61,9 +61,6 @@ function checkStreet2(){
 	    } 
 }
 
-function addaddr(){
-	$("#center").css("display","block");
-}
 
 
 function checkName2(){
@@ -92,13 +89,7 @@ function quxiao(){
 	$("#uname").val("");
 	$("#tel").val("");
 }
-/*
-function moren(){
-	$("#lala").html("默认地址");
-	$("#lala").css("color","#2F63CF");
-	$("#dzxq").css("background","#FDFBEA");
-}
-*/
+
 function addaddr(){
 	$("#center2").css("display","block");
 	$("#center1").css("display","none");
@@ -131,27 +122,32 @@ function edit(aa){
 		$("#street1").val(data.usaddress);
 		$("#uname1").val(data.adname);
 		$("#tel1").val(data.adtel);
+		
 	},"json");
 		
 }
 
 
 function deletes(addressid){
-	$.post("address_delete.action",{addressid:addressid},function(item){
-		
-			alert("删除成功...");
+	$.post("address_deleteAddr.action",{addressid:addressid},function(data){
+		if(data>0){
 			location.href="front/addr.jsp";
-		
-	});
+		}else{
+			alert("删除失败！");
+		}
+	},'json');
 }
 
 
 function moren(addressid){
 	$.post("address_moren.action",{addressid:addressid},function(data){
-		$("#lala").html("默认地址");
-		$("#lala").css("color","#2F63CF");
-		$("#dzxq").css("background","#FDFBEA");
-	});
+		if(data>0){
+			window.location.reload();
+		}else{
+			alert("设置失败！");
+		}
+		
+	},'json');
 	
 	
 }

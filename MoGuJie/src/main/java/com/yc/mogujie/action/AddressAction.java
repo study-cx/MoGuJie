@@ -27,21 +27,27 @@ public class AddressAction implements  SessionAware,ModelDriven<Address>{
 	private Map<String,Object> session;
 	
 	private List<Address> addrList;
-	
-
 	public List<Address> getAddrList() {
 		return addrList;
 	}
 	private int addressids;
-	
 	public void setAddressids(int addressids) {
 		this.addressids = addressids;
 	}
 
 	private Address edit;
-	
 	public Address getEdit() {
 		return edit;
+	}
+
+	private int deleteAddr;
+	public int getDeleteAddr() {
+		return deleteAddr;
+	}
+
+	private int morenAddr;
+	public int getMorenAddr() {
+		return morenAddr;
 	}
 
 	//添加地址
@@ -84,20 +90,27 @@ public class AddressAction implements  SessionAware,ModelDriven<Address>{
 		
 	}
 	//删除
-	public String delete(){
-		int delete=addrService.delete(address.getAddressid());
-		LogManager.getLogger().debug("删除的地址信息==》"+address);
-		if(delete>0){
-			addrService.findAddr();
-			return "addrSuccess";
-		}
-		return "addFail";
+	public String deleteAddr(){
+		deleteAddr=addrService.delete(address.getAddressid());
+		return "deleteAddr";
 	}
 	
 	//设为默认地址
-	public void moren(){
-		addrService.moren(address.getAddressid());
-		LogManager.getLogger().debug("取到的地址信息==》"+address);
+	public String moren(){
+		List<Address> ids=addrService.selectAllAddressid();
+
+		for(int i=0; i<ids.size();i++){
+
+			int iddddd=ids.get(i).getAddressid();
+			
+			if(iddddd==(address.getAddressid())){
+				morenAddr=addrService.moren(address.getAddressid());
+			}else{  
+				morenAddr=addrService.updatemoren(iddddd);
+			}
+		}
+		LogManager.getLogger().debug("取到的地址信息哈哈哈==》"+morenAddr);
+		return "morenAddr";
 	}
 	
 	@Override

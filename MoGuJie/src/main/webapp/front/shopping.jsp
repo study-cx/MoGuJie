@@ -16,48 +16,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="front/jq/shopping.js" type="text/javascript"></script>
 
 <script>
-	$(function(){
-		$.post("cartServlet",{op:"selectCart"},function(data){
+$(function(){
+	$.post("cart_shopping.action",function(data){
+		console.info(data);
 			var str="";
-		 	$.each(data.carts,function(index,item){
+		 	$.each(data,function(index,item){
 		 		var i=index+1;
 			 	str="<tr class='info' id='shangpin"+i+"'>";
 	        	str+="<td class='btu'><input name='op' id='shang"+index+"' type='checkbox' style='width:30px;height:30px;' onclick='ch(this.checked,"+index+")'/></td>";
-	            str+="<td class='pic'><img src="+item.PCOLOR+"  onmouseout=show('fu"+index+"') onmouseover=change('fu"+index+"')></td>";
-	            str+="<td class='pic1'><a class='a'><img src="+item.PCOLOR+" id='fu"+index+"' class='fu"+index+"' style='display:none'/></a></td>";
-	            str+="<td class='passage'><a>"+item.PRONAME+"</a></td>";
+	            str+="<td class='pic'><img src="+item.pcolor+"  onmouseout=show('fu"+index+"') onmouseover=change('fu"+index+"')></td>";
+	            str+="<td class='pic1'><a class='a'><img src="+item.pcolor+" id='fu"+index+"' class='fu"+index+"' style='display:none'/></a></td>";
+	            str+="<td class='passage'><a>"+item.proname+"</a><input type='hidden' class=hh"+index+" value="+item.cid+"></td>";
 	            str+="<td class='xinfo'>";
-	            str+="<p>颜色："+item.COLOR+"</p>";
-	            str+="<p>尺码："+item.CSIZE+"</p>";
+	            str+="<p>颜色："+item.color+"</p>";
+	            str+="<p>尺码："+item.csize+"</p>";
 	            str+="</td>";
 	            str+="<td class='price'>";
 	            str+="<p class='yprice'>79.00</p>";
-	                str+="<p id='xprice"+index+"' class='xprice'>"+item.PROPRICE+"</p>";
+	                str+="<p id='xprice"+index+"' class='xprice'>"+item.proprice+"</p>";
 	                str+="<p><span>促销7.0折</span></p>";
 	            str+="</td>";
 	            str+="<td id='shangp"+index+"' class='number'>"
-	                str+="<input type='text' value="+item.SNUMBER+" style='width:45px;' class='nums'/>";
+	                str+="<input type='text' value="+item.snumber+" style='width:45px;' onChange='changeNum("+item.cid+")' class='nums' />";
 	            str+="</td>";
-	            var s1=item.PROPRICE;
-	            var s2=item.SNUMBER;
+	            var s1=item.proprice;
+	            var s2=item.snumber;
 	            var s3=s1*s2;
 	            str+="<td id='sp"+index+"' class='sum'>"+s3+"</td>";
 	            var ss="shangpin"+i;
-	            str+="<td class='delete'><a href='javascript:deleteShangpin("+item.CID+")'>删除</a></td>";
+	            str+="<td class='delete'><a href='javascript:deleteShangpin("+item.cid+")'>删除</a></td>";
 	        	str+="</tr>";
 	        	$("#shopinfo").append($(str));
 				});
-		
-		},'json');
-	});
-
+	},'json');
+});
 </script>
 </head>
 
 <body>
 <div id="title">
 		<div class="head3">
-	          <a class="a3" href="front/shopping.jsp"  >购物车</a>
+	          <a class="a3" action="front/shopping.jsp"  >购物车</a>
 	          <a class="a4" href="front/myorder.jsp"  >我的订单</a>
           </div>
         <div class="head1">
@@ -92,11 +91,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<ul>
     	<li class="bt"><input name="quanxuan" type="checkbox" style="width:30px;height:30px;" onclick="selectAll()"/><span>全选</span></li>
         <li class="goods">商品</li>
-        <li class="goodsinfo">商品信息</li>
-        <li class="price">单价(元)</li>
-        <li class="num">数量</li>
-        <li class="sum">小计(元)</li>
-        <li class="manager">操作</li>
+        <li class="goodsinfo" >商品信息</li>
+        <li class="price" >单价(元)</li>
+        <li class="num" >数量</li>
+        <li class="sum" >小计(元)</li>
+        <li class="manager">操作</li> 
     </ul>
 </div>
 <div id="content">

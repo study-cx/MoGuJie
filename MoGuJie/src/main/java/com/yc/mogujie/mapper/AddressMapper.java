@@ -4,6 +4,7 @@ import com.yc.mogujie.entity.Address;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 public interface AddressMapper {
 
@@ -18,5 +19,11 @@ public interface AddressMapper {
 	int deleteAddr(int addressid);
 
 	int setMoren(int addressid);
+
+	List<Address> findAllAddressid();
+
+	int updateMoren(int addressid);
+
+	
 
 }

@@ -1,6 +1,7 @@
 package com.yc.mogujie.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.yc.mogujie.entity.Address;
 
@@ -15,5 +16,9 @@ public interface AddrService {
 	
 	int delete(int addressid); //删除
 	
-	int moren(int addressid); //设为默认地址：0表示默认地址
+	List<Address> selectAllAddressid();//查所有的地址id
+	
+	int moren(int addressid); //设为默认地址：将statue改为0
+	
+	int updatemoren(int addressid);//当设置另一个地址为默认地址时，将statue为0的地址改为1
 }

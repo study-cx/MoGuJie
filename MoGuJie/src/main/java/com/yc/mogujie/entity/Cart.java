@@ -15,7 +15,7 @@ public class Cart {
 
     private int snumber;
 
-    private int obligateone;
+    private int obligateone; 
 
     private int obligatetwo;
 
@@ -90,4 +90,15 @@ public class Cart {
     public void setObligatetwo(int obligatetwo) {
         this.obligatetwo = obligatetwo;
     }
+
+	@Override
+	public String toString() {
+		return "Cart [\ncid=" + cid + ", proid=" + proid + ", usid=" + usid
+				+ ", color=" + color + ", csize=" + csize + ", pcolor="
+				+ pcolor + ", snumber=" + snumber + ", obligateone="
+				+ obligateone + ", obligatetwo=" + obligatetwo + "]";
+	}
+
+
+    
 }
