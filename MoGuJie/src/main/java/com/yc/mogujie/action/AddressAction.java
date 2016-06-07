@@ -99,7 +99,7 @@ public class AddressAction implements  SessionAware,ModelDriven<Address>{
 	public String moren(){
 		List<Address> ids=addrService.selectAllAddressid();
 
-		for(int i=0; i<ids.size();i++){
+		for(int i=0; i<ids.size();i++){ 
 
 			int iddddd=ids.get(i).getAddressid();
 			
