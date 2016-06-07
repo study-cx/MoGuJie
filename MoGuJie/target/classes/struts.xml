@@ -11,12 +11,6 @@
 	
 	 <!-- 把struts的action对象交给spring容器管理 -->
 	<constant name="struts.objectFactory " value="spring" />
-<<<<<<< HEAD
-
-	<package name="default" namespace="/" extends="json-default">
-		<global-allowed-methods>login,register,registers,findBasicInfo,addr,list,
-		update,edit,deleteAddr,moren,shopping,deleteCart,updateCart</global-allowed-methods>
-=======
 
 	<package name="default" namespace="/" extends="json-default">
 
@@ -24,9 +18,8 @@
 				getPageAdminInfo,checkEmail,findBasicInfo,addr,list,update,edit,moren,
 				updateBasicInfo,findAllOrders,findNoPayOrder,getAllUserInfo,findPaiedOrder,updatePwd,
 				updateImage,pay,back,findUserInfo,updateUserInfo,show,findCatetwoType,findProductByType,
-				shownumber,jieesuanInfo,selectAddress
+				shownumber,jieesuanInfo,selectAddress,deleteAddr,moren,shopping,deleteCart,updateCart
 		</global-allowed-methods>
->>>>>>> refs/remotes/origin/master
 
 		<action name="*_*" class="{1}Action" method="{2}">
 			<result name="{2}">front/{2}.jsp</result>
@@ -36,16 +29,18 @@
 			<result name="shopping">front/shopping.jsp</result>
 			<result name="login">/front/index.jsp</result>
 			<result name="register">/front/index.jsp</result>
-<<<<<<< HEAD
 			<result name="tiaozhuan">/front/email.jsp</result>		
 			
 			
-=======
 			<result name="adminLogin">/back_login/login.jsp</result>
 			<result name="adminLoginSuccess">/back/index.jsp</result>
 			<result name="addAdminSuccess">/back_login/login.jsp</result>
 			<result name="addAdmin">/back_login/regiest.jsp</result>
 			<result name="spxq">/front/spxq.jsp</result>
+			<result name="Paysuccess" type="redirect">${IPaddress}</result>
+			<result name="message">/front/msg.jsp</result>
+			<result name="findCateSuccess">front/fenlei.jsp</result>
+			
 			<result name="findBasicsuccess" type="json">
 			<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">userInfo</param>
@@ -60,25 +55,15 @@
 			</result>
 			<result name="tiaozhuan">/front/email.jsp</result>	
 				
->>>>>>> refs/remotes/origin/master
 			<result name="addrList" type="json">
 				<param name="root">addrList</param>
 			</result>
-<<<<<<< HEAD
 			<result name="cartList" type="json">
 				<param name="root">cartList</param>
 			</result>
-			<result name="edit" type="json">
-				<param name="root">edit</param>
-=======
 			<result name="shownumber" type="json">
 				<param name="root">shownumber</param>
->>>>>>> refs/remotes/origin/master
 			</result>
-<<<<<<< HEAD
-			<result name="deleteAddr" type="json">
-				<param name="root">deleteAddr</param>
-=======
 			<result name="jieesuanInfo" type="json">
 				<param name="root">flag</param>
 			</result>
@@ -98,14 +83,9 @@
 			<result name="edit" type="json">
 				<param name="root">edit</param>
 			</result>
-			<result name="index">/front/index.jsp</result>
-			
-			<result name="userInfo" type="json">
-				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
-				<param name="root">userInfo</param>
->>>>>>> refs/remotes/origin/master
+			<result name="deleteAddr" type="json">
+				<param name="root">deleteAddr</param>
 			</result>
-<<<<<<< HEAD
 			<result name="morenAddr" type="json">
 				<param name="root">morenAddr</param>
 			</result>
@@ -116,15 +96,11 @@
 				<param name="root">update</param>
 			</result>
 			<result name="index">/front/index.jsp</result>
+			
 			<result name="userInfo" type="json">
 				<param name="root">userInfo</param>
 			</result>
-=======
-
-			<result name="Paysuccess" type="redirect">${IPaddress}</result>
-			<result name="message">/front/msg.jsp</result>
-			<result name="findCateSuccess">front/fenlei.jsp</result>
->>>>>>> refs/remotes/origin/master
+			
 		</action>
 	</package>
 </struts>

@@ -14,9 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectGuanGao" resultType="GuangGaoBean">
 		select gid,weizhi,gPhoto,gdates,gdateo,p.proid from guanggao g,product p,advertise a where g.aid=a.aid and sysdate>gdates and gdateo>sysdate
 	</select>
-<<<<<<< HEAD
 	  
-=======
 	<select id="selectProductByobligateone" resultType="Product">
 		select a.* from(
   			select p.* from product p,categoryone c1,categorytwo c2,categorythree c3 where p.categoryidthree=c3.categoryidthree and c3.categoryidtwo=c2.categoryidtwo and c2.categoryidone=c1.categoryidone and c1.categorytypeone!='鞋子'  order by p.obligateone desc
@@ -27,5 +25,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   			select p.* from product p,categoryone c1,categorytwo c2,categorythree c3 where p.categoryidthree=c3.categoryidthree and c3.categoryidtwo=c2.categoryidtwo and c2.categoryidone=c1.categoryidone and c1.categorytypeone='鞋子'  order by p.obligateone desc
  		 )a  where  11>rownum 
 	</select>
->>>>>>> refs/remotes/origin/master
 </mapper>
