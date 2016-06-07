@@ -21,18 +21,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 var addressid;
 	$.post("address_list.action",function(data){
 		console.info(data);
+		var flag="";
+		var str="";
 		for(var i=0;i<data.length;i++){
-			$("#addr").append("<div id='dzxq'><p><span id='dzxqname'>"
+			if(data[i].statue==0){
+				str="</span><span  id='lala'><a  href='javascript:moren("+data[i].addressid+")'>默认地址</a></span>";
+				flag="<div class='sshaha'>";
+			}else{
+				str="</span><span id='lala'><a href='javascript:moren("+data[i].addressid+")'>设为默认</a></span>";
+				flag="<div id='dzxq'>";
+			}
+			
+			$("#addr").append(flag+"<p><span id='dzxqname'>"
 					+data[i].adname+"</span><span id='dzxqprovince'>"
 					+data[i].province+"</span><span id='dzxqcity'>"
 					+data[i].city+"</span><span id='dzxqqu'>"
 					+data[i].street+"</span><span id='dzxqstreet'>"
 					+data[i].usaddress+"</span><span id='dzxqcode'>"
 					+data[i].adcode+"</span><span id='dzxqtel'>"
-					+data[i].adtel+"</span><span id='lala'><a href='javascript:moren("+data[i].addressid+")'>设为默认</a></span>"
+					+data[i].adtel+str
 					+"<span id='gan'> |</span><a href='javascript:edit("+data[i].addressid+")'>编辑</a>"
 					+"<span id='gan'> |</span><a href='javascript:deletes("+data[i].addressid+")'>删除</a>"
 				+"</div>");
+			
 		}
 	}, 'json');
 

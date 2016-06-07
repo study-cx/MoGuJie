@@ -1,18 +1,14 @@
 package com.yc.mogujie.mapper;
 
-import com.yc.mogujie.entity.Cart;
-import java.math.BigDecimal;
+import com.yc.mogujie.entity.CartBean;
+
+import java.util.List;
 
 public interface CartMapper {
-    int deleteByPrimaryKey(BigDecimal cid);
 
-    int insert(Cart record);
+	List<CartBean> getAllCart(CartBean cartBean);
 
-    int insertSelective(Cart record);
+	int deleteCart(int cid);
 
-    Cart selectByPrimaryKey(BigDecimal cid);
-
-    int updateByPrimaryKeySelective(Cart record);
-
-    int updateByPrimaryKey(Cart record);
+	int updateNum(CartBean cartBean);
 }

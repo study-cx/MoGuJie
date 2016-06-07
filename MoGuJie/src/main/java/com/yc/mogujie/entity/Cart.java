@@ -15,88 +15,101 @@ public class Cart {
 
     private int snumber;
 
-    private String obligateone;
+
+    private int obligateone; 
+
 
     private String obligatetwo;
 
-    public int getCid() {
-        return cid;
-    }
 
-    public void setCid(int cid) {
-        this.cid = cid;
-    }
+	public int getCid() {
+		return cid;
+	}
 
-    public int getProid() {
-        return proid;
-    }
 
-    public void setProid(int proid) {
-        this.proid = proid;
-    }
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
 
-    public int getUsid() {
-        return usid;
-    }
 
-    public void setUsid(int usid) {
-        this.usid = usid;
-    }
+	public int getProid() {
+		return proid;
+	}
 
-    public String getColor() {
-        return color;
-    }
 
-    public void setColor(String color) {
-        this.color = color == null ? null : color.trim();
-    }
+	public void setProid(int proid) {
+		this.proid = proid;
+	}
 
-    public String getCsize() {
-        return csize;
-    }
 
-    public void setCsize(String csize) {
-        this.csize = csize == null ? null : csize.trim();
-    }
+	public int getUsid() {
+		return usid;
+	}
 
-    public String getPcolor() {
-        return pcolor;
-    }
 
-    public void setPcolor(String pcolor) {
-        this.pcolor = pcolor == null ? null : pcolor.trim();
-    }
+	public void setUsid(int usid) {
+		this.usid = usid;
+	}
 
-    public int getSnumber() {
-        return snumber;
-    }
 
-    public void setSnumber(int snumber) {
-        this.snumber = snumber;
-    }
+	public String getColor() {
+		return color;
+	}
 
-	public String getObligateone() {
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+
+	public String getCsize() {
+		return csize;
+	}
+
+
+	public void setCsize(String csize) {
+		this.csize = csize;
+	}
+
+
+	public String getPcolor() {
+		return pcolor;
+	}
+
+
+	public void setPcolor(String pcolor) {
+		this.pcolor = pcolor;
+	}
+
+
+	public int getSnumber() {
+		return snumber;
+	}
+
+
+	public void setSnumber(int snumber) {
+		this.snumber = snumber;
+	}
+
+
+	public int getObligateone() {
 		return obligateone;
 	}
 
-	public void setObligateone(String obligateone) {
+
+	public void setObligateone(int obligateone) {
 		this.obligateone = obligateone;
 	}
+
 
 	public String getObligatetwo() {
 		return obligatetwo;
 	}
 
+
 	public void setObligatetwo(String obligatetwo) {
 		this.obligatetwo = obligatetwo;
 	}
 
-	@Override
-	public String toString() {
-		return "Cart [cid=" + cid + ", proid=" + proid + ", usid=" + usid
-				+ ", color=" + color + ", csize=" + csize + ", pcolor="
-				+ pcolor + ", snumber=" + snumber + ", obligateone="
-				+ obligateone + ", obligatetwo=" + obligatetwo + "]";
-	}
-    	
+  
 }

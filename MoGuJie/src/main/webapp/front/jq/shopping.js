@@ -1,4 +1,5 @@
 // JavaScript Document
+
 	var total=0;
 	var shuliang=0;
 	function change(img){
@@ -97,27 +98,39 @@
 	//删除商品
 	
 	function deleteShangpin(cid){
-		/*
-		var zz;
-		//console.info(a);
-		var delElement=document.getElementById(a.id);
-		var ss=document.getElementById('shang'+b);
-			if(ss.checked==true){
-					productCounts(b);
-					delElement.parentNode.removeChild(delElement);
-				}else{
-					delElement.parentNode.removeChild(delElement);
-				}*/
-		$.post("cartServlet",{op:"deleteShangpin",cid:cid},function(data){
-			if(data==1){
-				alert("删除信息成功");
+		$.post("cart_deleteCart.action",{cid:cid},function(data){
+			if(data>0){
 				window.location.reload();
-
 			}else{
-				alert("删除信息失败");
+				alert("删除信息失败！");
 			}
-		});
+		},'json');
+	} 
+	
+	//修改数量
+	function changeNum(cid){
+		//访问表格中的所有行的信息
+		var snumber=0;
+		var myTabletr=document.getElementById('shopinfo').getElementsByTagName('tr');
+		for(var i=0;i<myTabletr.length;i++){
+			console.info(cid);
+			var ids='hh'+i;
+			var id=$("."+ids).val();
+			if(cid==id){
+				snumber=myTabletr[i].getElementsByTagName('td')[6].getElementsByTagName('input')[0].value;
+			}
+		}
+		
+		$.post("cart_updateCart.action",{cid:cid,snumber:snumber},function(data){
+			if(data>0){
+				window.location.reload();
+			}
+			else{
+				alert("修改失败!!!");
+			}
+		},'json');
 	}
+	
 	
 	//金额加法
 	function productCount(jifen){
