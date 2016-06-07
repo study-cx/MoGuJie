@@ -1,4 +1,5 @@
   create user MoGuJie identified by a
+  select distinct p.proid,p.prophoto,p.procontent,p.proprice, d.counts,cone.categoryTypeone from product p,detail d,categorythree cthree,categorytwo ctwo,categoryone cone where p.proid=d.proid and cthree.categoryidthree=p.categoryidthree and ctwo.categoryidtwo=cthree.categoryidtwo and cone.categoryidone=ctwo.categoryidone and cone.categoryidone=103 
   grant dba to MoGuJie
   --蘑菇街数据库设计
   delete admin;
@@ -70,8 +71,14 @@
   select u.uname,u.ubirthday,u.ucode,u.usemail,u.usphone,a.province,a.city from userInfo u,address a where u.usid=a.usid and u.uname='liqiu'
 
     create sequence seq_admin_aid start with 100 increment by 1;
-  
---用户信息表
+  select distinct p.proid,p.prophoto,p.procontent,p.proprice,
+			d.counts,cone.categoryTypeone,ctwo.categoryTypetwo
+			from product p,detail d,categorythree cthree,categorytwo ctwo,categoryone cone 
+			where p.proid=d.proid and cthree.categoryidthree=p.categoryidthree 
+			and ctwo.categoryidtwo=cthree.categoryidtwo 
+			and cone.categoryidone=ctwo.categoryidone 
+			and cone.categoryidone=100 and ctwo.categoryTypetwo='背心吊带'
+			
 create table userInfo(
   usid int primary key,--用户id
   uspwd varchar2(100),--密码

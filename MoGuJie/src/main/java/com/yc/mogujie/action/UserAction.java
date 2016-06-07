@@ -50,6 +50,9 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware {
 
 	public String login() {
 		LogManager.getLogger().debug(userInfo);
+		//aa  pwd 2222
+		//aa   pwd  ****
+	
 		UserInfo us = userInfoService.login(userInfo);
 		if (us != null) {
 			ActionContext.getContext().getSession()

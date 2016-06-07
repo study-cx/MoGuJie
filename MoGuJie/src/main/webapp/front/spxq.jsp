@@ -147,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <p id="number">数量：<button onClick="jian()" id="jian" style="width:26px;height:27px">-</button>
                             <input type="text" id="shuliangs" value="1" style="width:45px;height:27px"/>
                             <button onClick="jia()" id="jia" style="width:26px;height:27px">+</button></p> <span id="kucun"></span>
-        <input id="queding" type="button"  value="确定" onClick="JiaRuGouWuChe(${loginUser.usid})" style="width:80px;height:35px;;background:#EF2F23;color:white;font-size:16px;fone-weight:bold;">           
+        <input id="queding" type="button"  value="确定" onClick="JiaRuGouWuChe()" style="width:80px;height:35px;;background:#EF2F23;color:white;font-size:16px;fone-weight:bold;">           
 	</div>
 
 
@@ -191,12 +191,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
          <div id="1" class="spxq" style="display:block">
     		<img src="front/images/spxq.png"/>
-            <img src="front/images/spxq_1.png"/>          
+            <img src="${spxqproduct[0].prophoto}"/>          
     	 </div>    
     
     <div id="2" class="ljpj" style="display:none">
         <br/>
-        <p class="pingjia">累计评价(0)</p><br/>
+        <p class="pingjia">
+        	<c:forEach items="${feedback}" var="item">
+        		<div class="feedback">
+        		<img src="front/images/feedback.jpg">
+        			<a class="feedback1">${item.uname}</a><a class="feedback2">${item.fdate}</a><br/>
+        			<div >
+        			${item.content}
+        			</div>
+        		</div>
+        	</c:forEach>
+        
+        </p><br/>
     </div>
     
     <div id="3" class="tlsp" style="display:none">  	

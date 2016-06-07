@@ -144,7 +144,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <c:forEach items="${weizhi }" var="item">
 	                		<c:if test="${item.weizhi eq '中间' }">
 		                		<div class="z1">
-		                		    <a href="javascript:showProductInfo(${item.proid })"><img src="${item.gPhoto}" width="660" height="400" ></a>
+		                		    <a href="xiangQing_show.action?proid=${item.proid })"><img src="${item.gPhoto}" width="660" height="400" ></a>
 		                		</div>
 	                		</c:if>
                 		</c:forEach>
@@ -156,13 +156,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="pb">
 	<c:forEach items="${weizhi }" var="item">
 		<c:if test="${item.weizhi eq '旁边上' }">
-	    	<a href="javascript:showProductInfo(${item.proid })"><img class="pb1" src="${item.gPhoto}"/></a>
+	    	<a href="xiangQing_show.action?proid=${item.proid }"><img class="pb1" src="${item.gPhoto}"/></a>
 	    </c:if>
 	</c:forEach>
 	        <img class="pb3" src="front/images/pb3.png"/>
      <c:forEach items="${weizhi }" var="item"> 
         <c:if test="${item.weizhi eq '旁边下' }">
-    		<a href="javascript:showProductInfo(${item.proid })"><img class="pb1" src="${item.gPhoto}"/></a>
+    		<a href="xiangQing_show.action?proid=${item.proid }"><img class="pb1" src="${item.gPhoto}"/></a>
 	    </c:if>
 	  </c:forEach>
 	 </div>

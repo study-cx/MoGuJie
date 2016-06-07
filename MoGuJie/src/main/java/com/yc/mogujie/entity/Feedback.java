@@ -10,12 +10,12 @@ public class Feedback {
     private int orderid;
 
     private int proid;
-
+    
     private Date fdate;
 
-    private int obligateone;
+    private String obligateone;
 
-    private int obligatetwo;
+    private String obligatetwo;
 
     private String content;
 
@@ -59,27 +59,38 @@ public class Feedback {
         this.fdate = fdate;
     }
 
-    public int getObligateone() {
-        return obligateone;
-    }
+   
 
-    public void setObligateone(int obligateone) {
-        this.obligateone = obligateone;
-    }
+    public String getObligateone() {
+		return obligateone;
+	}
 
-    public int getObligatetwo() {
-        return obligatetwo;
-    }
+	public void setObligateone(String obligateone) {
+		this.obligateone = obligateone;
+	}
 
-    public void setObligatetwo(int obligatetwo) {
-        this.obligatetwo = obligatetwo;
-    }
+	public String getObligatetwo() {
+		return obligatetwo;
+	}
 
-    public String getContent() {
+	public void setObligatetwo(String obligatetwo) {
+		this.obligatetwo = obligatetwo;
+	}
+
+	public String getContent() {
         return content;
     }
 
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Feedback [fid=" + fid + ", usid=" + usid + ", orderid="
+				+ orderid + ", proid=" + proid + ", fdate=" + fdate
+				+ ", obligateone=" + obligateone + ", obligatetwo="
+				+ obligatetwo + ", content=" + content + "]";
+	}
+    
 }
