@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.mogujie.mapper.CategorytwoMapper">
+	<!-- 根据1级分类的id获取二级分类的类型 -->
+	<select id="getCatetwoType" parameterType="Categorybean" resultType="Categorybean">
+		select co.*,ct.*
+			from categoryone co,categorytwo ct 
+			where co.categoryidone=ct.categoryidone and ct.categoryidone=#{categoryidone}
+	</select>
+	
+	<select id="getAllProductByType" parameterType="Categorybean" resultType="Categorybean">
+		select distinct p.proid,p.prophoto,p.procontent,p.proprice,
+			d.counts,cone.categoryTypeone
+			from product p,detail d,categorythree cthree,categorytwo ctwo,categoryone cone 
+			where p.proid=d.proid and cthree.categoryidthree=p.categoryidthree 
+			and ctwo.categoryidtwo=cthree.categoryidtwo 
+			and cone.categoryidone=ctwo.categoryidone and cone.categoryidone=#{categoryidone}
+	</select>
+	
+	<select id="getProductByType" parameterType="Categorybean" resultType="Categorybean">
+		select distinct p.proid,p.prophoto,p.procontent,p.proprice,
+			d.counts,cone.categoryTypeone,ctwo.categoryTypetwo
+			from product p,detail d,categorythree cthree,categorytwo ctwo,categoryone cone 
+			where p.proid=d.proid and cthree.categoryidthree=p.categoryidthree 
+			and ctwo.categoryidtwo=cthree.categoryidtwo 
+			and cone.categoryidone=ctwo.categoryidone 
+			and cone.categoryidone=#{categoryidone} and ctwo.categoryTypetwo=#{categoryTypetwo}
+	</select>
+</mapper>
