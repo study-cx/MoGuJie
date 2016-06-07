@@ -10,6 +10,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.yc.mogujie.entity.Categoryone;
 import com.yc.mogujie.entity.Categorytwo;
 import com.yc.mogujie.entity.GuangGaoBean;
+import com.yc.mogujie.entity.Product;
 import com.yc.mogujie.service.IndexService;
 
 @Controller("indexAction")
@@ -20,11 +21,14 @@ public class IndexAction {
 		List<Categoryone> typeone=indexService.selectCategoryOne();
 		List<Categorytwo> typetwo=indexService.selectCategoryTwo();
 		List<GuangGaoBean> guangao=indexService.selectGuanGao();
-		
+		List<Product> liangping=indexService.selectProductByobligateone();
+		List<Product> renqinvxie=indexService.selectRenqiNvxie();
 		ActionContext.getContext().getSession().put("cateone", typeone);
 		ActionContext.getContext().getSession().put("catetwo", typetwo);
 		ActionContext.getContext().getSession().put("weizhi", guangao);
-		LogManager.getLogger().debug(typetwo);
+		ActionContext.getContext().getSession().put("liangping", liangping);
+		ActionContext.getContext().getSession().put("renqinvxie", renqinvxie);
+		
 		return "index";
 	}
 	

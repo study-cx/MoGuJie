@@ -9,13 +9,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>我的订单</title>
 <base href="<%=basePath%>">
 <%@include file="header.jsp" %>
+
+<script type="text/javascript">
+	var op="${param.op}";
+	//console.info(op);
+	if(op=="userInfo"){
+		alert("恭喜您,基本信息修改成功！\n\返回 \r我的订单");
+	}else if(op=="updatePhoto"){
+		alert("恭喜您,头像修改成功！\n\返回 \r我的订单");
+	}
+</script>
 </head>
 
 <body >
 <%@include file="head.jsp"%>
 <div id="title_left">
         <ul class="title1">
-        	<li><img class="img1" src="${loginUser.uphoto }" style="width:120px;height:100px" id="img1"/></li>
+        <c:choose>
+        	<c:when test="${loginUser.uphoto eq null}">
+        	    <li><img class="img1" src="front/images/b2.jpg" style="width:120px;height:100px" id="img1"/></li>
+        	</c:when>
+        	<c:otherwise>
+        		<li><img class="img1" src="${loginUser.uphoto }" style="width:120px;height:100px" id="img1"/></li>
+        	</c:otherwise>
+        </c:choose>
            	<li><p class="tit1">${loginUser.uname }</p></li>
             <li><p class="tit2">4</p></li><br/><br/>
             <li><span class="tit3">..............................................</span></li>
@@ -23,11 +40,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="mydiv1"><h3>我的订单</h3><a><span id="bottom1" class="top1" onclick="showJuti1()">&and;</span></a></div>
         <div id="juti1">
             <ul class="order">
-                <li onmousemove="change(this)" onmouseout="show(this)" onclick="switchover(this,1)"><p><a>全部订单</a></p></li>
+                <li onmousemove="change(this)" onmouseout="show(this)" onclick="switchover(this,1)"><p><a></a>全部订单</a></p></li>
                 <li onmousemove="change(this)" onmouseout="show(this)" onclick="switchover(this,2)"><p><a>待付款</a></p></li>
                 <li onmousemove="change(this)" onmouseout="show(this)" onclick="switchover(this,3)"><p><a>待评价</a></p></li>
-                <!--<li onmousemove="change(this)" onmouseout="show(this)" onclick="switchover(this,4)"><p><a></a></p></li>-->
-                <li onmousemove="change(this)" onmouseout="show(this)" onclick="switchover(this,5)"><p><a>退货退款</a></p></li><br/>
+                <br/>
                 <li><span class="tit3">..............................................</span></li>
                 <!--
                 <h3>我的钱包</h3>
@@ -48,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        	
             <span class="tit3">..............................................</span>
 
-            <h3 onclick="switchover(this,6)" id="address"><a href="front/addr.jsp">地址管理</a></h3>
+            <h3 id="address"><a href="front/addr.jsp">地址管理</a></h3>
 
             <span class="tit3">..............................................</span>
             <!--<li><h3>安全设置</h3></li>
@@ -102,42 +118,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<td class="shop">商品</td>
             <td class="tprice">单价(元)</td>
             <td class="tnum">数量</td>
-            <td class="shouhou">售后</td>
             <td class="tfu">实付款(元)</td>
             <td class="statue">交易状态</td>
             <td class="caozuo">操作</td>
-            </tr>
-        </table>
-        <table class="dingdanInfo">
-        	<tr class="ding1">
-            	<td>订单编号：973529451355</td>
-                <td id="dtime">成交时间：2015-10-31 19:27:18</td>
-                <td id="dhouse"><a>店铺：yoyo吾裳</a></td>
-                <td id="contact"><a>联系我们</a></td>
-            </tr>
-            <tr class="dingdan1" id="dingdan1">
-            	<td><img src="front/images/order.jpg" style="width:100px;height:100px;"/></td>
-                <td>
-                    <p><a>秋冬新款鹿皮绒机车毛呢外套</a><a>[交易快照]</a></p>
-                    <p>颜色：浅蓝</p>
-                    <p>尺码：S</p>
-                </td>
-                <td>
-                	<p id="yprice">187.00</p>
-                    <p id="xprice">130.90</p>
-                </td>
-                <td id="number">1</li>
-                <td id="youf">
-                	<p class="n1">￥105.00</p>
-                    <p class="n2">(包邮)</p>
-                </td>
-                <td id="xiang">
-                	<p class="x1"><a href="front/pingjia.jsp">待评价</a></p>
-                    <p class="x2"><a>订单详情</a></p>
-                </td>
-                <td id="del">
-                	<a href="javascript:deleteInfo('dingdan1')">删除订单</a>
-                </td>
             </tr>
         </table>
     </div>
@@ -196,17 +179,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <%@include file="userInfo.jsp" %>
     <div id="content_11" class="content" style="display:none;">
-		<a name=""></a>
 		<p class="touxiang"><span>修改头像</span></p>
-	    <ul>
-	        <li><span class="title1">当前头像：</span><img src="${loginUser.uphoto }" class="tp" id="tp"/><span id="xiugai"></span></li>
-	        <li><span class="title2">上传新头像：</span><input type="text" id="tuname"/><input type="file" id="photo" name="photo" onchange="showTp(this)"/></li>
-	        <li class="con">建议使用正方形的图片，支持JPG、GIF、JPEG格式，100K以内.</li>
-	        <li class="button"><input type="button" value="确定" onclick="UpTp()" style="width:80px; height:30px; background:#F93"/></li>
-	    </ul>
+		<form action="userBean_updateImage.action?usid=${loginUser.usid}&uname=${loginUser.uname}" method="post" enctype="multipart/form-data">
+		    <ul>
+		        <li><span class="title1">当前头像：</span><img src="${loginUser.uphoto }" class="tp" id="tp"/><span id="xiugai"></span></li>
+		        <li><span class="title2">上传新头像：</span>
+		        	<input type="text" id="tuname"/>
+		        	<input type="file" id="photo" name="upload" onchange="showTp(this)" multiple="multiple"/>
+		        </li>
+		        <li class="con">建议使用正方形的图片，支持JPG、GIF、JPEG格式，100K以内.</li>
+		        <li class="button"><input type="submit" value="确定" style="width:80px; height:30px; background:#F93"/></li>
+		    </ul>
+	    </form>
 	</div>
     <%@include file="UpdatePwd.jsp" %>
-
-
+    <%@ include file="footer.jsp" %>
 </body>
 </html>

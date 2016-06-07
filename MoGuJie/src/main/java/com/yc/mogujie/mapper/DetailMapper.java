@@ -1,18 +1,22 @@
 package com.yc.mogujie.mapper;
 
 import com.yc.mogujie.entity.Detail;
+import com.yc.mogujie.entity.Product;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 public interface DetailMapper {
-    int deleteByPrimaryKey(BigDecimal deid);
 
-    int insert(Detail record);
+	List<Product> SelectProductByProid(int proid);
 
-    int insertSelective(Detail record);
+	List<Detail> SelectPsizeByProid(int proid);
 
-    Detail selectByPrimaryKey(BigDecimal deid);
+	List<Detail> SelectColorByProid(int proid);
+	
+	String SelectNumberBySizeAndColor(Detail detail);
 
-    int updateByPrimaryKeySelective(Detail record);
+	
 
-    int updateByPrimaryKey(Detail record);
+
 }

@@ -1,7 +1,10 @@
 package com.yc.mogujie.mapper;
 
 import com.yc.mogujie.entity.Categoryone;
+import com.yc.mogujie.entity.Categorytwo;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 public interface CategoryoneMapper {
     int deleteByPrimaryKey(BigDecimal categoryidone);
@@ -15,4 +18,5 @@ public interface CategoryoneMapper {
     int updateByPrimaryKeySelective(Categoryone record);
 
     int updateByPrimaryKey(Categoryone record);
+
 }

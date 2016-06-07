@@ -1,5 +1,6 @@
 // JavaScript Document
-	function  change(_this,num){		
+	function  change(_this,num){
+		
 		for(var i=1;i<=3;i++){
 			if(num==i){
 				document.getElementById(i).style.display='block';	
@@ -16,7 +17,8 @@
 		document.getElementById('smxz').style.display='none';
 	}
 	function change1(num){
-			for(var j=1;j<=4;j++){
+		var le=$("#hahah li").length;
+			for(var j=0;j<le;j++){
 				if(num==j){
 					document.getElementById('b'+j).style.display='block';
 					document.getElementById('a'+j).style.opacity=1;
@@ -28,20 +30,22 @@
 	}
 
 function show2(num){
+	
 	var sq=$("#c"+num);
 	var lq=sq.attr("class");
-	var le=$("#showcolor","div").length;
+	var le=$("#showcolor div").length-1;
 	if(lq=='yy'){
-		for(i=1;i<=le;i++){
+		
+		for(i=0;i<le;i++){
 			if(num==i){
 				var pp=parseInt(i)+1;
-				document.getElementById('b'+pp).style.display='block';
+				document.getElementById('b'+i).style.display='block';
 				var s=document.getElementById('c'+i);
 				s.className='yi';
 			}else{
 				var pp=parseInt(i)+1;
 				document.getElementById('b1').style.display='none';
-				document.getElementById('b'+pp).style.display='none';
+				document.getElementById('b'+i).style.display='none';
 				var s=document.getElementById('c'+i);
 				s.className='yy';
 			}
@@ -69,13 +73,28 @@ function show3(num){
 function show4(num){
 	var sq=$("#e"+num);
 	var lq=sq.attr("class");
-	var le=$("#showcolor1","div").length;
+	var le=$("#showcolor1 div").length-1;
+	
 	if(lq=='ss'){
-		for(i=1;i<=le;i++){
+		for(i=0;i<le;i++){
 			if(num==i){
 				var s=document.getElementById('e'+i);
 				s.className='s';
+				var color=$(".yi").html();
+				var psize=$(".s").html();
+				var proid=$(".proid").val();
+				
+				$.post("xiangQing_shownumber.action",{proid:proid,color:color,psize:psize},function(data){
+					if(data==null){
+						$("#sq").html(0);
+					}else{
+						$("#sq").html(data);
+					}
+					
+				},'json');
+				
 			}else{
+				
 				var s=document.getElementById('e'+i);
 				s.className='ss';
 			}
@@ -87,18 +106,18 @@ function show4(num){
 function show5(num){
 	var sq=$("#g"+num);
 	var lq=sq.attr("class");
-	var le=$("#showcolor","div").length;
+	var le=$("#showcolor2 div").length-1;
 	if(lq=='yy1'){
-		for(i=1;i<=le;i++){
+		for(i=0;i<le;i++){
 			if(num==i){
 				var pp=parseInt(i)+1;
-				document.getElementById('b'+pp).style.display='block';
+				document.getElementById('b'+i).style.display='block';
 				var s=document.getElementById('g'+i);
 				s.className='yi1';
 			}else{
 				var pp=parseInt(i)+1;
 				document.getElementById('b1').style.display='none';
-				document.getElementById('b'+pp).style.display='none';
+				document.getElementById('b'+i).style.display='none';
 				var s=document.getElementById('g'+i);
 				s.className='yy1';
 			}
@@ -115,9 +134,10 @@ function show5(num){
 function show6(num){
 	var sq=$("#f"+num);
 	var lq=sq.attr("class");
-	var le=$("#showcolor1","div").length;
+	var le=$("#showcolor3 div").length-1;
+	
 	if(lq=='ss'){
-		for(i=1;i<=le;i++){
+		for(i=0;i<le;i++){
 			if(num==i){
 				var s=document.getElementById('f'+i);
 				s.className='s';
@@ -167,12 +187,13 @@ function NowBuy(){
 	var size=$(".s").html();
 	var number=$("#shuliang").val();
 	var color=$(".yi").html();
-	$.post("fukuanServlet",{op:"deleteInfo"});
-	$.post("cartServlet?d="+new Date(),{op:"NowBuy",proname:proname,price:price,color:color,size:size,number:number},function(data){
+	var proid=$(".proid").val();
+	/*$.post("fukuanServlet",{op:"deleteInfo"});*/
+	$.post("fuKuanInfo_jieesuanInfo",{proname:proname,price:price,color:color,size:size,number:number,proid:proid},function(data){
 		if(data==1){
 			location.href="front/fukuan.jsp";
 		}
-	});
+	},'json');
 }
 $(function(){
 	$('#qbsp1').bind({

@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="fl1">
           <ul class="fl2">
           
-              <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[0].categoryidone })" style="color:#000">${cateone[0].categorytypeone}</a></li>
+              <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[0].categoryidone }" style="color:#000">${cateone[0].categorytypeone}</a></li>
                             <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                 <c:forEach items="${catetwo }" var="item">
@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </ul>
                              </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[1].categoryidone })" style="color:#000">${cateone[1].categorytypeone}</a></li>
+                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[1].categoryidone }" style="color:#000">${cateone[1].categorytypeone}</a></li>
                     <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </ul>
                      </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[2].categoryidone })" style="color:#000">${cateone[2].categorytypeone}</a></li>
+                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[2].categoryidone }" style="color:#000">${cateone[2].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[3].categoryidone })" style="color:#000">${cateone[3].categorytypeone}</a></li>
+                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[3].categoryidone }" style="color:#000">${cateone[3].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                    <c:forEach items="${catetwo }" var="item">
@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[4].categoryidone })" style="color:#000">${cateone[4].categorytypeone}</a></li>
+                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[4].categoryidone }" style="color:#000">${cateone[4].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[5].categoryidone })" style="color:#000">${cateone[5].categorytypeone}</a></li>
+                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[5].categoryidone }" style="color:#000">${cateone[5].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[6].categoryidone })" style="color:#000">${cateone[6].categorytypeone}</a></li>
+                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[6].categoryidone }" style="color:#000">${cateone[6].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[7].categoryidone })" style="color:#000">${cateone[7].categorytypeone}</a></li>
+                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[7].categoryidone }" style="color:#000">${cateone[7].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[8].categoryidone })" style="color:#000">${cateone[8].categorytypeone}</a></li>
+                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[8].categoryidone }" style="color:#000">${cateone[8].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
@@ -119,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="javascript:setCategoryTypeone(${cateone[9].categoryidone })" style="color:#000">${cateone[9].categorytypeone}</a></li>
+                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[9].categoryidone }" style="color:#000">${cateone[9].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl7" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
@@ -175,18 +175,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div class="mogugood">
 	<ul>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
+		<c:forEach items="${liangping}" var="item">
+			<li><a href="xiangQing_show.action?proid=${item.proid}"><img alt="${item.proname }" src="${item.prophoto }"/></a>
+				<a href="${item.proid}">${item.proname}</a>
+			</li>
+		</c:forEach>
+	</ul>
+</div>
+<div class="cc">
+	<div class="cc1"></div>
+	<div class="cc3"></div>
+	<div class="cc1"></div>
+</div>
+
+<div class="renqinvxie">
+	<ul>
+
+		<c:forEach items="${renqinvxie}" var="item">
+			<li><a href="xiangQing_show?proid=${item.proid}"><img alt="${item.proname }" src="${item.prophoto }"/></a>
+			</li>
+			
+		</c:forEach>
 	</ul>
 </div>
 <%@ include file="footer.jsp" %>
 <script type="text/javascript">
 function showProductInfo(proid){
-	$.post("productServlet?d="+new Date(),{op:"showProductInfo",proid:proid},function(data){
-		location.href="front/spxq.jsp";
+	$.post("xiangQing_show.action",{proid:proid},function(data){
+		//location.href="front/spxq.jsp";
 	});
 }
 
