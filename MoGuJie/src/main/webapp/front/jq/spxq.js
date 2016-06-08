@@ -1,6 +1,5 @@
 // JavaScript Document
-	function  change(_this,num){
-		
+	function  change(_this,num){		
 		for(var i=1;i<=3;i++){
 			if(num==i){
 				document.getElementById(i).style.display='block';	
@@ -17,8 +16,7 @@
 		document.getElementById('smxz').style.display='none';
 	}
 	function change1(num){
-		var le=$("#hahah li").length;
-			for(var j=0;j<le;j++){
+			for(var j=0;j<=3;j++){
 				if(num==j){
 					document.getElementById('b'+j).style.display='block';
 					document.getElementById('a'+j).style.opacity=1;
@@ -30,22 +28,20 @@
 	}
 
 function show2(num){
-	
 	var sq=$("#c"+num);
 	var lq=sq.attr("class");
-	var le=$("#showcolor div").length-1;
+	var le=$("#showcolor","div").length;
 	if(lq=='yy'){
-		
-		for(i=0;i<le;i++){
+		for(i=1;i<=le;i++){
 			if(num==i){
 				var pp=parseInt(i)+1;
-				document.getElementById('b'+i).style.display='block';
+				document.getElementById('b'+pp).style.display='block';
 				var s=document.getElementById('c'+i);
 				s.className='yi';
 			}else{
 				var pp=parseInt(i)+1;
 				document.getElementById('b1').style.display='none';
-				document.getElementById('b'+i).style.display='none';
+				document.getElementById('b'+pp).style.display='none';
 				var s=document.getElementById('c'+i);
 				s.className='yy';
 			}
@@ -73,28 +69,13 @@ function show3(num){
 function show4(num){
 	var sq=$("#e"+num);
 	var lq=sq.attr("class");
-	var le=$("#showcolor1 div").length-1;
-	
+	var le=$("#showcolor1","div").length;
 	if(lq=='ss'){
-		for(i=0;i<le;i++){
+		for(i=1;i<=le;i++){
 			if(num==i){
 				var s=document.getElementById('e'+i);
 				s.className='s';
-				var color=$(".yi").html();
-				var psize=$(".s").html();
-				var proid=$(".proid").val();
-				
-				$.post("xiangQing_shownumber.action",{proid:proid,color:color,psize:psize},function(data){
-					if(data==null){
-						$("#sq").html(0);
-					}else{
-						$("#sq").html(data);
-					}
-					
-				},'json');
-				
 			}else{
-				
 				var s=document.getElementById('e'+i);
 				s.className='ss';
 			}
@@ -106,18 +87,18 @@ function show4(num){
 function show5(num){
 	var sq=$("#g"+num);
 	var lq=sq.attr("class");
-	var le=$("#showcolor2 div").length-1;
+	var le=$("#showcolor","div").length;
 	if(lq=='yy1'){
-		for(i=0;i<le;i++){
+		for(i=1;i<=le;i++){
 			if(num==i){
 				var pp=parseInt(i)+1;
-				document.getElementById('b'+i).style.display='block';
+				document.getElementById('b'+pp).style.display='block';
 				var s=document.getElementById('g'+i);
 				s.className='yi1';
 			}else{
 				var pp=parseInt(i)+1;
 				document.getElementById('b1').style.display='none';
-				document.getElementById('b'+i).style.display='none';
+				document.getElementById('b'+pp).style.display='none';
 				var s=document.getElementById('g'+i);
 				s.className='yy1';
 			}
@@ -134,10 +115,9 @@ function show5(num){
 function show6(num){
 	var sq=$("#f"+num);
 	var lq=sq.attr("class");
-	var le=$("#showcolor3 div").length-1;
-	
+	var le=$("#showcolor1","div").length;
 	if(lq=='ss'){
-		for(i=0;i<le;i++){
+		for(i=1;i<=le;i++){
 			if(num==i){
 				var s=document.getElementById('f'+i);
 				s.className='s';
@@ -163,14 +143,13 @@ function showclose(){
 }
 
 //确定加入购物车
-function JiaRuGouWuChe(){
-	var proid=$(".proid").val();
+function JiaRuGouWuChe(usid){
 	var proname=$("#title").html();
 	var price=$("#price").html();
 	var size=$(".s").html();
 	var number=$("#shuliangs").val();
 	var color=$(".yi1").html();
-	$.post("xiangQingAction_AddGouWuChe",{proid:proid,price:price,color:color,csize:csize,snumber:snumber},function(data){
+	$.post("cartServlet?d="+new Date(),{op:"JiaRuCart",usid:usid,proname:proname,price:price,color:color,size:size,number:number},function(data){
 		if(data==1){
 			alert("添加成功，稍后请去购物车结算！");
 			document.getElementById("xuanze").style.display="none";
@@ -188,13 +167,12 @@ function NowBuy(){
 	var size=$(".s").html();
 	var number=$("#shuliang").val();
 	var color=$(".yi").html();
-	var proid=$(".proid").val();
-	/*$.post("fukuanServlet",{op:"deleteInfo"});*/
-	$.post("fuKuanInfo_jieesuanInfo",{proname:proname,price:price,color:color,size:size,number:number,proid:proid},function(data){
+	$.post("fukuanServlet",{op:"deleteInfo"});
+	$.post("cartServlet?d="+new Date(),{op:"NowBuy",proname:proname,price:price,color:color,size:size,number:number},function(data){
 		if(data==1){
 			location.href="front/fukuan.jsp";
 		}
-	},'json');
+	});
 }
 $(function(){
 	$('#qbsp1').bind({

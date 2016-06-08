@@ -10,19 +10,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectCategoryTwo" resultType="Categorytwo">
 		select * from categorytwo
 	</select>
-	
 	<select id="selectGuanGao" resultType="GuangGaoBean">
-		select gid,weizhi,gPhoto,gdates,gdateo,p.proid from guanggao g,product p,advertise a where g.aid=a.aid and sysdate>gdates and gdateo>sysdate
+		select gid,weizhi,gPhoto,gdates,gdateo,proid from guanggao g,advertise a where g.aid=a.aid and sysdate>gdates and gdateo>sysdate
 	</select>
-	  
 	<select id="selectProductByobligateone" resultType="Product">
-		select a.* from(
-  			select p.* from product p,categoryone c1,categorytwo c2,categorythree c3 where p.categoryidthree=c3.categoryidthree and c3.categoryidtwo=c2.categoryidtwo and c2.categoryidone=c1.categoryidone and c1.categorytypeone!='鞋子'  order by p.obligateone desc
- 		 )a  where  6>rownum 
-	</select>
-	<select id="selectRenqiNvxie" resultType="Product">
-		select a.* from(
-  			select p.* from product p,categoryone c1,categorytwo c2,categorythree c3 where p.categoryidthree=c3.categoryidthree and c3.categoryidtwo=c2.categoryidtwo and c2.categoryidone=c1.categoryidone and c1.categorytypeone='鞋子'  order by p.obligateone desc
- 		 )a  where  11>rownum 
+		  select * from (select * from product order by obligateone desc )where 6>rownum
 	</select>
 </mapper>

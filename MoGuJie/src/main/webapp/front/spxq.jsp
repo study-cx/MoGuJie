@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="nav">
 	<img id="shuang" src="front/images/shuang11.png">
 	<ul>
-    	<li><a href="front/index.jsp">首页</a></li>
+    	<li><a href="">首页</a></li>
         <li id="qbsp1"><a href="">全部商品</a></li>
         <li><a href="">小脚裤/牛仔裤</a></li>
         <li><a href="">大衣/西装</a></li>
@@ -51,9 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div id="zhangshi">
 
-
-	<c:forEach items="${color}" var="item" varStatus="vs">
-
+	<c:forEach items="${pcolor}" var="item" varStatus="vs">
 		<c:choose>
 		<c:when test="${vs.index ==0}">
 			<img src="${item.pcolor}" id="b${vs.index}" style="display:block;height:600px;width:397px"/>
@@ -64,8 +62,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</c:choose>
 	</c:forEach>
 
-	<ul id="hahah">
-		<c:forEach items="${color}" var="item" varStatus="vs">
+	<ul>
+		<c:forEach items="${pcolor}" var="item" varStatus="vs">
 		 	<c:choose>
 				<c:when test="${vs.index ==0}">
 					<li><img onMouseOver="change1(${vs.index})" id='a${vs.index}' class='one' src='${item.pcolor}' style="height:70px;width:70px"/></li>
@@ -76,7 +74,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</c:choose>
 			
 		</c:forEach>
-	
+		<%-- <li><img onMouseOver="change1(1)" id='a1' class='one' src='${detail[0].pcolor}' style="height:70px;width:70px"/></li>
+		<li><img onMouseOver="change1(2)" id='a2' src='${detail[1].pcolor}' style="height:70px;width:70px"/></li>
+		<li><img onMouseOver="change1(3)" id='a3' src='${detail[2].pcolor}' style="height:70px;width:70px"/></li>
+		<li><img onMouseOver="change1(4)" id='a4' src='${detail[3].pcolor}' style="height:70px;width:70px"/></li> --%>
 	</ul>
 	<div id='qbsp2' style="display:none">
 		<ul type='square' >
@@ -91,37 +92,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 <div id="right" >
-	<h2 id="title">${spxqproduct[0].proname}</h2>
-	<input type="hidden" class="proid" value="${spxqproduct[0].proid}"> 
-	
+	<h2 id="title">${productInfo[0].PROCONTENT}</h2>
     <!--<img id="jiage" src="front/images/jiage.png"/><br/>  -->
     <div id="product_price">
     	<br/>
     	<p>
     	<span>价格：</span>
-    	<a id="price">${spxqproduct[0].proprice }</a>
-    	<span class="sales">销售量：${spxqproduct[0].obligateone}</span>
+    	<a id="price">${productInfo[0].PROPRICE }</a>
+    	<span class="sales">销售量：${productInfo[0].COUNTS}</span>
     	</p></br>
     </div>
     <div id="goods" style="display:block">
     	<div id="showcolor">
             <div class="yanse">颜色：</div>
-            <c:forEach items="${color }" var="item" begin="0" end="3" varStatus="status">
-                <div class="yy" id="c${status.index}" class="yanse123" onClick="show2(${status.index})">${item.color }</div>
+            <c:forEach items="${allColor }" var="item" begin="0" end="3" varStatus="status">
+                <div class="yy" id="c${status.index+1}" class="yanse123" onClick="show2(${status.index+1})">${item.color }</div>
             </c:forEach>
         </div>
         
         <div id="showcolor1">
              <div id="size">尺码：</div>
-             <c:forEach items="${psize }" var="item" begin="0" end="20" varStatus="status">
-                <div class="ss"  id="e${status.index}" onClick="show4(${status.index})">${item.psize}</div>
+             <c:forEach items="${allSize }" var="item" begin="0" end="20" varStatus="status">
+                <div class="ss" id="e${status.index+1}" onClick="show4(${status.index+1})">${item.psize}</div>
             </c:forEach>
          </div>             
                           
         <p id="number">数量：<button onClick="jianfa()" id="jian" style="width:26px;height:27px">-</button>
                             <input type="text" id="shuliang" value="1" style="width:45px;height:27px"/>
                             <button onClick="jiafa()" id="jia" style="width:26px;height:27px">+</button>
-                            <span id="kucun">库存量<span id="sq"></span></span>
+                            <span id="kucun">库存量${productInfo[0].PRONUMBER}</span>
                             </p> 
                        
      <input id="buy" type="button" onClick="NowBuy()" value="立即购买"  style="width:200px;height:50px;background:#EF2F23;color:white"/>
@@ -132,22 +131,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div id="gou">&nbsp;&nbsp;&nbsp;选择商品信息<img src="front/images/close.png" onClick="showclose()"> </div>
         <p id="color">
         	
-           	<div id="showcolor2">
+           	<div id="showcolor">
                 <div class="yanse">颜色：</div>
-                 <c:forEach items="${color }" var="item" begin="0" end="10" varStatus="status">
-                	<div class="yy1" id="g${status.index}" onClick="show5(${status.index})">${item.color }</div>
+                 <c:forEach items="${allColor }" var="item" begin="0" end="10" varStatus="status">
+                	<div class="yy1" id="g${status.index+1}" onClick="show5(${status.index+1})">${item.color }</div>
            	 	</c:forEach>
         	</div>
-         <div id="showcolor3">
+         <div id="showcolor1">
              <div id="size">尺码：</div>
-              <c:forEach items="${psize }" var="item" begin="0" end="20" varStatus="status">
-                	<div class="ss" id="f${status.index}" onClick="show6(${status.index})">${item.psize}</div>
+              <c:forEach items="${allSize }" var="item" begin="0" end="20" varStatus="status">
+                	<div class="ss" id="f${status.index+1}" onClick="show6(${status.index+1})">${item.psize}</div>
            	 </c:forEach>
          </div>     
         <p id="number">数量：<button onClick="jian()" id="jian" style="width:26px;height:27px">-</button>
                             <input type="text" id="shuliangs" value="1" style="width:45px;height:27px"/>
                             <button onClick="jia()" id="jia" style="width:26px;height:27px">+</button></p> <span id="kucun"></span>
-        <input id="queding" type="button"  value="确定" onClick="JiaRuGouWuChe()" style="width:80px;height:35px;;background:#EF2F23;color:white;font-size:16px;fone-weight:bold;">           
+        <input id="queding" type="button"  value="确定" onClick="JiaRuGouWuChe(${loginUser.usid})" style="width:80px;height:35px;;background:#EF2F23;color:white;font-size:16px;fone-weight:bold;">           
 	</div>
 
 
@@ -191,23 +190,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
          <div id="1" class="spxq" style="display:block">
     		<img src="front/images/spxq.png"/>
-            <img src="${spxqproduct[0].prophoto}"/>          
+            <img src="front/images/spxq_1.png"/>          
     	 </div>    
     
     <div id="2" class="ljpj" style="display:none">
         <br/>
-        <p class="pingjia">
-        	<c:forEach items="${feedback}" var="item">
-        		<div class="feedback">
-        		<img src="front/images/feedback.jpg">
-        			<a class="feedback1">${item.uname}</a><a class="feedback2">${item.fdate}</a><br/>
-        			<div >
-        			${item.content}
-        			</div>
-        		</div>
-        	</c:forEach>
-        
-        </p><br/>
+        <p class="pingjia">累计评价(0)</p><br/>
     </div>
     
     <div id="3" class="tlsp" style="display:none">  	

@@ -158,11 +158,6 @@ body{
 	width:470px;
 	height:60px;
 }
-#showcolor2{
-	margin-top:10px;
-	width:470px;
-	height:60px;
-}
 
 .yanse{
 	width:50px;
@@ -493,11 +488,6 @@ body{
 	width:470px;
 	height:60px;
 }
-#showcolor3{
-	margin-top:10px;
-	width:470px;
-	height:60px;
-}
 #size{
 	float:left;
 	 width:50px;
@@ -549,28 +539,4 @@ body{
 }
 #product_price .sales{
 	margin-left:150px;
-}
-.feedback{
-	margin-left:3%;
-	width: 100%;
-	height: 100px;
-	
-}
-.feedback img{
-	float:left;
-	border-radius: 40px;
-    width: 40px;
-}
-.feedback1{
-	color: #333;
-    float: left;
-    font-size: 14px;
-    margin-left: 2%;
-    
-}
-.feedback2{
-	color: #333;
-    float: right;
-    font-size: 14px;
-    margin-right: 6%;
 }

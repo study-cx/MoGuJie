@@ -18,8 +18,6 @@ public interface IndexMapper {
 
 	List<Product> selectProductByobligateone();
 
-	List<Product> selectRenqiNvxie();
-
 	
     
 }

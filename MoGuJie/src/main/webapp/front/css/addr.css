@@ -97,7 +97,6 @@ body{
 	margin-top:30px;
 	border:1px solid #DADADA;
 	float:left;
-	
 }
 
 #dzxq p{
@@ -105,7 +104,6 @@ body{
 	line-height:50px;
 	font-size:14px;
 	color:black;
-	 
 }
 #dzxqprovince{
 	margin-left:40px;
@@ -121,7 +119,6 @@ body{
 }
 #lala{
 	margin-left:85px;
-	
 }
 #gan{
 	color:#DADADA;
@@ -149,22 +146,4 @@ body{
 	color:#999999;
 	text-decoration:underline;
 	cursor:pointer;
-}
-.sshaha{
-	width:800px;
-	height:50px;
-	margin-left:20px;
-	margin-top:30px;
-	border:1px solid #DADADA;
-	float:left;
-	background:#FDFBEA; 
-}
-.sshaha p{
-	margin-left:20px;
-	line-height:50px;
-	font-size:14px;
-	color:black;
-}
-.sshaha a{
-	color:#2F63CF;
 }

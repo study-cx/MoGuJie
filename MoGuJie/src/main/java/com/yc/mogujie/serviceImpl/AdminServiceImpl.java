@@ -45,7 +45,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int del(String aid) {
 		int result = 0;
-		if(aid.contains(",") && aid.indexOf("or")<=0){//说明同时删除多个
+		if(aid.contains(",") && aid.indexOf("or")<=0){
 			String[] a=aid.split(",");
 			for(String s:a){
 				result += adminMapper.del(s);

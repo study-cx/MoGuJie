@@ -4,29 +4,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.yc.mogujie.mapper.CategorytwoMapper">
-	<!-- 根据1级分类的id获取二级分类的类型 -->
-	<select id="getCatetwoType" parameterType="Categorybean" resultType="Categorybean">
-		select co.*,ct.*
-			from categoryone co,categorytwo ct 
-			where co.categoryidone=ct.categoryidone and ct.categoryidone=#{categoryidone}
+	<!-- 后台分页查询 -->
+	<select id="find" parameterType="map" resultType="Categorytwo">
+		select *from(select a.*,rownum rn from (select * from categorytwo where obligateone=1 order by
+		categoryidone)a where ${pageNo}>=rownum)b where rn>${pageSize}
 	</select>
-	
-	<select id="getAllProductByType" parameterType="Categorybean" resultType="Categorybean">
-		select distinct p.proid,p.prophoto,p.procontent,p.proprice,
-			d.counts,cone.categoryTypeone
-			from product p,detail d,categorythree cthree,categorytwo ctwo,categoryone cone 
-			where p.proid=d.proid and cthree.categoryidthree=p.categoryidthree 
-			and ctwo.categoryidtwo=cthree.categoryidtwo 
-			and cone.categoryidone=ctwo.categoryidone and cone.categoryidone=#{categoryidone}
+	<!-- 后台添加 -->
+	<insert id="addTypeone" parameterType="Categoryone">
+		insert into categoryone values(seq_categorys_categoryidone.nextval,#{categorytypeone},#{obligateone},0)
+	</insert>
+	<!-- 后台删除 -->
+	<update id="delete" parameterType="String">
+		update categoryone set obligateone=0 where categoryidone=#{categoryidone}
+	</update>
+	<!-- 后台修改 -->
+	<update id="updateTypeone" parameterType="Categoryone">
+		<trim prefixOverrides="," suffixOverrides="," prefix="update categoryone">
+			<set>
+				<if test="categorytypeone != null and categorytypeone != ''">
+					categoryTypeone='${categorytypeone}',
+				</if>
+				<if test="obligateone != null and obligateone != '' ">
+					obligateone='${obligateone}',
+				</if>
+			</set>
+			where categoryidone='${categoryidone}'
+		</trim>
+	</update>
+	<select id="finds" parameterType="map" resultType="Categoryone">
+		select *from(select a.*,rownum rn from (select * from categoryone
+		<where>
+			<if test="categorytypeone != null and categorytypeone != ''">
+				categoryTypeone like '%${categorytypeone}%' and
+			</if>
+			<if test="categoryidone != null and categoryidone != ''">
+				 categoryidone like '%${categoryidone}%' 
+			</if>
+		</where>
+		obligateone=1 order by categoryidone desc)a where ${pageNo}>=rownum)b where rn>${pageSize}
 	</select>
-	
-	<select id="getProductByType" parameterType="Categorybean" resultType="Categorybean">
-		select distinct p.proid,p.prophoto,p.procontent,p.proprice,
-			d.counts,cone.categoryTypeone,ctwo.categoryTypetwo
-			from product p,detail d,categorythree cthree,categorytwo ctwo,categoryone cone 
-			where p.proid=d.proid and cthree.categoryidthree=p.categoryidthree 
-			and ctwo.categoryidtwo=cthree.categoryidtwo 
-			and cone.categoryidone=ctwo.categoryidone 
-			and cone.categoryidone=#{categoryidone} and ctwo.categoryTypetwo=#{categoryTypetwo}
+		<!-- 查询首级分类 -->
+	<select id="findtypeone" resultType="Categoryone">
+		select * from categoryone where obligateone=1
 	</select>
 </mapper>

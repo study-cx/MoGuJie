@@ -1,5 +1,6 @@
 // JavaScript Document
 function show(numb){		
+
 	for(var i=1;i<=10;i++){
 		if(numb==i){
 			//$(".content1").nth-child(i).addClass("on");

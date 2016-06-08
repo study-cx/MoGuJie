@@ -39,11 +39,5 @@ public class IndexServiceImpl implements IndexService {
 		return indexMapper.selectProductByobligateone();
 	}
 
-	@Override
-	public List<Product> selectRenqiNvxie() {
-		
-		return indexMapper.selectRenqiNvxie();
-	}
-
 	
 }

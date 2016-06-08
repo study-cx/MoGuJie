@@ -27,15 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from address where addressid=#{addressid}
 	</delete>
 	
-	<select id="findAllAddressid" resultType="Address" >
-		select * from address
-	</select>
-	
 	<update id="setMoren" parameterType="int">
 		update address set statue=0 where addressid=#{addressid}
-	</update>
-	
-	<update id="updateMoren" parameterType="int">
-		update address set statue=1 where addressid=#{addressid}
 	</update>
 </mapper>

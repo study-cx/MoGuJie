@@ -1,18 +1,13 @@
 package com.yc.mogujie.mapper;
 
 import com.yc.mogujie.entity.Advertise;
-import java.math.BigDecimal;
+
+import java.util.List;
+import java.util.Map;
 
 public interface AdvertiseMapper {
-    int deleteByPrimaryKey(BigDecimal aid);
-
-    int insert(Advertise record);
-
-    int insertSelective(Advertise record);
-
-    Advertise selectByPrimaryKey(BigDecimal aid);
-
-    int updateByPrimaryKeySelective(Advertise record);
-
-    int updateByPrimaryKey(Advertise record);
+	public List<Advertise> find(Map<String ,Object> params);
+	int addAdvertise(Advertise advertise);//添加
+	int updateAdvertise(Advertise advertise);//修改
+	int delAdvertise(String aid);//删除
 }

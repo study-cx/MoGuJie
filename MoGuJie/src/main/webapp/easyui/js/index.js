@@ -18,7 +18,7 @@ $(function(){
 						title:"一级分类",
 						closable:true,
 						fit:true,
-						href:"fenlei.html"
+						href:"fenlei.jsp"
 					});
 				}
 
@@ -31,7 +31,7 @@ $(function(){
 						title:"广告管理",
 						closable:true,
 						fit:true,
-						href:"guanggao.html"
+						href:"guanggao.jsp"
 					});
 				}
 
@@ -55,7 +55,7 @@ $(function(){
 						title:"广告位管理",
 						closable:true,
 						fit:true,
-						href:"advertise.html"
+						href:"advertise.jsp"
 					});
 				}
 			}else if(node.id=="userOrder_manager"){
@@ -67,7 +67,7 @@ $(function(){
 						title:"订单信息",
 						closable:true,
 						fit:true,
-						href:"order.html"
+						href:"order.jsp"
 					});
 				}
 			}else if(node.id=="userOrders_manager"){
@@ -79,7 +79,7 @@ $(function(){
 						title:"订单详细信息",
 						closable:true,
 						fit:true,
-						href:"orders.html"
+						href:"orders.jsp"
 					});
 				}
 			}else if(node.id=="admin_manager"){
@@ -104,7 +104,7 @@ $(function(){
 						title:"二级分类",
 						closable:true,
 						fit:true,
-						href:"fenleitwo.html"
+						href:"fenleitwo.jsp"
 					});
 				}
 			}else if(node.id=="fenlei_manager_three"){
@@ -128,7 +128,7 @@ $(function(){
 						title:"商品管理",
 						closable:true,
 						fit:true,
-						href:"product.html"
+						href:"product.jsp"
 					});
 				}
 			}else if(node.id=="products_manager"){
@@ -140,7 +140,7 @@ $(function(){
 						title:"商品详细管理",
 						closable:true,
 						fit:true,
-						href:"products.html"
+						href:"products.jsp"
 					});
 				}
 			}
