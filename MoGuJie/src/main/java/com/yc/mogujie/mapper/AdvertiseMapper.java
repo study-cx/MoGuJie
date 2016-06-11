@@ -10,4 +10,5 @@ public interface AdvertiseMapper {
 	int addAdvertise(Advertise advertise);//添加
 	int updateAdvertise(Advertise advertise);//修改
 	int delAdvertise(String aid);//删除
+	List<Advertise> finds();
 }

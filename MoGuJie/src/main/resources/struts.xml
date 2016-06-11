@@ -18,7 +18,7 @@
 				updateBasicInfo,findAllOrders,findNoPayOrder,getAllUserInfo,findPaiedOrder,updatePwd,
 				updateImage,pay,back,findUserInfo,updateUserInfo,show,getPageAdtInfo,addAdvertise,
 				updateAdvertise,delAdvertise,getPageNewsInfo,getPageTypeInfo,addTypeInfo,updateTypeInfo,
-				delTypeInfo,findCategoryone,getAllTypeone
+				delTypeInfo,findCategoryone,getAllTypeone,findGuanggaoBygid,getAllAdvertise,getAllProduct
 		</global-allowed-methods>
 
 		<action name="*_*" class="{1}Action" method="{2}">
