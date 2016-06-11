@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.mogujie.mapper.AdvertiseMapper">
+	<!-- 后台分页查询 -->
+	<select id="find" parameterType="map" resultType="Advertise">
+		select * from(select a.*,rownum rn from (select * from advertise where
+		obligatetwo=1 order by aid) a where ${pageNo}>=rownum) b where rn>${pageSize}
+	</select>
+	<!-- 后台添加 -->
+	<insert id="addAdvertise" parameterType="Advertise">
+		insert into advertise values(seq_advertise_aid.nextval,#{asize},#{weizhi},#{obligateone},1)
+	</insert>
+	<!-- 后台删除 -->
+	<update id="delAdvertise" parameterType="String">
+		update advertise set obligatetwo=0 where aid=#{aid}
+	</update>
+	<!-- 后台修改 -->
+	<update id="updateAdvertise" parameterType="Advertise">
+	<trim prefixOverrides="," suffixOverrides="," prefix="update advertise" >
+		<set>
+			<if test="asize != null and asize != ''">
+				asize='${asize}',
+			</if>
+			<if test="weizhi != null and weizhi != '' ">
+				weizhi='${weizhi}',
+			</if>
+			<if test="obligateone != null and obligateone != '' ">
+				obligateone='${obligateone}',
+			</if>
+			<if test="obligatetwo != null and obligatetwo != ''" >
+				obligatetwo='${obligatetwo}',
+			</if>
+		</set>
+		where aid='${aid}'
+		</trim>
+	</update>
+	<select id="finds" resultType="Advertise">
+		select aid,asize,weizhi,obligateone,obligatetwo from advertise where obligatetwo=1
+	</select>
+</mapper>

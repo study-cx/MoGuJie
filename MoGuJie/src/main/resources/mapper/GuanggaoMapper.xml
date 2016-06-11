@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.mogujie.mapper.GuanggaoMapper">
+	<!-- 后台分页查询 -->
+	<select id="find" parameterType="map" resultType="GuangGaoBean">
+		select * from
+		(select a.*,rownum rn from (select g.*,weizhi,proname from
+		guanggao
+		g,advertise a,product p where p.proid=g.proid and g.aid=a.aid
+		and
+		g.obligateone=1 order by weight desc,gdates desc) a where
+		${pageNo}>=rownum)b where
+		rn>${pageSize}
+	</select>
+	<select id="finds" parameterType="String" resultType="GuangGaoBean">
+		select
+		g.*,weizhi,proname from
+		guanggao
+		g,advertise a,product p where
+		gid=#{gid} and p.proid=g.proid and g.aid=a.aid
+		and
+		g.obligateone=1 order
+		by weight desc,gdates desc
+	</select>
+	<!-- 后台添加 -->
+	<insert id="addGuangGao" parameterType="GuangGaoBean">
+		insert into guanggao
+		values(seq_guanggao_gid.nextval,aid=#{aid},1,gPhoto=#{gPhoto},to_date(gdates=#{gdates},'yyyy-mm-dd'),to_date(gdateo=#{gdateo},'yyyy-mm-dd'),weight=#{weight},click=#{click},proid=#{proid},1,1)
+	</insert>
+	<!-- 后台删除 -->
+	<update id="delAdvertise" parameterType="String">
+		update advertise set
+		obligatetwo=0 where aid=#{aid}
+	</update>
+	<!-- 后台修改 -->
+	<update id="updateAdvertise" parameterType="GuangGaoBean">
+		<trim prefixOverrides="," suffixOverrides="," prefix="update advertise">
+			<set>
+				<if test="asize != null and asize != ''">
+					asize='${asize}',
+				</if>
+				<if test="weizhi != null and weizhi != '' ">
+					weizhi='${weizhi}',
+				</if>
+				<if test="obligateone != null and obligateone != '' ">
+					obligateone='${obligateone}',
+				</if>
+				<if test="obligatetwo != null and obligatetwo != ''">
+					obligatetwo='${obligatetwo}',
+				</if>
+			</set>
+			where aid='${aid}'
+		</trim>
+	</update>
+</mapper>
