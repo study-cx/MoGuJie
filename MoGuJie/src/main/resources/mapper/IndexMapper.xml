@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectGuanGao" resultType="GuangGaoBean">
-		select gid,weizhi,gPhoto,gdates,gdateo,p.proid from guanggao g,product p,advertise a where g.aid=a.aid and sysdate>gdates and gdateo>sysdate
+	    select gid,weizhi,gPhoto,gdates,gdateo,proid from guanggao g,advertise a where g.aid=a.aid and sysdate>gdates and gdateo>sysdate
 	</select>
 	  
 	<select id="selectProductByobligateone" resultType="Product">

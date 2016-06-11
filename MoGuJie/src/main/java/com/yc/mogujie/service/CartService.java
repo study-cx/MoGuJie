@@ -2,6 +2,7 @@ package com.yc.mogujie.service;
 
 import java.util.List;
 
+import com.yc.mogujie.entity.Cart;
 import com.yc.mogujie.entity.CartBean;
 
 public interface CartService {
@@ -10,4 +11,8 @@ public interface CartService {
 	int delete(int cid); //根据cid删除购物车信息
 	
 	int update(CartBean cartBean);//在购物车中更新商品数量
+
+	int insertIntoCart(Cart cart);
+
+	String selectProphoto(Cart cart);
 }

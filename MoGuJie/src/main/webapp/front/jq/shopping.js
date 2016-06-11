@@ -193,23 +193,25 @@ function color(){
 	}
 //获取选中的商品，以便在结算页面显示
 function buy(){
+	$.post("fuKuanInfo_deleteInfo");
 	var allCheckBox=document.getElementsByName('op');
 	var quan=document.getElementsByName('quanxuan')[0].checked;
 	var rows = document.getElementById("shopinfo").rows; 
+	
 	if(quan==true){
 		for(var i=0;i<allCheckBox.length;i++){
 			//重新查找购物车里面的所有，用现成的方法
 		}
 	}else{
+		
 		for(var i=0;i<allCheckBox.length;i++){
 			//如果复选框被选中
 			if(allCheckBox[i].checked==true){
-				$.post("fukuanServlet",{op:"deleteInfo"});
+				
 				var row = allCheckBox[i].parentElement.parentElement.rowIndex; 
 				var ss=rows[row].cells[8].innerHTML;
 				var cid=ss.substring(35,ss.length-9);
-				
-				$.post("fukuanServlet",{op:"saveInfo",cid:cid},function(data){
+				$.post("fuKuanInfo_saveCartInfo",{cid:cid},function(data){
 					window.location.href="front/fukuan.jsp";
 				});
 			}

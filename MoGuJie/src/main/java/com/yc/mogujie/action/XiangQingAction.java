@@ -18,9 +18,10 @@ import com.yc.mogujie.service.XiangQingService;
 public class XiangQingAction implements ModelDriven<Detail>{
 	@Autowired
 	private XiangQingService xiangQingService;
-	private String shownumber;
 	private Detail detail;
 
+	private String shownumber;
+	
 	public String getShownumber() {
 		return shownumber;
 	}

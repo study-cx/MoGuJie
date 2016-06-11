@@ -5,9 +5,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.yc.mogujie.mapper.FuKuanInfoMapper">
 	<select id="selectFuKuanInfo" parameterType="FuKuanInfoBean" resultType="String">
-		select prophoto from product where proid=#{proid}
+		  select pcolor from detail where proid=#{proid} and psize=#{size} and color=#{color}
 	</select>
 	<select id="selectMorenAddress" parameterType="int" resultType="Address">
-		  select * from address where usid=#{usid} and statue=1
+		 select * from address where usid=#{usid} and statue=0
+	</select>
+	<select id="findInfo" parameterType="Int" resultType="FuKuanInfoBean">
+  select p.proname,p.proprice price,c.color,c.csize "SIZE",c.snumber "NUMBER",c.proid,p.prophoto from product p,cart c where p.proid=c.proid and c.cid=#{cid}
 	</select>
 </mapper>

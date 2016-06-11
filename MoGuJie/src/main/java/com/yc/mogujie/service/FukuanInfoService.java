@@ -9,4 +9,9 @@ public interface FukuanInfoService {
 
 	Address selectMorenAddess(int usid);
 
+	int saveCartInfos(int cid);
+
+	void deleteInfos();
+
+	
 }

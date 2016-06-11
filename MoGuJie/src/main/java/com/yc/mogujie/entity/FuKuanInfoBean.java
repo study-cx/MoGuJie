@@ -8,7 +8,22 @@ public class FuKuanInfoBean {
 	private int number;
 	private int proid;
 	private String prophoto;
+	private int totalnumber;
+	private int totalprice;
 	
+	
+	public int getTotalnumber() {
+		return totalnumber;
+	}
+	public void setTotalnumber(int totalnumber) {
+		this.totalnumber = totalnumber;
+	}
+	public int getTotalprice() {
+		return totalprice;
+	}
+	public void setTotalprice(int totalprice) {
+		this.totalprice = totalprice;
+	}
 	public String getProphoto() {
 		return prophoto;
 	}
@@ -55,7 +70,9 @@ public class FuKuanInfoBean {
 	public String toString() {
 		return "FuKuanInfoBean [proname=" + proname + ", price=" + price
 				+ ", color=" + color + ", size=" + size + ", number=" + number
-				+ ", proid=" + proid + ", prophoto=" + prophoto + "]";
+				+ ", proid=" + proid + ", prophoto=" + prophoto
+				+ ", totalnumber=" + totalnumber + ", totalprice=" + totalprice
+				+ "]";
 	}
 	
 	

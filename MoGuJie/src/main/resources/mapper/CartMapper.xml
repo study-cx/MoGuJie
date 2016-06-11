@@ -15,4 +15,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateNum" parameterType="int">
 		update cart set snumber=#{snumber} where cid=#{cid}
 	</update>
+	<insert id="insertIntoCart" parameterType="Cart">
+		insert into cart values(seq_cart_cid.nextval,#{proid},#{usid},#{color},#{csize},#{pcolor},#{snumber},#{obligateone,jdbcType=VARCHAR},#{obligatetwo,jdbcType=VARCHAR})
+	</insert>
+	<select id="selectProphoto" parameterType="Cart" resultType="String">
+		
+		 select pcolor from detail where psize=#{csize} and color=#{color} and proid=#{proid}
+	</select>
 </mapper>

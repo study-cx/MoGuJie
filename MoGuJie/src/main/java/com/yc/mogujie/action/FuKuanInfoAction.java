@@ -29,6 +29,11 @@ public class FuKuanInfoAction implements  ModelDriven<FuKuanInfoBean>{
 	public int getFlag() {
 		return flag;
 	}
+	private int cid;
+	
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
 	private Address address;
 	
 	public Address getAddress() {
@@ -41,12 +46,20 @@ public class FuKuanInfoAction implements  ModelDriven<FuKuanInfoBean>{
 		address=fukuanInfoService.selectMorenAddess(usid);
 		return "selectAddress";
 	}
-	//付款界面表格显示的信息
+	//付款界面表格显示的信息//直接购买跳转来
 	public String jieesuanInfo(){
 		flag=fukuanInfoService.selectFuKuanInfo(fuKuanInfoBean);
 		return "jieesuanInfo";
 	}
-	
+	//付款界面表格显示的信息//购物车跳转来
+	public void saveCartInfo(){
+		int isof=fukuanInfoService.saveCartInfos(cid);
+	}
+	public void deleteInfo(){
+		
+		fukuanInfoService.deleteInfos();
+		
+	}
 	@Override
 	public FuKuanInfoBean getModel(){
 		fuKuanInfoBean=new FuKuanInfoBean();

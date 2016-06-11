@@ -16,7 +16,7 @@ public class Cart {
     private int snumber;
 
 
-    private int obligateone; 
+    private String obligateone; 
 
 
     private String obligatetwo;
@@ -92,12 +92,15 @@ public class Cart {
 	}
 
 
-	public int getObligateone() {
+	
+
+
+	public String getObligateone() {
 		return obligateone;
 	}
 
 
-	public void setObligateone(int obligateone) {
+	public void setObligateone(String obligateone) {
 		this.obligateone = obligateone;
 	}
 
@@ -109,6 +112,15 @@ public class Cart {
 
 	public void setObligatetwo(String obligatetwo) {
 		this.obligatetwo = obligatetwo;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Cart [cid=" + cid + ", proid=" + proid + ", usid=" + usid
+				+ ", color=" + color + ", csize=" + csize + ", pcolor="
+				+ pcolor + ", snumber=" + snumber + ", obligateone="
+				+ obligateone + ", obligatetwo=" + obligatetwo + "]";
 	}
 
   

@@ -31,4 +31,16 @@ public class CartServiceImpl implements CartService {
 		return cartMapper.updateNum(cartBean);
 	}
 
+	@Override
+	public int insertIntoCart(Cart cart) {
+		
+		return cartMapper.insertIntoCart(cart);
+	}
+
+	@Override
+	public String selectProphoto(Cart cart) {
+		// TODO Auto-generated method stub
+		return cartMapper.selectProphoto(cart);
+	}
+
 }

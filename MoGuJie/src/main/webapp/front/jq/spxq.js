@@ -166,11 +166,12 @@ function showclose(){
 function JiaRuGouWuChe(){
 	var proid=$(".proid").val();
 	var proname=$("#title").html();
-	var price=$("#price").html();
-	var size=$(".s").html();
-	var number=$("#shuliangs").val();
+	//var price=$("#price").html();
+	var csize=$(".s").html();
+	var snumber=$("#shuliangs").val();
 	var color=$(".yi1").html();
-	$.post("xiangQingAction_AddGouWuChe",{proid:proid,price:price,color:color,csize:csize,snumber:snumber},function(data){
+	$.post("carts_AddGouWuChe",{proid:proid,color:color,csize:csize,snumber:snumber},function(data){
+		
 		if(data==1){
 			alert("添加成功，稍后请去购物车结算！");
 			document.getElementById("xuanze").style.display="none";
@@ -178,7 +179,7 @@ function JiaRuGouWuChe(){
 		}else{
 			alert("购物车添加失败！");
 		}
-	});
+	},'json');
 }
 
 //立即购买

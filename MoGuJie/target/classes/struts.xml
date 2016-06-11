@@ -18,7 +18,8 @@
 				getPageAdminInfo,checkEmail,findBasicInfo,addr,list,update,edit,
 				updateBasicInfo,findAllOrders,findNoPayOrder,getAllUserInfo,findPaiedOrder,updatePwd,
 				updateImage,pay,back,findUserInfo,updateUserInfo,show,findCatetwoType,findProductByType,
-				shownumber,jieesuanInfo,selectAddress,deleteAddr,moren,shopping,deleteCart,updateCart
+				shownumber,jieesuanInfo,selectAddress,deleteAddr,moren,shopping,deleteCart,updateCart,AddGouWuChe,
+				saveCartInfo,deleteInfo
 
 		</global-allowed-methods>
 
@@ -102,6 +103,9 @@
 			
 			<result name="userInfo" type="json">
 				<param name="root">userInfo</param>
+			</result>
+			<result name="addGouWucheSuccess" type="json">
+				<param name="root">flag</param>
 			</result>
 			
 		</action>

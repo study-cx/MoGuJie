@@ -474,7 +474,7 @@ insert into cart values(seq_cart_cid.nextval,102,100,'灰色','X','../uploadPic/
 insert into cart values(seq_cart_cid.nextval,102,100,'红色','X','',1,1,1);
 
 create sequence seq_cart_cid start with 100 increment by 1;
-select *from cart;
+select *from cart;delete from cart 
   --活动
   create table active(
     activeId int primary key,--活动id

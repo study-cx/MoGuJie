@@ -188,7 +188,7 @@
 									</p>
 								</td>
 								<td>${item.price }</td>
-								<td id="get_number">${number }</td>
+								<td id="get_number">${item.number }</td>
 								<td>省64.20元</td>
 								<td><span id="get_price">${item.price*item.number}</span>元</td>
 						</c:if>
@@ -208,21 +208,12 @@
 				<a class="foot13" href="shopping.jsp">返回购物车</a>
 			</div>
 			<div id="foot2" class="foot2">
+					共有<label>${fuKuanInfoBean[0].totalnumber}</label>件商品
 
-				<c:forEach items="${fuKuanInfoBean }" var="item">
-					<c:if test="${not empty item}">
-					共有<label>${item.number}</label>件商品
-					</c:if>
-				</c:forEach>
 			</div>
 			<div class="foot3">
-
-			<c:forEach items="${fuKuanInfoBean}" var="item">
-					<c:if test="${not empty item}">
-						<span class="foot31">总计：</span>
-						<span class="foot32">￥${item.price*item.number}</span>
-						</c:if>
-			</c:forEach>
+				<span class="foot31">总计：</span>
+				<span class="foot32">￥${fuKuanInfoBean[0].totalprice}</span>
 			</div>
 			<div class="foot4">
 				<a href="fuKuanInfo_pay.action?">确认并付款</a>
@@ -230,5 +221,6 @@
 		</div>
 
 		<div id="end"></div>
+		
 </body>
 </html>
