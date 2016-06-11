@@ -4,7 +4,7 @@
 	<span>三级商品类型: </span><input type="text" name="categoryTypethree" id="categoryTypethree"/>
 	&nbsp;&nbsp;<a href="javascript:findCategorythree()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">查询</a>
 </div>
-<table id="type_info" ></table>
+<table id="typethree_info" ></table>
 <script>
 	var datagrid;
 	var editRow=undefined;
@@ -21,7 +21,7 @@
 				t1.sname=item.categoryTypetwo;
 				tt.push(t1);
 				//console.info(tt);
-		datagrid=$('#type_info').datagrid({   
+		datagrid=$('#typethree_info').datagrid({   
 	    url:'../typeThreeServlet',
 	    queryParams:{op:"getPageTypeInfo"},
 	    fitColumns:true,

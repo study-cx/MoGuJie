@@ -53,6 +53,7 @@ public class FuKuanInfoAction implements  ModelDriven<FuKuanInfoBean>{
 	}
 	//付款界面表格显示的信息//购物车跳转来
 	public void saveCartInfo(){
+		LogManager.getLogger().debug("取到的cid："+cid);
 		int isof=fukuanInfoService.saveCartInfos(cid);
 	}
 	public void deleteInfo(){

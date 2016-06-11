@@ -1,7 +1,6 @@
 package com.yc.mogujie.serviceImpl;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,14 +37,6 @@ public class AddressServiceImpl implements AddrService {
 	@Override
 	public int moren(int addressid) {
 		return addressMapper.setMoren(addressid);
-	}
-	@Override
-	public List<Address> selectAllAddressid() {
-		return addressMapper.findAllAddressid();
-	}
-	@Override
-	public int updatemoren(int addressid) {
-		return addressMapper.updateMoren(addressid);
 	}
 
 }

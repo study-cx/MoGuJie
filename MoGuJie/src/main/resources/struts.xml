@@ -13,38 +13,28 @@
 	<constant name="struts.objectFactory " value="spring" />
 
 	<package name="default" namespace="/" extends="json-default">
-
 		<global-allowed-methods>login,adminRegiest,register,registers,checkName,del,addAdminInfo,
+
 				getPageAdminInfo,checkEmail,findBasicInfo,addr,list,update,edit,
 				updateBasicInfo,findAllOrders,findNoPayOrder,getAllUserInfo,findPaiedOrder,updatePwd,
 				updateImage,pay,back,findUserInfo,updateUserInfo,show,findCatetwoType,findProductByType,
 				shownumber,jieesuanInfo,selectAddress,deleteAddr,moren,shopping,deleteCart,updateCart,AddGouWuChe,
-				saveCartInfo,deleteInfo
-
+				saveCartInfo,deleteInfo,getPageAdtInfo,addAdvertise,updateAdvertise,delAdvertise,getPageNewsInfo,
+				getPageTypeInfo,addTypeInfo,updateTypeInfo,delTypeInfo,findCategoryone,getAllTypeone
 		</global-allowed-methods>
 
 		<action name="*_*" class="{1}Action" method="{2}">
-			<result name="{2}">front/{2}.jsp</result>
+		
 			<result name="addrSuccess">front/addr.jsp</result>
 			<result name="addFail">front/addFail.jsp</result>
 			<result name="list">front/addr.jsp</result>
-			<result name="shopping">front/shopping.jsp</result>
 			<result name="login">/front/index.jsp</result>
 			<result name="register">/front/index.jsp</result>
-			<result name="tiaozhuan">/front/email.jsp</result>		
-			
-			
 			<result name="adminLogin">/back_login/login.jsp</result>
 			<result name="adminLoginSuccess">/back/index.jsp</result>
 			<result name="addAdminSuccess">/back_login/login.jsp</result>
 			<result name="addAdmin">/back_login/regiest.jsp</result>
 			<result name="spxq">/front/spxq.jsp</result>
-
-			<result name="Paysuccess" type="redirect">${IPaddress}</result>
-			<result name="message">/front/msg.jsp</result>
-			<result name="findCateSuccess">front/fenlei.jsp</result>
-
-			
 			<result name="findBasicsuccess" type="json">
 			<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">userInfo</param>
@@ -74,16 +64,13 @@
 			<result name="selectAddress" type="json">
 				<param name="root">address</param>
 			</result>
-
-			<result name="tiaozhuan">/front/email.jsp</result>
 			
 			<result name="updateSuccess">/front/myorder.jsp?op=userInfo</result>
 			<result name="findSuccess" type="json">
 				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">allOrders</param>
 			</result>
-    		<result name="updatePhotoSuccess">/front/myorder.jsp?op=updatePhoto</result>
-    		
+			<result name="updatePhotoSuccess">/front/myorder.jsp?op=updatePhoto</result>
 			<result name="edit" type="json">
 				<param name="root">edit</param>
 			</result>
@@ -100,14 +87,19 @@
 				<param name="root">update</param>
 			</result>
 			<result name="index">/front/index.jsp</result>
-			
 			<result name="userInfo" type="json">
+				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">userInfo</param>
 			</result>
+
 			<result name="addGouWucheSuccess" type="json">
 				<param name="root">flag</param>
 			</result>
 			
+
+			<result name="Paysuccess" type="redirect">${IPaddress}</result>
+			<result name="message">/front/msg.jsp</result>
+
 		</action>
 	</package>
 </struts>

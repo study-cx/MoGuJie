@@ -5,15 +5,12 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.struts2.interceptor.SessionAware;
-import org.springframework.beans.factory.Aware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ModelDriven;
-import com.yc.mogujie.entity.Cart;
 import com.yc.mogujie.entity.CartBean;
 import com.yc.mogujie.service.CartService;
-import com.yc.mogujie.serviceImpl.CartServiceImpl;
 
 @Controller("cartAction")
 public class CartAction implements ModelDriven<CartBean>,SessionAware{

@@ -1,7 +1,6 @@
 package com.yc.mogujie.mapper;
 
 import com.yc.mogujie.entity.Detail;
-import com.yc.mogujie.entity.Feedback;
 import com.yc.mogujie.entity.FeedbackBean;
 import com.yc.mogujie.entity.Product;
 
@@ -12,6 +11,8 @@ public interface DetailMapper {
 
 	List<Product> SelectProductByProid(int proid);
 
+	List<Detail> SelectPcolorByProid(int proid);
+
 	List<Detail> SelectPsizeByProid(int proid);
 
 	List<Detail> SelectColorByProid(int proid);
@@ -21,6 +22,5 @@ public interface DetailMapper {
 	List<FeedbackBean> selectFeedBack(int proid);
 
 	
-
-
+   
 }

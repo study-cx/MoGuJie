@@ -50,9 +50,6 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware {
 
 	public String login() {
 		LogManager.getLogger().debug(userInfo);
-		//aa  pwd 2222
-		//aa   pwd  ****
-	
 		UserInfo us = userInfoService.login(userInfo);
 		if (us != null) {
 			ActionContext.getContext().getSession()
@@ -137,7 +134,6 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware {
 	
 	public void updateUserInfo(){
 		LogManager.getLogger().debug("用户信息修改操作...");
-		System.out.println(uphotos+"@@@"+uphotosFileName[0]);
 		String path=uploadUtil.image(uphotos,uphotosFileName);
 		userInfo.setUphoto(path);
 		int result = userInfoService.updateUserInfo(userInfo);

@@ -1,13 +1,37 @@
 package com.yc.mogujie.entity;
 
-public class Categoryone {
-    private int categoryidone;
+import java.io.Serializable;
 
-    private String categorytypeone;
+public class Categoryone implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    private String obligateone;
+	private int categoryidone;
 
-    private String obligatetwo;
+	private String categorytypeone;
+
+	private String obligateone;
+
+	private String obligatetwo;
+
+	@Override
+	public String toString() {
+		return "Categoryone [categoryidone=" + categoryidone
+				+ ", categorytypeone=" + categorytypeone + ", obligateone="
+				+ obligateone + ", obligatetwo=" + obligatetwo + "]";
+	}
+
+	public Categoryone() {
+		super();
+	}
+
+	public Categoryone(int categoryidone, String categorytypeone,
+			String obligateone, String obligatetwo) {
+		super();
+		this.categoryidone = categoryidone;
+		this.categorytypeone = categorytypeone;
+		this.obligateone = obligateone;
+		this.obligatetwo = obligatetwo;
+	}
 
 	public int getCategoryidone() {
 		return categoryidone;
@@ -41,12 +65,4 @@ public class Categoryone {
 		this.obligatetwo = obligatetwo;
 	}
 
-	@Override
-	public String toString() {
-		return "Categoryone [categoryidone=" + categoryidone
-				+ ", categorytypeone=" + categorytypeone + ", obligateone="
-				+ obligateone + ", obligatetwo=" + obligatetwo + "]";
-	}
-
-   
 }

@@ -50,4 +50,12 @@ public class Advertise {
     public void setObligatetwo(int obligatetwo) {
         this.obligatetwo = obligatetwo;
     }
+
+	@Override
+	public String toString() {
+		return "Advertise [aid=" + aid + ", asize=" + asize + ", weizhi="
+				+ weizhi + ", obligateone=" + obligateone + ", obligatetwo="
+				+ obligatetwo + "]";
+	}
+    
 }

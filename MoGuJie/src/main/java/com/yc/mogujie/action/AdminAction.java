@@ -24,6 +24,7 @@ public class AdminAction implements ModelDriven<Admin>, SessionAware {
 	private Admin admin;
 	private Admin chakeAname;
 	private Admin chakeAemail;
+	
 	@Autowired
 	private AdminService adminService;
 	private Map<String, Object> session;
@@ -38,11 +39,11 @@ public class AdminAction implements ModelDriven<Admin>, SessionAware {
 	
 
 	public String login() {
-		LogManager.getLogger().debug("login登陆操作...");
+		LogManager.getLogger().debug("logig管理员登录...");
 		System.out.println(admin);
 		admin = adminService.login(admin);
 		if (admin == null) {
-			session.put(MogujieData.ERROR_MSG, "用户名或密码错误!!!");
+			session.put(MogujieData.ERROR_MSG, "登录失败!!!");
 			return "adminLogin";
 		}
 		session.put(MogujieData.LOGIN_Admin, admin);
@@ -50,7 +51,7 @@ public class AdminAction implements ModelDriven<Admin>, SessionAware {
 	}
 
 	public String adminRegiest() {
-		LogManager.getLogger().debug("管理员注册操作...");
+		LogManager.getLogger().debug("管理员注册操作..");
 		int result = adminService.addAdminInfo(admin);
 		if (result == 1) {
 			return "addAdminSuccess";
@@ -60,33 +61,33 @@ public class AdminAction implements ModelDriven<Admin>, SessionAware {
 	}
 
 	public String checkName() {
-		LogManager.getLogger().debug("管理员信息注册用户名验证操作...");
+		LogManager.getLogger().debug("注册名字验证...");
 		chakeAname = adminService.findByName(admin.getAname());
 		System.out.println(chakeAname);
 		return "ckName";
 	}
 
 	public String checkEmail() {
-		LogManager.getLogger().debug("管理员信息注册邮箱验证操作...");
+		LogManager.getLogger().debug("注册邮箱验证..");
 		chakeAemail = adminService.findByEmail(admin.getAemail());
 		System.out.println(chakeAemail);
 		return "ckEmail";
 	}
 
 	public void getPageAdminInfo() {
-		LogManager.getLogger().debug("管理员信息查询操作...");
+		LogManager.getLogger().debug("管理员信息分页查询操作..");
 		String page=ServletActionContext.getRequest().getParameter("page");
 		String rows=ServletActionContext.getRequest().getParameter("rows");
 		List<Admin> admins = adminService.find(Integer.valueOf(page), Integer.valueOf(rows));
 
-		Gson gson = new Gson();// json处理对象
-		String jsonResult = gson.toJson(admins);// 把对象转换成json字符串
+		Gson gson = new Gson();
+		String jsonResult = gson.toJson(admins);
 		try {
-			HttpServletResponse response = ServletActionContext.getResponse();// 获得response对象
+			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.print(jsonResult);// 测试与页面是否跑通
+			out.print(jsonResult);
 			out.flush();
 			out.close();
 		} catch (IOException e) {
@@ -95,16 +96,16 @@ public class AdminAction implements ModelDriven<Admin>, SessionAware {
 	}
 
 	public void addAdminInfo() {
-		LogManager.getLogger().debug("添加管理员...");
+		LogManager.getLogger().debug("后台添加管理员..");
 		int result = adminService.addAdminInfo(admin);
-		Gson gson = new Gson();// json处理对象
-		String jsonResult = gson.toJson(result);// 把对象转换成json字符串
+		Gson gson = new Gson();
+		String jsonResult = gson.toJson(result);
 		try {
-			HttpServletResponse response = ServletActionContext.getResponse();// 获得response对象
+			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.print(jsonResult);// 测试与页面是否跑通
+			out.print(jsonResult);
 			out.flush();
 			out.close();
 		} catch (IOException e) {
@@ -113,17 +114,17 @@ public class AdminAction implements ModelDriven<Admin>, SessionAware {
 	}
 
 	public void del() {
-		LogManager.getLogger().debug("管理员删除操作...");
+		LogManager.getLogger().debug("删除管理员..");
 		String aids=ServletActionContext.getRequest().getParameter("aids");
 		int result = adminService.del(aids);
-		Gson gson = new Gson();// json处理对象
-		String jsonResult = gson.toJson(result);// 把对象转换成json字符串
+		Gson gson = new Gson();
+		String jsonResult = gson.toJson(result);
 		try {
-			HttpServletResponse response = ServletActionContext.getResponse();// 获得response对象
+			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.print(jsonResult);// 测试与页面是否跑通
+			out.print(jsonResult);
 			out.flush();
 			out.close();
 		} catch (IOException e) {

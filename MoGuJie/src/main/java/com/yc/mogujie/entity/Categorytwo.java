@@ -1,11 +1,7 @@
 package com.yc.mogujie.entity;
 
-import java.io.Serializable;
-
-public class Categorytwo implements Serializable{
-	private static final long serialVersionUID = 6927594840317319118L;
-
-	private int categoryidtwo;
+public class Categorytwo {
+    private int categoryidtwo;
 
     private int categoryidone;
 

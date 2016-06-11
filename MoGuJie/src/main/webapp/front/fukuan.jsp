@@ -20,68 +20,7 @@
 <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 <script type="text/javascript">
 	 $(function() {
-		 /*
-		var cc = 0;
-		var aa = 0;
-		$
-				.post(
-						"../fukuanServlet",
-						{
-							op : "findCartInfo"
-						},
-						function(data) {
-							var str = "";
-							var info = data.cids;
-							if (info != "") {
-								$
-										.each(
-												info,
-												function(index, item) {
-													str = "<tr class='text222'>";
-													str += "	<td>店铺:橘子外套</td>";
-													str += "</tr>";
-													str += "<tr name='cc' class='text223'>";
-													var ss = "../"
-															+ item[0].PCOLOR;
-													str += "	<td id='text2231'><a ><img class='img1' src="+ss+"></a><a id='hanban'  class='hanban'>"
-															+ item[0].PRONAME
-															+ "</a></td>";
-													str += "    <td>";
-													str += "    	<p class='color'>颜色："
-															+ item[0].COLOR
-															+ "</p>";
-													str += "      <p class='size'>尺码："
-															+ item[0].CSIZE
-															+ "</p>";
-													str += "    </td>";
-													str += "    <td>"
-															+ item[0].PROPRICE
-															+ "</td>";
-													str += "    <td>"
-															+ item[0].SNUMBER
-															+ "</td>";
-													str += "    <td>省64.20元</td>";
-													var s1 = item[0].PROPRICE;
-													var s2 = item[0].SNUMBER;
-													var s3 = s1 * s2;
-													str += "    <td>" + s3
-															+ "元</td>";
-													str += "</tr>";
-													$("#table").append($(str));
-													cc += item[0].PROPRICE
-															* item[0].SNUMBER;
-													aa += parseInt(item[0].SNUMBER);
-
-												});
-
-								var ss1 = "<span class='foot31'>总计：</span><span class='foot32'>￥"
-										+ cc + "</span>";
-								$(".foot3").append($(ss1));
-								var ss2 = "<span>共有<label>" + aa
-										+ "</label>件商品</span>";
-								$("#foot2").append($(ss2));
-							}
-						}, "json");*/
+		
 		$.post("fuKuanInfo_selectAddress", function(data) {
 			
 			var str = "";

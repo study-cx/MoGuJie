@@ -17,7 +17,6 @@ public interface IndexMapper {
 	List<GuangGaoBean> selectGuanGao();
 
 	List<Product> selectProductByobligateone();
-
 	List<Product> selectRenqiNvxie();
 
 	
