@@ -16,5 +16,6 @@ public interface IndexService {
 	List<GuangGaoBean> selectGuanGao();
 
 	List<Product> selectProductByobligateone();
+	List<Product> selectRenqiNvxie();
 
 }

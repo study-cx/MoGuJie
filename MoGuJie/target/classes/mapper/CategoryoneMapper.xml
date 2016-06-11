@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.mogujie.mapper.CategoryoneMapper">
+	<!-- 后台分页查询 -->
+	<select id="find" parameterType="map" resultType="Categoryone">
+		select *from(select a.*,rownum rn from (select * from categoryone where obligateone=1 order by
+		categoryidone)a where ${pageNo}>=rownum)b where rn>${pageSize}
+	</select>
+	<!-- 后台添加 -->
+	<insert id="addTypeone" parameterType="Categoryone">
+		insert into categoryone values(seq_categorys_categoryidone.nextval,#{categorytypeone},#{obligateone},0)
+	</insert>
+	<!-- 后台删除 -->
+	<update id="delete" parameterType="String">
+		update categoryone set obligateone=0 where categoryidone=#{categoryidone}
+	</update>
+	<!-- 后台修改 -->
+	<update id="updateTypeone" parameterType="Categoryone">
+		<trim prefixOverrides="," suffixOverrides="," prefix="update categoryone">
+			<set>
+				<if test="categorytypeone != null and categorytypeone != ''">
+					categoryTypeone='${categorytypeone}',
+				</if>
+				<if test="obligateone != null and obligateone != '' ">
+					obligateone='${obligateone}',
+				</if>
+			</set>
+			where categoryidone='${categoryidone}'
+		</trim>
+	</update>
+	<select id="finds" parameterType="map" resultType="Categoryone">
+		select *from(select a.*,rownum rn from (select * from categoryone
+		<where>
+			<if test="categorytypeone != null and categorytypeone != ''">
+				categoryTypeone like '%${categorytypeone}%' and
+			</if>
+			<if test="categoryidone != null and categoryidone != ''">
+				 categoryidone like '%${categoryidone}%' 
+			</if>
+		</where>
+		obligateone=1 order by categoryidone desc)a where ${pageNo}>=rownum)b where rn>${pageSize}
+	</select>
+		<!-- 查询首级分类 -->
+	<select id="findtypeone" resultType="Categoryone">
+		select * from categoryone where obligateone=1
+	</select>
+</mapper>

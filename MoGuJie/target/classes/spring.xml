@@ -20,7 +20,7 @@
 	<context:property-placeholder location="classpath:db.properties,classpath:mail.properties" />
 
 	<!-- 数据源 -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
 		p:driverClassName="${jdbc.driverClassName}" p:url="${jdbc.url}"
 		p:username="${jdbc.username}" p:password="${jdbc.password}" />
 		

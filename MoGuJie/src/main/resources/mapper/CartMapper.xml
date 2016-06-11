@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.mogujie.mapper.CartMapper">
+	<select id="getAllCart" parameterType="CartBean" resultType="CartBean">
+		select  c.*,proname,proprice from cart c,product p where p.proid=c.proid
+	</select>
+	
+	<delete id="deleteCart" parameterType="int">
+		delete from cart where cid=#{cid}
+	</delete>
+	
+	<update id="updateNum" parameterType="int">
+		update cart set snumber=#{snumber} where cid=#{cid}
+	</update>
+	<insert id="insertIntoCart" parameterType="Cart">
+		insert into cart values(seq_cart_cid.nextval,#{proid},#{usid},#{color},#{csize},#{pcolor},#{snumber},#{obligateone,jdbcType=VARCHAR},#{obligatetwo,jdbcType=VARCHAR})
+	</insert>
+	<select id="selectProphoto" parameterType="Cart" resultType="String">
+		
+		 select pcolor from detail where psize=#{csize} and color=#{color} and proid=#{proid}
+	</select>
+</mapper>

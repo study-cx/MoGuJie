@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.mogujie.mapper.AddressMapper">
+	<insert id="insertAddr" parameterType="Address">
+		insert into address values(seq_address_addressid.nextval,#{province},#{city},#{street},
+		#{usaddress},#{usid},#{adname},#{adcode},#{adtel},1,'s','s')
+	</insert>
+	
+	<select id="findAddr"  resultType="Address">
+		select * from address
+	</select>
+	
+	<select id="getAddressById" parameterType="int" resultType="Address">
+		select * from address where addressid=#{addressid}
+	</select>
+	
+	<update id="updateAddr" parameterType="Address">
+		update address set province=#{province},city=#{city},street=#{street},
+		usaddress=#{usaddress},adname=#{adname},adcode=#{adcode},adtel=#{adtel}
+		where addressid=#{addressid}
+	</update>
+	
+	<delete id="deleteAddr" parameterType="int">
+		delete from address where addressid=#{addressid}
+	</delete>
+	
+	<update id="setMoren" parameterType="int">
+		update address set statue=0 where addressid=#{addressid}
+	</update>
+</mapper>

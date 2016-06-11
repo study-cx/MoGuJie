@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.mogujie.mapper.AdminMapper">
+	<!-- 登录 -->
+	<select id="adminLogin" parameterType="Admin" resultType="Admin">
+		select
+		* from admin where aname=#{aname} and apwd=#{apwd}
+	</select>
+	<!-- 注册,添加 -->
+	<insert id="addAdminInfo" parameterType="Admin">
+		insert into
+		admin
+		values(seq_admin_aid.Nextval,#{aname},#{apwd},#{aemail},1)
+	</insert>
+	<!-- 用户名验证 -->
+	<select id="findByName" parameterType="Admin" resultType="Admin">
+		select
+		* from admin where agread=1 and aname=#{aname}
+	</select>
+	<!--邮箱验证 -->
+	<select id="findByEmail" parameterType="Admin" resultType="Admin">
+		select * from admin where agread=1 and aemail=#{aemail}
+	</select>
+	<!-- 统计 -->
+	<select id="total" resultType="Admin">
+		select count(aid) from admin where
+		agread=1
+	</select>
+	<!-- 分页查询 -->
+	<select id="find" parameterType="map" resultType="Admin">
+		select *
+		from(select a.*,rownum rn from (select * from admin where agread=1
+		order by aid) a where ${pageNo}>=rownum) b where
+		rn>${pageSize}
+	</select>
+	<delete id="del" parameterType="String" >
+		update admin set agread=0 where aid=#{aid}
+	</delete>
+	<!-- <delete id="del2" parameterType="String" >
+		update admin set agread=0 where aid in(#{aid})
+	</delete> -->
+</mapper>

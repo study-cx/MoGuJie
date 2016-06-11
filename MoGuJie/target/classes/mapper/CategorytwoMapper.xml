@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.mogujie.mapper.CategorytwoMapper">
+	<!-- 后台分页查询 -->
+	<select id="find" parameterType="map" resultType="Categorytwo">
+		select *from(select a.*,rownum rn from (select * from categorytwo where obligateone=1 order by
+		categoryidone)a where ${pageNo}>=rownum)b where rn>${pageSize}
+	</select>
+	<!-- 后台添加 -->
+	<insert id="addTypetwo" parameterType="Categorytwo">
+		insert into categoryone values(seq_categorys_categoryidone.nextval,#{categorytypeone},#{obligateone},0)
+	</insert>
+
+</mapper>
