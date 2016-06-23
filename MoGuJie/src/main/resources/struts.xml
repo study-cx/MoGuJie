@@ -20,8 +20,7 @@
 			delTypeInfo,findCategoryone,getAllTypeone,findGuanggaoBygid,getAllAdvertise,getAllProduct,
 			findCatetwoType,findProductByType,
 			shownumber,jieesuanInfo,selectAddress,deleteAddr,moren,shopping,deleteCart,updateCart,AddGouWuChe,
-			saveCartInfo,deleteInfo,getPageAdtInfo,
-			,delTypeInfo,getAllTypeone
+			saveCartInfo,deleteInfo,getPageAdtInfo,SouSuo,delTypeInfo,getAllTypeone
 		</global-allowed-methods>
 
 		<action name="*_*" class="{1}Action" method="{2}">
@@ -36,6 +35,15 @@
 			<result name="addAdminSuccess">/back_login/login.jsp</result>
 			<result name="addAdmin">/back_login/regiest.jsp</result>
 			<result name="spxq">/front/spxq.jsp</result>
+			
+			<result name="findCateSuccess">front/fenlei.jsp</result>
+			<result name="shopping">front/shopping.jsp</result>
+			<result name="tiaozhuan">/front/email.jsp</result>
+			<result name="Paysuccess" type="redirect">${IPaddress}</result>
+			<result name="message">/front/msg.jsp</result>
+			<result name="sousuorecord" >/front/fenlei.jsp</result>
+			<result name="updateSuccess">/front/myorder.jsp?op=userInfo</result>
+			<result name="updatePhotoSuccess">/front/myorder.jsp?op=updatePhoto</result>
 			<result name="findBasicsuccess" type="json">
 				<!-- 要转换成json对象的对象名，要提供getXXX方法 -->
 				<param name="root">userInfo</param>
@@ -48,7 +56,6 @@
 				<!-- 要转换成json对象的对象名，要提供getXXX方法 -->
 				<param name="root">chakeAemail</param>
 			</result>
-			<result name="tiaozhuan">/front/email.jsp</result>
 
 			<result name="addrList" type="json">
 				<param name="root">addrList</param>
@@ -66,12 +73,12 @@
 				<param name="root">address</param>
 			</result>
 
-			<result name="updateSuccess">/front/myorder.jsp?op=userInfo</result>
+			
 			<result name="findSuccess" type="json">
 				<!-- 要转换成json对象的对象名，要提供getXXX方法 -->
 				<param name="root">allOrders</param>
 			</result>
-			<result name="updatePhotoSuccess">/front/myorder.jsp?op=updatePhoto</result>
+			
 			<result name="edit" type="json">
 				<param name="root">edit</param>
 			</result>
@@ -98,8 +105,6 @@
 			</result>
 
 
-			<result name="Paysuccess" type="redirect">${IPaddress}</result>
-			<result name="message">/front/msg.jsp</result>
 
 		</action>
 	</package>

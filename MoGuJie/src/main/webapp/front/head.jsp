@@ -37,6 +37,9 @@ function loginOut(){
 }
 
 function AllFind(){
-	
+	var SouSuoContent=$('.ss1').val();
+	$.post("index_SouSuo",{SouSuoContent:SouSuoContent},function(data){
+		location.href="front/fenlei.jsp";
+	});
 }
 </script>
