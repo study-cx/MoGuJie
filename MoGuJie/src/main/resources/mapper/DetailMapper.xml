@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from product where proid=#{proid} 
 	</select>
 	<select id="SelectColorByProid" parameterType="int" resultType="Detail">
-	  select pcolor,color from (select * from detail where proid=#{proid})  group by pcolor,color
+	  select pcolor,color from detail group by pcolor,color having  count(*)>1 
 	</select>
 	<select id="SelectPsizeByProid" parameterType="int" resultType="Detail">
 	  select distinct(psize) from detail where proid=#{proid} 

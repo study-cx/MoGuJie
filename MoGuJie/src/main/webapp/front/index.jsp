@@ -10,6 +10,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>蘑菇街</title>
 <base href="<%=basePath%>">
 <%@ include file="header.jsp" %>
+<script type="text/javascript">
+	var op="${param.op}";
+	if(op=="paySuccess"){
+		alert("恭喜您,付款成功！\n\返回 \r蘑菇街主页");
+	}
+</script>
 </head>
 
 <body>
@@ -19,112 +25,112 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="fl1">
           <ul class="fl2">
           
-              <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[0].categoryidone }" style="color:#000">${cateone[0].categorytypeone}</a></li>
+              <li class="fl3"><a href="category_findCatetwoType.action?categoryidone=${cateone[0].categoryidone }" style="color:#000">${cateone[0].categorytypeone}</a></li>
                             <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                 <c:forEach items="${catetwo }" var="item">
                                 	<c:if test="${item.categoryidone eq cateone[0].categoryidone }">
-                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
+                                		<li><a href="category_findProductByType.action?categoryTypetwo=${item.categorytypetwo }&categoryidone=${cateone[0].categoryidone}" style="color:#000">${item.categorytypetwo }</a></li>
                                 	</c:if>
                                 </c:forEach>
                                     
                                 </ul>
                              </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[1].categoryidone }" style="color:#000">${cateone[1].categorytypeone}</a></li>
+                <li class="fl3"><a href="category_findCatetwoType.action?categoryidone=${cateone[1].categoryidone }" style="color:#000">${cateone[1].categorytypeone}</a></li>
                     <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[1].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
+	                                		<li><a href="category_findProductByType.action?categoryTypetwo=${item.categorytypetwo }&categoryidone=${cateone[1].categoryidone}" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                      </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[2].categoryidone }" style="color:#000">${cateone[2].categorytypeone}</a></li>
+                <li class="fl3"><a href="category_findCatetwoType.action?categoryidone=${cateone[2].categoryidone }" style="color:#000">${cateone[2].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[2].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
+	                                		<li><a href="category_findProductByType.action?categoryTypetwo=${item.categorytypetwo }&categoryidone=${cateone[2].categoryidone}" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[3].categoryidone }" style="color:#000">${cateone[3].categorytypeone}</a></li>
+                <li class="fl3"><a href="category_findCatetwoType.action?categoryidone=${cateone[3].categoryidone }" style="color:#000">${cateone[3].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                    <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[3].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
+	                                		<li><a href="category_findProductByType.action?categoryTypetwo=${item.categorytypetwo }&categoryidone=${cateone[3].categoryidone}" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[4].categoryidone }" style="color:#000">${cateone[4].categorytypeone}</a></li>
+                <li class="fl3"><a href="category_findCatetwoType.action?categoryidone=${cateone[4].categoryidone }" style="color:#000">${cateone[4].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[4].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
+	                                		<li><a href="category_findProductByType.action?categoryTypetwo=${item.categorytypetwo }&categoryidone=${cateone[4].categoryidone}" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[5].categoryidone }" style="color:#000">${cateone[5].categorytypeone}</a></li>
+                <li class="fl3"><a href="category_findCatetwoType.action?categoryidone=${cateone[5].categoryidone }" style="color:#000">${cateone[5].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[5].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
+	                                		<li><a href="category_findProductByType.action?categoryTypetwo=${item.categorytypetwo }&categoryidone=${cateone[5].categoryidone}" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[6].categoryidone }" style="color:#000">${cateone[6].categorytypeone}</a></li>
+                <li class="fl3"><a href="category_findCatetwoType.action?categoryidone=${cateone[6].categoryidone }" style="color:#000">${cateone[6].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[6].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
+	                                		<li><a href="category_findProductByType.action?categoryTypetwo=${item.categorytypetwo }&categoryidone=${cateone[6].categoryidone}" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[7].categoryidone }" style="color:#000">${cateone[7].categorytypeone}</a></li>
+                <li class="fl3"><a href="category_findCatetwoType.action?categoryidone=${cateone[7].categoryidone }" style="color:#000">${cateone[7].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[7].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
+	                                		<li><a href="category_findProductByType.action?categoryTypetwo=${item.categorytypetwo }&categoryidone=${cateone[7].categoryidone}" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[8].categoryidone }" style="color:#000">${cateone[8].categorytypeone}</a></li>
+                <li class="fl3"><a href="category_findCatetwoType.action?categoryidone=${cateone[8].categoryidone }" style="color:#000">${cateone[8].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl6" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[8].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
+	                                		<li><a href="category_findProductByType.action?categoryTypetwo=${item.categorytypetwo }&categoryidone=${cateone[8].categoryidone}" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>
                                 </li>
                 <li class="fl4"></li>
-                <li class="fl3"><a href="categorytwo_findCatetwoType.action?categoryidone=${cateone[9].categoryidone }" style="color:#000">${cateone[9].categorytypeone}</a></li>
+                <li class="fl3"><a href="category_findCatetwoType.action?categoryidone=${cateone[9].categoryidone }" style="color:#000">${cateone[9].categorytypeone}</a></li>
                 <li class="fl5">
                                 <ul class="fl7" style="display:none">
                                     <c:forEach items="${catetwo }" var="item">
 	                                	<c:if test="${item.categoryidone eq cateone[9].categoryidone }">
-	                                		<li><a href="#" style="color:#000">${item.categorytypetwo }</a></li>
+	                                		<li><a href="category_findProductByType.action?categoryTypetwo=${item.categorytypetwo }&categoryidone=${cateone[9].categoryidone}" style="color:#000">${item.categorytypetwo }</a></li>
 	                                	</c:if>
                                 	</c:forEach>
                                 </ul>  

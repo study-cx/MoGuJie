@@ -6,20 +6,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.yc.mogujie.mapper.AdminMapper">
 	<!-- 登录 -->
 	<select id="adminLogin" parameterType="Admin" resultType="Admin">
-		select
-		* from admin where aname=#{aname} and apwd=#{apwd}
+		select * from admin where aname=#{aname} and apwd=#{apwd}
 	</select>
 	<!-- 注册,添加 -->
 	<insert id="addAdminInfo" parameterType="Admin">
-		insert into
-		admin
-		values(seq_admin_aid.Nextval,#{aname},#{apwd},#{aemail},1)
+		insert into admin values(seq_admin_aid.Nextval,#{aname},#{apwd},#{aemail},1)
 	</insert>
 	<!-- 用户名验证 -->
 	<select id="findByName" parameterType="Admin" resultType="Admin">
-		select
-		* from admin where agread=1 and aname=#{aname}
+		select * from admin where agread=1 and aname=#{aname}
 	</select>
+	
 	<!--邮箱验证 -->
 	<select id="findByEmail" parameterType="Admin" resultType="Admin">
 		select * from admin where agread=1 and aemail=#{aemail}

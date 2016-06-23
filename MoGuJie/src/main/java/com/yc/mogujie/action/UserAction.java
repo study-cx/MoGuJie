@@ -56,7 +56,7 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware {
 					.put(MogujieData.LOGIN_USER, us);
 			return "login";
 		}
-		return "false";
+		return "Nologin";
 	}
 
 	public String register() {
@@ -150,6 +150,14 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public String shopping(){
+		return "shopping";
+	}
+	
+	public String dingdan(){
+		return "dingdan";
 	}
 	
 	@Override

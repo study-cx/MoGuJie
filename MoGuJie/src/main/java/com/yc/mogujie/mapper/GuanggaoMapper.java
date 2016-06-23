@@ -8,7 +8,9 @@ import com.yc.mogujie.entity.Guanggao;
 
 
 public interface GuanggaoMapper {
-	List<Guanggao> find(Map<String, Object> params);//分页查询
-	GuangGaoBean finds(String gid);
-	int addGuangGao(GuangGaoBean guangGaoBean);
+	public List<Guanggao> find(Map<String, Object> params);//分页查询
+
+	public GuangGaoBean finds(String gid);
+
+	public int addGuangGao(GuangGaoBean guangGaoBean);
 }

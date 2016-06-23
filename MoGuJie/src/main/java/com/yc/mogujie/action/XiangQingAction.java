@@ -9,10 +9,11 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.mogujie.entity.Detail;
-import com.yc.mogujie.entity.Feedback;
-import com.yc.mogujie.entity.FeedbackBean;
 import com.yc.mogujie.entity.Product;
 import com.yc.mogujie.service.XiangQingService;
+
+import com.yc.mogujie.entity.Feedback;
+import com.yc.mogujie.entity.FeedbackBean;
 
 @Controller("xiangQingAction")
 public class XiangQingAction implements ModelDriven<Detail>{
@@ -26,8 +27,6 @@ public class XiangQingAction implements ModelDriven<Detail>{
 		return shownumber;
 	}
 
-	
-	
 	public String show(){
 		List<Product> spxqproduct=xiangQingService.SelectProductByProid(detail.getProid());
 		List<Detail> color=xiangQingService.SelectColorByProid(detail.getProid());
@@ -47,7 +46,6 @@ public class XiangQingAction implements ModelDriven<Detail>{
 	public String shownumber(){
 		LogManager.getLogger().debug(detail);
 		shownumber=xiangQingService.SelectNumberBySizeAndColor(detail);
-		
 		return "shownumber";
 	}
 	

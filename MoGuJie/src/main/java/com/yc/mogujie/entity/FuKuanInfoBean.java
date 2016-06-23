@@ -1,6 +1,9 @@
 package com.yc.mogujie.entity;
 
-public class FuKuanInfoBean {
+import java.io.Serializable;
+
+public class FuKuanInfoBean implements Serializable{
+	private static final long serialVersionUID = 3973178013979031699L;
 	private String proname;
 	private int price;
 	private String color;
@@ -8,24 +11,39 @@ public class FuKuanInfoBean {
 	private int number;
 	private int proid;
 	private String prophoto;
+	private int usid;
+	private int addressid;
+	private int orderid;
+	private int deid;
 	private int totalnumber;
 	private int totalprice;
-	
-	
-	public int getTotalnumber() {
-		return totalnumber;
+
+	public int getDeid() {
+		return deid;
 	}
-	public void setTotalnumber(int totalnumber) {
-		this.totalnumber = totalnumber;
+	public void setDeid(int deid) {
+		this.deid = deid;
 	}
-	public int getTotalprice() {
-		return totalprice;
+	public int getUsid() {
+		return usid;
 	}
-	public void setTotalprice(int totalprice) {
-		this.totalprice = totalprice;
+	public void setUsid(int usid) {
+		this.usid = usid;
+	}
+	public int getAddressid() {
+		return addressid;
+	}
+	public void setAddressid(int addressid) {
+		this.addressid = addressid;
 	}
 	public String getProphoto() {
 		return prophoto;
+	}
+	public int getOrderid() {
+		return orderid;
+	}
+	public void setOrderid(int orderid) {
+		this.orderid = orderid;
 	}
 	public void setProphoto(String prophoto) {
 		this.prophoto = prophoto;
@@ -66,15 +84,25 @@ public class FuKuanInfoBean {
 	public void setProid(int proid) {
 		this.proid = proid;
 	}
+	public int getTotalnumber() {
+		return totalnumber;
+	}
+	public void setTotalnumber(int totalnumber) {
+		this.totalnumber = totalnumber;
+	}
+	public int getTotalprice() {
+		return totalprice;
+	}
+	public void setTotalprice(int totalprice) {
+		this.totalprice = totalprice;
+	}
 	@Override
 	public String toString() {
 		return "FuKuanInfoBean [proname=" + proname + ", price=" + price
 				+ ", color=" + color + ", size=" + size + ", number=" + number
-				+ ", proid=" + proid + ", prophoto=" + prophoto
-				+ ", totalnumber=" + totalnumber + ", totalprice=" + totalprice
-				+ "]";
+				+ ", proid=" + proid + ", prophoto=" + prophoto + ", usid="
+				+ usid + ", addressid=" + addressid + ", orderid=" + orderid
+				+ ", deid=" + deid + ", totalnumber=" + totalnumber
+				+ ", totalprice=" + totalprice + "]";
 	}
-	
-	
-	
 }

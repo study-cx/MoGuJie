@@ -4,8 +4,10 @@
 <div id="header" >
 	<div class="head2">
 	 	<div class="head3">
-	          <a class="a3" href="front/shopping.jsp"  target="_blank">购物车</a>
-	          <a class="a4" href="front/myorder.jsp"  target="_blank">我的订单</a>
+	          <!-- <a class="a3" href="front/shopping.jsp"  target="_blank">购物车</a> -->
+	          <a class="a3" href="user_shopping.action"  target="_blank">购物车</a>
+	          <!-- <a class="a4" href="front/myorder.jsp"  target="_blank">我的订单</a> -->
+	          <a class="a4" href="user_dingdan.action"  target="_blank">我的订单</a>
           </div>
         <div class="head1">
         	<c:if test="${not empty loginUser }">

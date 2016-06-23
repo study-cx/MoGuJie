@@ -37,17 +37,14 @@
 		 p:basePackage="com.yc.mogujie.mapper"/>
 
 
-	<!-- 1.配制事务管理器 
+	<!-- 1.配制事务管理器  -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
-		p:dataSource-ref="dataSource" />-->
+		p:dataSource-ref="dataSource" />
 		
-
-
-	<!-- 2.配制事务关联 
+	<!-- 2.配制事务关联 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	 -->
 	<!-- 配置邮件发送bean -->
 	<bean id="JavaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="${mail.smtp.host}"/>

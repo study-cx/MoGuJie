@@ -10,7 +10,6 @@ import com.yc.mogujie.entity.FeedbackBean;
 import com.yc.mogujie.entity.Product;
 import com.yc.mogujie.mapper.DetailMapper;
 import com.yc.mogujie.service.XiangQingService;
-
 @Service("xiangQingService")
 public class XiangQingServiceImpl implements XiangQingService{
 	@Autowired
@@ -18,6 +17,7 @@ public class XiangQingServiceImpl implements XiangQingService{
 
 	@Override
 	public List<Product> SelectProductByProid(int proid) {
+		
 		return detailMapper.SelectProductByProid(proid);
 	}
 
@@ -35,7 +35,6 @@ public class XiangQingServiceImpl implements XiangQingService{
 
 	@Override
 	public String SelectNumberBySizeAndColor(Detail detail) {
-		
 		return detailMapper.SelectNumberBySizeAndColor(detail);
 	}
 
@@ -45,5 +44,4 @@ public class XiangQingServiceImpl implements XiangQingService{
 		return detailMapper.selectFeedBack(proid);
 	}
 	
-
 }
