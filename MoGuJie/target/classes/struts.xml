@@ -20,7 +20,7 @@
 			delTypeInfo,findCategoryone,getAllTypeone,findGuanggaoBygid,getAllAdvertise,getAllProduct,
 			findCatetwoType,findProductByType,
 			shownumber,jieesuanInfo,selectAddress,deleteAddr,moren,shopping,deleteCart,updateCart,AddGouWuChe,
-			saveCartInfo,deleteInfo,getPageAdtInfo,SouSuo,delTypeInfo,getAllTypeone
+			saveCartInfo,deleteInfo,getPageAdtInfo,SouSuo,delTypeInfo,getAllTypeone,loginOut
 		</global-allowed-methods>
 
 		<action name="*_*" class="{1}Action" method="{2}">
@@ -44,6 +44,7 @@
 			<result name="sousuorecord" >/front/fenlei.jsp</result>
 			<result name="updateSuccess">/front/myorder.jsp?op=userInfo</result>
 			<result name="updatePhotoSuccess">/front/myorder.jsp?op=updatePhoto</result>
+			<result name="loginout">/front/index.jsp</result>
 			<result name="findBasicsuccess" type="json">
 				<!-- 要转换成json对象的对象名，要提供getXXX方法 -->
 				<param name="root">userInfo</param>

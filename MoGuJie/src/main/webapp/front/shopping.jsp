@@ -16,6 +16,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="front/jq/shopping.js" type="text/javascript"></script>
 
 <script>
+
+function loginOut(){
+	$.post("user_loginOut",function(data){
+		location.href="front/index.jsp";
+	});
+}
 $(function(){
 	$.post("cart_shopping.action",function(data){
 		console.info(data);
@@ -65,11 +71,11 @@ $(function(){
 				<a href="javascript:loginOut()"><font >[注销]</font></a>
    			</c:if>
    			<c:if test="${empty loginUser }">
-	    		<a class="a2" href="login.jsp">登录</a>
-          		<a class="a1" href="regist.jsp" >注册</a>
+	    		<a class="a2" href="front/login.jsp">登录</a>
+          		<a class="a1" href="front/regist.jsp" >注册</a>
 			</c:if>
           </div>
-	<a  href="index.jsp"><img src="front/images/stitle.png" /></a>
+	<a  href="front/index.jsp"><img src="front/images/stitle.png" /></a>
     <div id="title-right">
     <ul id="black">
     	<li>购物车</li>

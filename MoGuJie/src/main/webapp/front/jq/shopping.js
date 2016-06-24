@@ -97,26 +97,13 @@
 	//删除商品
 	
 	function deleteShangpin(cid){
-		/*
-		var zz;
-		//console.info(a);
-		var delElement=document.getElementById(a.id);
-		var ss=document.getElementById('shang'+b);
-			if(ss.checked==true){
-					productCounts(b);
-					delElement.parentNode.removeChild(delElement);
-				}else{
-					delElement.parentNode.removeChild(delElement);
-				}*/
-		$.post("cartServlet",{op:"deleteShangpin",cid:cid},function(data){
-			if(data==1){
-				alert("删除信息成功");
+		$.post("cart_deleteCart.action",{cid:cid},function(data){
+			if(data>0){
 				window.location.reload();
-
 			}else{
-				alert("删除信息失败");
+				alert("删除信息失败！");
 			}
-		});
+		},'json');
 	}
 	
 	//金额加法

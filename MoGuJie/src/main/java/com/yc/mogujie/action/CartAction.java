@@ -8,9 +8,12 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.mogujie.entity.CartBean;
+import com.yc.mogujie.entity.UserInfo;
 import com.yc.mogujie.service.CartService;
+import com.yc.mogujie.util.MogujieData;
 
 @Controller("cartAction")
 public class CartAction implements ModelDriven<CartBean>,SessionAware{
@@ -37,6 +40,8 @@ public class CartAction implements ModelDriven<CartBean>,SessionAware{
 
 	public String shopping() {
 		LogManager.getLogger().debug("取到的购物车信息==》"+cartBean);
+		UserInfo us=(UserInfo) ActionContext.getContext().getSession().get(MogujieData.LOGIN_USER);
+		cartBean.setUsid(us.getUsid());
 		cartList= cartService.findAllCart(cartBean);
 		System.out.println(cartList);
 		return "cartList";

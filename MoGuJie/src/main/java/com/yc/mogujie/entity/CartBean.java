@@ -8,7 +8,14 @@ public class CartBean {
 	private String proname;
 	private String proprice;
 	private int cid;
+	private int usid;
 	 
+	public int getUsid() {
+		return usid;
+	}
+	public void setUsid(int usid) {
+		this.usid = usid;
+	}
 	public String getColor() {
 		return color;
 	}
@@ -54,10 +61,12 @@ public class CartBean {
 	}
 	@Override
 	public String toString() {
-		return "CartBean [\ncolor=" + color + ", csize=" + csize + ", pcolor="
+		return "CartBean [color=" + color + ", csize=" + csize + ", pcolor="
 				+ pcolor + ", snumber=" + snumber + ", proname=" + proname
-				+ ", proprice=" + proprice + ", cid=" + cid+ "]";
+				+ ", proprice=" + proprice + ", cid=" + cid + ", usid=" + usid
+				+ "]";
 	}
+	
 
 	
 }

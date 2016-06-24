@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.yc.mogujie.mapper.CartMapper">
 	<select id="getAllCart" parameterType="CartBean" resultType="CartBean">
-		select  c.*,proname,proprice from cart c,product p where p.proid=c.proid
+		select  c.*,proname,proprice from cart c,product p where p.proid=c.proid and c.usid=#{usid} 
 	</select>
 	
 	<delete id="deleteCart" parameterType="int">
@@ -19,7 +19,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into cart values(seq_cart_cid.nextval,#{proid},#{usid},#{color},#{csize},#{pcolor},#{snumber},#{obligateone,jdbcType=VARCHAR},#{obligatetwo,jdbcType=VARCHAR})
 	</insert>
 	<select id="selectProphoto" parameterType="Cart" resultType="String">
-		
 		 select pcolor from detail where psize=#{csize} and color=#{color} and proid=#{proid}
 	</select>
 </mapper>

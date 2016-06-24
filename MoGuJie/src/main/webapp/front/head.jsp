@@ -29,10 +29,11 @@
 </div>
 <script>
 function loginOut(){
-	$.post("userServlet?d="+new Date(),{op:"loginOut"},function(data){
-		var str='<a class="a2" href="login.jsp">登录</a>&nbsp;&nbsp;&nbsp;';
+	$.post("user_loginOut",function(data){
+		location.href="front/index.jsp";
+		/* var str='<a class="a2" href="login.jsp">登录</a>&nbsp;&nbsp;&nbsp;';
 		str+='<a class="a1" href="regist.jsp" >注册</a>'
-		$(".head1").html(str);
+		$(".head1").html(str); */
 	});
 }
 

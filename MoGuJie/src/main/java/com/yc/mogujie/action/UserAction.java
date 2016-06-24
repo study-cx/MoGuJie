@@ -189,5 +189,9 @@ public class UserAction implements ModelDriven<UserInfo>, SessionAware {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String loginOut(){
+		ActionContext.getContext().getSession().put(MogujieData.LOGIN_USER, "");
+		return "loginout";
+	}
 
 }
