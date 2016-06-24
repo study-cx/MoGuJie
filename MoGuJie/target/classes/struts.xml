@@ -27,14 +27,17 @@
 			<result name="Nologin" type="redirect">/front/login.jsp</result>
 		</global-results>
 	
-		<global-allowed-methods>login,adminRegiest,register,registers,checkName,del,addAdminInfo,
-				getPageAdminInfo,checkEmail,findBasicInfo,addr,list,update,edit,
-				updateBasicInfo,findAllOrders,findNoPayOrder,getAllUserInfo,findPaiedOrder,updatePwd,
-				updateImage,pay,back,findUserInfo,updateUserInfo,show,findCatetwoType,findProductByType,
-				shownumber,jieesuanInfo,selectAddress,paying,deleteAddr,moren,shopping,deleteCart,updateCart,AddGouWuChe,
-				saveCartInfo,deleteInfo,getPageAdtInfo,addAdvertise,updateAdvertise,delAdvertise,getPageNewsInfo,
-				getPageTypeInfo,addTypeInfo,updateTypeInfo,delTypeInfo,findCategoryone,getAllTypeone,
-				shopping,dingdan
+		<global-allowed-methods>
+			login,adminRegiest,register,registers,checkName,del,addAdminInfo,
+			getPageAdminInfo,checkEmail,findBasicInfo,addr,list,update,edit,moren,
+			updateBasicInfo,findAllOrders,findNoPayOrder,getAllUserInfo,findPaiedOrder,updatePwd,
+			updateImage,pay,back,findUserInfo,updateUserInfo,show,getPageAdtInfo,addAdvertise,
+			updateAdvertise,delAdvertise,getPageNewsInfo,getPageTypeInfo,addTypeInfo,updateTypeInfo,
+			delTypeInfo,findCategoryone,getAllTypeone,findGuanggaoBygid,getAllAdvertise,getAllProduct,
+			findCatetwoType,findProductByType,
+			shownumber,jieesuanInfo,selectAddress,deleteAddr,moren,shopping,deleteCart,updateCart,AddGouWuChe,
+			saveCartInfo,deleteInfo,getPageAdtInfo,SouSuo,delTypeInfo,getAllTypeone,
+			paying,shopping,dingdan
 		</global-allowed-methods>
 
 		<action name="*_*" class="{1}Action" method="{2}">
@@ -49,6 +52,17 @@
 			<result name="addAdminSuccess">/back_login/login.jsp</result>
 			<result name="addAdmin">/back_login/regiest.jsp</result>
 			<result name="spxq">/front/spxq.jsp</result>
+			
+			<result name="findCateSuccess">front/fenlei.jsp</result>
+			<result name="shopping">front/shopping.jsp</result>
+			<result name="tiaozhuan">/front/email.jsp</result>
+			<result name="Paysuccess" type="redirect">${IPaddress}</result>
+			<result name="message">/front/msg.jsp</result>
+			<result name="sousuorecord" >/front/fenlei.jsp</result>
+			<result name="updateSuccess">/front/myorder.jsp?op=userInfo</result>
+			<result name="updatePhotoSuccess">/front/myorder.jsp?op=updatePhoto</result>
+			<result name="YuEPayFail">/front/pay.jsp?op=YuEPayFail</result>
+			<result name="dingdan">/front/myorder.jsp</result>
 			<result name="findBasicsuccess" type="json">
 			<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">userInfo</param>
@@ -61,7 +75,6 @@
 				<!-- 要转换成json对象的对象名，要提供getXXX方法 -->
 				<param name="root">chakeAemail</param>
 			</result>
-			<result name="tiaozhuan">/front/email.jsp</result>	
 				
 			<result name="addrList" type="json">
 				<param name="root">addrList</param>
@@ -72,20 +85,23 @@
 			<result name="shownumber" type="json">
 				<param name="root">shownumber</param>
 			</result>
+			
 			<result name="jieesuanInfo" type="json">
 				<param name="root">flag</param>
+			</result>
+			
+			<result name="funkuanInfo" type="json">
+				<param name="root">fukuan</param>
 			</result>
 			
 			<result name="selectAddress" type="json">
 				<param name="root">address</param>
 			</result>
-			
-			<result name="updateSuccess">/front/myorder.jsp?op=userInfo</result>
 			<result name="findSuccess" type="json">
 				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">allOrders</param>
 			</result>
-			<result name="updatePhotoSuccess">/front/myorder.jsp?op=updatePhoto</result>
+			
 			<result name="edit" type="json">
 				<param name="root">edit</param>
 			</result>
@@ -110,13 +126,6 @@
 			<result name="addGouWucheSuccess" type="json">
 				<param name="root">flag</param>
 			</result>
-			
-			<result name="Paysuccess" type="redirect">${IPaddress}</result>
-			<result name="message">/front/index.jsp?op=paySuccess</result>
-			<result name="YuEPayFail">/front/pay.jsp?op=YuEPayFail</result>
-			<result name="findCateSuccess">front/fenlei.jsp</result>
-			<result name="shopping">/front/shopping.jsp</result>
-			<result name="dingdan">/front/myorder.jsp</result>
-		</action> 
+		</action>
 	</package>
 </struts>

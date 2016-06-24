@@ -68,8 +68,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 		obligateone=1 order by categoryidone desc)a where ${pageNo}>=rownum)b where rn>${pageSize}
 	</select>
+	
 	<!-- 查询首级分类 -->
 	<select id="findtypeone" resultType="Categoryone">
 		select * from categoryone where obligateone=1
 	</select>
+	
 </mapper>

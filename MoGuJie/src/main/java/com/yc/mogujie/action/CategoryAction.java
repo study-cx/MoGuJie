@@ -20,6 +20,7 @@ public class CategoryAction implements ModelDriven<Categorybean>,SessionAware {
 	@Autowired
 	private CategorytwoService categorytwoService;
 
+	
 	public String findCatetwoType(){
 		//System.out.println(category.getCategoryidone());
 		cateTypeInfo=categorytwoService.getCatetwoType(category);
@@ -41,7 +42,7 @@ public class CategoryAction implements ModelDriven<Categorybean>,SessionAware {
 		//System.out.println(cateTypeInfo);
 		return "findCateSuccess";
 	}
-
+	
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
@@ -52,6 +53,5 @@ public class CategoryAction implements ModelDriven<Categorybean>,SessionAware {
 		category=new Categorybean();
 		return category;
 	}
-
 
 }

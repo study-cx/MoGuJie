@@ -63,12 +63,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</div>
     </div>
     <div class="content3"  style="display:block" id="b1">
-		<c:forEach items="${AllProductInfo }" var="item">
+		<c:forEach items="${AllProductInfo}" var="item">
         	<div id="content32">
 	            <a href="xiangQing_show.action?proid=${item.proid}"><img src="${item.prophoto}"/></a>
 	            <p><a href="xiangQing_show.action?proid=${item.proid}">${item.procontent }</a></p></br>
 	            <div class="content321">￥${item.proprice }</div>
-	            <div class="content322">&nbsp;&nbsp;&nbsp;&nbsp;${item.counts}</div>
+	            <div class="content322">&nbsp;&nbsp;&nbsp;&nbsp;${item.obligateone}</div>
         	</div>
        	</c:forEach>
     </div>

@@ -1,6 +1,5 @@
 package com.yc.mogujie.action;
 
-import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -9,7 +8,6 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.yc.mogujie.entity.Cart;
 import com.yc.mogujie.entity.UserInfo;
 import com.yc.mogujie.service.CartService;
-import com.yc.mogujie.service.FukuanInfoService;
 import com.yc.mogujie.util.MogujieData;
 @Controller("cartsAction")
 public class CartsAction implements ModelDriven<Cart>{
@@ -23,6 +21,7 @@ public class CartsAction implements ModelDriven<Cart>{
 	}
 	@Autowired
 	private CartService cartService;
+	
 	public String AddGouWuChe(){
 		UserInfo us=(UserInfo) ActionContext.getContext().getSession().get(MogujieData.LOGIN_USER);
 		cart.setUsid(us.getUsid());

@@ -1,8 +1,13 @@
 package com.yc.mogujie.entity;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 
 public class Categorybean implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String categoryidone;//一级目录id
 	private String categoryTypeone;//一级目录的类型名称
 	private String categoryTypetwo;//二级目录的名称
@@ -10,7 +15,7 @@ public class Categorybean implements Serializable{
 	private String prophoto;//图片地址
 	private String procontent;//商品简介
 	private String proprice;//商品价格
-	private String counts;//销售量
+	private String obligateone;//销售量
 	
 	public String getProid() {
 		return proid;
@@ -36,11 +41,12 @@ public class Categorybean implements Serializable{
 	public void setProprice(String proprice) {
 		this.proprice = proprice;
 	}
-	public String getCounts() {
-		return counts;
+	
+	public String getObligateone() {
+		return obligateone;
 	}
-	public void setCounts(String counts) {
-		this.counts = counts;
+	public void setObligateone(String obligateone) {
+		this.obligateone = obligateone;
 	}
 	public String getCategoryidone() {
 		return categoryidone;
@@ -49,9 +55,11 @@ public class Categorybean implements Serializable{
 		this.categoryidone = categoryidone;
 	}
 	public String getCategoryTypeone() {
+		
 		return categoryTypeone;
 	}
-	public void setCategoryTypeone(String categoryTypeone) {
+	public void setCategoryTypeone(String categoryTypeone){
+		
 		this.categoryTypeone = categoryTypeone;
 	}
 	public String getCategoryTypetwo() {
@@ -66,6 +74,7 @@ public class Categorybean implements Serializable{
 				+ ", categoryTypeone=" + categoryTypeone + ", categoryTypetwo="
 				+ categoryTypetwo + ", proid=" + proid + ", prophoto="
 				+ prophoto + ", procontent=" + procontent + ", proprice="
-				+ proprice + ", counts=" + counts + "]";
+				+ proprice + ", obligateone=" + obligateone + "]";
 	}
+
 }

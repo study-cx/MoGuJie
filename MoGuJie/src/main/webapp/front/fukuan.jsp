@@ -35,12 +35,14 @@
 		var usid="${loginUser.usid}";
 		var addressid=$("#myAddr").val();
 		var price=$("#allprice").html();
-		$.post("fuKuanInfo_paying.action",{usid:usid,addressid:addressid},function(data){
+		
+		$.post("fuKuanInfo_paying",{usid:usid,addressid:addressid},function(data){
+			console.info(data);
 			if(data==1){
 				//location.href="funKuanInfo_pay.action?usid="+usid+"&price="+price;
 				location.href="front/pay.jsp?usid="+usid;
 			}
-		});
+		}, "json");
 	} 
 	
 </script>

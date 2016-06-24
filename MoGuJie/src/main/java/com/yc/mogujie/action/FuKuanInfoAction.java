@@ -24,7 +24,11 @@ public class FuKuanInfoAction implements  ModelDriven<FuKuanInfoBean>,SessionAwa
 	private  FuKuanInfoBean fuKuanInfoBean;
 	private int flag;
 	private int cid;
+	private int fukuan;
 	
+	public int getFukuan() {
+		return fukuan;
+	}
 	public void setCid(int cid) {
 		this.cid = cid;
 	}
@@ -55,17 +59,18 @@ public class FuKuanInfoAction implements  ModelDriven<FuKuanInfoBean>,SessionAwa
 	
 	//确认并付款(生成订单，状态为未付款)
 	public String paying(){
+		System.out.println("傻逼！！！");
 		List<FuKuanInfoBean> fukuanInfo=(List<FuKuanInfoBean>) session.get("fuKuanInfoBean");
-		//System.out.println("确认订单是获取到的数据："+fuKuanInfoBean);
+		System.out.println("确认订单是获取到的数据："+fuKuanInfoBean);
 		int result=fukuanInfoService.adduserOrder(fuKuanInfoBean);
 		//System.out.println("===>"+fuKuanInfoBean.getOrderid());
 		if(result==1){
 			for(int i=0;i<fukuanInfo.size();i++){
 				fukuanInfo.get(i).setOrderid(fuKuanInfoBean.getOrderid());
-				flag=fukuanInfoService.addorderdetail(fukuanInfo.get(i));
+				fukuan=fukuanInfoService.addorderdetail(fukuanInfo.get(i));
 			}
 		}
-		return "jieesuanInfo";
+		return "funkuanInfo";
 	}
 	//付款界面表格显示的信息//购物车跳转来
 	public void saveCartInfo(){
