@@ -5,33 +5,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.yc.mogujie.mapper.UserOrderMapper">
 	<select id="findAllOrder" parameterType="int" resultType="UserOrderBean">
-		select distinct uo.orderid,uo.datetime,uo.ostatus,
+	<!-- 	select distinct uo.orderid,uo.datetime,uo.ostatus,
   				p.prophoto,p.procontent,p.proprice,
   				d.color,d.psize,
   				od.buyprice,od.onumber 
   				from product p,detail d,userOrder uo,orderdetail od,userInfo u 
   				where p.proid=d.proid and od.proid=p.proid and 
   				od.orderid=uo.orderid and uo.usid=u.usid and u.usid=#{usid} 
-  				and uo.ostatus between 1 and 3
+  				and uo.ostatus between 1 and 3 -->
+  				          
+  select uo.orderid,uo.datetime,od.ostatus,p.prophoto,p.procontent,p.proprice,d.color,d.psize,od.buyprice,od.onumber,p.proid,od.orid   
+  from product p,detail d,userOrder uo,orderdetail od where p.proid=d.proid and
+  uo.orderid=od.orderid and od.proid=p.proid and od.deid=d.deid and uo.usid=#{usid} and od.ostatus between 0 and 3 
 	</select>
 	
 	<select id="findNoPayOrder" parameterType="int" resultType="UserOrderBean">
-		select distinct uo.orderid,uo.datetime,uo.ostatus,
+		<!-- select distinct uo.orderid,uo.datetime,uo.ostatus,
 						p.prophoto,p.procontent,p.proprice,
 						d.color,d.psize,
 						od.buyprice,od.onumber 
 						from product p,detail d,userOrder uo,orderdetail od,userInfo u 
 						where p.proid=d.proid and od.proid=p.proid and od.orderid=uo.orderid 
-						and uo.usid=u.usid and u.usid=#{usid} and uo.ostatus=1
+						and uo.usid=u.usid and u.usid=#{usid} and uo.ostatus=1 -->
+		select uo.orderid,uo.datetime,od.ostatus,p.prophoto,p.procontent,p.proprice,d.color,d.psize,od.buyprice,od.onumber,p.proid,od.orid   
+  from product p,detail d,userOrder uo,orderdetail od where p.proid=d.proid and
+  uo.orderid=od.orderid and od.proid=p.proid and od.deid=d.deid and uo.usid=#{usid} and od.ostatus=1 
 	</select>
 	
 	<select id="findPaiedOrder" parameterType="int" resultType="UserOrderBean">
-		select distinct uo.orderid,uo.datetime,uo.ostatus,
+		<!-- select distinct uo.orderid,uo.datetime,uo.ostatus,
 						p.prophoto,p.procontent,p.proprice,
 						d.color,d.psize,
 						od.buyprice,od.onumber 
 						from product p,detail d,userOrder uo,orderdetail od,userInfo u 
 						where p.proid=d.proid and od.proid=p.proid and od.orderid=uo.orderid 
-						and uo.usid=u.usid and u.usid=#{usid} and uo.ostatus=2
+						and uo.usid=u.usid and u.usid=#{usid} and uo.ostatus=2 -->
+		select uo.orderid,uo.datetime,od.ostatus,p.prophoto,p.procontent,p.proprice,d.color,d.psize,od.buyprice,od.onumber,p.proid,od.orid   
+  from product p,detail d,userOrder uo,orderdetail od where p.proid=d.proid and
+  uo.orderid=od.orderid and od.proid=p.proid and od.deid=d.deid and uo.usid=#{usid} and od.ostatus=2
 	</select>
 </mapper>

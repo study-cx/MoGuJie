@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yc.mogujie.entity.Detail;
-import com.yc.mogujie.entity.FeedbackBean;
+import com.yc.mogujie.entity.FeedBackBeanS;
 import com.yc.mogujie.entity.Product;
 import com.yc.mogujie.mapper.DetailMapper;
 import com.yc.mogujie.service.XiangQingService;
@@ -40,7 +40,7 @@ public class XiangQingServiceImpl implements XiangQingService{
 
 
 	@Override
-	public List<FeedbackBean> SelectFeedBack(int proid) {
+	public List<FeedBackBeanS> SelectFeedBack(int proid) {
 		return detailMapper.selectFeedBack(proid);
 	}
 	

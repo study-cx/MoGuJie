@@ -30,7 +30,8 @@ public class UserOrderBeanAction implements ModelDriven<UserOrderBean>,SessionAw
 	
 	//查询全部订单
 	public String findAllOrders(){
-		LogManager.getLogger().debug(userOrderBean);
+	
+		LogManager.getLogger().debug("userOrderBean"+userOrderBean);
 		//System.out.println("usid==>"+userOrderBean.getUsid());
 		allOrders=userOrderService.findAllOrder(userOrderBean.getUsid());
 		//System.out.println("获取到的全部订单为："+allOrders);

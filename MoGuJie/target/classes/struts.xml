@@ -38,7 +38,7 @@
 			shownumber,jieesuanInfo,selectAddress,deleteAddr,moren,shopping,deleteCart,updateCart,AddGouWuChe,
 
 			saveCartInfo,deleteInfo,getPageAdtInfo,SouSuo,delTypeInfo,getAllTypeone,loginOut,
-			paying,shopping,dingdan
+			paying,shopping,dingdan,lala,addPingJia
 		</global-allowed-methods>
 
 		<action name="*_*" class="{1}Action" method="{2}">
@@ -67,7 +67,7 @@
 
 			<result name="YuEPayFail">/front/pay.jsp?op=YuEPayFail</result>
 			<result name="dingdan">/front/myorder.jsp</result>
-
+			<result name="tiaozhuanpinglun">/front/pingjia.jsp</result>
 			<result name="findBasicsuccess" type="json">
 			<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">userInfo</param>
@@ -130,6 +130,10 @@
 
 			<result name="addGouWucheSuccess" type="json">
 				<param name="root">flag</param>
+			</result>
+			
+			<result name="addPingJia" type="json">
+				<param name="root">addPingJia</param>
 			</result>
 		</action>
 	</package>

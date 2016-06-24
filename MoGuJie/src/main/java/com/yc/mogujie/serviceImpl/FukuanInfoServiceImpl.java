@@ -62,6 +62,8 @@ public class FukuanInfoServiceImpl implements FukuanInfoService {
 	@Override
 	public int saveCartInfos(int cid) {
 		FuKuanInfoBean cart=fuKuanInfoMapper.findInfo(cid);
+		int deid=fuKuanInfoMapper.selectDeidBysizeColor(cart);
+		cart.setDeid(deid);
 		String prophoto=fuKuanInfoMapper.selectFuKuanInfo(cart);
 		cart.setProphoto(prophoto);
 		fukuanInfo.add(cart);

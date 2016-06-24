@@ -1,7 +1,7 @@
 package com.yc.mogujie.mapper;
 
 import com.yc.mogujie.entity.Detail;
-import com.yc.mogujie.entity.FeedbackBean;
+import com.yc.mogujie.entity.FeedBackBeanS;
 import com.yc.mogujie.entity.Product;
 
 import java.math.BigDecimal;
@@ -19,7 +19,7 @@ public interface DetailMapper {
 	
 	String SelectNumberBySizeAndColor(Detail detail);
 
-	List<FeedbackBean> selectFeedBack(int proid);
+	List<FeedBackBeanS> selectFeedBack(int proid);
 
 	
    

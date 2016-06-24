@@ -9,11 +9,10 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.mogujie.entity.Detail;
+import com.yc.mogujie.entity.FeedBackBeanS;
 import com.yc.mogujie.entity.Product;
 import com.yc.mogujie.service.XiangQingService;
-
 import com.yc.mogujie.entity.Feedback;
-import com.yc.mogujie.entity.FeedbackBean;
 
 @Controller("xiangQingAction")
 public class XiangQingAction implements ModelDriven<Detail>{
@@ -31,7 +30,7 @@ public class XiangQingAction implements ModelDriven<Detail>{
 		List<Product> spxqproduct=xiangQingService.SelectProductByProid(detail.getProid());
 		List<Detail> color=xiangQingService.SelectColorByProid(detail.getProid());
 		List<Detail> psize=xiangQingService.SelectPsizeByProid(detail.getProid());
-		List<FeedbackBean> feedback=xiangQingService.SelectFeedBack(detail.getProid());
+		List<FeedBackBeanS> feedback=xiangQingService.SelectFeedBack(detail.getProid());
 		if(spxqproduct.size()>0 && color.size()>0 && psize.size()>0){
 			ActionContext.getContext().getSession().put("spxqproduct", spxqproduct);
 			ActionContext.getContext().getSession().put("color", color);

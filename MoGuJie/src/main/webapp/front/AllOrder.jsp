@@ -15,6 +15,8 @@
 					status="待评价";
 				}else if(item.ostatus==1){
 					status="未付款";
+				}else if(item.ostatus==3){
+					status="已评价";
 				}
 				str+="<table class='dingdanInfo'>";
 				str+="<tr class='ding1'>";
@@ -29,17 +31,18 @@
 				str+="<p><a>"+item.procontent+"</a><a>[交易快照]</a></p>";
 				str+="<p>颜色："+item.color+"</p>";
 				str+="<p>尺码："+item.psize+"</p>";
+				str+="<input type='hidden' name='proid' value="+item.proid+">";
 				str+="</td>";
 				str+="<td>";
 				str+="<p id='xprice'>"+item.proprice+"</p>";
-				str+="</td>";
+				str+="</td>"; 
 				str+="<td id='number'>"+item.onumber+"</li>";
 				str+="<td id='youf'>";
 				str+="<p class='n1'>￥"+item.buyprice+"</p>";
 				str+="<p class='n2'>(包邮)</p>";
 				str+="</td>";
 				str+="<td id='xiang'>";
-				str+="<p class='x1'>"+status+"</p>";
+				str+="<p class='x1'><a href=feedBack_lala.action?proid="+item.proid+"&orderid="+item.orderid+"&orid="+item.orid+">"+status+"</a></p>";
 				str+="<p class='x2'><a>订单详情</a></p>";
 				str+="</td>";
 				str+="<td id='del'>";

@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="SelectNumberBySizeAndColor" parameterType="Detail" resultType="String">
 		  select counts from detail where proid=#{proid} and psize=#{psize} and color=#{color}
 	</select>
-	<select id="selectFeedBack" parameterType="int" resultType="FeedbackBean">
+	<select id="selectFeedBack" parameterType="int" resultType="FeedBackBeanS">
 		    select u.uname,f.content,f.fdate from feedback f,userInfo u where f.usid=u.usid and f.proid=#{proid}
 	</select>
 </mapper>

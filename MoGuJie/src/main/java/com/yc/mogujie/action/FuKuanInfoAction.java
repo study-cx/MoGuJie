@@ -60,11 +60,10 @@ public class FuKuanInfoAction implements  ModelDriven<FuKuanInfoBean>,SessionAwa
 	//确认并付款(生成订单，状态为未付款)
 	public String paying(){
 		List<FuKuanInfoBean> fukuanInfo=(List<FuKuanInfoBean>) session.get("fuKuanInfoBean");
-		System.out.println("确认订单是获取到的数据："+fuKuanInfoBean);
 		int result=fukuanInfoService.adduserOrder(fuKuanInfoBean);
-		System.out.println("===>"+fuKuanInfoBean.getOrderid());
 		if(result==1){
 			for(int i=0;i<fukuanInfo.size();i++){
+				System.out.println(i+"===>"+fuKuanInfoBean.getOrderid());
 				fukuanInfo.get(i).setOrderid(fuKuanInfoBean.getOrderid());
 				fukuan=fukuanInfoService.addorderdetail(fukuanInfo.get(i));
 			}

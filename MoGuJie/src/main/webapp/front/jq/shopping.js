@@ -192,5 +192,27 @@ function buy(){
 				cid="";
 			}
 		}
-	//}
+		//修改数量
+		function changeNum(cid){
+			//访问表格中的所有行的信息
+			var snumber=0;
+			var myTabletr=document.getElementById('shopinfo').getElementsByTagName('tr');
+			for(var i=0;i<myTabletr.length;i++){
+				console.info(cid);
+				var ids='hh'+i;
+				var id=$("."+ids).val();
+				if(cid==id){
+					snumber=myTabletr[i].getElementsByTagName('td')[6].getElementsByTagName('input')[0].value;
+				}
+			}
+			
+			$.post("cart_updateCart.action",{cid:cid,snumber:snumber},function(data){
+				if(data>0){
+					window.location.reload();
+				}
+				else{
+					alert("修改失败!!!");
+				}
+			},'json');
+		}
 }

@@ -17,6 +17,22 @@ public class UserOrderBean implements Serializable{
 	private String psize;//商品尺寸
 	private double buyprice;//购买价
 	private int onumber;//数量
+	private int proid;
+	private int orid;
+	
+	
+	public int getOrid() {
+		return orid;
+	}
+	public void setOrid(int orid) {
+		this.orid = orid;
+	}
+	public int getProid() {
+		return proid;
+	}
+	public void setProid(int proid) {
+		this.proid = proid;
+	}
 	public int getUsid() {
 		return usid;
 	}
@@ -90,6 +106,8 @@ public class UserOrderBean implements Serializable{
 				+ ", prophoto=" + prophoto + ", procontent=" + procontent
 				+ ", proprice=" + proprice + ", color=" + color + ", psize="
 				+ psize + ", buyprice=" + buyprice + ", onumber=" + onumber
-				+ "]";
+				+ ", proid=" + proid + ", orid=" + orid + "]";
 	}
+	
+	
 }

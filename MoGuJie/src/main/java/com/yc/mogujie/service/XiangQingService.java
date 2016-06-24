@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.yc.mogujie.entity.Address;
 import com.yc.mogujie.entity.Detail;
-import com.yc.mogujie.entity.FeedbackBean;
+import com.yc.mogujie.entity.FeedBackBeanS;
 import com.yc.mogujie.entity.Product;
 
 public interface XiangQingService {
@@ -17,6 +17,6 @@ public interface XiangQingService {
 
 	String SelectNumberBySizeAndColor(Detail detail);
 
-	List<FeedbackBean> SelectFeedBack(int proid);
+	List<FeedBackBeanS> SelectFeedBack(int proid);
 
 }

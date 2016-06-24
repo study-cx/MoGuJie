@@ -1,20 +1,16 @@
 package com.yc.mogujie.mapper;
 
+import com.yc.mogujie.entity.FeedBackBean;
 import com.yc.mogujie.entity.Feedback;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 public interface FeedbackMapper {
-    int deleteByPrimaryKey(BigDecimal fid);
+    
+	int insertpl(FeedBackBean feedback);
 
-    int insert(Feedback record);
+	int updateStatus(int ostatus);
 
-    int insertSelective(Feedback record);
-
-    Feedback selectByPrimaryKey(BigDecimal fid);
-
-    int updateByPrimaryKeySelective(Feedback record);
-
-    int updateByPrimaryKeyWithBLOBs(Feedback record);
-
-    int updateByPrimaryKey(Feedback record);
+	List<FeedBackBean> selectOrid();
 }
