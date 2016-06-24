@@ -7,6 +7,12 @@
 			+ path + "/";
 %>
 <!DOCTYPE html >
+<script type="text/javascript">
+	var op="${param.op}";
+	if(op=="YuEPayFail"){
+		alert("对不起，您的余额不足\n请选择其他支付方式！");
+	}
+</script>
 <head>
 <meta charset="utf-8">
 <title>支付</title>
@@ -34,7 +40,11 @@
 				+ hours + minutesRound + min + secondsRound + sec;
 		newtime = window.setTimeout("getTime();", 1000);
 	}
-	
+	/* $(function(){
+		var price="${param.price}";
+		$("#price").html(price);
+		$("#price1").html(price);
+	}); */
 </script>
 </head>
 
@@ -62,7 +72,7 @@
 	<div id="pay1_2">
 		<img class="title1" src="front/images/pay_2.png"/>
 		<span>订单提交成功，请您于<span id="limittime" style="color:red;font-size:18px;"></span>内完成支付（逾期订单将被取消）</span>
-		<span class="title2" style="font-size:18px;">应付金额：<span style="color:red;font-size:20px;">￥</span></span>
+		<span class="title2" style="font-size:18px;">应付金额：<span id="price" style="color:red;font-size:20px;">￥${fuKuanInfoBean[0].getTotalprice()}</span></span>
 	</div>
 	<form action="payment_pay.action" method="post">
 		<div id="pay1_3">
@@ -72,12 +82,12 @@
 				</li>
 				<li>余额</li>
 				<li>
-					可用余额：100元
+					可用余额：${loginUser.usaccount}元
 				</li>
 			</ul>
 		</div>
 		<div id="pay1_4">
-			<h3>其它支付方式：<span>请您选择在线支付银行</span></h3>
+			<h3>其他支付方式：<span>请您选择在线支付银行</span></h3>
 			<ul>
 				<li><input type="radio" name="yh" value="CMBCHINA-NET"><img src="front/bank_img/cmb.bmp"/></li>
 				<li><input type="radio" name="yh" value="BJ-NET"><img src="front/bank_img/bj.bmp"/></li>
@@ -110,7 +120,7 @@
 		<div id="pay1_5">
 			<ul>
 				<li>实付金额：</li>
-				<li><span>￥</span></li>
+				<li><span id="price1">￥${fuKuanInfoBean[0].getTotalprice()}</span></li>
 				<li><input type="submit" value="确认并付款"/></li>
 			</ul>
 		</div>

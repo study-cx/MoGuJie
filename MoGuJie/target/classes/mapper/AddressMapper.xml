@@ -18,8 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="updateAddr" parameterType="Address">
-		update address set province=#{province},city=#{city},street=#{street},
-		usaddress=#{usaddress},adname=#{adname},adcode=#{adcode},adtel=#{adtel}
+		update address set province=#{province},city=#{city},street=#{street}, usaddress=#{usaddress},adname=#{adname},adcode=#{adcode},adtel=#{adtel}
 		where addressid=#{addressid}
 	</update>
 	

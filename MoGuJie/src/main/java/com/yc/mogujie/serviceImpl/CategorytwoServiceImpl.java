@@ -14,6 +14,7 @@ import com.yc.mogujie.service.CategorytwoService;
 
 @Service("categorytwoService")
 public class CategorytwoServiceImpl implements CategorytwoService {
+	
 	@Autowired
 	private CategorytwoMapper categorytwoMapper;
 
@@ -24,6 +25,7 @@ public class CategorytwoServiceImpl implements CategorytwoService {
 		params.put("pageSize",(pageNo-1)*pageSize);
 		return categorytwoMapper.find(params);
 	}
+
 	@Override
 	public List<Categorybean> getCatetwoType(Categorybean category) {
 		return categorytwoMapper.getCatetwoType(category);

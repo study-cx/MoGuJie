@@ -49,17 +49,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="head.jsp" %>
 <div id="content" >
     <div id="tit_1">
-    	<p class="content_1"><a>首页</a>><span>${catetwos[0].categoryTypeone}<span></p> 
+    	<p class="content_1"><a>首页</a>><span>${catetwo[0].categoryTypeone}<span></p>
     </div> 
     <div class="title1">
     	<p>所有分类></p>
     	<div>
     		<span>相关分类：</span>
 	    	<ul>
-	    	
-	    	 <c:forEach items="${catetwos}" var="item">
-	    		<li><a href="category_findProductByType.action?categoryTypetwo=${item.categoryTypetwo}&categoryidone=${catetwos[0].categoryidone}">${item.categoryTypetwo}</a></li>
-	    	 </c:forEach> 
+	    	<c:forEach items="${catetwo}" var="item">
+	    		<li><a href="category_findProductByType.action?categoryTypetwo=${item.categoryTypetwo}&categoryidone=${catetwo[0].categoryidone}">${item.categoryTypetwo}</a></li>
+	    	</c:forEach> 
 	    	</ul>
     	</div>
     </div>

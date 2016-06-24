@@ -1,7 +1,7 @@
 //JavaScript Document
 //页面切换
+var usid="${loginUser.usid}";
 function switchover(_this,num){
-	var usid="${loginUser.usid}";
 	var div=document.getElementsByClassName('content');
 	for(var i=1;i<=div.length;i++){
 		if(num==i){
@@ -15,9 +15,21 @@ function switchover(_this,num){
 						str+="<h3 id='NoImage_2'>哎呀,此状态下没有对应的订单!</h3>";
 						str+="<p id='NoImage_3'>去&nbsp;<a  href='front/index.jsp'>首页</a>&nbsp;逛逛吧</p>";
 					}else{
+						str+="<table class='title'>";
+						str+="<tr>";
+						str+="<td class='shop'>商品</td>";
+						str+="<td class='tprice'>单价(元)</td>";
+						str+="<td class='tnum'>数量</td>";
+						str+="<td class='tfu'>实付款(元)</td>";
+						str+="<td class='statue'>交易状态</td>";
+						str+="<td class='caozuo'>操作</td>";
+						str+="</tr>";
+						str+="</table>";
 						$.each(data,function(index,item){
 							var status;
-							if(item.ostatus==1){
+							var ostatus=item.ostatus;
+							/*alert(item.ostatus);*/
+							if(ostatus==1){
 								status="未付款";
 							}
 							str+="<table class='dingdanInfo'>";
@@ -39,7 +51,7 @@ function switchover(_this,num){
 							str+="</td>";
 							str+="<td id='number'>"+item.onumber+"</li>";
 							str+="<td id='youf'>";
-							str+="<p class='n1'>￥"+item.buyprice+"</p>";
+							str+="<p class='n1'>￥"+item.proprice*item.onumber+"</p>";
 							str+="<p class='n2'>(包邮)</p>";
 							str+="</td>";
 							str+="<td id='xiang'>";
@@ -59,15 +71,26 @@ function switchover(_this,num){
 			if(num==3){
 				var str=" ";
 				$("#content_3").html('');
-				$.post("userOrderBean_findPaiedOrder",{usid:usid},function(data){
+				$.post("userOrderBean_findPaiedOrder.action",{usid:usid},function(data){
 					if(data.length==0){
 						str+="<img id='NoImage_1' src='front/images/dingdan_1.png'/>";
 						str+="<h3 id='NoImage_2'>哎呀,此状态下没有对应的订单!</h3>";
 						str+="<p id='NoImage_3'>去&nbsp;<a  href='front/index.jsp'>首页</a>&nbsp;逛逛吧</p>";
 					}else{
+						str+="<table class='title'>";
+						str+="<tr>";
+						str+="<td class='shop'>商品</td>";
+						str+="<td class='tprice'>单价(元)</td>";
+						str+="<td class='tnum'>数量</td>";
+						str+="<td class='tfu'>实付款(元)</td>";
+						str+="<td class='statue'>交易状态</td>";
+						str+="<td class='caozuo'>操作</td>";
+						str+="</tr>";
+						str+="</table>";
 						$.each(data,function(index,item){
 							var status;
-							if(item.ostatus==2){
+							var ostatus=item.ostatus;
+							if(ostatus==2){
 								status="待评价";
 							}
 							str+="<table class='dingdanInfo'>";
@@ -89,7 +112,7 @@ function switchover(_this,num){
 							str+="</td>";
 							str+="<td id='number'>"+item.onumber+"</li>";
 							str+="<td id='youf'>";
-							str+="<p class='n1'>￥"+item.buyprice+"</p>";
+							str+="<p class='n1'>￥"+item.proprice*item.onumber+"</p>";
 							str+="<p class='n2'>(包邮)</p>";
 							str+="</td>";
 							str+="<td id='xiang'>";

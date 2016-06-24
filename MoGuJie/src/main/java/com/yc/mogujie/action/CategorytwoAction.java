@@ -1,5 +1,17 @@
 package com.yc.mogujie.action;
 
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.opensymphony.xwork2.ModelDriven;
+import com.yc.mogujie.entity.Categorybean;
+import com.yc.mogujie.entity.Categorytwo;
+import com.yc.mogujie.service.CategorytwoService;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -9,15 +21,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.interceptor.SessionAware;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 
 import com.google.gson.Gson;
-import com.opensymphony.xwork2.ModelDriven;
 import com.yc.mogujie.entity.Categoryone;
-import com.yc.mogujie.entity.Categorytwo;
-import com.yc.mogujie.service.CategorytwoService;
 
 @Controller("categorytwoAction")
 public class CategorytwoAction implements ModelDriven<Categorytwo>,SessionAware {

@@ -1,665 +1,317 @@
 K 25
 svn:wc:ra_dav:version-url
-V 74
-/svn/yc19_2_4/!svn/ver/276/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images
+V 68
+/svn/yc19_2_4/!svn/ver/142/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images
 END
-modouBg.png
+logo.jpg
 K 25
 svn:wc:ra_dav:version-url
-V 85
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/modouBg.png
+V 76
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/logo.jpg
 END
-b1.jpg
+opt_sub.gif
 K 25
 svn:wc:ra_dav:version-url
-V 80
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/b1.jpg
+V 79
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/opt_sub.gif
 END
-b2.jpg
+topbg.gif
 K 25
 svn:wc:ra_dav:version-url
-V 80
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/b2.jpg
+V 77
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/topbg.gif
 END
-nav_dian1.png
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/nav_dian1.png
-END
-nav_xiala.png
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/nav_xiala.png
-END
-log2.png
-K 25
-svn:wc:ra_dav:version-url
-V 82
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/log2.png
-END
-da1.png
-K 25
-svn:wc:ra_dav:version-url
-V 82
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/da1.png
-END
-arrow-next.png
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/arrow-next.png
-END
-xiao33.png
-K 25
-svn:wc:ra_dav:version-url
-V 85
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/xiao33.png
-END
-da2.png
-K 25
-svn:wc:ra_dav:version-url
-V 82
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/da2.png
-END
-foot.png
-K 25
-svn:wc:ra_dav:version-url
-V 83
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/foot.png
-END
-nav_dingdan.png
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/nav_dingdan.png
-END
-da4.png
-K 25
-svn:wc:ra_dav:version-url
-V 82
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/da4.png
-END
-product_price_bg.png
-K 25
-svn:wc:ra_dav:version-url
-V 95
-/svn/yc19_2_4/!svn/ver/272/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/product_price_bg.png
-END
-conversation.png
-K 25
-svn:wc:ra_dav:version-url
-V 91
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/conversation.png
-END
-updatepwd_1.png
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/yc19_2_4/!svn/ver/268/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/updatepwd_1.png
-END
-updatepwd_2.png
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/yc19_2_4/!svn/ver/268/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/updatepwd_2.png
-END
-updatepwd_3.png
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/yc19_2_4/!svn/ver/268/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/updatepwd_3.png
-END
-updatepwd_4.png
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/yc19_2_4/!svn/ver/268/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/updatepwd_4.png
-END
-log.png
+admin_bar.gif
 K 25
 svn:wc:ra_dav:version-url
 V 81
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/log.png
-END
-updatepwd_5.png
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/yc19_2_4/!svn/ver/268/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/updatepwd_5.png
-END
-herd.png
-K 25
-svn:wc:ra_dav:version-url
-V 82
-/svn/yc19_2_4/!svn/ver/71/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/herd.png
-END
-updatepwd_6.png
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/yc19_2_4/!svn/ver/268/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/updatepwd_6.png
-END
-modou.png
-K 25
-svn:wc:ra_dav:version-url
-V 83
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/modou.png
-END
-nav_xiala1.png
-K 25
-svn:wc:ra_dav:version-url
-V 89
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/nav_xiala1.png
-END
-updatepwd_7.png
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/yc19_2_4/!svn/ver/268/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/updatepwd_7.png
-END
-zhong.png
-K 25
-svn:wc:ra_dav:version-url
-V 84
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/zhong.png
-END
-z1.jpg
-K 25
-svn:wc:ra_dav:version-url
-V 80
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/z1.jpg
-END
-z2.jpg
-K 25
-svn:wc:ra_dav:version-url
-V 80
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/z2.jpg
-END
-z3.jpg
-K 25
-svn:wc:ra_dav:version-url
-V 80
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/z3.jpg
-END
-erweima.png
-K 25
-svn:wc:ra_dav:version-url
-V 86
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/erweima.png
-END
-z4.jpg
-K 25
-svn:wc:ra_dav:version-url
-V 80
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/z4.jpg
-END
-jiantou1.png
-K 25
-svn:wc:ra_dav:version-url
-V 87
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/jiantou1.png
-END
-fu1.png
-K 25
-svn:wc:ra_dav:version-url
-V 81
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/fu1.png
-END
-color1.png
-K 25
-svn:wc:ra_dav:version-url
-V 85
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/color1.png
-END
-color2.png
-K 25
-svn:wc:ra_dav:version-url
-V 85
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/color2.png
-END
-beijin.png
-K 25
-svn:wc:ra_dav:version-url
-V 85
-/svn/yc19_2_4/!svn/ver/276/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/beijin.png
-END
-nav_shouye1.png
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/nav_shouye1.png
-END
-color3.png
-K 25
-svn:wc:ra_dav:version-url
-V 85
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/color3.png
-END
-arrow-prev.png
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/arrow-prev.png
-END
-dingdan.png
-K 25
-svn:wc:ra_dav:version-url
-V 85
-/svn/yc19_2_4/!svn/ver/94/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/dingdan.png
-END
-close.png
-K 25
-svn:wc:ra_dav:version-url
-V 84
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/close.png
-END
-ss1.png
-K 25
-svn:wc:ra_dav:version-url
-V 81
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/ss1.png
-END
-ss2.png
-K 25
-svn:wc:ra_dav:version-url
-V 81
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/ss2.png
-END
-order.jpg
-K 25
-svn:wc:ra_dav:version-url
-V 83
-/svn/yc19_2_4/!svn/ver/71/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/order.jpg
-END
-jiantou.png
-K 25
-svn:wc:ra_dav:version-url
-V 86
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/jiantou.png
-END
-myHuiYuan1.png
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/myHuiYuan1.png
-END
-myHuiYuan2.png
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/myHuiYuan2.png
-END
-myHuiYuan3.png
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/myHuiYuan3.png
-END
-myHuiYuan5.png
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/myHuiYuan5.png
-END
-myHuiYuan6.png
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/myHuiYuan6.png
-END
-background.png
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/background.png
-END
-xian1.png
-K 25
-svn:wc:ra_dav:version-url
-V 83
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/xian1.png
-END
-xian2.png
-K 25
-svn:wc:ra_dav:version-url
-V 83
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/xian2.png
-END
-logo_s.png
-K 25
-svn:wc:ra_dav:version-url
-V 84
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/logo_s.png
-END
-pb3.png
-K 25
-svn:wc:ra_dav:version-url
-V 81
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/pb3.png
-END
-bbmd1.png
-K 25
-svn:wc:ra_dav:version-url
-V 84
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/bbmd1.png
-END
-shuang11.png
-K 25
-svn:wc:ra_dav:version-url
-V 87
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/shuang11.png
-END
-foot1.png
-K 25
-svn:wc:ra_dav:version-url
-V 83
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/foot1.png
-END
-foot2.png
-K 25
-svn:wc:ra_dav:version-url
-V 83
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/foot2.png
-END
-twoweima.png
-K 25
-svn:wc:ra_dav:version-url
-V 86
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/twoweima.png
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/admin_bar.gif
 END
 loading.gif
 K 25
 svn:wc:ra_dav:version-url
-V 85
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/loading.gif
+V 79
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/loading.gif
 END
-spxq_gouwuche.png
+menu.jpg
 K 25
 svn:wc:ra_dav:version-url
-V 92
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/spxq_gouwuche.png
+V 76
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/menu.jpg
 END
-xiao11.png
+banner.jpg
 K 25
 svn:wc:ra_dav:version-url
-V 85
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/xiao11.png
+V 78
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/banner.jpg
 END
-tlsp_1.png
+channel_bg.gif
 K 25
 svn:wc:ra_dav:version-url
-V 85
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/tlsp_1.png
+V 82
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/channel_bg.gif
 END
-nav_che.png
+login_sub.gif
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/login_sub.gif
+END
+sidebarbg.gif
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/sidebarbg.gif
+END
+friend_logo.gif
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/friend_logo.gif
+END
+daohangicon.png
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/daohangicon.png
+END
+blue_bar.png
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/blue_bar.png
+END
+friend_t.gif
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/friend_t.gif
+END
+favicon.ico
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/favicon.ico
+END
+arrow.gif
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/arrow.gif
+END
+logo1.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/logo1.jpg
+END
+loginss.png
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/loginss.png
+END
+errorpic.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/errorpic.jpg
+END
+logo.gif
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/logo.gif
+END
+zcss.png
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/zcss.png
+END
+opt_name.gif
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/opt_name.gif
+END
+nav_leftdot.gif
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/nav_leftdot.gif
+END
+left.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/left.jpg
+END
+class_type.gif
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/class_type.gif
+END
+tu.png
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/tu.png
+END
+Picture1.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/Picture1.jpg
+END
+Picture2.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/Picture2.jpg
+END
+Picture3.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/Picture3.jpg
+END
+Picture4.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/Picture4.jpg
+END
+yc2.png
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/yc2.png
+END
+class_bg.gif
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/class_bg.gif
+END
+weixin.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/weixin.jpg
+END
+firend_bg.gif
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/firend_bg.gif
+END
+zanwu.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/yc19_2_4/!svn/ver/142/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/zanwu.jpg
+END
+main-1.gif
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/main-1.gif
+END
+a_b01.gif
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/a_b01.gif
+END
+weline.gif
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/weline.gif
+END
+login_input.gif
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/login_input.gif
+END
+close_delete_2.png
 K 25
 svn:wc:ra_dav:version-url
 V 86
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/nav_che.png
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/close_delete_2.png
 END
-tlsp_2.png
+two.png
 K 25
 svn:wc:ra_dav:version-url
-V 85
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/tlsp_2.png
+V 75
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/two.png
 END
-modou1.png
+back_logo.jpg
 K 25
 svn:wc:ra_dav:version-url
-V 84
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/modou1.png
+V 81
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/back_logo.jpg
 END
-stitle.png
+mogujie1.jpg
 K 25
 svn:wc:ra_dav:version-url
-V 84
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/stitle.png
+V 80
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/mogujie1.jpg
 END
-zhu.png
+mogujie2.png
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/mogujie2.png
+END
+logo_s.png
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/logo_s.png
+END
+head.gif
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/head.gif
+END
+friend_ico.gif
 K 25
 svn:wc:ra_dav:version-url
 V 82
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/zhu.png
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/friend_ico.gif
 END
-zb.jpg
+title_1.gif
 K 25
 svn:wc:ra_dav:version-url
-V 80
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/zb.jpg
+V 79
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/title_1.gif
 END
-bg1.png
+title_2.gif
 K 25
 svn:wc:ra_dav:version-url
-V 81
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/bg1.png
+V 79
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/title_2.gif
 END
-bg111.png
+yc2.ico
 K 25
 svn:wc:ra_dav:version-url
-V 83
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/bg111.png
+V 75
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/yc2.ico
 END
-spxq_1.png
+title_3.gif
 K 25
 svn:wc:ra_dav:version-url
-V 85
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/spxq_1.png
+V 79
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/title_3.gif
 END
-myHuiyuan4.png
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/myHuiyuan4.png
-END
-p1.jpg
-K 25
-svn:wc:ra_dav:version-url
-V 80
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/p1.jpg
-END
-chat.png
-K 25
-svn:wc:ra_dav:version-url
-V 82
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/chat.png
-END
-nav_dian.png
-K 25
-svn:wc:ra_dav:version-url
-V 87
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/nav_dian.png
-END
-nav_shouye.png
-K 25
-svn:wc:ra_dav:version-url
-V 89
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/nav_shouye.png
-END
-xiao1.png
+nav_leftline.gif
 K 25
 svn:wc:ra_dav:version-url
 V 84
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/xiao1.png
-END
-head1.png
-K 25
-svn:wc:ra_dav:version-url
-V 84
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/head1.png
-END
-xiao2.png
-K 25
-svn:wc:ra_dav:version-url
-V 84
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/xiao2.png
-END
-head2.png
-K 25
-svn:wc:ra_dav:version-url
-V 84
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/head2.png
-END
-lg2.png
-K 25
-svn:wc:ra_dav:version-url
-V 81
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/lg2.png
-END
-xiao4.png
-K 25
-svn:wc:ra_dav:version-url
-V 84
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/xiao4.png
-END
-pagination.png
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/pagination.png
-END
-nav_dingdan1.png
-K 25
-svn:wc:ra_dav:version-url
-V 91
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/nav_dingdan1.png
-END
-gou.png
-K 25
-svn:wc:ra_dav:version-url
-V 82
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/gou.png
-END
-spxq.png
-K 25
-svn:wc:ra_dav:version-url
-V 83
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/spxq.png
-END
-head.png
-K 25
-svn:wc:ra_dav:version-url
-V 83
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/head.png
-END
-lg1.gif
-K 25
-svn:wc:ra_dav:version-url
-V 81
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/lg1.gif
-END
-bbmd.png
-K 25
-svn:wc:ra_dav:version-url
-V 83
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/bbmd.png
-END
-xiao22.png
-K 25
-svn:wc:ra_dav:version-url
-V 85
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/xiao22.png
-END
-foot_background.png
-K 25
-svn:wc:ra_dav:version-url
-V 94
-/svn/yc19_2_4/!svn/ver/242/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/foot_background.png
-END
-jiage.png
-K 25
-svn:wc:ra_dav:version-url
-V 84
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/jiage.png
-END
-bbmd_xiaodian.png
-K 25
-svn:wc:ra_dav:version-url
-V 92
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/bbmd_xiaodian.png
-END
-fl1.png
-K 25
-svn:wc:ra_dav:version-url
-V 81
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/fl1.png
-END
-s1.png
-K 25
-svn:wc:ra_dav:version-url
-V 81
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/s1.png
-END
-example-frame.png
-K 25
-svn:wc:ra_dav:version-url
-V 91
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/example-frame.png
-END
-s2.png
-K 25
-svn:wc:ra_dav:version-url
-V 81
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/s2.png
-END
-nav_che1.png
-K 25
-svn:wc:ra_dav:version-url
-V 87
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/nav_che1.png
-END
-s3.png
-K 25
-svn:wc:ra_dav:version-url
-V 81
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/s3.png
-END
-gouwuche.png
-K 25
-svn:wc:ra_dav:version-url
-V 86
-/svn/yc19_2_4/!svn/ver/94/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/gouwuche.png
-END
-s4.png
-K 25
-svn:wc:ra_dav:version-url
-V 81
-/svn/yc19_2_4/!svn/ver/264/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/s4.png
-END
-foot_1.png
-K 25
-svn:wc:ra_dav:version-url
-V 85
-/svn/yc19_2_4/!svn/ver/242/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/foot_1.png
-END
-s5.png
-K 25
-svn:wc:ra_dav:version-url
-V 80
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/s5.png
-END
-foot_2.png
-K 25
-svn:wc:ra_dav:version-url
-V 85
-/svn/yc19_2_4/!svn/ver/242/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/foot_2.png
-END
-s6.png
-K 25
-svn:wc:ra_dav:version-url
-V 80
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/s6.png
-END
-bg.png
-K 25
-svn:wc:ra_dav:version-url
-V 80
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/bg.png
-END
-s7.png
-K 25
-svn:wc:ra_dav:version-url
-V 80
-/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/front/images/s7.png
+/svn/yc19_2_4/!svn/ver/68/%E6%BA%90%E7%A0%81/MoGuJie/WebRoot/images/nav_leftline.gif
 END

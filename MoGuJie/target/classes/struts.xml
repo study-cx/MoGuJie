@@ -4,15 +4,31 @@
 	"http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="true" />
 
-	<!-- 把struts的action对象交给spring容器管理 -->
+	
+	 <!-- 把struts的action对象交给spring容器管理 -->
 	<constant name="struts.objectFactory " value="spring" />
 
 	<package name="default" namespace="/" extends="json-default">
-		<global-allowed-methods>login,adminRegiest,register,registers,checkName,del,addAdminInfo,
+		<interceptors>
+			<interceptor name="loginInterceptor" class="com.yc.mogujie.interceptor.LoginInterceptor"/>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="loginInterceptor">
+					<param name="includeMethods">shopping,dingdan</param><!-- 要过滤的请求方法 -->
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<!-- 全局匹配 -->
+		<global-results>
+			<result name="Nologin" type="redirect">/front/login.jsp</result>
+		</global-results>
+	
+		<global-allowed-methods>
+			login,adminRegiest,register,registers,checkName,del,addAdminInfo,
 			getPageAdminInfo,checkEmail,findBasicInfo,addr,list,update,edit,moren,
 			updateBasicInfo,findAllOrders,findNoPayOrder,getAllUserInfo,findPaiedOrder,updatePwd,
 			updateImage,pay,back,findUserInfo,updateUserInfo,show,getPageAdtInfo,addAdvertise,
@@ -20,11 +36,13 @@
 			delTypeInfo,findCategoryone,getAllTypeone,findGuanggaoBygid,getAllAdvertise,getAllProduct,
 			findCatetwoType,findProductByType,
 			shownumber,jieesuanInfo,selectAddress,deleteAddr,moren,shopping,deleteCart,updateCart,AddGouWuChe,
-			saveCartInfo,deleteInfo,getPageAdtInfo,SouSuo,delTypeInfo,getAllTypeone,loginOut
+
+			saveCartInfo,deleteInfo,getPageAdtInfo,SouSuo,delTypeInfo,getAllTypeone,loginOut,
+			paying,shopping,dingdan
 		</global-allowed-methods>
 
 		<action name="*_*" class="{1}Action" method="{2}">
-
+			<interceptor-ref name="myStack"/>
 			<result name="addrSuccess">front/addr.jsp</result>
 			<result name="addFail">front/addFail.jsp</result>
 			<result name="list">front/addr.jsp</result>
@@ -44,9 +62,14 @@
 			<result name="sousuorecord" >/front/fenlei.jsp</result>
 			<result name="updateSuccess">/front/myorder.jsp?op=userInfo</result>
 			<result name="updatePhotoSuccess">/front/myorder.jsp?op=updatePhoto</result>
+
 			<result name="loginout">/front/index.jsp</result>
+
+			<result name="YuEPayFail">/front/pay.jsp?op=YuEPayFail</result>
+			<result name="dingdan">/front/myorder.jsp</result>
+
 			<result name="findBasicsuccess" type="json">
-				<!-- 要转换成json对象的对象名，要提供getXXX方法 -->
+			<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">userInfo</param>
 			</result>
 			<result name="ckName" type="json">
@@ -57,7 +80,7 @@
 				<!-- 要转换成json对象的对象名，要提供getXXX方法 -->
 				<param name="root">chakeAemail</param>
 			</result>
-
+				
 			<result name="addrList" type="json">
 				<param name="root">addrList</param>
 			</result>
@@ -67,16 +90,20 @@
 			<result name="shownumber" type="json">
 				<param name="root">shownumber</param>
 			</result>
+			
 			<result name="jieesuanInfo" type="json">
 				<param name="root">flag</param>
 			</result>
+			
+			<result name="funkuanInfo" type="json">
+				<param name="root">fukuan</param>
+			</result>
+			
 			<result name="selectAddress" type="json">
 				<param name="root">address</param>
 			</result>
-
-			
 			<result name="findSuccess" type="json">
-				<!-- 要转换成json对象的对象名，要提供getXXX方法 -->
+				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">allOrders</param>
 			</result>
 			
@@ -97,16 +124,13 @@
 			</result>
 			<result name="index">/front/index.jsp</result>
 			<result name="userInfo" type="json">
-				<!-- 要转换成json对象的对象名，要提供getXXX方法 -->
+				<!-- 要转换成json对象的对象名，要提供getXXX方法  -->
 				<param name="root">userInfo</param>
 			</result>
 
 			<result name="addGouWucheSuccess" type="json">
 				<param name="root">flag</param>
 			</result>
-
-
-
 		</action>
 	</package>
 </struts>

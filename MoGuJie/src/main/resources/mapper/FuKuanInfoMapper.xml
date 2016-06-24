@@ -5,12 +5,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.yc.mogujie.mapper.FuKuanInfoMapper">
 	<select id="selectFuKuanInfo" parameterType="FuKuanInfoBean" resultType="String">
-		  select pcolor from detail where proid=#{proid} and psize=#{size} and color=#{color}
+		select pcolor from detail where proid=#{proid} and psize=#{size} and color=#{color}
+	</select>
+	<select id="selectDeidBysizeColor" parameterType="FuKuanInfoBean" resultType="int">
+		select deid from detail where proid=#{proid} and psize=#{size} and color=#{color}
 	</select>
 	<select id="selectMorenAddress" parameterType="int" resultType="Address">
-		 select * from address where usid=#{usid} and statue=0
+		  select * from address where usid=#{usid} and statue=0
 	</select>
+	
+	<!-- 加入订单表（生成订单，状态为未付款） -->
+	<insert id="adduserOrder" parameterType="FuKuanInfoBean">
+		insert into userOrder values(seq_userOrder_orderid.nextval,#{usid},sysdate,1,#{addressid},'','')
+		<selectKey keyProperty="orderid" keyColumn="currid" order="BEFORE" resultType="int">
+			select seq_userOrder_orderid.nextval+1 currid from dual
+		</selectKey>
+	</insert>
+	
+	<insert id="addorderdetail" parameterType="FuKuanInfoBean">
+		insert into orderdetail values(seq_orderdetail_orid.nextval,#{orderid},#{proid},#{deid},#{number},#{price},1,'','')
+	</insert>
+	
+	<update id="updateOrderStatus" parameterType="FuKuanInfoBean">
+		update userOrder set ostatus=2 where orderid=#{orderid}
+	</update>
+
 	<select id="findInfo" parameterType="Int" resultType="FuKuanInfoBean">
-  select p.proname,p.proprice price,c.color,c.csize "SIZE",c.snumber "NUMBER",c.proid,p.prophoto from product p,cart c where p.proid=c.proid and c.cid=#{cid}
+  		select p.proname,p.proprice price,c.color,c.csize "SIZE",c.snumber "NUMBER",c.proid,p.prophoto from product p,cart c where p.proid=c.proid and c.cid=#{cid}
 	</select>
+	
+	<!--  修改商品表的销售量 -->
+	<update id="updateProductValue" parameterType="int">
+		update product set obligateone=obligateone+1 where proid=#{proid}
+	</update>
+	
+	<!-- 修改商品详情表的销售量、库存 -->
+	<update id="updateDeidValue" parameterType="int">
+		update detail set counts=counts+1,proNumber=proNumber-1 where deid=#{deid}
+	</update>
+	
+	<!-- 修改余额的值 -->
+	<update id="updateUserYuE" parameterType="UserInfo">
+		update userInfo set usaccount=#{usaccount} where usid=#{usid}
+	</update>
 </mapper>

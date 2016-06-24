@@ -21,6 +21,7 @@ public class CartsAction implements ModelDriven<Cart>{
 	}
 	@Autowired
 	private CartService cartService;
+	
 	public String AddGouWuChe(){
 		UserInfo us=(UserInfo) ActionContext.getContext().getSession().get(MogujieData.LOGIN_USER);
 		cart.setUsid(us.getUsid());

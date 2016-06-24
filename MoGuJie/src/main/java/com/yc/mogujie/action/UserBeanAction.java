@@ -73,7 +73,7 @@ public class UserBeanAction implements ModelDriven<UserBean>,SessionAware{
 	public String findBasicInfo(){
 		LogManager.getLogger().debug(userBean);
 		userInfo=userInfoService.findBasicInfo(userBean.getUname());
-		System.out.println("查询到数据为："+userInfo);
+		//System.out.println("查询到数据为："+userInfo);
 		return "findBasicsuccess";
 	}
 
@@ -116,11 +116,11 @@ public class UserBeanAction implements ModelDriven<UserBean>,SessionAware{
 		String path=ServletActionContext.getServletContext().getRealPath("../upload/");
 		try {
 			userBean.setUphoto("../upload/"+uploadFileName);
-			System.out.println(userBean.getUphoto());
+			//System.out.println(userBean.getUphoto());
 			int result=userInfoService.updatePhoto(userBean);
 			if(result==1){
 				FileUtils.copyFile(upload, new File(path+"/"+uploadFileName));//开始上传
-				System.out.println("上传成功....");
+				//System.out.println("上传成功....");
 				UserInfo user=(UserInfo) session.get("loginUser");
 				user.setUphoto("../upload/"+uploadFileName);
 				return "updatePhotoSuccess";

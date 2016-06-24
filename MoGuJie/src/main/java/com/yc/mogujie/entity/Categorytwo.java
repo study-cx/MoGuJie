@@ -1,7 +1,14 @@
 package com.yc.mogujie.entity;
 
-public class Categorytwo {
-    private int categoryidtwo;
+import java.io.Serializable;
+
+public class Categorytwo implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private int categoryidtwo;
 
     private int categoryidone;
 

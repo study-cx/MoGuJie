@@ -40,6 +40,8 @@
 				<div class="zhuce">
 					<a href="regist.jsp" class="zhuce1">新用户注册</a>
 				</div>
+				<div class="error" style="color:red">${sessionScope.errorMsg}</div>
+				<c:remove var="errorMsg" scope="session"/> <!-- 清除session中的数据 -->
 			</div>
 		</center>
 	</form>

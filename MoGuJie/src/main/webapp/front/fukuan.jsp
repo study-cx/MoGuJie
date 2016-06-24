@@ -20,57 +20,31 @@
 <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 <script type="text/javascript">
 	 $(function() {
-		
 		$.post("fuKuanInfo_selectAddress", function(data) {
-			
 			var str = "";
-			//$.each(data, function(index, item) {
-				str = "<p>" + data.adname + "</p>";
-				str += "<p>" + data.usaddress + "</p>";
-				str += "<p>" + data.province + data.city + data.street
-						+ "&nbsp;&nbsp;" + data.adcode + "</p>";
-				str += "<p>" + data.adtel + "</p>";
-				$("#text12").append($(str));
-			//});
+			str = "<p>" + data.adname + "</p><input id='myAddr' type='text' name='addressid' hidden='hidden' value='"+data.addressid+"'/>";
+			str += "<p>" + data.usaddress + "</p>";
+			str += "<p>" + data.province + data.city + data.street
+					+ "&nbsp;&nbsp;" + data.adcode + "</p>";
+			str += "<p>" + data.adtel + "</p>";
+			$("#text12").append($(str));
 		}, "json");
 	});
 
 	function paying() {
-		var proname = $(".hanban").html();
-		var color = $("#get_color").html();
-		var size = $("#get_size").html();
-		var number = $("#get_number").html();
-		var price = $("#get_price").html();
-		$.post("../fukuanServlet", {
-			op : "surePaying",
-			proname : proname,
-			color : color,
-			size : size,
-			number : number,
-			price : price
-		}, function(data) {
-			if (data == 1) {
-				alert("付款成功，请耐心等待卖家发货！");
-			} else {
-				alert("付款失败，请重新支付!");
+		var usid="${loginUser.usid}";
+		var addressid=$("#myAddr").val();
+		var price=$("#allprice").html();
+		
+		$.post("fuKuanInfo_paying",{usid:usid,addressid:addressid},function(data){
+			console.info(data);
+			if(data==1){
+				//location.href="funKuanInfo_pay.action?usid="+usid+"&price="+price;
+				location.href="front/pay.jsp?usid="+usid;
 			}
-		});
+		}, "json");
 	} 
-</script>
-<script type="text/javascript">
-	function pay() {
-		var ss = document.getElementsByName('cc');
-		for (var i = 0; i < ss.length; i++) {
-			var s1 = $(".hanban")[i].innerHTML;
-			var s2 = $(".color")[i].innerHTML;
-			var s3 = $(".size")[i].innerHTML;
-			console.info(s1);
-
-			console.info(s2);
-			console.info(s3);
-
-		}
-	}
+	
 </script>
 </head>
 
@@ -108,7 +82,6 @@
 						<td>小计(元)</td>
 					</tr>
 					<c:forEach items="${fuKuanInfoBean}" var="item">
-					
 						<c:if test="${not empty item}">
 							<tr class="text222">
 								<td>店铺:橘子外套</td>
@@ -128,6 +101,8 @@
 								</td>
 								<td>${item.price }</td>
 								<td id="get_number">${item.number }</td>
+								<input id="deid" type="text" name="deid" hidden="hidden" value="${item.deid}"/>
+								<input id="proid" type="text" name="proid" hidden="hidden" value="${item.proid}"/>
 								<td>省64.20元</td>
 								<td><span id="get_price">${item.price*item.number}</span>元</td>
 						</c:if>
@@ -152,10 +127,10 @@
 			</div>
 			<div class="foot3">
 				<span class="foot31">总计：</span>
-				<span class="foot32">￥${fuKuanInfoBean[0].totalprice}</span>
+				<span class="foot32" id="allprice">￥${fuKuanInfoBean[0].totalprice}</span>
 			</div>
 			<div class="foot4">
-				<a href="fuKuanInfo_pay.action?">确认并付款</a>
+				<a href="javascript:paying()">确认并付款</a>
 			</div>
 		</div>
 
